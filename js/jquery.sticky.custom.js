@@ -41,6 +41,7 @@
 						if (s.currentTop !== null) {
 							s.stickyElement
 								.css('top', '')
+                                .css('position', '')
 								.removeClass(s.className + " " + s.classNameNav);
 							s.stickyWrapper
 								.css('height', '' );
@@ -58,10 +59,10 @@
 						}
 						if (s.currentTop != newTop) {
 							s.stickyElement
-								.addClass(s.className + ( s.stickyElement.is(".navbar,.subnavbar") ? " " + s.classNameNav : "" ) );
-							if ( newTop > 0 ) {
-								s.stickyElement.css('top', newTop);
-							}
+								.addClass(s.className + ( s.stickyElement.is(".navbar,.subnavbar") ? " " + s.classNameNav : "" ) )
+                                .css('top', newTop)
+                                .css('position', 'fixed');
+                            
 							s.stickyWrapper
 								.css('height', s.stickyElement.outerHeight( true ) );
 							s.currentTop = newTop;
@@ -79,12 +80,12 @@
             init: function(options) {
                 var o = $.extend(defaults, options);
                 return this.each(function() {
-                    var stickyElement = $(this);
-
-                    stickyId = stickyElement.attr('id');
-                    wrapper = $('<div></div>')
-                        .attr('id', stickyId + '-sticky-wrapper')
-                        .addClass(o.wrapperClassName);
+                    var stickyElement = $(this),
+                        stickyId = stickyElement.attr('id'),
+                        wrapper = $('<div></div>')
+                            .attr('id', stickyId + '-sticky-wrapper')
+                            .addClass(o.wrapperClassName);
+                    
                     stickyElement.wrapAll(wrapper);
                     
                     sticked.push({

@@ -23,10 +23,6 @@
 			"js/jquery.easing-1.3.min.js",
 			"js/jquery.sticky.custom.js"
 		] )
-		.wait()
-		.script( [
-			"js/bootstrap-scroll-modal.custom.js"
-		] )
 		.wait( init );
 	
 	/*===================================================
@@ -148,7 +144,7 @@
 							
 							// sticky class nav
 							
-							$( "#navbarClass" ).sticky();
+							$( "#navbarClass" ).sticky( { topSpacing: function () { return elements.$navbarMain.outerHeight( true ); } } );
 							
 							// for each project
 							

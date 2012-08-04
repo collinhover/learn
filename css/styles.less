@@ -11,10 +11,13 @@
     font-style: normal;
 }
 
-/* bootstrap
+/* START bootstrap
 -------------------------------------------------------------------------------*/
 @import "less/bootstrap.less";
 @import "less/responsive.less";
+
+/*-------------------------------------------------------------------------------
+END bootstrap */
 
 /* general variables
 -------------------------------------------------------------------------------*/
@@ -143,7 +146,7 @@ a.dim:hover, button.dim:hover, .btn.dim:hover {
 	margin-bottom: 5px;
 }
 
-.squire-type {
+.sidekick-type {
 	font-size: 24px;
 	line-height: 1;
 	font-family: @serifFontFamily;
@@ -152,7 +155,7 @@ a.dim:hover, button.dim:hover, .btn.dim:hover {
 }
 
 h2 {
-	.squire-type;
+	.sidekick-type;
 }
 
 h3 {
@@ -484,7 +487,7 @@ a, .navbar .nav > li > a {
 	
 }
 
-.squire-unit {
+.sidekick-unit {
 	padding: 30px;
 	margin: 0;
 }
@@ -529,7 +532,7 @@ a, .navbar .nav > li > a {
 @media (max-width: 979px) {
 	
 	.is-sticky {
-		position: relative;
+		position: static !important;
 		top: auto !important;
 		bottom: auto !important;
 	}
