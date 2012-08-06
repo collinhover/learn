@@ -1,8 +1,8 @@
 ( function () {
 	
 	var elements = {},
-		classNameLocalStorage,
-		classNameCurrent;
+		classURLLocalStorage,
+		classURLCurrent;
 	
 	/*===================================================
     
@@ -13,6 +13,7 @@
 	$LAB
 		.script( [
 			"js/jquery-1.7.2.min.js",
+            "js/impress.min.js",
 			"js/RequestAnimationFrame.js",
 			"js/requestInterval.js",
 			"js/requestTimeout.js"
@@ -20,9 +21,13 @@
 		.wait()
 		.script( [
 			"js/bootstrap.min.js",
-			"js/jquery.easing-1.3.min.js",
-			"js/jquery.sticky.custom.js"
+            "js/jquery.throttle-debounce.min.js",
+			"js/jquery.easing-1.3.min.js"
 		] )
+        .wait()
+        .script( [
+    		"js/jquery.sticky.custom.js"
+        ] )
 		.wait( init );
 	
 	/*===================================================
@@ -48,17 +53,21 @@
 		elements.$policies = $( '#policies' );
 		elements.$classes = $( '#classes' );
 		elements.$class = $( '#class' );
-		elements.$classWarning = $( '#classWarning' );
-		elements.$classError = $( '#classError' );
-		elements.$classLoading = $( '#classLoading' );
+		elements.$classSetup = $( '#classSetup' );
+    	elements.$classSetupHeader = $( '#classSetupHeader' );
+    	elements.$classSetupBody = $( '#classSetupBody' );
+        elements.$presentations = $( '#presentations' );
+        elements.$presentation = $( '#presentation' );
+        elements.$presentationSetup = $( '#presentationSetup' );
 		elements.$icons = $( 'i' );
 		elements.$buttonsClasses = $( '.button-class' );
+    	elements.$buttonsPresentations = $( '.button-presentation' );
 		
-		// if has current class name in local storage
+		// if has current class url in local storage
 		
-		if ( window.localStorage && window.localStorage[ 'classNameCurrent' ] ) {
+		if ( window.localStorage && window.localStorage[ 'classURLCurrent' ] ) {
 			
-			classNameLocalStorage = window.localStorage[ 'classNameCurrent' ];
+			classURLLocalStorage = window.localStorage[ 'classURLCurrent' ];
 			
 		}
 		
@@ -77,74 +86,79 @@
 			
 		} );
 		
-		// show class warning
-		
-		elements.$classWarning.removeClass( 'hidden' );
-		
-		// add content load to each class button
+		// for each class button
 		
 		elements.$buttonsClasses.each( function () {
 			
 			var $classButton = $( this ),
-				className;
+				classURL;
+            
+            // set relative target
+            
+            $classButton.attr( 'href', '#classes' );
 			
-			// get class name
+			// get class url
 			
-			className = $.trim( $classButton.data( "class" ) );
+			classURL = $.trim( $classButton.data( "class" ) );
 			
 			// listen for activate
 			
 			$classButton.on( Modernizr.touch ? 'touchend' : 'mouseup', function () {
 				
-				if ( typeof className === 'string' && className.length > 0 && className !== classNameCurrent ) {
+				if ( typeof classURL === 'string' && classURL.length > 0 && classURL !== classURLCurrent ) {
 					
-					// hide warning
-					
-					elements.$classWarning.addClass( 'hidden' );
-					
-					// hide error
-					
-					elements.$classError.addClass( 'hidden' );
-					
+                    // stop sticky class nav
+                    
+                    $( "#navbarClass" ).sticky( 'stop' );
+                    
 					// empty current class
 					
 					elements.$class.empty();
 					
-					// show loading
+					// change setup to loading
 					
-					elements.$classLoading.removeClass( 'hidden' );
+					elements.$classSetup.removeClass( 'hidden' );
+                    elements.$classSetupHeader.html( "Class loading..." );
+                    elements.$classSetupBody.removeClass( 'alert-danger' ).addClass( 'alert-success' ).html( '<strong>One sec,</strong> looking up that class you selected.' );
 					
 					// store as current
 					
-					classNameCurrent = className;
-					
-					if ( window.localStorage ) {
-						
-						window.localStorage[ 'classNameCurrent' ] = classNameCurrent;
-						
-					}
+					classURLCurrent = classURL;
 					
 					// load
 					
-					elements.$class.load( 'classes/' + className + '.html', function ( responseText, textStatus ) {
-						
-						// hide loading
-						
-						elements.$classLoading.addClass( 'hidden' );
+					elements.$class.load( 'classes/' + classURL + '.html', function ( responseText, textStatus ) {
 						
 						// if error on load
 						if ( textStatus === 'error' ) {
 							
-							// show error
+							// change setup to error
 							
-							elements.$classError.removeClass( 'hidden' );
-						
+                            elements.$classSetupHeader.html( "Oops!" );
+                            elements.$classSetupBody.removeClass( 'alert-success' ).addClass( 'alert-danger' ).html( '<strong>This is embarrassing! </strong> Looks like that class got lost somewhere... try again or <a href="#overview">let me know</a>.' );
+                            
 						}
 						else {
+                            
+                            // store current
+                            
+        					if ( window.localStorage ) {
+        						
+        						window.localStorage[ 'classURLCurrent' ] = classURLCurrent;
+        						
+        					}
+                            
+                            // hide setup
+    					    
+						    elements.$classSetup.addClass( 'hidden' );
 							
 							// sticky class nav
 							
-							$( "#navbarClass" ).sticky( { topSpacing: function () { return elements.$navbarMain.outerHeight( true ); } } );
+							$( "#navbarClass" ).sticky( { 
+                                topSpacing: function () { return elements.$navbarMain.outerHeight( true ); },
+                                maxScroll: function () { return elements.$class.outerHeight( true ) - elements.$navbarMain.outerHeight( true ); },
+                                maxScrollStart: function () { return elements.$class.offset().top; }
+                            } );
 							
 							// for each project
 							
@@ -162,7 +176,7 @@
 									
 									var $requirementItem = $( this ),
 										requirementItemText = $.trim( $requirementItem.text() ),
-										id = classNameCurrent + '_' + projectName + '_' + 'RequirementItem' + '_' + requirementItemText;
+										id = classURLCurrent + '_' + projectName + '_' + 'RequirementItem' + '_' + requirementItemText;
 									
 									// check if id already in list ( duplicate )
 									
@@ -217,14 +231,27 @@
 			
 			} );
 			
-			// if this class name is same as one in local storage
+			// if this class url is same as one in local storage
 			
-			if ( typeof classNameLocalStorage !== 'undefined' && className === classNameLocalStorage ) {
+			if ( typeof classURLLocalStorage !== 'undefined' && classURL === classURLLocalStorage ) {
 				
 				$classButtonToTrigger = $classButton;
 				
 			}
 			
+		} );
+        
+        // for each presentation button
+    	
+		elements.$buttonsPresentations.each( function () {
+			
+			var $presentationButton = $( this ),
+				presentationURL;
+            
+            // set relative target
+            
+            $presentationButton.attr( 'href', '#presentations' );
+            
 		} );
 		
 		// listen for resize
@@ -247,9 +274,12 @@
 	
 	function on_resize() {
 		
-		// set classes min height
+        var windowHeight = $( window ).innerHeight();
+        
+		// set min height
 		
-		elements.$classes.css( 'min-height', $( window ).innerHeight() );
+		elements.$classes.css( 'min-height', windowHeight );
+        elements.$presentations.css( 'min-height', windowHeight );
 		
 	}
 	
