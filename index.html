@@ -7,7 +7,7 @@
 <!--[if gt IE 9]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <!-- the "no-js" class is for Modernizr. -->
 
-<head id="www-collinhover-com" data-template-set="html5-reset">
+<head id="www-collinhover-com">
 
     <meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -70,11 +70,11 @@
 	<!-- END header -->
 	
 	<!-- navigation -->
-	<div id="navbarMain" class="navbar navbar-fixed-top">
+	<div id="mainNav" class="navbar navbar-fixed-top">
 		<div class="navbar-inner">
 			<div class="container">
 				
-				<a class="btn btn-navbar" data-toggle="collapse" data-target="#navbarMainCollapse">
+				<a class="btn btn-navbar" data-toggle="collapse" data-target="#mainNavCollapse">
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
@@ -84,7 +84,7 @@
 					<img src="img/apple-touch-icon-114x114-precomposed.png" class="logo-icon iconk-medium" alt="Logo">
 				</a>
 				
-				<div id="navbarMainCollapse" class="nav-collapse">
+				<div id="mainNavCollapse" class="nav-collapse">
 					<ul class="nav">
 						<li>
 							<a href="#overview">Overview</a>
@@ -125,13 +125,13 @@
 							</a>
 							<ul class="dropdown-menu">
 								<li>
-									<a href="#" class="button-class" data-class="digitalDesign"><i class="icon-th"></i> Digital Design</a>
+									<a href="#" class="button-class" data-url="digitalDesign.html"><i class="icon-th"></i> Digital Design</a>
 								</li>
 								<li>
-									<a href="#" class="button-class" data-class="typography"><i class="icon-font"></i> Typography</a>
+									<a href="#" class="button-class" data-url="typography.html"><i class="icon-font"></i> Typography</a>
 								</li>
 								<li>
-									<a href="#" class="button-class" data-class="webDesignBasics"><i class="icon-hand-up"></i> Web Design: Basics</a>
+									<a href="#" class="button-class" data-url="webDesignBasics.html"><i class="icon-hand-up"></i> Web Design: Basics</a>
 								</li>
 							</ul>
 						</li>
@@ -404,42 +404,46 @@
 			<div class="container">
 				
 				<div class="page-header">
-					<h1>Requirements <small>our work is never over</small></h1>
+					<h1>Requirements <small>all or nothing</small></h1>
 				</div>
 				
 				<div class="row">
-					<div class="span5">
-						<h3>ABCD</h3>
-						<p>We're working with a system where only the top 40% matters. For many, a C or D is as bad as an F... which leaves a range of 20%.</p>
+					<div class="span6">
+						<h3>That New New</h3>
+						<p>Our current grading system tells us that success in a class is at least 60% understanding. For many, a D is as bad as failure... so maybe we should say at least 70%.</p>
+                        <p>However, for each project in my classes, there are two gateways that control success and failure. The first is a project's requirements, and doing them all is equivalent to a D. The second is a slightly tweaked grading system to reflect the addition of the requirements all-or-nothing system.</p>
 						<div class="container-center">
 							<div class="row">
-								<div class="span2">
-									<p><small>why is</small></p>
+                                <div class="span2">
+    								<p><small>you're pacman</small></p>
 									<div class="well well-tight">
-                                        <div class="iconk-giant">
-										    <h3>80 <small>-</small><br/>100 <small>%</small></h3>
-                                        </div>
+    									<img src="img/pacman_64.png" class="iconk-giant" alt="Pacman">
 									</div>
 								</div>
-								<div class="span1">
-									<h1 class="hero-type sequence-arrow dim">=</h1>
+								<div class="span2">
+									<p><small>requirements are ghosts</small></p>
+									<div class="well well-tight">
+    									<img src="img/pacman_ghost_64.png" class="iconk-giant" alt="Ghost">
+									</div>
 								</div>
 								<div class="span2">
-									<p><small>the range for</small></p>
+									<p><small>chomp them all</small></p>
 									<div class="well well-tight">
 										<img src="img/win_64.png" class="iconk-giant" alt="Win">
 									</div>
+                                    <p><small>to win and score</small></p>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="span4">
+					<div class="span3">
 						<h3>All or Nothing</h3>
 						<ul>
 							<li>Each project has requirements</li>
 							<li>Projects only accepted when all requirements complete</li>
+            				<li>Requirements can only be done if you have a basic understanding of that project's concepts</li>
 							<li>Evaluations from 0 - 100%, and are not curved</li>
-							<li>Grade map is curved so it's harder to be amazing or terrible</li>
+							<li>Grade map is curved so you'll have to work harder to be amazing or terrible</li>
 						</ul>
 						<div class="alert alert-info">
 							<strong>Check it out:</strong> Life happens, so you get 1 chance per class to resubmit a project.
@@ -660,11 +664,11 @@
     <section id="presentations">
         
         <div class="container">
-        
-            <header class="subhead">
-        		<h1>Presentations</h1>
-    			<h2>Currently viewing<span class="presentation-name">: nothing yet!</span></h2>
-    			<div id="navbarPresentation" class="subnavbar">
+            
+            <header id="presentationsHeader" class="subhead">
+        		<h1 class="presentation-name">Presentations</h1>
+    			<h2 class="presentation-description"></h2>
+    			<div id="presentationsNav" class="subnavbar">
     				<div class="navbar-inner">
     					<div class="container">
     						<ul class="nav nav-pills pull-left">
@@ -675,10 +679,16 @@
         							</a>
         							<ul class="dropdown-menu">
         								<li>
-        									<a href="#" class="button-presentation" data-presentation="raster"><i class="icon-th-large"></i> Raster</a>
+        									<a href="#" class="button-presentation" data-url="digital/raster.html"><i class="icon-th-large"></i> Raster Graphics</a>
+        								</li>
+            							<li>
+        									<a href="#" class="button-presentation" data-url="digital/pixel.html"><i class="icon-pencil"></i> Pixel Art</a>
+        								</li>
+                						<li>
+        									<a href="#" class="button-presentation" data-url="digital/painting.html"><i class="icon-tint"></i> Digital Painting</a>
         								</li>
         								<li>
-        									<a href="#" class="button-presentation" data-presentation="vector"><i class="icon-map-marker"></i> Vector</a>
+        									<a href="#" class="button-presentation" data-url="digital/vector.html"><i class="icon-adjust"></i> Vector Graphics</a>
         								</li>
         							</ul>
         						</li>
@@ -689,28 +699,28 @@
         							</a>
         							<ul class="dropdown-menu">
         								<li>
-        									<a class="button-presentation" data-presentation="web/basics">Basics</a>
+        									<a class="button-presentation" data-url="web/basics.html"><i class="icon-user"></i> Basics</a>
         								</li>
             							<li>
-        									<a href="#" class="button-presentation" data-presentation="web/typography">Typography</a>
+        									<a href="#" class="button-presentation" data-url="web/typography.html"><i class="icon-font"></i> Typography</a>
         								</li>
         								<li>
-        									<a href="#" class="button-presentation" data-presentation="web/grids">Grids</a>
+        									<a href="#" class="button-presentation" data-url="web/grids.html"><i class="icon-th"></i> Grids</a>
         								</li>
             							<li>
-        									<a href="#" class="button-presentation" data-presentation="web/semantics">Semantics</a>
+        									<a href="#" class="button-presentation" data-url="web/semantics.html"><i class="icon-comment"></i> Semantics</a>
         								</li>
                 						<li>
-        									<a href="#" class="button-presentation" data-presentation="web/images">Images</a>
+        									<a href="#" class="button-presentation" data-url="web/images.html"><i class="icon-picture"></i> Images</a>
         								</li>
                     					<li>
-        									<a href="#" class="button-presentation" data-presentation="web/background">Background</a>
+        									<a href="#" class="button-presentation" data-url="web/background.html"><i class="icon-tint"></i> Background</a>
         								</li>
                     					<li>
-        									<a href="#" class="button-presentation" data-presentation="web/mobile">Mobile Friendly</a>
+        									<a href="#" class="button-presentation" data-url="web/mobile.html"><i class="icon-hand-down"></i> Mobile Friendly</a>
         								</li>
                         				<li>
-        									<a href="#" class="button-presentation" data-presentation="web/fullscreen">Fullscreen</a>
+        									<a href="#" class="button-presentation" data-url="web/fullscreen.html"><i class="icon-fullscreen"></i> Fullscreen</a>
         								</li>
         							</ul>
         						</li>
@@ -721,54 +731,53 @@
         							</a>
         							<ul class="dropdown-menu">
         								<li>
-        									<a href="#" class="button-presentation" data-presentation="coding/variables">Variables</a>
+        									<a href="#" class="button-presentation" data-url="coding/variables.html"><i class="icon-gift"></i> Variables</a>
         								</li>
             							<li>
-        									<a href="#" class="button-presentation" data-presentation="coding/primitives">Primitives</a>
+        									<a href="#" class="button-presentation" data-url="coding/primitives.html"><i class="icon-asterisk"></i> Primitives</a>
         								</li>
             							<li>
-        									<a href="#" class="button-presentation" data-presentation="coding/functions">Functions</a>
+        									<a href="#" class="button-presentation" data-url="coding/functions.html"><i class="icon-cog"></i> Functions</a>
         								</li>
             							<li>
-        									<a href="#" class="button-presentation" data-presentation="coding/commentsConsole">Comments & Console</a>
+        									<a href="#" class="button-presentation" data-url="coding/commentsConsole.html"><i class="icon-wrench"></i> Comments & Console</a>
         								</li>
             							<li>
-        									<a href="#" class="button-presentation" data-presentation="coding/scope">Scope</a>
+        									<a href="#" class="button-presentation" data-url="coding/scope.html"><i class="icon-globe"></i> Scope</a>
         								</li>
             							<li>
-        									<a href="#" class="button-presentation" data-presentation="coding/logic">Logic Flow</a>
+        									<a href="#" class="button-presentation" data-url="coding/logic.html"><i class="icon-question-sign"></i> Logic Flow</a>
         								</li>
             							<li>
-        									<a href="#" class="button-presentation" data-presentation="coding/iteration">Iteration</a>
+        									<a href="#" class="button-presentation" data-url="coding/iteration.html"><i class="icon-repeat"></i> Iteration</a>
         								</li>
                 						<li>
-        									<a href="#" class="button-presentation" data-presentation="coding/recursion">Recursion</a>
+        									<a href="#" class="button-presentation" data-url="coding/recursion.html"><i class="icon-refresh"></i> Recursion</a>
         								</li>
         							</ul>
         						</li>
     						</ul>
-    						<ul class="nav nav-pills pull-right hidden-phone hidden-tablet">
-    							<li><a href="#presentations"><h6>Presentation<span class="presentation-name"></span></h6></a></li>
+    						<ul class="nav nav-pills pull-right">
+                                <li>
+                                    <a href="#presentations" target="_blank" id="presentationFullscreen" class="hidden"><h6>Fullscreen <i class="icon-fullscreen"></i></h6></a>
+                                </li>
     						</ul>
     					</div>
     				</div>
     			</div>
+                <!-- presentation setup -->
+            	<div id="presentationSetup" class="alert">
+        			<strong>Pick a presentation</strong> so we can get started!
+                </div>
+    			<!-- END presentation setup -->
     		</header>
             
-            <!-- presentation setup -->
-    		<div id="presentationSetup" class="alert">
-    			<strong>Pick a presentation</strong> so we can get started!
-            </div>
-			<!-- END presentation setup -->
-            
             <!-- presentation -->
-        	<div id="presentation">
-    			
-    			<!-- presentation loaded and dropped here -->
-    			
-    		</div>
+            <div id="presentation" class="static-presentation well" data-template="fallback">
+                
+            </div>
     		<!-- END presentation -->
-			
+            
 		</div>
 		
     </section>

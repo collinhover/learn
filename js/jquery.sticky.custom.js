@@ -31,7 +31,7 @@
                 documentHeight = $document.height(),
                 dwh = documentHeight - windowHeight,
                 extra = (scrollTop > dwh) ? dwh - scrollTop : 0;
-			console.log( 'sticked.length', sticked.length );
+		    
             for ( i = 0, l = sticked.length; i < l; i++) {
                 
                 s = sticked[i];
