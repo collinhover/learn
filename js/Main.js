@@ -7,9 +7,8 @@
         localStorageURLCurrentClass,
 		urlCurrentClass,
         urlCurrentPresentation,
-        presentationRemoveID,
+        presentationFocusTimeoutID,
         mainNavHeight,
-        presentationPadding,
         presentationsPaddingVertical;
 	
 	/*===================================================
@@ -66,14 +65,18 @@
         // presentation fallback template
        
         $.jmpress("template", "fallback", {
-    		children: function ( i, current_child, children ) {
-                //console.log( 'template fallback', i, current_child );
+    		children: function ( i, element, allElements ) {
+                
+                var $element = $( element ),
+                    x = i * $element.outerWidth( true );
+                
         		return {
     				//y: 400,
-    				x: -300 + i * 300,
+    				x: x,
                     //scale: 0.3,
     				template: "fallback"
     			}
+                
     		}
 		});
         
@@ -122,13 +125,13 @@
         elements.$presentationName = $( '.presentation-name' );
         elements.$presentationDescription = $( '.presentation-description' );
 		elements.$icons = $( 'i' );
+        elements.$buttonsDropdown = $( '.dropdown-toggle' );
 		elements.$buttonsClasses = $( '.button-class' );
     	elements.$buttonsPresentations = $( '.button-presentation' );
         
         // get properties
         
         mainNavHeight = elements.$mainNav.outerHeight( true );
-        presentationPadding = parseInt( elements.$presentation.css( 'padding' ) );
         presentationsPaddingVertical = parseInt( elements.$presentations.css( 'padding-top' ) ) + parseInt( elements.$presentations.css( 'padding-bottom' ) );
 		
 		// if has current class url in local storage
@@ -154,6 +157,7 @@
 			
 		} );
 		*/
+        
 		// for each class button
 		
 		elements.$buttonsClasses.each( function () {
@@ -293,7 +297,7 @@
                             
                             // resize
                             
-                            on_resize();
+                            $( window ).resize();
 							
 						}
 						
@@ -335,7 +339,7 @@
 			// listen for activate
 			
 			$button.on( Modernizr.touch ? 'touchend' : 'mouseup', function () {
-				
+                
 				if ( typeof url === 'string' && url.length > 0 ) {// && url !== urlCurrentPresentation ) {
                     
                     // toggle fullscreen off
@@ -345,30 +349,6 @@
                     // empty placeholder
                     
                     elements.$presentationPlaceholder.empty();
-                    
-                    // hide current presentation
-                    
-                    elements.$presentation.addClass( 'hidden' );
-                    
-                    // deinit current presentation and remove when done
-                    
-                    if ( elements.$presentation.jmpress( 'initialized' ) ) {
-                        
-                        elements.$presentationsRemove = elements.$presentationsRemove.add( elements.$presentation );
-                        
-                        elements.$presentation.jmpress( 'deinit' );
-                        
-                    }
-                    // remove instantly
-                    else {
-                        
-                        elements.$presentation.remove();
-                        
-                    }
-                    
-                    // add new presentation container
-                    
-                    elements.$presentation = elements.$presentationClone.clone( true ).insertAfter( elements.$presentationPlaceholder );
                     
                     // hide fullscreen
                     
@@ -385,6 +365,8 @@
 					// load into prep
 					
 					elements.$presentationPlaceholder.load( pathToPresentations + url, function ( responseText, textStatus ) {
+                        
+                        var $presentationPrev;
 						
 						// if error on load
 						if ( textStatus === 'error' ) {
@@ -400,11 +382,39 @@
     					    
 						    elements.$presentationSetup.addClass( 'hidden' );
                             
+                            // store current presentation
+                            
+                            $presentationPrev = elements.$presentation;
+                            
+                            // add new presentation container
+                            
+                            elements.$presentation = elements.$presentationClone.clone( true ).insertAfter( elements.$presentationPlaceholder );
+                            
+                            // resize
+                            
+                            $( window ).resize();
+                            
+                            // deinit current presentation and remove when done
+                            
+                            if ( $presentationPrev.jmpress( 'initialized' ) ) {
+                                
+                                elements.$presentationsRemove = elements.$presentationsRemove.add( $presentationPrev );
+                                
+                                $presentationPrev.addClass( 'hidden' ).jmpress( 'deinit' );
+                                
+                            }
+                            // remove instantly
+                            else {
+                                
+                                $presentationPrev.remove();
+                                
+                            }
+                            
                             // setup fullscreen
                             
                             elements.$presentationFullscreen.removeClass( 'hidden' );
                             
-                            // add presentation
+                            // add presentation steps
                             
                             elements.$presentationPlaceholder.find( '.step' ).appendTo( elements.$presentation );
                             
@@ -412,13 +422,14 @@
                             
                             elements.$presentation.jmpress();
                             
+                            // ensure canvas has no width or height, else will start misaligned
+                            // only seems to affect chrome, and goes away when canvas is inspected?
+                            
+                            elements.$presentation.jmpress( 'canvas' ).width( 0 ).height( 0 );
+                            
                             // focus presentation so we can start navigating right away
                             
                             elements.$presentation.focus();
-                            
-                            // resize
-                            
-                            on_resize();
                             
 						}
                         
@@ -432,11 +443,11 @@
 		
 		// listen for resize
 		
-		$( window ).on( 'resize', $.throttle( 250, on_resize ) );
+		$( window ).on( 'resize', $.throttle( 500, on_resize ) );
 		
 		// resize once
 		
-		on_resize();
+	    $( window ).resize();
 		
 		// if has class button to trigger
 		
@@ -453,20 +464,16 @@
         var windowHeight = $( window ).innerHeight(),
             windowHeightLessMainNav = windowHeight - mainNavHeight;
         
-		// set min height
-		
-        elements.$presentations.css( 'min-height', windowHeightLessMainNav );
-        
-        // set presentation container height based on screen width
+        // set presentation container min height based on screen width
         
         if ( $( window ).innerWidth() < 768 ) {
             
-            elements.$presentation.css( 'min-height', windowHeight - presentationsPaddingVertical - presentationPadding * 2 );
+            elements.$presentation.css( 'min-height', windowHeight - presentationsPaddingVertical );
 		
         }
         else {
             
-            elements.$presentation.css( 'min-height', windowHeightLessMainNav - elements.$presentationsHeader.outerHeight( true ) - presentationsPaddingVertical - presentationPadding * 2 );
+            elements.$presentation.css( 'min-height', windowHeightLessMainNav - elements.$presentationsHeader.outerHeight( true ) - presentationsPaddingVertical );
             
         }
         
@@ -488,6 +495,15 @@
 	}
     
     function on_fullscreen_toggle ( off ) {
+        
+        // clear focus
+        
+        if ( typeof presentationFocusTimeoutID !== 'undefined' ) {
+            
+            window.clearRequestTimeout( presentationFocusTimeoutID );
+            presentationFocusTimeoutID = undefined;
+            
+        }
         
         // toggle fullscreen classes
         
@@ -523,8 +539,13 @@
         }
         
         // focus presentation
+        // delay fixes firefox not focusing
         
-        elements.$presentation.focus();
+        presentationFocusTimeoutID = window.requestTimeout( function () {
+            
+            elements.$presentation.focus();
+            
+        }, 100 );
         
     }
     
