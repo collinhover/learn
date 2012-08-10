@@ -1,4 +1,728 @@
+<div class="step container container-center">
+    
+    <h1 class="superhero-type">Pixels</h1>
+    <h2 class="sidekick-type"><small>are the</small> <span class="logo-type-purple">basic</span> <span class="logo-type-blue">building</span> <span class="logo-type-green">blocks</span></h2>
+    <p>of digital images</p>
+    
+</div>
+
+<div class="step container container-center">
+    <p>they are the</p>
+    <h2 class="sidekick-type">smallest</h2>
+    <div class="row">
+        <div class="span2">
+            <img src="img/arrow_right_64.png" alt="Right" class="iconk-large">
+        </div>
+        <div class="span1">
+            <p>.</p>
+        </div>
+        <div class="span2">
+            <img src="img/arrow_left_64.png" alt="Left" class="iconk-large">
+        </div>
+    </div>
+    <h2 class="sidekick-type">controllable thing</h2>
+    <p>on the screen</p>
+    <p><small>(smaller than the dot)</small></p>
+</div>
+
+<div class="step container container-center">
+    
+    <p>the word "<span class="emphasize">Pixel</span>" is made of</p>
+    <div class="row">
+        <div class="span4">
+            <h2 class="sidekick-type">pix</h2>
+            <p>for pictures</p>
+        </div>
+        <div class="span1">
+            <h2 class="sidekick-type dim sequence-arrow">&</h2>
+        </div>
+        <div class="span4">
+            <h2 class="sidekick-type">el</h2>
+            <p>for element</p>
+        </div>
+    </div>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p>roughly, a pixel is:</p>
+    <p><span class="highlight">an element in a picture</span></p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <h2 class="sidekick-type">pixels can appear as</h2>
+    <h1 class="separate">different shapes</h1>
+    <div class="row">
+        <div class="span2">
+            <div class="pixel iconk-giant">
+                <div class="aspect-enforcer"></div>
+                <div class="aspect-shape"></div>
+            </div>
+            <p>square</p>
+            <p><small>(the usual)</small></p>
+        </div>
+        <div class="span2">
+            <div class="pixel round iconk-giant">
+                <div class="aspect-enforcer"></div>
+                <div class="aspect-shape"></div>
+            </div>
+            <p>circle</p>
+        </div>
+        <div class="span2">
+            <div class="pixel iconk-giant-widthFollow">
+                <div class="aspect-enforcer"></div>
+                <div class="aspect-shape"></div>
+            </div>
+            <p>line</p>
+        </div>
+    </div>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p><small>remember that an image is only a</small></p>
+    <p><span class="highlight">rectangular image grid</span></p>
+    <p>and that grid is only a set of</p>
+    <div class="row">
+        <div class="span4">
+            <h2 class="sidekick-type">locations</h2>
+            <p><small>(one for each point in the picture)</small></p>
+        </div>
+        <div class="span1">
+            <h2 class="sidekick-type dim sequence-arrow">&</h2>
+        </div>
+        <div class="span4">
+            <h2 class="sidekick-type">colors</h2>
+            <p><small>(one for each location)</small></p>
+        </div>
+    </div>
+
+</div>
+
+<div class="step container container-center">
+    
+    <p>thats abstract, but it gets worse:</p>
+    <p><span class="highlight">pixels have no shape of their own</span></p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p class="separate"><small>think of it like this:</small></p>
+    <div class="cube" data-jmpress="fade after 1.5s step">
+        <div class="face-front"></div>
+        <div class="face-back"></div>
+        <div class="face-left"></div>
+        <div class="face-right"></div>
+        <div class="face-top" ></div>
+        <div class="face-bottom"></div>
+    </div>
+    <h2>each pixel is a container</h2>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p><small>every time a device wants to show an image</small></p>
+    <p>it has to do what is called <span class="highlight">rendering</span></p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p><small>(rendering simplified)</small> step 1</p>
+    <h3 class="separate">create a rectangle</h3>
+    <div class="row">
+        <div class="span4">
+            <ul class="thumbnails pixels">
+                <li class="span4">
+                    <div class="aspect-enforcer-landscape"></div>
+                    <div class="thumbnail"></div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <p><small>(thats the image)</small></p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p><small>(rendering simplified)</small> step 2</p>
+    <h3 class="separate">cut rectangle into a grid</h3>
+    <div class="row">
+        <div class="span4">
+            <ul class="thumbnails pixels">
+                <li class="span4">
+                    <div class="aspect-enforcer-landscape"></div>
+                    <div class="aspect-shape">
+                        <ul class="thumbnails pixels outline">
+                            <li class="span1">
+                                <div class="aspect-enforcer"></div>
+                                <div class="thumbnail"></div>
+                            </li>
+                            <li class="span1">
+                                <div class="aspect-enforcer"></div>
+                                <div class="thumbnail"></div>
+                            </li>
+                            <li class="span1">
+                                <div class="aspect-enforcer"></div>
+                                <div class="thumbnail"></div>
+                            </li>
+                            <li class="span1">
+                                <div class="aspect-enforcer"></div>
+                                <div class="thumbnail"></div>
+                            </li>
+                            <li class="span1">
+                                <div class="aspect-enforcer"></div>
+                                <div class="thumbnail"></div>
+                            </li>
+                            <li class="span1">
+                                <div class="aspect-enforcer"></div>
+                                <div class="thumbnail"></div>
+                            </li>
+                            <li class="span1">
+                                <div class="aspect-enforcer"></div>
+                                <div class="thumbnail"></div>
+                            </li>
+                            <li class="span1">
+                                <div class="aspect-enforcer"></div>
+                                <div class="thumbnail"></div>
+                            </li>
+                            <li class="span1">
+                                <div class="aspect-enforcer"></div>
+                                <div class="thumbnail"></div>
+                            </li>
+                            <li class="span1">
+                                <div class="aspect-enforcer"></div>
+                                <div class="thumbnail"></div>
+                            </li>
+                            <li class="span1">
+                                <div class="aspect-enforcer"></div>
+                                <div class="thumbnail"></div>
+                            </li>
+                            <li class="span1">
+                                <div class="aspect-enforcer"></div>
+                                <div class="thumbnail"></div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <p><small>(one space per pixel)</small></p>
+
+</div>
+
+<div class="step container container-center">
+    
+    <p><small>(rendering simplified)</small> step 3</p>
+    <h3 class="separate">change each space into a shape</h3>
+    <div class="row">
+        <div class="span4">
+            <ul class="thumbnails pixels">
+                <li class="span4">
+                    <div class="aspect-enforcer-landscape"></div>
+                    <div class="aspect-shape">
+                        <ul class="thumbnails pixels outline round">
+                            <li class="span1">
+                                <div class="aspect-enforcer"></div>
+                                <div class="thumbnail"></div>
+                            </li>
+                            <li class="span1">
+                                <div class="aspect-enforcer"></div>
+                                <div class="thumbnail"></div>
+                            </li>
+                            <li class="span1">
+                                <div class="aspect-enforcer"></div>
+                                <div class="thumbnail"></div>
+                            </li>
+                            <li class="span1">
+                                <div class="aspect-enforcer"></div>
+                                <div class="thumbnail"></div>
+                            </li>
+                            <li class="span1">
+                                <div class="aspect-enforcer"></div>
+                                <div class="thumbnail"></div>
+                            </li>
+                            <li class="span1">
+                                <div class="aspect-enforcer"></div>
+                                <div class="thumbnail"></div>
+                            </li>
+                            <li class="span1">
+                                <div class="aspect-enforcer"></div>
+                                <div class="thumbnail"></div>
+                            </li>
+                            <li class="span1">
+                                <div class="aspect-enforcer"></div>
+                                <div class="thumbnail"></div>
+                            </li>
+                            <li class="span1">
+                                <div class="aspect-enforcer"></div>
+                                <div class="thumbnail"></div>
+                            </li>
+                            <li class="span1">
+                                <div class="aspect-enforcer"></div>
+                                <div class="thumbnail"></div>
+                            </li>
+                            <li class="span1">
+                                <div class="aspect-enforcer"></div>
+                                <div class="thumbnail"></div>
+                            </li>
+                            <li class="span1">
+                                <div class="aspect-enforcer"></div>
+                                <div class="thumbnail"></div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <p><small>(in this case, a circle)</small></p>
+
+</div>
+
+<div class="step container container-center">
+
+    <p><small>now for every location</small></p>
+    <div>
+        <div class="cube flyby-left loop">
+            <div class="face-front"></div>
+            <div class="face-back"></div>
+            <div class="face-left"></div>
+            <div class="face-right"></div>
+            <div class="face-top"></div>
+            <div class="face-bottom"></div>
+        </div>
+    </div>
+    <h2 class="separate">it finds the pixel that belongs</h2>
+    <p><small>(in the image)</small></p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p><small>and for each pixel</small></p>
+    <h2 class="separate">it asks:</h2>
+    <div>
+        <div class="cube">
+            <div class="face-front"></div>
+            <div class="face-back"></div>
+            <div class="face-left"></div>
+            <div class="face-right"></div>
+            <div class="face-top"></div>
+            <div class="face-bottom"></div>
+        </div>
+    </div>
+    <h2 class="sidekick-type">"Oi! Gimme your color!"</h2>
+    <p><small>(like a cockney)</small></p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p class="separate"><small>and the pixel replies:</small></p>
+    <div class="row">
+        <div class="span1" data-jmpress="fade after 1.5s step">
+            <p><span class="highlight">99</span></p>
+            <p><small>red</small></p>
+        </div>
+        <div class="span1" data-jmpress="fade after 500ms prev">
+            <p><span class="highlight">92</span></p>
+            <p><small>green</small></p>
+        </div>
+        <div class="span1" data-jmpress="fade after 500ms prev">
+            <p><span class="highlight">208</span></p>
+            <p><small>blue</small></p>
+        </div>
+        <div class="span1" data-jmpress="fade after 500ms prev">
+            <p class="dim">=</p>
+        </div>
+        <div class="span1" data-jmpress="fade after 500ms prev">
+            <p><span class="logo-type-purple">Purple</span></p>
+            <p><small>#635CD0</small></p>
+        </div>
+    </div>
+    <div>
+        <div class="cube">
+            <div class="face-front"></div>
+            <div class="face-back"></div>
+            <div class="face-left"></div>
+            <div class="face-right"></div>
+            <div class="face-top" data-jmpress="open after 1.5s step"></div>
+            <div class="face-bottom"></div>
+        </div>
+    </div>
+    <h1 class="sidekick-type">bzst beep boop</h1>
+    <p><small>(because they don't actually speak)</small></p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p><small>(rendering simplified)</small> step 4</p>
+    <h3 class="separate">fill each shape with that pixel's color</h3>
+    <div class="row">
+        <div class="span4">
+            <ul class="thumbnails pixels">
+                <li class="span4">
+                    <div class="aspect-enforcer-landscape"></div>
+                    <div class="aspect-shape">
+                        <ul class="thumbnails pixels round">
+                            <li class="span1">
+                                <div class="aspect-enforcer"></div>
+                                <div class="thumbnail"></div>
+                            </li>
+                            <li class="span1">
+                                <div class="aspect-enforcer"></div>
+                                <div class="thumbnail"></div>
+                            </li>
+                            <li class="span1">
+                                <div class="aspect-enforcer"></div>
+                                <div class="thumbnail"></div>
+                            </li>
+                            <li class="span1">
+                                <div class="aspect-enforcer"></div>
+                                <div class="thumbnail bg-logoBlue"></div>
+                            </li>
+                            <li class="span1">
+                                <div class="aspect-enforcer"></div>
+                                <div class="thumbnail bg-logoGreen"></div>
+                            </li>
+                            <li class="span1">
+                                <div class="aspect-enforcer"></div>
+                                <div class="thumbnail"></div>
+                            </li>
+                            <li class="span1">
+                                <div class="aspect-enforcer"></div>
+                                <div class="thumbnail bg-logoBlue"></div>
+                            </li>
+                            <li class="span1">
+                                <div class="aspect-enforcer"></div>
+                                <div class="thumbnail"></div>
+                            </li>
+                            <li class="span1">
+                                <div class="aspect-enforcer"></div>
+                                <div class="thumbnail"></div>
+                            </li>
+                            <li class="span1">
+                                <div class="aspect-enforcer"></div>
+                                <div class="thumbnail bg-logoPurple"></div>
+                            </li>
+                            <li class="span1">
+                                <div class="aspect-enforcer"></div>
+                                <div class="thumbnail"></div>
+                            </li>
+                            <li class="span1">
+                                <div class="aspect-enforcer"></div>
+                                <div class="thumbnail"></div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <p><small>(remember our purple pixel?)</small></p>
+
+</div>
+
+<div class="step container container-center">
+    
+    <p><small>don't worry, the device will do all of it automatically for you</small></p>
+    <p>you just have to tell the pixels what color they should carry</p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <h1 class="superhero-type">Pixel Art</h1>
+    <p>is the process of creating images</p>
+    <h2 class="sidekick-type">by <span class="logo-type-purple">working</span> at the <span class="logo-type-blue">pixel</span> <span class="logo-type-green">level</span></h2>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p>like drawing</p>
+    <h2>one dot at a time</h2>
+    <div class="row">
+        <div class="span3">
+            <ul class="thumbnails pixels">
+                <li class="span1" data-jmpress="fade after 1.5s step">
+                    <div class="aspect-enforcer"></div>
+                    <div class="thumbnail"></div>
+                </li>
+                <li class="span1" data-jmpress="fade after 500ms prev">
+                    <div class="aspect-enforcer"></div>
+                    <div class="thumbnail"></div>
+                </li>
+                <li class="span1" data-jmpress="fade after 500ms prev">
+                    <div class="aspect-enforcer"></div>
+                    <div class="thumbnail"></div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p><small>or like being a good old cockney bloke and</small></p>
+    <h2 class="separate">shouting at each pixel:</h2>
+    <div>
+        <div class="cube">
+            <div class="face-front"></div>
+            <div class="face-back"></div>
+            <div class="face-left"></div>
+            <div class="face-right"></div>
+            <div class="face-top"></div>
+            <div class="face-bottom"></div>
+        </div>
+    </div>
+    <h2 class="sidekick-type">"Oi! Your color is <span class="logo-type-blue">Blue</span>!"</h2>
+    <p><small>(this doesn't actually work)</small></p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p>pixel art is used by most</p>
+    <h2>video and mobile phone games</h2>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p><small>for example</small></p>
+    <img src="img/example_pixel_art_game_characters.png" alt="Video Game Characters">
+    <h2 class="separate">Megaman, Zelda, <small>&</small> Mario</h2>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p>the difficulty of pixel art is</p>
+    <h2>communicating precisely</h2>
+    <p><span class="highlight">using limited space and color</span></p>
+    <p><small>i.e. blurring is not cool</small></p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p>pixel art starts with either</p>
+    <div class="row">
+        <div class="span4">
+            <img src="img/example_lineart.png" alt="Line Art">
+        </div>
+        <div class="span1">
+            <p>&nbsp;</p>
+        </div>
+        <div class="span4">
+            <img src="img/example_blocking.png" alt="Blocking">
+        </div>
+    </div>
+    <div class="row">
+        <div class="span4">
+            <h2>Line Art</h2>
+            <p><small>lines are laid out first</small></p>
+        </div>
+        <div class="span1">
+            <p class="sequence-arrow dim">or</p>
+        </div>
+        <div class="span4">
+            <h2>Blocking</h2>
+            <p><small>color areas are laid out first</small></p>
+        </div>
+    </div>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p class="separate"><small>pixel art uses</small></p>
+    <img src="img/example_cartoon_shading.png" alt="Cartoon Shading">
+    <h2>Cartoon Shading</h1>
+    <p>using a small number of shades</p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p class="separate"><small>and some may add</small></p>
+    <div class="row">
+        <div class="span3">
+            <img src="img/example_nodither.png" alt="No Dithering">
+        </div>
+        <div class="span3">
+            <img src="img/example_dither.png" alt="Dithering">
+        </div>
+    </div>
+    <h2>Dithering</h2>
+    <p>using noise to blend areas of color</p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p>pixel art usually comes in two varieties:</p>
+    <div class="row">
+        <div class="span5">
+            <img src="img/example_isometric.png" alt="Isometric">
+        </div>
+        <div class="span1">
+            <p>&nbsp;</p>
+        </div>
+        <div class="span5">
+            <img src="img/example_nonisometric.png" alt="Non-Isometric">
+        </div>
+    </div>
+    <div class="row">
+        <div class="span5">
+            <h3>Isometric</h3>
+            <p><small>strange 3D</small></p>
+        </div>
+        <div class="span1">
+            <p class="sequence-arrow dim">or</p>
+        </div>
+        <div class="span5">
+            <h3>Non-Isometric</h3>
+            <p><small>normal 2D</small></p>
+        </div>
+    </div>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p class="separate"><span class="highlight">isometric pixel art</span></p>
+    <img src="img/example_pixel_cube_001.png" alt="Cube">
+    <h3 class="sidekick-type">implies 3D space</h3>
+    <p><small>(using diagonal lines at a 1:2 vertical:horizontal ratio)</small></p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p class="separate"><span class="highlight">isometric pixel art</span></p>
+    <img src="img/example_pixel_cube_002.png" alt="Cube">
+    <h3 class="sidekick-type">has no perspective</h3>
+    <p><small>(it is a type of parallel projection)</small></p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p class="separate"><span class="highlight">isometric pixel art</span></p>
+    <div class="row">
+        <div class="span3">
+            <img src="img/example_pixel_cube_003.png" alt="Cube">
+        </div>
+        <div class="span3">
+            <img src="img/example_pixel_cube_004.png" alt="Cube">
+        </div>
+    </div>
+    <h3 class="sidekick-type">has tricky rules</h3>
+    <p><small>(diagonal corners have 3 pixels, while vertical corners have only 1)</small></p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p class="separate"><span class="highlight">non-isometric pixel art</span></p>
+    <img src="img/example_nonisometric.png">
+    <h3 class="sidekick-type">is simply 2D</h3>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p>unlike most raster graphic images</p>
+    <h2 class="sidekick-type">pixel art <span class="emphasize">scales well</span></h2>
+    <div class="row">
+        <div class="span2">
+            <img src="img/arrow_up_64.png" alt="Scale Up">
+        </div>
+        <div class="span2">
+            <img src="img/arrow_down_64.png" alt="Scale Down">
+        </div>
+    </div>
+    <p><small>both up and down</small></p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p><small>when working on pixel art, always use</small></p>
+    <h1>nearest-neighbor <small>or</small> none</h1>
+    <h2 class="sidekick-type">interpolation for scaling</h2>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p><small>check out how different interpolation works:</small></p>
+    <div class="row">
+        <div class="span4">
+            <img src="img/example_interpolation_hard.png">
+            <p><span class="highlight">Nearest-Neighbor</span></p>
+            <p><small>preserves hard edges</small></p>
+        </div>
+        <div class="span4">
+            <img src="img/example_interpolation_smooth.png">
+            <p><span class="highlight">Bilinear / Bicubic</span></p>
+            <p><small>smooths colors</small></p>
+        </div>
+    </div>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p><small>speaking of hard edges</small></p>
+    <div class="row">
+        <div class="span5">
+            <p class="separate">always save pixel art as</p>
+            <img src="img/example_lossless.png">
+            <h2>Lossless</h2>
+            <h3 class="sidekick-type">GIF <small>or</small> PNG</h3>
+        </div>
+        <div class="span4 dim">
+            <p class="separate">and not as</p>
+            <img src="img/example_lossy.jpg">
+            <h2>Lossy</h2>
+            <h3 class="sidekick-type">JPG</h3>
+        </div>
+    </div>
+    
+</div>
+
 <!--
+<div class="step container container-center">
+</div>
+<h1></h1>
+<h2></h2>
+<h3></h3>
+<h4></h4>
+<p></p>
+<small></small>
+<span class="highlight"></span>
+<span class="logo-type-purple"></span>
+<span class="logo-type-blue"></span>
+<span class="logo-type-green"></span>
+<div class="row">
+    <div class="span1">
+    </div>
+</div>
+
 pixels are the basic building blocks of digital images
 
 they are the smallest controllable element on the screen
@@ -37,9 +761,7 @@ by working at the pixel level
 
 like drawing one dot at a time
 
-or making a mosaic
-
-most video and mobile phone games use pixel art
+pixel art is used by most video and mobile phone games
 
 mario is a great example
 
@@ -105,7 +827,3 @@ and avoid lossy formats such as JPG
 
 or all that hard work will be messy and blurred
 -->
-
-<div class="step">
-    <p>This presentation is not ready yet!</p>
-</div>
