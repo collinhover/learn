@@ -19,6 +19,14 @@
 /*-------------------------------------------------------------------------------
 END bootstrap */
 
+/* START imports
+-------------------------------------------------------------------------------*/
+
+@import "prettify.less";
+
+/*-------------------------------------------------------------------------------
+END imports */
+
 /* general variables
 -------------------------------------------------------------------------------*/
 
@@ -224,6 +232,30 @@ section {
 	
 }
 
+.container-left {
+    text-align: left;
+    
+    .brand {
+    	float: left;
+		position: relative;
+	}
+    
+    .nav, .thumbnails, .inline {
+    	display: block;
+		float: left;
+	}
+	
+	.inline {
+		margin-left: 5px;
+		margin-right: 5px;
+	}
+    
+    .row {
+        display: block;
+    }
+    
+}
+
 @media (max-width: 767px) {    
     .container {
         padding-left: 20px;
@@ -307,6 +339,12 @@ html, body {
 		width: 128px;
 		height: 128px;
 		line-height: 128px;
+	}
+    
+    &[class*="-quadgiant"], &[class*="-quadgiant-"]{
+    	width: 256px;
+		height: 256px;
+		line-height: 256px;
 	}
 	
 	&[class*="-topRight"], &[class*="-topRight-"]{
@@ -1406,6 +1444,33 @@ a, .navbar .nav > li > a {
             
         }
         
+        .prettyprint {
+            font-size: inherit;
+            line-height: inherit;
+            
+            ol {
+                
+                li {
+                    line-height: inherit;
+                }
+                
+            }
+            
+            &.linenums {
+                .box-shadow( ~"inset 60px 0 0 #FBFBFC, inset 62px 0 0 #ECECF0" );
+            }
+            
+            ol.linenums {
+                margin: 0 0 0 66px;
+                
+                li {
+                    color: #ccc;
+                }
+                
+            }
+            
+        }
+        
         &.active {
             opacity: 1;
         }
@@ -1506,19 +1571,20 @@ html {
     .transform( rotateY(-25deg) scale( 1.5 ) translateZ(-10px) );
 }
 
-.cube {
-    @cubeSize: 128px;
-    @cubeSizeHalf: @cubeSize * 0.5;
+@cubeSizeDefault: 128px;
+
+.cube-base( @size: @cubeSizeDefault ) {
+    @sizeHalf: @size * 0.5;
     .inline-block;
-    width: @cubeSize;
-    height: @cubeSize;
+    width: @size;
+    height: @size;
     padding: 10px;
-    margin: @cubeSizeHalf;
+    margin: @sizeHalf;
     .transform( rotateX(-25deg) rotateY(35deg) );
     
     [class^="face"] {
-        width: @cubeSize;
-        height: @cubeSize;
+        width: @size;
+        height: @size;
         position: absolute;
         background-color: @grayDark;
         .dim;
@@ -1526,37 +1592,45 @@ html {
     
     .face-left {
         background-color: @logoPurple;
-        .transform( rotateY( -90deg ) translateZ( @cubeSizeHalf ) );
+        .transform( rotateY( -90deg ) translateZ( @sizeHalf ) );
     }
     .face-right {
         background-color: @logoPurple;
-        .transform( rotateY( 90deg ) translateZ( @cubeSizeHalf ) );
+        .transform( rotateY( 90deg ) translateZ( @sizeHalf ) );
     }
     .face-top {
         background-color: @logoGreen;
-        .transform( rotateX( 90deg ) translateZ( @cubeSizeHalf ) );
+        .transform( rotateX( 90deg ) translateZ( @sizeHalf ) );
         
         &.will-open {
             .transition( all 1s );
         }
         
         &.do-open {
-            .transform( rotateX( 90deg ) translateZ( @cubeSize ) );
+            .transform( rotateX( 90deg ) translateZ( @size ) );
             opacity: 0;
         }
         
     }
     .face-bottom {
         background-color: @logoGreen;
-        .transform( rotateX( -90deg ) translateZ( @cubeSizeHalf ) );
+        .transform( rotateX( -90deg ) translateZ( @sizeHalf ) );
     }
     .face-front {
         background-color: @logoBlue;
-        .transform( translateZ( @cubeSizeHalf ) );
+        .transform( translateZ( @sizeHalf ) );
     }
     .face-back {
         background-color: @logoBlue;
-        .transform( rotateY( 180deg ) translateZ( @cubeSizeHalf ) );
+        .transform( rotateY( 180deg ) translateZ( @sizeHalf ) );
     }
     
+}
+
+.cube {
+    .cube-base( @cubeSizeDefault );
+}
+
+.cube-half {
+    .cube-base( @cubeSizeDefault * 0.5 );
 }

@@ -22,7 +22,8 @@
 			"js/jquery-1.7.2.min.js",
 			"js/RequestAnimationFrame.js",
 			"js/RequestInterval.js",
-			"js/RequestTimeout.js"
+			"js/RequestTimeout.js",
+            "js/prettify.min.js"
 		] )
 		.wait()
 		.script( [
@@ -427,6 +428,10 @@
                             
                             elements.$presentation.jmpress( 'canvas' ).width( 0 ).height( 0 );
                             
+                            // update pretty print
+                            
+                            prettyPrint();
+                            
                             // focus presentation so we can start navigating right away
                             
                             elements.$presentation.focus();
@@ -440,6 +445,10 @@
             } );
             
 		} );
+        
+        // update pretty print
+        
+        prettyPrint();
 		
 		// listen for resize
 		
