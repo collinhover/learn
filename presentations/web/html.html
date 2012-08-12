@@ -103,14 +103,14 @@
     <div class="row">
         <div class="span5">
             <h1 class="hero-type">&lt; <small class="dim">name</small> &gt;</h1>
-            <p>1 <span class="logo-type-purple">opening</span> tag</p>
+            <p>opening tag</p>
         </div>
         <div class="span1">
             <h2 class="sidekick-type sequence-arrow"><small>&</small></h2>
         </div>
         <div class="span5">
             <h1 class="hero-type">&lt;/ <small class="dim">name</small> &gt;</h1>
-            <p>1 <span class="logo-type-blue">closing</span> tag</p>
+            <p>closing tag</p>
         </div>
     </div>
     
@@ -186,6 +186,16 @@
             <h2>nothing else</h2>
         </div>
     </div>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <img src="img/alertcircle_64.png" alt="Alert">
+    <p>If you forget even 1</p>
+    <h1 class="hero-type">&lt;/ <small class="dim">name</small> &gt;</h1>
+    <p><small>closing tag</small></p>
+    <h3 class="sidekick-type">the entire page will not work</h3>
     
 </div>
 
@@ -267,7 +277,7 @@
 &lt;html&gt;
     &lt;head&gt;
     
-        &lt;title&gt;Hi, My Name is...&lt;/title&gt;
+        &lt;title&gt;Page Title&lt;/title&gt;
         
     &lt;/head&gt;
 &lt;/html&gt;</pre>
@@ -288,7 +298,7 @@
 &lt;!doctype html&gt;
 &lt;html&gt;
     &lt;head&gt;
-        &lt;title&gt;Hi, My Name is...&lt;/title&gt;
+        &lt;title&gt;Page Title&lt;/title&gt;
     &lt;/head&gt;
     
     &lt;body&gt;
@@ -367,7 +377,7 @@
     <div class="row">
         <div class="span7">
             <div class="container-left">
-                <pre class="prettyprint linenums">&lt;h1&gt;I &hearts; Titles&lt;/h1&gt;</pre>
+                <pre class="prettyprint linenums">&lt;h1&gt;I &hearts; Headers&lt;/h1&gt;</pre>
             </div>
         </div>
     </div>
@@ -396,6 +406,42 @@
 
 <div class="step container container-center">
     
+    <p>speaking of containers, in HTML we define <span class="highlight">children</span> as</p>
+    <h3 class="sidekick-type">elements that are contained</h3>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p>and in HTML we define <span class="highlight">parents</span> as</p>
+    <h3 class="sidekick-type">elements doing the containing</h3>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p class="separate">An element can be a <span class="highlight">parent</span> & <span class="highlight">child</span> the same time:</p>
+    <div class="row">
+        <div class="span5">
+            <div class="container-left">
+                <pre class="prettyprint linenums">
+&lt;parent&gt;
+    &lt;parent-and-child&gt;
+        &lt;child&gt;
+            ...
+        &lt;/child&gt;
+    &lt;/parent-and-child&gt;
+&lt;/parent&gt;</pre>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+An element can be both a parent and a child at the same time
+
+<div class="step container container-center">
+    
     <p>And now for your viewing pleasure, a bare-bones website:</p>
     <div class="row">
         <div class="span9">
@@ -404,11 +450,11 @@
 &lt;!doctype html&gt;
 &lt;html&gt;
     &lt;head&gt;
-        &lt;title&gt;Hi, My Name is...&lt;/title&gt;
+        &lt;title&gt;Page Title&lt;/title&gt;
     &lt;/head&gt;
     &lt;body&gt;
         &lt;div&gt;
-            &lt;h1&gt;I &hearts; Titles&lt;/h1&gt;
+            &lt;h1&gt;I &hearts; Headers&lt;/h1&gt;
             &lt;p&gt;Lorem ipsum dolor sit amet!&lt;/p&gt;
         &lt;/div&gt;
     &lt;/body&gt;
@@ -444,11 +490,11 @@
 &lt;!doctype html&gt;
 &lt;html&gt;
 &lt;head&gt;
-&lt;title&gt;Hi, My Name is...&lt;/title&gt;
+&lt;title&gt;Page Title&lt;/title&gt;
 &lt;/head&gt;
 &lt;body&gt;
 &lt;div&gt;
-&lt;h1&gt;I &hearts; Titles&lt;/h1&gt;
+&lt;h1&gt;I &hearts; Headers&lt;/h1&gt;
 &lt;p&gt;Lorem ipsum dolor sit amet!&lt;/p&gt;
 &lt;/div&gt;
 &lt;/body&gt;
@@ -466,7 +512,7 @@
     <div class="row">
         <div class="span9">
             <div class="container-left">
-                <pre class="prettyprint linenums">&lt;!doctype html&gt;&lt;html&gt;&lt;head&gt;&lt;title&gt;Hi, My Name is...&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;div&gt;&lt;h1&gt;I &hearts; Titles&lt;/h1&gt;&lt;p&gt;Lorem ipsum dolor sit amet!&lt;/p&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</pre>
+                <pre class="prettyprint linenums">&lt;!doctype html&gt;&lt;html&gt;&lt;head&gt;&lt;title&gt;Page Title&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;div&gt;&lt;h1&gt;I &hearts; Headers&lt;/h1&gt;&lt;p&gt;Lorem ipsum dolor sit amet!&lt;/p&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</pre>
             </div>
         </div>
     </div>
@@ -476,7 +522,7 @@
 
 <div class="step container container-center">
     
-    <p>Much like index styling, <span class="highlight">Comments</span> are another convention used to make code</p>
+    <p>Much like index styling, <span class="highlight">comments</span> are another convention used to make code</p>
     <h2 class="sidekick-type">easily understandable</h2>
     <h3>to human readers</h3>
     
@@ -484,18 +530,19 @@
 
 <div class="step container container-center">
     
-    <p><span class="highlight">Comments</span> are composed of three parts:</p>
+    <p class="separate"><span class="highlight">Comments</span> are composed of three parts:</p>
     <div class="row">
-        <div class="span2">
+        <div class="span3">
             <h1>&lt;!--</h1>
-            <p>1 <span class="logo-type-purple">opening</span> tag</p>
+            <p>opening tag</p>
         </div>
-        <div class="span4">
-            <h1 class="sidekick-type"><small>comment text</small></h1>
+        <div class="span3">
+            <h1 class="sidekick-type"><small>comment</small></h3>
+            <p>comment text</p>
         </div>
-        <div class="span2">
+        <div class="span3">
             <h1>--&gt;</h1>
-            <p>1 <span class="logo-type-blue">closing</span> tag</p>
+            <p>closing tag</p>
         </div>
     </div>
 
@@ -520,7 +567,7 @@
     &lt;!-- START main content --&gt;
     &lt;div&gt;
         &lt;div&gt;
-            &lt;h1&gt;I &hearts; Titles&lt;/h1&gt;
+            &lt;h1&gt;I &hearts; Headers&lt;/h1&gt;
             &lt;p&gt;Lorem ipsum dolor sit amet!&lt;/p&gt;
         &lt;/div&gt;
     &lt;/div&gt;
@@ -593,6 +640,12 @@ Paragraph is denoted by p, and is a container designed for basic text
 Headers are denoted by h1, h2, h3, h4, h5, and h6, and are containers designed for important text
 
 Division is denoted by div and is the most useful of all elements: it is a container for anything
+
+Elements that are contained are children
+
+Elements that are containers are parents
+
+An element can be both a parent and a child at the same time
 
 For example: a very basic web page with all 8 previously mentioned tags
 

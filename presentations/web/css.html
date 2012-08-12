@@ -7,36 +7,553 @@
     
 </div>
 
-<!--
-<div class="row">
-    <div class="span8">
-        <div class="container-left">
-            <pre class="prettyprint linenums">
-&lt;parent&gt;
-&lt;/parent&gt;</pre>
-        </div>
-    </div>
-</div>
 <div class="step container container-center">
     
-    
+    <p>CSS in a web page has</p>
+    <h2>no required elements</h2>
     
 </div>
-<h1></h1>
-<h2></h2>
-<h3></h3>
-<h4></h4>
-<p></p>
-<small></small>
-<p><small></small></p>
-<span class="highlight"></span>
-<span class="logo-type-purple"></span>
-<span class="logo-type-blue"></span>
-<span class="logo-type-green"></span>
-<div class="row">
-    <div class="span1">
+
+<div class="step container container-center">
+    
+    <p>think of CSS as</p>
+    <img src="http://placehold.it/300x400" alt="Style Police">
+    <h2 class="sidekick-type">the style police</h2>
+    <p><small>oh you are looking goooooood today</small></p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p>CSS can be added to a web page either</p>
+    <h2>internally <small>or</small> externally</h2>
+    <p><small>(like attaching an image to an email)</small></p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <img src="img/world_64.png" alt="Internet">
+    <p>The internet has been built on the idea of</p>
+    <h3 class="sidekick-type"><span class="logo-type-purple">separate</span> <span class="logo-type-blue">structure (HTML)</span> <small>&</small> <span class="logo-type-green">style (CSS)</span></h3>
+    <h2>to improve the clarity of the web</h2>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <div class="row">
+        <div class="span11">
+            <div class="container-left">
+                <pre class="prettyprint linenums">
+&lt;head&gt;
+    &lt;title&gt;Page Title&lt;/title&gt;
+    
+    &lt;link rel="stylesheet" type="text/css" href="styles.css"&gt;
+    
+&lt;/head&gt;</pre>
+            </div>
+        </div>
     </div>
+    <p>Keeping with this design, we add <span class="highlight">external CSS</span> through a</p>
+    <h3 class="sidekick-type">link element <small>in the</small> head element</h3>
+    
 </div>
+
+<div class="step container container-center">
+    
+    <p><small>On a side note,</small></p>
+    <p><span class="highlight">CSS is only allowed in the head element</span></p>
+    <p>because browsers build the web page top down</p>
+    <img src="img/arrow_down_64.png" alt="Arrow Down">
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p>If the CSS is last,</p>
+    <div class="row">
+        <div class="span4">
+            <img src="img/human_skeleton.png" alt="Skeleton" data-jmpress="fade after 1.5s step">
+            <img src="img/human_skin.png" alt="Skin" data-jmpress="fade after 1s prev" style="position:absolute; top:0;">
+        </div>
+    </div>
+    <h3 class="sidekick-type">you'll see the skeleton before you see the skin</h3>
+    <p><small>(this is not pleasant)</small></p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p class="separate"><span class="highlight">CSS rules</span> are composed of three parts:</p>
+    <div class="row">
+        <div class="span3">
+            <h3 class="sidekick-type">selector</h3>
+            <p>a selector</p>
+        </div>
+        <div class="span3">
+            <h3 class="sidekick-type">{ }</h3>
+            <p>curly braces</p>
+        </div>
+        <div class="span5">
+            <h3 class="sidekick-type">property:value;</h3>
+            <p>a set of property definitions</p>
+        </div>
+    </div>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p>A <span class="highlight">CSS selector</span> tells us</p>
+    <h2>which HTML element(s)</h2>
+    <h3 class="sidekick-type">the rule should apply to</h3>
+    <p><small>(one CSS rule can apply to many HTML elements depending on the selector)</small></p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p>A <span class="highlight">CSS selector</span> can be</p>
+    <h2 class="sidekick-type"><small>a</small> <span class="logo-type-purple">tag,</span> <span class="logo-type-blue">#id,</span> <span class="logo-type-green">.class,</span> <small>or combination</small></h2>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p>A <span class="highlight">tag selector</span> selects</p>
+    <h3 class="sidekick-type">all HTML elements of that tag type</h3>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p><small>For example:</small></p>
+    <p class="separate">This rule with a <span class="highlight">tag selector</span></p>
+    <div class="row">
+        <div class="span9">
+            <div class="container-left">
+                <pre class="prettyprint linenums">
+p {
+    property:value;
+}</pre>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span9">
+            <div class="container-left">
+                <pre class="prettyprint linenums">
+&lt;h1&gt;...&lt;/h1&gt;
+&lt;p&gt;<small>&lt;!--select--&gt;</small>&lt;/p&gt;
+&lt;p&gt;<small>&lt;!--select--&gt;</small>&lt;/p&gt;</pre>
+            </div>
+        </div>
+    </div>
+    <p>will only apply to paragraph elements</p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <img src="img/example_id.png" alt="Id" class="iconk-quadgiant">
+    <p>An <span class="highlight">id</span> is a property of a HTML element that gives it</p>
+    <h3>a unique identity</h3>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p>An <span class="highlight">#id selector</span> selects</p>
+    <h3 class="sidekick-type">all HTML elements with that id</h3>
+    <p><small>(but an id should always be unique!)</small></p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p><small>For example:</small></p>
+    <p class="separate">This rule with an <span class="highlight">#id selector</span></p>
+    <div class="row">
+        <div class="span9">
+            <div class="container-left">
+                <pre class="prettyprint linenums">
+#unique {
+    property:value;
+}</pre>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span9">
+            <div class="container-left">
+                <pre class="prettyprint linenums">
+&lt;h1&gt;...&lt;/h1&gt;
+&lt;p&gt;...&lt;/p&gt;
+&lt;p id="unique"&gt;<small>&lt;!--select--&gt;</small>&lt;/p&gt;</pre>
+            </div>
+        </div>
+    </div>
+    <p>will only apply to the unique element</p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <div class="row">
+        <div class="span4">
+            <img src="img/example_class_001.png" alt="Class" class="iconk-quadgiant">
+            <p><small>class 1</small></p>
+        </div>
+        <div class="span4">
+            <img src="img/example_class_002.png" alt="Class" class="iconk-quadgiant">
+            <p><small>class 2</small></p>
+        </div>
+    </div>
+    <p>A <span class="highlight">class</span> is a property of a HTML element that makes it</p>
+    <h3>part of a group of elements</h3>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <div class="row">
+        <div class="span10">
+            <div class="container-left">
+                <pre class="prettyprint linenums">&lt;div id="unique" class="class1 class2 etc"&gt;...&lt;/div&gt;</pre>
+            </div>
+        </div>
+    </div>
+    <p>While a HTML element can only have 1 id, it may have</p>
+    <h3 class="sidekick-type">as many classes as necessary</h3>
+    <p><small>(each separated by a space)</small></p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p>A <span class="highlight">.class selector</span> selects</p>
+    <h3 class="sidekick-type">all HTML elements with that class</h3>
+    <p><small>(classes are not unique and should be reused often)</small></p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p><small>For example:</small></p>
+    <p class="separate">This rule with a <span class="highlight">.class selector</span></p>
+    <div class="row">
+        <div class="span9">
+            <div class="container-left">
+                <pre class="prettyprint linenums">
+.common {
+    property:value;
+}</pre>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span9">
+            <div class="container-left">
+                <pre class="prettyprint linenums">
+&lt;div class="common"&gt;<small>&lt;!--select--&gt;</small>&lt;/div&gt;
+&lt;h1&gt;...&lt;/h1&gt;
+&lt;p class="common"&gt;<small>&lt;!--select--&gt;</small>&lt;/p&gt;</pre>
+            </div>
+        </div>
+    </div>
+    <p>will apply to all elements of that class</p>
+    
+</div>
+
+<div class="step container container-center">
+
+    <p><small>In the last example, notice that</small></p>
+    <img src="img/alertcircle_64.png" alt="Alert">
+    <p>we used a <span class="highlight">.class selector</span> to select</p>
+    <h3 class="sidekick-type">a division <small>&</small> a paragraph</h3>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p>But what if we wanted</p>
+    <h3 class="sidekick-type">only the paragraph?</h3>
+    <p><small>(this is where combination selectors come into play)</small></p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p>A <span class="highlight">combination selector</span> is</p>
+    <h3>two selectors joined together</h3>
+    <p><small>(each can be a combination selector itself!)</small></p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <h2 class="separate"><span class="logo-type-purple">selectorA</span><span class="logo-type-blue">selectorB</span></h2>
+    <p class="separate">Combination selectors joined <span class="highlight">without a space</span> look for</p>
+    <h3 class="sidekick-type">everything in a single HTML element</h3>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p><small>For example:</small></p>
+    <p class="separate">This rule with a parent combination selector</p>
+    <div class="row">
+        <div class="span9">
+            <div class="container-left">
+                <pre class="prettyprint linenums">
+div.common {
+    property:value;
+}</pre>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span9">
+            <div class="container-left">
+                <pre class="prettyprint linenums">
+&lt;div class="common"&gt;<small>&lt;!--select--&gt;</small>&lt;/div&gt;
+&lt;h1&gt;...&lt;/h1&gt;
+&lt;p class="common"&gt;...&lt;/p&gt;</pre>
+            </div>
+        </div>
+    </div>
+    <p>will apply to all divisions of class common</p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <h2 class="separate"><span class="logo-type-purple">selectorA</span>&nbsp;&nbsp;&nbsp;<span class="logo-type-blue">selectorB</span></h2>
+    <p class="separate">Combination selectors joined <span class="highlight">using spaces</span> look for</p>
+    <h4 class="sidekick-type">a parent matching the left with a child matching the right</h4>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p><small>For example:</small></p>
+    <p class="separate">This rule with a parent-child combination selector</p>
+    <div class="row">
+        <div class="span9">
+            <div class="container-left">
+                <pre class="prettyprint linenums">
+div .common {
+    property:value;
+}</pre>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span9">
+            <div class="container-left">
+                <pre class="prettyprint linenums">
+&lt;div&gt;
+    &lt;p class="common"&gt;<small>&lt;!--select--&gt;</small>&lt;/p&gt;
+&lt;/div&gt;
+&lt;h1&gt;...&lt;/h1&gt;
+&lt;p class="common"&gt;...&lt;/p&gt;</pre>
+            </div>
+        </div>
+    </div>
+    <p>will apply to all elements of class common with a division parent</p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <div class="row">
+        <div class="span5">
+            <div class="container-left">
+                <pre class="prettyprint linenums">
+#everyday {
+    im:shuffling;
+}</pre>
+            </div>
+        </div>
+    </div>
+    <p><small>something doesn't seem right here...</small></p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p>Luckly, the second part of CSS rules, <span class="highlight">curly braces</span>, is much simpler:</p>
+    <div class="row">
+        <div class="span4">
+            <h1 class="hero-type">{</h1>
+            <h3 class="sidekick-type">rule starts here</h3>
+        </div>
+        <div class="span1">
+            <h1><small>...</small></h1>
+        </div>
+        <div class="span4">
+            <h1 class="hero-type">}</h1>
+            <h3 class="sidekick-type">rule ends here</h3>
+        </div>
+    </div>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p>The third part of CSS rules, <span class="highlight">property definitions</span>, are actually four parts:</p>
+    <div class="row">
+        <div class="span3">
+            <h1>name</h1>
+            <p><small>The name of the style property</small></p>
+        </div>
+        <div class="span3">
+            <h1>:</h1>
+            <p><small>a colon separator</small></p>
+        </div>
+        <div class="span3">
+            <h1>value</h1>
+            <p><small>The value of the style property</small></p>
+        </div>
+        <div class="span3">
+            <h1>;</h1>
+            <p><small>a semicolon to end</small></p>
+        </div>
+    </div>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <img src="img/alertcircle_64.png" alt="Alert">
+    <p>If you forget even 1</p>
+    <h1>;</h1>
+    <p><small>semicolon to end</small></p>
+    <h3 class="sidekick-type">the entire CSS will not work</h3>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <div class="row">
+        <div class="span12">
+            <div class="row">
+                <div class="span2">
+                    <img src="img/arrow_down_64.png" alt="Cascade" class="iconk-giant">
+                </div>
+                <div class="span4">
+                    &nbsp;
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span12">
+            <div class="row">
+                <div class="span2">
+                    &nbsp;
+                </div>
+                <div class="span2">
+                    <img src="img/arrow_down_64.png" alt="Cascade" class="iconk-giant">
+                </div>
+                <div class="span2">
+                    &nbsp;
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span12">
+            <div class="row">
+                <div class="span4">
+                    &nbsp;
+                </div>
+                <div class="span2">
+                    <img src="img/arrow_down_64.png" alt="Cascade" class="iconk-giant">
+                </div>
+            </div>
+        </div>
+    </div>
+    <p>CSS is named cascading for several reasons, but primarily because</p>
+    <h3 class="sidekick-type"><span class="logo-type-purple">rules cascade</span> <span class="logo-type-blue">from parents</span> <span class="logo-type-green">to children</span></h3>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p class="separate">In other words: parent properties are given to children</p>
+    <div class="row">
+        <div class="span9">
+            <div class="container-left">
+                <pre class="prettyprint linenums">
+.parent {
+    propertyA:valueA;
+}
+.child {
+    propertyA:valueB;
+}</pre>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span9">
+            <div class="container-left">
+                <pre class="prettyprint linenums">
+&lt;div class="parent"&gt;
+    &lt;p&gt;<small>&lt;!--parent properties--&gt;</small>&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="parent"&gt;
+    &lt;p class="child"&gt;<small>&lt;!--own properties--&gt;</small>&lt;/p&gt;
+&lt;/div&gt;
+</pre>
+            </div>
+        </div>
+    </div>
+    <h4 class="sidekick-type">unless a child has a rule for that property</h4>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p><small>But what if we have two rules for the same HTML element?</small></p>
+    <h2 class="separate">We always use the rule that is</h2>
+    <div class="row">
+        <div class="span4">
+            <h3 class="sidekick-type">most specificly selected</h3>
+        </div>
+        <div class="span2">
+            <h3 class="sidekick-type"><small>&</small></h3>
+            <p><small>in case of a tie</small></p>
+        </div>
+        <div class="span4">
+            <h3 class="sidekick-type">farthest down the sheet</h3>
+        </div>
+    </div>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p class="separate">Much like HTML, CSS has <span class="highlight">comments</span> that are composed of three parts:</p>
+    <div class="row">
+        <div class="span3">
+            <h1>/*</h1>
+            <p>opening tag</p>
+        </div>
+        <div class="span3">
+            <h1 class="sidekick-type"><small>comment</small></h1>
+            <p>comment text</p>
+        </div>
+        <div class="span3">
+            <h1>*/</h1>
+            <p>closing tag</p>
+        </div>
+    </div>
+
+</div>
+
+<!--
 
 CSS is presentation: it is a web page's skin
 
@@ -58,7 +575,7 @@ A CSS selector tells us which HTML elements the following rule should apply to
 
 A CSS selector can be a tag, id, class, or a combination of all 3
 
-TODO: explain ids and classes
+Explain ids and classes and combination selectors
 
 Curly braces are like the HTML element opening and closing tags: they say when the rule starts and stops
 
@@ -74,12 +591,6 @@ If you forget even 1 semicolon or curly brace, the CSS will not work
 
 CSS is named cascading for several reasons, but primarily because rules cascade or flow down from parent elements to children elements
 
-Elements that are contained are children
-
-Elements that are containers are parents
-
-An element can be both a parent and a child at the same time
-
 So if a child does not have a CSS rule for something, it will often ask its parent for that rule
 
 The further down the sheet a rule is, the more important it is
@@ -88,8 +599,6 @@ The more specificly targeted a rule is, the more important it is
 
 For example: two rules apply to the same HTML element and they both change the same properties
 
-TODO: Inspector
-
-TODO: comments
+Comments
 
 -->
