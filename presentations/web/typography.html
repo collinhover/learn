@@ -1,0 +1,513 @@
+<div class="step container container-center">
+    
+    <h1 class="superhero-type">Typography</h1>
+    <h2 class="sidekick-type"><small>is a little HTML</small> and a lot of CSS</h2>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p>There are 4 typographic HTML elements that you will use most:</p>
+    <h4><span class="highlight">paragraphs</span> <span class="highlight">headers</span> <span class="highlight">spans</span> <span class="highlight">line breaks</span></h4>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <div class="row">
+        <div class="span7">
+            <div class="container-left">
+                <pre class="prettyprint linenums">&lt;p&gt;Lorem ipsum dolor sit amet!&lt;/p&gt;</pre>
+            </div>
+        </div>
+    </div>
+    <p><span class="highlight">Paragraphs</span> are denoted by p, and are</p>
+    <h3>containers for basic text</h3>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <div class="row">
+        <div class="span7">
+            <div class="container-left">
+                <pre class="prettyprint linenums">&lt;h1&gt;I &hearts; Headers&lt;/h1&gt;</pre>
+            </div>
+        </div>
+    </div>
+    <p><span class="highlight">Headers</span> are denoted by h1, h2, h3, h4, h5, and h6, and are</p>
+    <h3>containers for important text</h3>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <div class="row">
+        <div class="span10">
+            <div class="container-left">
+                <pre class="prettyprint linenums">&lt;p&gt;
+    Lorem ipsum &lt;span class="red"&gt;dolor sit amet&lt;/span&gt!
+&lt;/p&gt;</pre>
+            </div>
+        </div>
+    </div>
+    <p><span class="highlight">Span</span> is denoted by span, and is used to</p>
+    <h3>modify a specific section of text</h3>
+    <p><small>within another typographic element</small></p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <div class="row">
+        <div class="span7">
+            <div class="container-left">
+                <pre class="prettyprint linenums">&lt;p&gt;Lorem ipsum&lt;br /&gt;
+dolor sit amet!&lt;/p&gt;</pre>
+            </div>
+        </div>
+    </div>
+    <p><span class="highlight">Line Breaks</span> are denoted by br, and are used to </p>
+    <h3>force a new line</h3>
+    <p><small>within another typographic element</small></p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p>of these 4, only</p>
+    <h2>Line Breaks</h2>
+    <h3 class="sidekick-type">cannot affect style</h3>
+    <p><small>&</small></p>
+    <h3 class="sidekick-type">have no closing tags</h3>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p>a tag with no closing tags is called an <span class="highlight">empty tag</span></p>
+    <div class="row">
+        <div class="span5">
+            <h1>&lt;p&gt;&lt;/p&gt;</h1>
+            <p><small>normal tag</small></p>
+        </div>
+        <div class="span1">
+            <h1><small>vs</small></h1>
+        </div>
+        <div class="span5">
+            <h1>&lt;br /&gt;</h1>
+            <p><small>empty tag</small></p>
+        </div>
+    </div>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p><small>Not so long ago,</small></p>
+    <div class="row">
+        <div class="span5">
+            <h1 class="sequence-arrow">web type</h1>
+        </div>
+        <div class="span2">
+            <h1 class="superhero-type">&lt;</h1>
+        </div>
+        <div class="span5">
+            <h1 class="sequence-arrow">print type</h1>
+        </div>
+    </div>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <img src="img/camera_64.png" alt="Images" class="separate">
+    <p>In fact, for some time designers were</p>
+    <h2>forced to use images of type</h2>
+    <h3 class="sidekick-type">instead of the type itself</h3>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p><small>Luckly, web type has grown up into quite the</small></p>
+    <img src="img/web_type_new.png" alt="New Type">
+    <h1 class="sidekick-type">Sexy Thing</h1>
+    <p>with the help of a host of CSS properties</p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <div class="row">
+        <div class="span6">
+            <div class="container-left">
+                <pre class="prettyprint linenums">
+body {
+    font-family: Helvetica;
+}</pre>
+            </div>
+        </div>
+    </div>
+    <p>The <span class="highlight">font-family</span> property defines</p>
+    <h3>the font or typeface</h3>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p class="separate">Not all fonts may be supported, so use <span class="highlight">font stacks</span> to be safe!</p>
+    <div class="row">
+        <div class="span11">
+            <div class="container-left">
+                <pre class="prettyprint linenums">font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;</pre>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span4">
+            <p><small>sans-serif</small></p>
+            <h4>"Helvetica Neue",<br />Helvetica,<br />Arial,<br />sans-serif</h4>
+        </div>
+        <div class="span4">
+            <p><small>serif</small></p>
+            <h4 class="sidekick-type">Georgia,<br />"Times New Roman",<br />Times,<br />serif</h4>
+        </div>
+        <div class="span4">
+            <p><small>monospace</small></p>
+            <h4 class="robot-type">Menlo,<br />Monaco,<br />Consolas,<br />"Courier New",<br />monospace</h4>
+        </div>
+    </div>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <div class="row">
+        <div class="span6">
+            <div class="container-left">
+                <pre class="prettyprint linenums">
+body {
+    font-size: 16px;
+}</pre>
+            </div>
+        </div>
+    </div>
+    <p>The <span class="highlight">font-size</span> property defines</p>
+    <h3>text size</h3>
+    <p><small>(can be set in px, em, %, etc)</small></p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p><small>Check it out:</small></p>
+    <div class="row">
+        <div class="span4">
+            <h1>9-11 pt</h1>
+            <p><span class="logo-type-purple">print body copy</span></p>
+        </div>
+        <div class="span2">
+            <h1><small>vs</small></h1>
+        </div>
+        <div class="span4">
+            <h1>13-16 px</h1>
+            <p><span class="logo-type-blue">web body copy</span></p>
+        </div>
+    </div>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <img src="img/angry_cloud_128.png" alt="Angry Cloud" class="iconk">
+    <p>Many will argue for 13 px on the web as it is</p>
+    <h2 class="sidekick-type">more efficient and looks better</h2>
+    <p><small>smaller type is often more visually appealing</small></p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <img src="img/angry_cloud_128.png" alt="Angry Cloud" class="iconk">
+    <p>Others prefer 16 px on the web as it is</p>
+    <h2 class="sidekick-type">much clearer and easier to read</h2>
+    <p><small>bad legibility is one of the fastest ways to lose users</small></p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <img src="img/alertcircle_64.png" alt="Alert" class="iconk separate">
+    <p>The <span class="highlight">em</span> and <span class="highlight">%</span> vs <span class="highlight">px</span> battle</p>
+    <h2 class="sidekick-type">doesn't matter anymore</h2>
+    <p><small>all modern browsers have normalized type sizing and scaling</small></p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <div class="row">
+        <div class="span4">
+            <p><span class="highlight">px</span> sizes are</p>
+            <h2 class="sidekick-type">absolute</h2>
+            <p><small>(get what you see)</small></p>
+        </div>
+        <div class="span4">
+            <p><span class="highlight">em</span> and <span class="highlight">%</span> sizes are</p>
+            <h2 class="sidekick-type">relative</h2>
+            <p><small>(based on parent size)</small></p>
+        </div>
+    </div>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <div class="row">
+        <div class="span6">
+            <div class="container-left">
+                <pre class="prettyprint linenums">
+body {
+    color: #333333;
+}</pre>
+            </div>
+        </div>
+    </div>
+    <p>The <span class="highlight">color</span> property defines</p>
+    <h3>text color</h3>
+    <p><small>(can be set in hex, rgb, rgba, etc)</small></p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <img src="img/alertcircle_64.png" alt="Alert" class="iconk separate">
+    <p>Please, don't use pure black for text color</p>
+    <h1>#333333</h1>
+    <h3 class="sidekick-type">is much easier on the eyes</h3>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <div class="row">
+        <div class="span6">
+            <div class="container-left">
+                <pre class="prettyprint linenums">
+body {
+    line-height: 1.125;
+}</pre>
+            </div>
+        </div>
+    </div>
+    <p>The <span class="highlight">line-height</span> property defines</p>
+    <h3>leading or vertical line space</h3>
+    <p><small>(can be set in decimal, px, em, or %)</small></p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <div class="row">
+        <div class="span6">
+            <div class="container-left">
+                <pre class="prettyprint linenums">
+body {
+    font-style: italic;
+}</pre>
+            </div>
+        </div>
+    </div>
+    <p>The <span class="highlight">font-style</span> property defines</p>
+    <h3>text styling</h3>
+    <p><small>(commonly set to italic or oblique)</small></p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <div class="row">
+        <div class="span6">
+            <div class="container-left">
+                <pre class="prettyprint linenums">
+body {
+    font-weight: bold;
+}</pre>
+            </div>
+        </div>
+    </div>
+    <p>The <span class="highlight">font-weight</span> property defines</p>
+    <h3>text strength</h3>
+    <p><small>(can be set in normal, bold, or a number between 100 and 900)</small></p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <div class="row">
+        <div class="span6">
+            <div class="container-left">
+                <pre class="prettyprint linenums">
+body {
+    text-decoration: underline;
+}</pre>
+            </div>
+        </div>
+    </div>
+    <p>The <span class="highlight">text-decoration</span> property defines</p>
+    <h3>text extras</h3>
+    <p><small>(commonly set to underline or strike-through)</small></p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <div class="row">
+        <div class="span6">
+            <div class="container-left">
+                <pre class="prettyprint linenums">
+body {
+    text-align: center;
+}</pre>
+            </div>
+        </div>
+    </div>
+    <p>The <span class="highlight">text-align</span> property defines</p>
+    <h3>horizontal position</h3>
+    <p><small>(commonly set to left, right, center, or justify)</small></p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <div class="row">
+        <div class="span6">
+            <div class="container-left">
+                <pre class="prettyprint linenums">
+body {
+    vertical-align: middle;
+}</pre>
+            </div>
+        </div>
+    </div>
+    <p>The <span class="highlight">vertical-align</span> property defines</p>
+    <h3>vertical position</h3>
+    <p><small>(commonly set to top, bottom, middle, or baseline)</small></p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <img src="img/alertcircle_64.png" alt="Alert" class="iconk separate">
+    <p>The <span class="highlight">text-align</span> and <span class="highlight">vertical-align</span> properties</p>
+    <h2 class="sidekick-type">only work on text elements</h2>
+    <p><small>(later, we'll check out some magic to change this rule)</small></p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <div class="row">
+        <div class="span6">
+            <div class="container-left">
+                <pre class="prettyprint linenums">
+body {
+    letter-spacing: 1;
+}</pre>
+            </div>
+        </div>
+    </div>
+    <p>The <span class="highlight">letter-spacing</span> property defines</p>
+    <h3>space between letters</h3>
+    <p><small>(can be set in decimal, px, em, or %)</small></p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <div class="row">
+        <div class="span6">
+            <div class="container-left">
+                <pre class="prettyprint linenums">
+body {
+    word-spacing: 1;
+}</pre>
+            </div>
+        </div>
+    </div>
+    <p>The <span class="highlight">word-spacing</span> property defines</p>
+    <h3>space between words</h3>
+    <p><small>(can be set in decimal, px, em, or %)</small></p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <img src="img/web_knockout.png" alt="Hurrah">
+    <h3 class="sidekick-type">Take that print typography!</h3>
+    <p><small>(Punch Out!! &copy; Nintendo)</small></p>
+    
+</div>
+
+<!--
+    
+Web Typography is a little HTML and a lot of CSS
+
+There are 4 typographic HTML elements that you will use most: paragraphs, headers, spans, and line breaks
+
+Paragraph elements are your multi-purpose text box
+
+Header elements are text boxes for important headlines and keywords
+
+Span elements are used to modify a specific section of text within another typographic element
+
+Break elements are used to force a new line within another typographic element
+
+Break elements are the only one of these 4 that cannot affect the style of the typography
+
+Break elements are one of the first and most common elements that do not need a closing tag
+
+Not so long ago, web typography was incredibly limited relative to print typography
+
+In fact, for some time designers were forced to use images of type instead of the type itself
+
+Luckly, this is no longer the case, and web typography flourishes with the help of a host of CSS properties
+
+The font-family property defines the font or typeface
+
+Always list several fonts that work within your layout to make sure it functions well for all users
+
+The font-size property defines the text size, and can be set in px, em, or %
+
+As opposed to print design’s standard body type size of 9-11 pt, web typography can start at either 13 or 16 px
+
+Some argue that web typography should start at 13 px as it allows for more efficient use of screen space and is often more visually appealing
+
+Others prefer 16 px type for its clarity on both desktop and mobile, as well as ease of reading for those with weak eye-sight
+
+Anything defined in em converts to px in a 1:16 ratio
+
+Anything defined in % will be that % of its parent’s value
+
+The color property defines the text color, and can be set in hex, rgb, or rgba
+
+The line-height property defines the leading, and can be set in px, em, or %
+
+The font-style defines whether text is: italic, or
+
+The font-weight defines the strength of the text, and is defined by keywords normal or bold, or by number between 100 and 900
+
+The text-decoration property defines whether text has an: underline or strike-through
+
+The text-align property defines whether text is aligned to the left, right, center, or justified
+
+The vertical-align property defines whether text is aligned to the top, bottom, middle, or baseline
+
+The letter-spacing property defines the space between letters, and can be set in px, em, or %
+
+The word-spacing property defines the space between words, and can be set in px, em, or %
+
+Take that print typography!
+
+-->
