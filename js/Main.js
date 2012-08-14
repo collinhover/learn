@@ -1,16 +1,29 @@
-( function () {
+var CKH = ( function ( _main ) {
 	
-	var jmpressDefaults,
-        elements = {},
-        pathToClasses = 'classes/',
-        pathToPresentations = 'presentations/',
-        localStorageURLCurrentClass,
-		urlCurrentClass,
-        urlCurrentPresentation,
-        presentationFocusTimeoutID,
-        mainNavHeight,
-        presentationsPaddingVertical;
-	
+	var _jmpressDefaults,
+        _elements = {},
+        _cloneables = {},
+        _pathToClasses = 'classes/',
+        _pathToPresentations = 'presentations/',
+        _currentClassLocalStorageURL,
+		_currentClassURL,
+        _currentClassReady,
+        _currentPresentationURL,
+        _presentationFocusTimeoutID,
+        _mainNavHeight,
+        _presentationsPaddingVertical,
+        _classTimeMax = 15;
+    
+    /*===================================================
+    
+    public
+    
+    =====================================================*/
+    
+    _main.classes = {};
+    _main.classes.add_project = add_project;
+    _main.classes.add_calendar = add_calendar;
+    
 	/*===================================================
     
 	loading
@@ -56,17 +69,17 @@
         
         // jmpress defaults
         
-        jmpressDefaults = $.jmpress('defaults');
-        jmpressDefaults.hash.use = false;
-        jmpressDefaults.fullscreen = false;
-        jmpressDefaults.notSupportedClass = 'static-presentation';
-        //jmpressDefaults.viewPort.width = true;
-        //jmpressDefaults.viewPort.height = true;
+        _jmpressDefaults = $.jmpress('defaults');
+        _jmpressDefaults.hash.use = false;
+        _jmpressDefaults.fullscreen = false;
+        _jmpressDefaults.notSupportedClass = 'static-presentation';
+        //_jmpressDefaults.viewPort.width = true;
+        //_jmpressDefaults.viewPort.height = true;
         
         // presentation fallback template
        
         $.jmpress("template", "fallback", {
-    		children: function ( i, element, allElements ) {
+    		children: function ( i, element, all_elements ) {
                 
                 var $element = $( element ),
                     x = i * $element.outerWidth( true );
@@ -89,11 +102,11 @@
             
             // if element is waiting for remove
             
-            if ( elements.$presentationsRemove.is( $element ) ) {
+            if ( _elements.$presentationsRemove.is( $element ) ) {
                 
                 // remove element from list
                 
-                elements.$presentationsRemove = elements.$presentationsRemove.not( $element );
+                _elements.$presentationsRemove = _elements.$presentationsRemove.not( $element );
                 
                 // remove element from display
                 
@@ -103,49 +116,62 @@
             
         } );
         
-		// get ui elements
+		// get ui _elements
 		
-		elements.$mainNav = $( "#mainNav" );
-		elements.$overview = $( '#overview' );
-		elements.$policies = $( '#policies' );
-		elements.$classes = $( '#classes' );
-		elements.$class = $( '#class' );
-		elements.$classSetup = $( '#classSetup' );
-    	elements.$classSetupHeader = $( '#classSetupHeader' );
-    	elements.$classSetupBody = $( '#classSetupBody' );
-        elements.$presentations = $( '#presentations' );
-        elements.$presentationsHeader = $( '#presentationsHeader' );
-        elements.$presentationsNav = $( '#presentationsNav' );
-        elements.$presentationsRemove = $();
-        elements.$presentation = $( '#presentation' );
-        elements.$presentationClone = elements.$presentation.clone( true );
-        elements.$presentationPlaceholder = elements.$presentation.clone().attr( 'id', 'presentationPlaceholder' ).insertBefore( elements.$presentation ).addClass( 'hidden' );
-        elements.$presentationSetup = $( '#presentationSetup' );
-        elements.$presentationFullscreen = $( '#presentationFullscreen' );
-        elements.$presentationFullscreenPlaceholder = elements.$presentationFullscreen.clone().attr( 'id', 'presentationFullscreenPlaceholder' ).insertBefore( elements.$presentationFullscreen ).addClass( 'hidden' );
-        elements.$presentationName = $( '.presentation-name' );
-        elements.$presentationDescription = $( '.presentation-description' );
-		elements.$icons = $( 'i' );
-        elements.$buttonsDropdown = $( '.dropdown-toggle' );
-		elements.$buttonsClasses = $( '.button-class' );
-    	elements.$buttonsPresentations = $( '.button-presentation' );
+		_elements.$mainNav = $( "#mainNav" );
+		_elements.$overview = $( '#overview' );
+		_elements.$policies = $( '#policies' );
+		_elements.$classes = $( '#classes' );
+		_elements.$class = $( '#class' );
+		_elements.$classSetup = $( '#classSetup' );
+    	_elements.$classSetupHeader = $( '#classSetupHeader' );
+    	_elements.$classSetupBody = $( '#classSetupBody' );
+        _elements.$classProjects = $();
+        _elements.$classCalendar = $();
+        _elements.$presentations = $( '#presentations' );
+        _elements.$presentationsHeader = $( '#presentationsHeader' );
+        _elements.$presentationsNav = $( '#presentationsNav' );
+        _elements.$presentationsRemove = $();
+        _elements.$presentation = $( '#presentation' );
+        _elements.$presentationPlaceholder = _elements.$presentation.clone().attr( 'id', 'presentationPlaceholder' ).insertBefore( _elements.$presentation ).addClass( 'hidden' );
+        _elements.$presentationSetup = $( '#presentationSetup' );
+        _elements.$presentationFullscreen = $( '#presentationFullscreen' );
+        _elements.$presentationFullscreenPlaceholder = _elements.$presentationFullscreen.clone().attr( 'id', 'presentationFullscreenPlaceholder' ).insertBefore( _elements.$presentationFullscreen ).addClass( 'hidden' );
+        _elements.$presentationName = $( '.presentation-name' );
+        _elements.$presentationDescription = $( '.presentation-description' );
+		_elements.$icons = $( 'i' );
+        _elements.$buttonsDropdown = $( '.dropdown-toggle' );
+		_elements.$buttonsClasses = $( '.button-class' );
+    	_elements.$buttonsPresentations = $( '.button-presentation' );
+        
+        // create _cloneables
+        
+        _cloneables.$presentation = _elements.$presentation.clone( true );
+        _cloneables.$projectsContainer = $( '<section id="classProjects"><div class="page-header"><h1>Projects <small>public service announcement: get back to work</small></h1></div><div id="projectsEmptyWarning" class="container-center"><div class="separate"><img src="img/alertcircle_rev_64.png" alt="Alert"></div><p>All the projects have run off!</p><p><small>not to worry, they are probably around here somewhere...</small></p></div></section>' );
+        _cloneables.$projectsAccordion = $( '<div id="projectsAccordion" class="accordion"></div>' );
+        _cloneables.$projectResource = $( '<p class="project-resource"><a target="_blank" class="project-resource-link"></a></p>' );
+        _cloneables.$projectRequirement = $( '<div class="requirement-item"><div class="requirement-item-checkbox"></div><span class="requirement-item-text"></span></div>' );
+        _cloneables.$calendar = $( '<section id="classCalendar"><div class="page-header"><h1>Calendar</h1></div></section>' );
+        _cloneables.$calendarEmbed = $( '<iframe src="" class="calendar-embed" frameborder="0" scrolling="no" type="text/html"></iframe>' );
+        _cloneables.$calendarLink = $( '<div class="hero-anchor"><p><small>Calendar not working right?</small></p><a href="" target="_blank" class="btn btn-large btn-primary calendar-link"><i class="icon-calendar icon-white"></i> Open Simple Calendar</a></div>' );
+        
         
         // get properties
         
-        mainNavHeight = elements.$mainNav.outerHeight( true );
-        presentationsPaddingVertical = parseInt( elements.$presentations.css( 'padding-top' ) ) + parseInt( elements.$presentations.css( 'padding-bottom' ) );
+        _mainNavHeight = _elements.$mainNav.outerHeight( true );
+        _presentationsPaddingVertical = parseInt( _elements.$presentations.css( 'padding-top' ) ) + parseInt( _elements.$presentations.css( 'padding-bottom' ) );
 		
 		// if has current class url in local storage
 		
-		if ( window.localStorage && window.localStorage[ 'urlCurrentClass' ] ) {
+		if ( window.localStorage && window.localStorage[ '_currentClassURL' ] ) {
 			
-			localStorageURLCurrentClass = window.localStorage[ 'urlCurrentClass' ];
+			_currentClassLocalStorageURL = window.localStorage[ '_currentClassURL' ];
 			
 		}
 		/*
 		// add hover to all icons
 		
-		elements.$icons.each( function () {
+		_elements.$icons.each( function () {
 			var icon = $( this );
 			
 			icon.parents( 'a:last' )
@@ -161,7 +187,7 @@
         
 		// for each class button
 		
-		elements.$buttonsClasses.each( function () {
+		_elements.$buttonsClasses.each( function () {
 			
 			var $button = $( this ),
 				url;
@@ -172,13 +198,13 @@
 			
 			// get class url
 			
-			url = $.trim( $button.data( "url" ) ).replace( pathToClasses, '' );
+			url = $.trim( $button.data( "url" ) ).replace( _pathToClasses, '' );
 			
 			// listen for activate
 			
 			$button.on( Modernizr.touch ? 'touchend' : 'mouseup', function () {
 				
-				if ( typeof url === 'string' && url.length > 0 && url !== urlCurrentClass ) {
+				if ( typeof url === 'string' && url.length > 0 && url !== _currentClassURL ) {
 					
                     // stop sticky class nav
                     
@@ -186,29 +212,32 @@
                     
 					// empty current class
 					
-					elements.$class.empty();
+                    _currentClassReady = false;
+                    _elements.$classProjects = $();
+                    _elements.$classCalendar = $();
+					_elements.$class.empty();
 					
 					// change setup to loading
 					
-					elements.$classSetup.removeClass( 'hidden' );
-                    elements.$classSetupHeader.html( "Class loading..." );
-                    elements.$classSetupBody.removeClass( 'alert-danger' ).addClass( 'alert-success' ).html( '<strong>One sec,</strong> looking up that class you selected.' );
+					_elements.$classSetup.removeClass( 'hidden' );
+                    _elements.$classSetupHeader.html( "Class loading..." );
+                    _elements.$classSetupBody.removeClass( 'alert-danger' ).addClass( 'alert-success' ).html( '<strong>One sec,</strong> looking up that class you selected.' );
 					
 					// store as current
 					
-					urlCurrentClass = url;
+					_currentClassURL = url;
 					
 					// load
 					
-					elements.$class.load( pathToClasses + url, function ( responseText, textStatus ) {
+					_elements.$class.load( _pathToClasses + url, function ( responseText, textStatus ) {
 						
 						// if error on load
 						if ( textStatus === 'error' ) {
 							
 							// change setup to error
 							
-                            elements.$classSetupHeader.html( "Oops!" );
-                            elements.$classSetupBody.removeClass( 'alert-success' ).addClass( 'alert-danger' ).html( '<strong>This is embarrassing! </strong> Looks like that class got lost somewhere... try again or <a href="#overview">let me know</a>.' );
+                            _elements.$classSetupHeader.html( "Oops!" );
+                            _elements.$classSetupBody.removeClass( 'alert-success' ).addClass( 'alert-danger' ).html( '<strong>This is embarrassing! </strong> Looks like that class got lost somewhere... try again or <a href="#overview">let me know</a>.' );
                             
 						}
 						else {
@@ -217,88 +246,81 @@
                             
         					if ( window.localStorage ) {
         						
-        						window.localStorage[ 'urlCurrentClass' ] = urlCurrentClass;
+        						window.localStorage[ '_currentClassURL' ] = _currentClassURL;
         						
         					}
                             
                             // hide setup
     					    
-						    elements.$classSetup.addClass( 'hidden' );
+						    _elements.$classSetup.addClass( 'hidden' );
 							
 							// sticky class nav
 							
 							$( "#classNav" ).sticky( { 
-                                topSpacing: mainNavHeight,
-                                maxScroll: function () { return elements.$class.outerHeight( true ) - mainNavHeight; },
-                                maxScrollStart: function () { return elements.$class.offset().top; }
+                                topSpacing: _mainNavHeight,
+                                maxScroll: function () { return _elements.$class.outerHeight( true ) - _mainNavHeight; },
+                                maxScrollStart: function () { return _elements.$class.offset().top; }
                             } );
-							
-							// for each project
-							
-							$( '#classProjects' ).find( '.class-project' ).each( function () {
-								
-								var $project = $( this ),
-									projectName = $.trim( $project.find( '.class-project-name' ).text() ),
-									$requirementItems = $project.find( ".requirement-item" ),
-									requirementItemIds = [],
-									requirementItemIdCounts = {};
-								
-								// init all requirements
-								
-								$requirementItems.each( function ( i ) {
-									
-									var $requirementItem = $( this ),
-										requirementItemText = $.trim( $requirementItem.text() ),
-										id = urlCurrentClass + '_' + projectName + '_' + 'RequirementItem' + '_' + requirementItemText;
-									
-									// check if id already in list ( duplicate )
-									
-									if ( requirementItemIds.indexOf( id ) !== -1 ) {
-										
-										// increase count
-										
-										requirementItemIdCounts[ id ]++;
-										
-									}
-									else {
-										
-										// store in list
-									
-										requirementItemIds.push( id );
-										
-										// init count
-										
-										requirementItemIdCounts[ id ] = 0;
-										
-									}
-									
-									// add id count to id
-									
-									id += '_' + requirementItemIdCounts[ id ];
-									
-									// set id by count
-									
-									$requirementItem.attr( 'id', id );
-									
-									// set toggle
-									
-									$requirementItem.on( Modernizr.touch ? 'touchend' : 'mouseup', on_requirement_toggle );
-									
-									// check local storage to see if item already completed
-									
-									if ( window.localStorage ) {
-										
-										$requirementItem[ window.localStorage[ id ] === 'true' ? 'addClass' : 'removeClass' ]( 'complete' );
-										
-									}
-									
-								} );
-								
-							} );
+                            
+                            // init projects container
+                            
+                            _elements.$classProjectsContainer = _cloneables.$projectsContainer.clone( true );
+                            
+                            // add projects container
+                            
+                            _elements.$class.append( _elements.$classProjectsContainer );
+                            
+                            // if has projects
+                            
+                            if ( _elements.$classProjects.length > 0 ) {
+                                
+                                // hide projects warning
+                                
+                                _elements.$classProjectsContainer.find( '#projectsEmptyWarning' ).addClass( 'hidden' );
+                                
+                                // init accordion
+                                
+                                _elements.$classProjectsAccordion = _cloneables.$projectsAccordion.clone( true );
+                                
+                                // add projects
+                                
+                                _elements.$classProjectsAccordion.append( _elements.$classProjects );
+                                
+                                // add accordion
+                                
+                                _elements.$classProjectsContainer.append( _elements.$classProjectsAccordion );
+                                
+                                // setup accordion behavior
+                                
+                                _elements.$classProjects.each( function ( i, element ) {
+                                    
+                                    var $project = $( this ),
+                                        $projectBody = $project.find( '.accordion-body' );
+                                    
+                                    $projectBody.collapse( {
+                                            parent: '#projectsAccordion',
+                                            toggle: false
+                                        } )
+                                        .collapse( 'hide' );
+                                    
+                                    $project.find( '.accordion-toggle' )
+                                        .on( Modernizr.touch ? 'touchend' : 'mouseup', $.proxy( on_project_toggle, $projectBody ) );
+                                        
+                                } );
+                                
+                            }
+                            
+                            // add calendar
+                            
+                            _elements.$class.append( _elements.$classCalendar );
                             
                             // resize
                             
                             $( window ).resize();
+                            
+                            // ready
+                            
+                            _currentClassReady = true;
 							
 						}
 						
@@ -310,7 +332,7 @@
 			
 			// if this class url is same as one in local storage
 			
-			if ( typeof localStorageURLCurrentClass !== 'undefined' && url === localStorageURLCurrentClass ) {
+			if ( typeof _currentClassLocalStorageURL !== 'undefined' && url === _currentClassLocalStorageURL ) {
 				
 				$classButtonToTrigger = $button;
 				
@@ -320,11 +342,11 @@
         
         // add fullscreen presentation callback
         
-        elements.$presentationFullscreen.on( Modernizr.touch ? 'touchend' : 'mouseup', on_fullscreen_toggle );
+        _elements.$presentationFullscreen.on( Modernizr.touch ? 'touchend' : 'mouseup', on_fullscreen_toggle );
         
         // for each presentation button
     	
-		elements.$buttonsPresentations.each( function () {
+		_elements.$buttonsPresentations.each( function () {
 			
 			var $button = $( this ),
 				url;
@@ -335,13 +357,13 @@
 			
 			// get url
 			
-			url = $.trim( $button.data( "url" ) ).replace( pathToPresentations, '' );
+			url = $.trim( $button.data( "url" ) ).replace( _pathToPresentations, '' );
 			
 			// listen for activate
 			
 			$button.on( Modernizr.touch ? 'touchend' : 'mouseup', function () {
                 
-				if ( typeof url === 'string' && url.length > 0 ) {// && url !== urlCurrentPresentation ) {
+				if ( typeof url === 'string' && url.length > 0 ) {// && url !== _currentPresentationURL ) {
                     
                     // toggle fullscreen off
                     
@@ -349,23 +371,23 @@
                     
                     // empty placeholder
                     
-                    elements.$presentationPlaceholder.empty();
+                    _elements.$presentationPlaceholder.empty();
                     
                     // hide fullscreen
                     
-                    elements.$presentationFullscreen.addClass( 'hidden' );
+                    _elements.$presentationFullscreen.addClass( 'hidden' );
 					
 					// change setup to loading
 					
-                    elements.$presentationSetup.removeClass( 'hidden' ).removeClass( 'alert-danger' ).addClass( 'alert-success' ).html( '<strong>One sec,</strong> looking up that presentation you selected.' );
+                    _elements.$presentationSetup.removeClass( 'hidden' ).removeClass( 'alert-danger' ).addClass( 'alert-success' ).html( '<strong>One sec,</strong> looking up that presentation you selected.' );
 					
 					// store as current
 					
-					urlCurrentPresentation = url;
+					_currentPresentationURL = url;
 					
 					// load into prep
 					
-					elements.$presentationPlaceholder.load( pathToPresentations + url, function ( responseText, textStatus ) {
+					_elements.$presentationPlaceholder.load( _pathToPresentations + url, function ( responseText, textStatus ) {
                         
                         var $presentationPrev;
 						
@@ -374,22 +396,22 @@
 							
 							// change setup to error
 							
-                            elements.$presentationSetup.removeClass( 'alert-success' ).addClass( 'alert-danger' ).html( '<strong>Oops, this is embarrassing!</strong> Looks like that presentation got lost somewhere... try again or <a href="#overview">let me know</a>.' );
+                            _elements.$presentationSetup.removeClass( 'alert-success' ).addClass( 'alert-danger' ).html( '<strong>Oops, this is embarrassing!</strong> Looks like that presentation got lost somewhere... try again or <a href="#overview">let me know</a>.' );
 
 						}
 						else {
                             
                             // hide setup
     					    
-						    elements.$presentationSetup.addClass( 'hidden' );
+						    _elements.$presentationSetup.addClass( 'hidden' );
                             
                             // store current presentation
                             
-                            $presentationPrev = elements.$presentation;
+                            $presentationPrev = _elements.$presentation;
                             
                             // add new presentation container
                             
-                            elements.$presentation = elements.$presentationClone.clone( true ).insertAfter( elements.$presentationPlaceholder );
+                            _elements.$presentation = _cloneables.$presentation.clone( true ).insertAfter( _elements.$presentationPlaceholder );
                             
                             // resize
                             
@@ -399,7 +421,7 @@
                             
                             if ( $presentationPrev.jmpress( 'initialized' ) ) {
                                 
-                                elements.$presentationsRemove = elements.$presentationsRemove.add( $presentationPrev );
+                                _elements.$presentationsRemove = _elements.$presentationsRemove.add( $presentationPrev );
                                 
                                 $presentationPrev.addClass( 'hidden' ).jmpress( 'deinit' );
                                 
@@ -413,20 +435,20 @@
                             
                             // setup fullscreen
                             
-                            elements.$presentationFullscreen.removeClass( 'hidden' );
+                            _elements.$presentationFullscreen.removeClass( 'hidden' );
                             
                             // add presentation steps
                             
-                            elements.$presentationPlaceholder.find( '.step' ).appendTo( elements.$presentation );
+                            _elements.$presentationPlaceholder.find( '.step' ).appendTo( _elements.$presentation );
                             
                             // init presentation
                             
-                            elements.$presentation.jmpress();
+                            _elements.$presentation.jmpress();
                             
                             // ensure canvas has no width or height, else will start misaligned
                             // only seems to affect chrome, and goes away when canvas is inspected?
                             
-                            elements.$presentation.jmpress( 'canvas' ).width( 0 ).height( 0 );
+                            _elements.$presentation.jmpress( 'canvas' ).width( 0 ).height( 0 );
                             
                             // update pretty print
                             
@@ -434,7 +456,7 @@
                             
                             // focus presentation so we can start navigating right away
                             
-                            elements.$presentation.focus();
+                            _elements.$presentation.focus();
                             
 						}
                         
@@ -467,26 +489,38 @@
 		}
 		
 	}
+    
+    /*===================================================
+    
+    events
+    
+    =====================================================*/
 	
 	function on_resize() {
 		
         var windowHeight = $( window ).innerHeight(),
-            windowHeightLessMainNav = windowHeight - mainNavHeight;
+            windowHeightLessMainNav = windowHeight - _mainNavHeight;
         
         // set presentation container min height based on screen width
         
         if ( $( window ).innerWidth() < 768 ) {
             
-            elements.$presentation.css( 'min-height', windowHeight - presentationsPaddingVertical );
+            _elements.$presentation.css( 'min-height', windowHeight - _presentationsPaddingVertical );
 		
         }
         else {
             
-            elements.$presentation.css( 'min-height', windowHeightLessMainNav - elements.$presentationsHeader.outerHeight( true ) - presentationsPaddingVertical );
+            _elements.$presentation.css( 'min-height', windowHeightLessMainNav - _elements.$presentationsHeader.outerHeight( true ) - _presentationsPaddingVertical );
             
         }
         
 	}
+    
+    function on_project_toggle () {
+        
+        this.collapse( 'toggle' );
+        
+    }
 	
 	function on_requirement_toggle () {
 		
@@ -507,19 +541,19 @@
         
         // clear focus
         
-        if ( typeof presentationFocusTimeoutID !== 'undefined' ) {
+        if ( typeof _presentationFocusTimeoutID !== 'undefined' ) {
             
-            window.clearRequestTimeout( presentationFocusTimeoutID );
-            presentationFocusTimeoutID = undefined;
+            window.clearRequestTimeout( _presentationFocusTimeoutID );
+            _presentationFocusTimeoutID = undefined;
             
         }
         
         // toggle fullscreen classes
         
-        if ( off !== true || elements.$presentationFullscreen.hasClass( 'fullscreen' ) ) {
+        if ( off !== true || _elements.$presentationFullscreen.hasClass( 'fullscreen' ) ) {
             
-            elements.$presentation.toggleClass( 'fullscreen' );
-            elements.$presentationFullscreen.toggleClass( 'fullscreen btn' );
+            _elements.$presentation.toggleClass( 'fullscreen' );
+            _elements.$presentationFullscreen.toggleClass( 'fullscreen btn' );
             $( 'html' ).toggleClass( 'fullscreen' );
             
         }
@@ -528,31 +562,31 @@
         
         $( window ).off( 'keyup', on_key_released );
         
-        if ( elements.$presentationFullscreen.hasClass( 'fullscreen' ) ) {
+        if ( _elements.$presentationFullscreen.hasClass( 'fullscreen' ) ) {
             
             $( window ).on( 'keyup', on_key_released );
             
             // add to body
             
-            elements.$presentation.appendTo( 'body' );
-            elements.$presentationFullscreen.appendTo( 'body' );
+            _elements.$presentation.appendTo( 'body' );
+            _elements.$presentationFullscreen.appendTo( 'body' );
             
         }
         else {
             
             // add to original containers after placeholders
             
-            elements.$presentationPlaceholder.after( elements.$presentation );
-            elements.$presentationFullscreenPlaceholder.after( elements.$presentationFullscreen );
+            _elements.$presentationPlaceholder.after( _elements.$presentation );
+            _elements.$presentationFullscreenPlaceholder.after( _elements.$presentationFullscreen );
             
         }
         
         // focus presentation
         // delay fixes firefox not focusing
         
-        presentationFocusTimeoutID = window.requestTimeout( function () {
+        _presentationFocusTimeoutID = window.requestTimeout( function () {
             
-            elements.$presentation.focus();
+            _elements.$presentation.focus();
             
         }, 100 );
         
@@ -564,6 +598,7 @@
         
         // by key
         
+        // escape
         if ( keyCode === '27' ) {
             
             on_fullscreen_toggle();
@@ -571,5 +606,252 @@
         }
         
     }
+    
+    /*===================================================
+    
+    dom
+    
+    =====================================================*/
+    
+    function add_project ( parameters ) {
+        
+        var i, il,
+            $project,
+            name,
+            id,
+            data,
+            files,
+            $files,
+            $file,
+            links,
+            $links,
+            $link,
+            requirements,
+            $requirements,
+			requirementIds = [],
+			requirementIdCounts = {},
+            requirementId,
+            requirementText,
+            $requirement;
+        
+        if ( parameters && typeof parameters.name !== 'undefined' && typeof parameters.summary !== 'undefined' && typeof parameters.time !== 'undefined' ) {
+            
+            // properties
+            
+            name = $.trim( parameters.name );
+            id = _currentClassURL + '_Project_' + name;
+            
+            // init new project
+            
+            $project = $( '<div class="accordion-group project"><div class="accordion-heading"><a class="accordion-toggle"><h3 class="project-name"></h3></a></div><div class="accordion-body"><div class="accordion-inner"><div class="row"><div class="span3"><div class="hero-anchor"><h6>Summary</h6><p class="project-summary"></p></div><div class="hero-anchor"><h6>What You Can Use</h6><p class="project-usables"></p></div><div class="hero-anchor"><h6>Timeline</h6><p class="project-time"></p><div class="progress progress-success progress-striped"><div id="puzzleActiveScoreBar" class="bar project-timebar" style="width: 0%;"></div></div></div><div class="hero-anchor project-files"><h6>Files</h6></div><div class="hero-anchor project-links"><h6>Links</h6></div></div><div class="span8 project-requirements"><h6>Requirements</h6></div></div></div></div></div>' );
+            
+            // properties
+            
+            $project.attr( 'id', id )
+            .find( '.project-name')
+                .html( name )
+            .end().find( '.project-summary' )
+                .html( parameters.summary )
+            .end().find( '.project-usables' )
+                .html( parameters.usables || 'Anything' )
+            .end().find( '.project-time' )
+                .html( parameters.time + ' / ' + ( parameters.timeMax || _classTimeMax ) + ' weeks' )
+            .end().find( '.project-timebar' )
+                .css( 'width', ( parameters.time / ( parameters.timeMax || _classTimeMax ) * 100 ) + '%' );
+            
+            // files
+            
+            files = parameters.files;
+            $files = $project.find( '.project-files' );
+            
+            if ( files && files.length > 0 ) {
+                
+                for ( i = 0, il = files.length; i < il; i++ ) {
+                    
+                    data = files[ i ];
+                    $file = _cloneables.$projectResource.clone( true );
+                    
+                    $file.attr( 'id', $.trim( data.id ) )
+                        .find( '.project-resource-link' )
+                        .attr( 'href', $.trim( data.url ) )
+                        .html( $.trim( data.text ) );
+                    
+                    $files.append( $file );
+                    
+                }
+                
+            }
+            else {
+                
+                $files.addClass( 'hidden' );
+                
+            }
+            
+            // links
+            
+            links = parameters.links;
+            $links = $project.find( '.project-links' );
+            
+            if ( links && links.length > 0 ) {
+                
+                for ( i = 0, il = links.length; i < il; i++ ) {
+                    
+                    data = links[ i ];
+                    $link = _cloneables.$projectResource.clone( true );
+                    
+                    $link.attr( 'id', $.trim( data.id ) )
+                        .find( '.project-resource-link' )
+                        .attr( 'href', $.trim( data.url ) )
+                        .html( $.trim( data.text ) );
+                    
+                    $links.append( $link );
+                    
+                }
+                
+            }
+            else {
+                
+                $links.addClass( 'hidden' );
+                
+            }
+            
+            // requirements
+            
+            requirements = parameters.requirements;
+            $requirements = $project.find( '.project-requirements' );
+            
+            if ( requirements && requirements.length > 0 ) {
+                
+                for ( i = 0, il = requirements.length; i < il; i++ ) {
+                    
+                    data = requirements[ i ];
+                    $requirement = _cloneables.$projectRequirement.clone( true );
+                    
+                    // properties
+                    
+                    requirementText = $.trim( data.text );
+                    requirementId = id + '_Requirement_' + requirementText;
+                    
+                    // check if id already in list ( duplicate )
+        			
+    				if ( requirementIds.indexOf( requirementId ) !== -1 ) {
+    					
+    					// increase count
+    					
+    					requirementIdCounts[ requirementId ]++;
+    					
+    				}
+    				else {
+    					
+    					// store in list
+    				
+    					requirementIds.push( requirementId );
+    					
+    					// init count
+    					
+    					requirementIdCounts[ requirementId ] = 0;
+    					
+    				}
+    				
+    				// add id count to id
+    				
+    				requirementId += '_' + requirementIdCounts[ requirementId ];
+                    
+                    // check local storage to see if item already completed
+        			
+    				if ( window.localStorage ) {
+    					
+    					$requirement[ window.localStorage[ requirementId ] === 'true' ? 'addClass' : 'removeClass' ]( 'complete' );
+    					
+    				}
+                    
+                    // set properties
+                    
+                    $requirement.attr( 'id', requirementId )
+                        .on( Modernizr.touch ? 'touchend' : 'mouseup', on_requirement_toggle )
+                        .find( '.requirement-item-text' )
+                        .html( requirementText );
+                    
+                    // store
+                    
+                    $requirements.append( $requirement );
+                    
+                }
+                
+            }
+            else {
+                
+                $requirements.addClass( 'hidden' );
+                
+            }
+            
+            // store project
+            
+            _elements.$classProjects = _elements.$classProjects.add( $project );
+            
+            // if class ready
+            
+            if ( _currentClassReady === true ) {
+                
+                // hide projects warning
+                
+                _elements.$classProjectsContainer.find( '#projectsEmptyWarning' ).addClass( 'hidden' );
+                
+                // add project
+                
+                _elements.$classProjectsAccordion.append( $project );
+                
+            }
+            
+        }
+        
+    }
+    
+    function add_calendar ( parameters ) {
+        
+        if ( parameters && parameters.embed || parameters.link ) {
+            
+            // remove current
+            
+            _elements.$classCalendar.remove();
+            
+            // init calendar
+            
+            _elements.$classCalendar = _cloneables.$calendar.clone( true );
+            
+            // handle embed
+            
+            if ( parameters.embed ) {
+                
+                _cloneables.$calendarEmbed.clone( true )
+                    .appendTo( _elements.$classCalendar )
+                    .attr( 'src', parameters.embed );
+                
+            }
+            
+            // handle link
+            
+            if ( parameters.link ) {
+                
+                _cloneables.$calendarLink.clone( true )
+                    .appendTo( _elements.$classCalendar )
+                    .find( '.calendar-link' )
+                        .attr( 'href', parameters.link );
+                    
+            }
+            
+            // add calendar
+            
+            if ( _currentClassReady === true ) {
+                
+                _elements.$class.append( _elements.$classCalendar );
+                
+            }
+            
+        }
+        
+    }
+    
+    return _main;
 		
-} )();
+} )( CKH || {} );
