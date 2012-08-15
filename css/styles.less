@@ -106,6 +106,14 @@ img {
 	zoom:1;
 }
 
+.inline {
+    
+    p {
+        margin: 0;
+    }
+    
+}
+
 .ignore-pointer {
 	pointer-events: none;
 }
@@ -531,7 +539,7 @@ a, .navbar .nav > li > a {
 	}
 	
 	h6 {
-		margin-bottom: 9px;
+		margin-bottom: @baseLineHeight / 2;
 	}
     
     @media (max-width: 767px) {    
@@ -556,7 +564,7 @@ a, .navbar .nav > li > a {
 -------------------------*/
 
 .alert {
-	margin-bottom: 9px;
+	margin-bottom: @baseLineHeight / 2;
 	font-family: @sansFontFamily;
 	
 	.alert-action {
@@ -670,7 +678,7 @@ a, .navbar .nav > li > a {
 	z-index: 2;
     
     &:not(:last-child) {
-        margin-bottom: 9px;
+        margin-bottom: @baseLineHeight / 2;
     }
 	
 	.navbar-inner {
@@ -841,10 +849,10 @@ a, .navbar .nav > li > a {
 -------------------------*/
 
 .subhead {
-	margin-bottom: 9px;
+	margin-bottom: @baseLineHeight / 2;
 	
 	h1 {
-		margin-bottom: 9px;
+		margin-bottom: @baseLineHeight / 2;
 		font-size: 56px;
 		line-height: 1;
 	}
@@ -966,8 +974,8 @@ a, .navbar .nav > li > a {
 
 @media (max-width: 767px) {    
     [class*="span"], .row-fluid [class*="span"] {
-        padding-top: 9px;
-		padding-bottom: 9px;
+        padding-top: @baseLineHeight / 2;
+		padding-bottom: @baseLineHeight / 2;
 		
 		&:first-child {
 			padding-top: 0;
@@ -1024,7 +1032,7 @@ a, .navbar .nav > li > a {
 -------------------------*/
 
 .browsers {
-    margin-bottom: 9px;
+    margin-bottom: @baseLineHeight / 2;
 	
 	.browser-icon {
 		background-position: 50% 0;
@@ -1386,7 +1394,7 @@ a, .navbar .nav > li > a {
         }
         
         h2, h3, h4 {
-            line-height: 1;
+            line-height: 1.25;
             margin-bottom: 15px;
         }
         

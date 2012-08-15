@@ -51,6 +51,7 @@ tr:first-child th {
 /* grid */
 .container {
     width: 940px;
+    margin: 0 auto;
 }
 
 .row {
