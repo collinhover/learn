@@ -350,7 +350,7 @@ body {
 
 <div class="step container container-center">
     
-    <img src="img/alertcircle_64.png" alt="Alert" class="iconk separate">
+    <img src="img/research_64.png" alt="Research" class="separate">
     <p>Please, don't use pure black for text color</p>
     <h1>#333333</h1>
     <h3 class="sidekick-type">is much easier on the eyes</h3>
@@ -512,6 +512,115 @@ body {
 
 <div class="step container container-center">
     
+    <img src="img/research_64.png" alt="Research" class="separate">
+    <h3 class="sidekick-type">fonts that are safe to use are called</h3>
+    <h1 class="hero-type">web-safe fonts</h1>
+    <p>and every device has them</p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p class="separate">Some examples are:</p>
+    <div class="row">
+        <div class="span4">
+            <p><small>sans-serif</small></p>
+            <h2>Arial</h2>
+        </div>
+        <div class="span4">
+            <p><small>serif</small></p>
+            <h2 class="sidekick-type">Georgia</h2>
+        </div>
+        <div class="span4">
+            <p><small>monospace</small></p>
+            <h2 class="robot-type">Courier</h2>
+        </div>
+    </div>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <div class="row">
+        <div class="span9">
+            <div class="container-left">
+                <pre class="prettyprint linenums">
+@font-face {
+    font-family: 'FontName';
+    src: url('webfonts/FontName.eot');
+    font-weight: bold;
+}
+</pre>
+            </div>
+        </div>
+    </div>
+    <p><span class="highlight">@font-face</span> is a CSS rule that defines</p>
+    <h3>a custom font for other rules to use</h3>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <div class="row">
+        <div class="span8">
+            <div class="container-left">
+                <pre class="prettyprint linenums">
+@font-face {
+    font-family: 'FontName';
+    ...
+}
+.logo-type {
+    font-family: 'FontName', serif;
+}
+</pre>
+            </div>
+        </div>
+    </div>
+    <h3 class="sidekick-type"><span class="logo-type-purple">@font-face</span> needs the <span class="underline">name</span> of the font</h3>
+    <p>so other rules can use it</p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <div class="row">
+        <div class="span8">
+            <div class="container-left">
+                <pre class="prettyprint linenums">
+@font-face {
+    ...
+    src: url('webfonts/FontName.eot');
+    ...
+}
+</pre>
+            </div>
+        </div>
+    </div>
+    <h3 class="sidekick-type"><span class="logo-type-purple">@font-face</span> needs the <span class="underline">source</span> of the font file</h3>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <div class="row">
+        <div class="span8">
+            <div class="container-left">
+                <pre class="prettyprint linenums">
+@font-face {
+    ...
+    font-weight: bold;
+}
+</pre>
+            </div>
+        </div>
+    </div>
+    <h3 class="sidekick-type"><span class="logo-type-purple">@font-face</span> needs the <span class="underline">weight</span> of the font</h3>
+    <p>but only if it is not normal</p>
+    
+</div>
+
+<div class="step container container-center">
+    
     <img src="img/web_knockout.png" alt="Hurrah">
     <h3 class="sidekick-type">*$&#% betta' have some good type!</h3>
     <p><small>(Punch Out!! &copy; Nintendo)</small></p>
@@ -576,6 +685,18 @@ The letter-spacing property defines the space between letters, and can be set in
 
 The word-spacing property defines the space between words, and can be set in px, em, or %
 
-Take that print typography!
+fonts that are safe to use are called web-safe fonts, and every device has them
+
+some examples are Georgia, Arial, Courier
+
+@font-face is a CSS rule that defines a custom font for other rules to use
+
+@font-face needs the name of the font, so other rules can use it
+
+@font-face needs the source of the font file
+
+@font-face needs the weight of the font, if it is not normal
+
+Bitch betta have some good type!
 
 -->
