@@ -1334,7 +1334,7 @@ a, .navbar .nav > li > a {
     
     .step {
         .container;
-        margin: 0;
+        margin: 0;F
         .box-sizing(border-box);
         font-size: 26px;
         line-height: 1.25;
@@ -1346,7 +1346,8 @@ a, .navbar .nav > li > a {
         }
         
         small {
-            font-size: 75%;
+            font-size: 80%;
+            color: ##666;
         }
         
         .highlight {
@@ -1359,6 +1360,10 @@ a, .navbar .nav > li > a {
         }
         
         .emphasize {
+            font-style: italic;
+        }
+        
+        .underline {
             text-decoration: underline;
         }
         
@@ -1437,11 +1442,15 @@ a, .navbar .nav > li > a {
                 
             }
             
+            &.invert {
+                background-color: white;
+            }
+            
             &.outline {
                 .blank;
                 
                 .thumbnail {
-                    border: 1px solid @grayDark;
+                    border: 2px solid @grayDark;
                     .border-radius( 0 );
                 }
                 
