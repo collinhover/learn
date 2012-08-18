@@ -10,6 +10,8 @@ var CKH = ( function ( _main ) {
         _currentClassReady,
         _currentPresentationURL,
         _presentationFocusTimeoutID,
+        _presentationFullscreenState = false,
+        _presentationFullscreenStatePrev = _presentationFullscreenState,
         _mainNavHeight,
         _presentationsPaddingVertical,
         _classTimeMax = 15;
@@ -21,8 +23,8 @@ var CKH = ( function ( _main ) {
     =====================================================*/
     
     _main.classes = {};
-    _main.classes.add_project = add_project;
-    _main.classes.add_calendar = add_calendar;
+    _main.classes.AddProject = AddProject;
+    _main.classes.AddCalendar = AddCalendar;
     
 	/*===================================================
     
@@ -49,7 +51,7 @@ var CKH = ( function ( _main ) {
         .script( [
     		"js/jquery.sticky.custom.js"
         ] )
-		.wait( init );
+		.wait( Init );
 	
 	/*===================================================
     
@@ -57,13 +59,13 @@ var CKH = ( function ( _main ) {
     
     =====================================================*/
 	
-	function init () {
+	function Init () {
 		
-		$( document ).ready( on_ready );
+		$( document ).ready( OnReady );
 		
 	}
 	
-	function on_ready () {
+	function OnReady () {
 		
 		var $classButtonToTrigger;
         
@@ -133,10 +135,10 @@ var CKH = ( function ( _main ) {
         _elements.$presentationsNav = $( '#presentationsNav' );
         _elements.$presentationsRemove = $();
         _elements.$presentation = $( '#presentation' );
-        _elements.$presentationPlaceholder = _elements.$presentation.clone().attr( 'id', 'presentationPlaceholder' ).insertBefore( _elements.$presentation ).addClass( 'hidden' );
+        _elements.$presentationPlaceholder = $( '#presentationPlaceholder' );
         _elements.$presentationSetup = $( '#presentationSetup' );
-        _elements.$presentationFullscreen = $( '#presentationFullscreen' );
-        _elements.$presentationFullscreenPlaceholder = _elements.$presentationFullscreen.clone().attr( 'id', 'presentationFullscreenPlaceholder' ).insertBefore( _elements.$presentationFullscreen ).addClass( 'hidden' );
+        _elements.$presentationFullscreenToggle = $( '#presentationFullscreenToggle' );
+        _elements.$presentationFullscreenTogglePlaceholder = _elements.$presentationFullscreenToggle.clone().attr( 'id', 'presentationFullscreenTogglePlaceholder' ).insertBefore( _elements.$presentationFullscreenToggle ).addClass( 'hidden' );
         _elements.$presentationName = $( '.presentation-name' );
         _elements.$presentationDescription = $( '.presentation-description' );
 		_elements.$icons = $( 'i' );
@@ -304,7 +306,7 @@ var CKH = ( function ( _main ) {
                                         .collapse( 'hide' );
                                     
                                     $project.find( '.accordion-toggle' )
-                                        .on( Modernizr.touch ? 'touchend' : 'mouseup', $.proxy( on_project_toggle, $projectBody ) );
+                                        .on( Modernizr.touch ? 'touchend' : 'mouseup', $.proxy( OnProjectToggle, $projectBody ) );
                                         
                                 } );
                                 
@@ -342,7 +344,7 @@ var CKH = ( function ( _main ) {
         
         // add fullscreen presentation callback
         
-        _elements.$presentationFullscreen.on( Modernizr.touch ? 'touchend' : 'mouseup', on_fullscreen_toggle );
+        _elements.$presentationFullscreenToggle.on( Modernizr.touch ? 'touchend' : 'mouseup', OnFullscreenToggle );
         
         // for each presentation button
     	
@@ -367,7 +369,7 @@ var CKH = ( function ( _main ) {
                     
                     // toggle fullscreen off
                     
-                    on_fullscreen_toggle( true );
+                    OnFullscreenToggle( true );
                     
                     // empty placeholder
                     
@@ -375,7 +377,7 @@ var CKH = ( function ( _main ) {
                     
                     // hide fullscreen
                     
-                    _elements.$presentationFullscreen.addClass( 'hidden' );
+                    _elements.$presentationFullscreenToggle.addClass( 'hidden' );
 					
 					// change setup to loading
 					
@@ -401,62 +403,9 @@ var CKH = ( function ( _main ) {
 						}
 						else {
                             
-                            // hide setup
-    					    
-						    _elements.$presentationSetup.addClass( 'hidden' );
-                            
-                            // store current presentation
-                            
-                            $presentationPrev = _elements.$presentation;
-                            
-                            // add new presentation container
-                            
-                            _elements.$presentation = _cloneables.$presentation.clone( true ).insertAfter( _elements.$presentationPlaceholder );
-                            
-                            // resize
-                            
-                            $( window ).resize();
-                            
-                            // deinit current presentation and remove when done
-                            
-                            if ( $presentationPrev.jmpress( 'initialized' ) ) {
-                                
-                                _elements.$presentationsRemove = _elements.$presentationsRemove.add( $presentationPrev );
-                                
-                                $presentationPrev.addClass( 'hidden' ).jmpress( 'deinit' );
-                                
-                            }
-                            // remove instantly
-                            else {
-                                
-                                $presentationPrev.remove();
-                                
-                            }
-                            
-                            // setup fullscreen
-                            
-                            _elements.$presentationFullscreen.removeClass( 'hidden' );
-                            
-                            // add presentation steps
-                            
-                            _elements.$presentationPlaceholder.find( '.step' ).appendTo( _elements.$presentation );
-                            
                             // init presentation
                             
-                            _elements.$presentation.jmpress();
-                            
-                            // ensure canvas has no width or height, else will start misaligned
-                            // only seems to affect chrome, and goes away when canvas is inspected?
-                            
-                            _elements.$presentation.jmpress( 'canvas' ).width( 0 ).height( 0 );
-                            
-                            // update pretty print
-                            
-                            prettyPrint();
-                            
-                            // focus presentation so we can start navigating right away
-                            
-                            _elements.$presentation.focus();
+                            InitPresentation();
                             
 						}
                         
@@ -474,11 +423,15 @@ var CKH = ( function ( _main ) {
 		
 		// listen for resize
 		
-		$( window ).on( 'resize', $.throttle( 500, on_resize ) );
+		$( window ).on( 'resize', $.throttle( 500, OnResize ) );
 		
 		// resize once
 		
 	    $( window ).resize();
+        
+        // init initial presentation
+        
+        InitPresentation();
 		
 		// if has class button to trigger
 		
@@ -496,33 +449,44 @@ var CKH = ( function ( _main ) {
     
     =====================================================*/
 	
-	function on_resize() {
+	function OnResize() {
 		
         var windowHeight = $( window ).innerHeight(),
-            windowHeightLessMainNav = windowHeight - _mainNavHeight;
+            windowHeightLessMainNav = windowHeight - _mainNavHeight,
+            presentationHeight;
         
         // set presentation container min height based on screen width
         
         if ( $( window ).innerWidth() < 768 ) {
             
-            _elements.$presentation.css( 'min-height', windowHeight - _presentationsPaddingVertical );
-		
+            presentationHeight = windowHeight - _presentationsPaddingVertical;
+            
         }
         else {
             
-            _elements.$presentation.css( 'min-height', windowHeightLessMainNav - _elements.$presentationsHeader.outerHeight( true ) - _presentationsPaddingVertical );
+            presentationHeight = windowHeightLessMainNav - _elements.$presentationsHeader.outerHeight( true ) - _presentationsPaddingVertical;
+            
+        }
+        
+        _elements.$presentation.css( 'min-height', presentationHeight );
+        
+        // if fullscreen
+        
+        if ( _presentationFullscreenState === true ) {
+            
+            _elements.$presentationPlaceholder.height( _elements.$presentation.outerHeight( true ) );
             
         }
         
 	}
     
-    function on_project_toggle () {
+    function OnProjectToggle () {
         
         this.collapse( 'toggle' );
         
     }
 	
-	function on_requirement_toggle () {
+	function OnRequirementToggle () {
 		
 		var $requirementItem = $( this ),
 			id = $requirementItem.attr( 'id' );
@@ -537,7 +501,7 @@ var CKH = ( function ( _main ) {
 		
 	}
     
-    function on_fullscreen_toggle ( off ) {
+    function OnFullscreenToggle ( off ) {
         
         // clear focus
         
@@ -548,51 +512,74 @@ var CKH = ( function ( _main ) {
             
         }
         
+        // remove listeners
+        
+        $( window ).off( 'keyup', OnKeyReleased );
+        
         // toggle fullscreen classes
         
-        if ( off !== true || _elements.$presentationFullscreen.hasClass( 'fullscreen' ) ) {
+        if ( off !== true || _presentationFullscreenState === true ) {
             
             _elements.$presentation.toggleClass( 'fullscreen' );
-            _elements.$presentationFullscreen.toggleClass( 'fullscreen btn' );
+            _elements.$presentationFullscreenToggle.toggleClass( 'fullscreen btn' );
             $( 'html' ).toggleClass( 'fullscreen' );
             
         }
         
-        // listen for esc key
+        // handle by fullscreen state
         
-        $( window ).off( 'keyup', on_key_released );
+        _presentationFullscreenStatePrev = _presentationFullscreenState;
+        _presentationFullscreenState = _elements.$presentation.hasClass( 'fullscreen' );
         
-        if ( _elements.$presentationFullscreen.hasClass( 'fullscreen' ) ) {
+        if ( _presentationFullscreenState !== _presentationFullscreenStatePrev ) {
             
-            $( window ).on( 'keyup', on_key_released );
+            if ( _presentationFullscreenState === true ) {
+                
+                // listen for esc key
+                
+                $( window ).on( 'keyup', OnKeyReleased );
+                
+                // show presentation placeholder
+                
+                _elements.$presentationPlaceholder.removeClass( 'hidden' );
+                
+                // add to body
+                
+                _elements.$presentation.appendTo( 'body' );
+                _elements.$presentationFullscreenToggle.appendTo( 'body' );
+                
+            }
+            else {
+                
+                // add to original containers after placeholders
+                
+                _elements.$presentationPlaceholder.after( _elements.$presentation ).addClass( 'hidden' );
+                _elements.$presentationFullscreenTogglePlaceholder.after( _elements.$presentationFullscreenToggle );
+                
+            }
             
-            // add to body
+            // Resize
             
-            _elements.$presentation.appendTo( 'body' );
-            _elements.$presentationFullscreen.appendTo( 'body' );
+            $( window ).resize();
+            
+            // move screen to presentation
+            
+            MoveToPresentation();
+            
+            // focus presentation
+            // delay fixes firefox not focusing
+            
+            _presentationFocusTimeoutID = window.requestTimeout( function () {
+                
+                _elements.$presentation.focus();
+                
+            }, 100 );
             
         }
-        else {
-            
-            // add to original containers after placeholders
-            
-            _elements.$presentationPlaceholder.after( _elements.$presentation );
-            _elements.$presentationFullscreenPlaceholder.after( _elements.$presentationFullscreen );
-            
-        }
-        
-        // focus presentation
-        // delay fixes firefox not focusing
-        
-        _presentationFocusTimeoutID = window.requestTimeout( function () {
-            
-            _elements.$presentation.focus();
-            
-        }, 100 );
         
     }
     
-    function on_key_released ( e ) {
+    function OnKeyReleased ( e ) {
         
         var keyCode = ( ( e.which || e.key || e.keyCode ) + '' ).toLowerCase();
         
@@ -601,7 +588,7 @@ var CKH = ( function ( _main ) {
         // escape
         if ( keyCode === '27' ) {
             
-            on_fullscreen_toggle();
+            OnFullscreenToggle();
             
         }
         
@@ -609,11 +596,94 @@ var CKH = ( function ( _main ) {
     
     /*===================================================
     
-    dom
+    presentations
     
     =====================================================*/
     
-    function add_project ( parameters ) {
+    function InitPresentation () {
+        
+        var $presentationPrev,
+            $steps;
+        
+        // handle new steps
+        
+        $steps = _elements.$presentationPlaceholder.find( '.step' );
+        
+        if ( $steps.length > 0 ) {
+            
+            // hide setup
+            
+    	    _elements.$presentationSetup.addClass( 'hidden' );
+            
+            // store current presentation
+            
+            $presentationPrev = _elements.$presentation;
+            
+            // add new presentation container
+            
+            _elements.$presentation = _cloneables.$presentation.clone( true ).insertAfter( _elements.$presentationPlaceholder );
+            
+            // deinit current presentation and remove when done
+            
+            if ( $presentationPrev.jmpress( 'initialized' ) ) {
+                
+                _elements.$presentationsRemove = _elements.$presentationsRemove.add( $presentationPrev );
+                
+                $presentationPrev.addClass( 'hidden' ).jmpress( 'deinit' );
+                
+            }
+            // remove instantly
+            else {
+                
+                $presentationPrev.remove();
+                
+            }
+            
+            // setup fullscreen
+            
+            _elements.$presentationFullscreenToggle.removeClass( 'hidden' );
+            
+            // add steps and init presentation
+            
+            _elements.$presentation.append( $steps ).jmpress();
+            
+            // ensure canvas has no width or height, else will start misaligned
+            
+            _elements.$presentation.jmpress( 'canvas' ).width( 0 ).height( 0 );
+            
+            // update pretty print
+            
+            prettyPrint();
+            
+            // resize
+            
+            $( window ).resize();
+            
+            // move screen to presentation
+            
+            MoveToPresentation();
+            
+            // focus presentation so we can start navigating right away
+            
+            _elements.$presentation.focus(); 
+            
+        }
+        
+    }
+    
+    function MoveToPresentation() {
+        
+        $( window ).scrollTop( _elements.$presentations.offset().top );
+        
+    }
+    
+    /*===================================================
+    
+    projects
+    
+    =====================================================*/
+    
+    function AddProject ( parameters ) {
         
         var i, il,
             $project,
@@ -733,28 +803,28 @@ var CKH = ( function ( _main ) {
                     requirementId = id + '_Requirement_' + requirementText;
                     
                     // check if id already in list ( duplicate )
-        			
-    				if ( requirementIds.indexOf( requirementId ) !== -1 ) {
-    					
-    					// increase count
-    					
-    					requirementIdCounts[ requirementId ]++;
-    					
-    				}
-    				else {
-    					
-    					// store in list
-    				
-    					requirementIds.push( requirementId );
-    					
-    					// init count
-    					
-    					requirementIdCounts[ requirementId ] = 0;
-    					
-    				}
-    				
-    				// add id count to id
-    				
+                    
+                    if ( requirementIds.indexOf( requirementId ) !== -1 ) {
+                    	
+                    	// increase count
+                    	
+                    	requirementIdCounts[ requirementId ]++;
+                    	
+                    }
+                    else {
+                    	
+                    	// store in list
+                    
+                    	requirementIds.push( requirementId );
+                    	
+                    	// init count
+                    	
+                    	requirementIdCounts[ requirementId ] = 0;
+                    	
+                    }
+                    
+                    // add id count to id
+
     				requirementId += '_' + requirementIdCounts[ requirementId ];
                     
                     // check local storage to see if item already completed
@@ -768,7 +838,7 @@ var CKH = ( function ( _main ) {
                     // set properties
                     
                     $requirement.attr( 'id', requirementId )
-                        .on( Modernizr.touch ? 'touchend' : 'mouseup', on_requirement_toggle )
+                        .on( Modernizr.touch ? 'touchend' : 'mouseup', OnRequirementToggle )
                         .find( '.requirement-item-text' )
                         .html( requirementText );
                     
@@ -807,7 +877,13 @@ var CKH = ( function ( _main ) {
         
     }
     
-    function add_calendar ( parameters ) {
+    /*===================================================
+    
+    calendar
+    
+    =====================================================*/
+    
+    function AddCalendar ( parameters ) {
         
         if ( parameters && parameters.embed || parameters.link ) {
             

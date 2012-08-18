@@ -1317,6 +1317,18 @@ a, .navbar .nav > li > a {
 
 #presentations {
     
+    #presentationsHeader {
+        
+        #presentationsSetup {
+            margin-top: @baseLineHeight / 2;
+        }
+        
+        #presentationsNav {
+            margin-top: @baseLineHeight / 2;
+        }
+        
+    }
+    
 }
 
 #presentation {
@@ -1512,11 +1524,11 @@ a, .navbar .nav > li > a {
     
 }
 
-#presentationFullscreen {
+#presentationFullscreenToggle {
     
     &.fullscreen {
         position: fixed !important;
-        top: 20px;
+        bottom: 20px;
         right: 20px;
         z-index: 9999;
         
