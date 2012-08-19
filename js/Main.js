@@ -45,7 +45,8 @@ var CKH = ( function ( _main ) {
             "js/jmpress.all.min.js",
 			"js/bootstrap.min.js",
             "js/jquery.throttle-debounce.custom.min.js",
-			"js/jquery.easing-1.3.min.js"
+			"js/jquery.easing-1.3.min.js",
+            "js/jquery.imagesloaded.min.js"
 		] )
         .wait()
         .script( [
@@ -75,8 +76,10 @@ var CKH = ( function ( _main ) {
         _jmpressDefaults.hash.use = false;
         _jmpressDefaults.fullscreen = false;
         _jmpressDefaults.notSupportedClass = 'static-presentation';
+        _jmpressDefaults.viewPort.zoomBindMove = false;
+        _jmpressDefaults.viewPort.zoomBindWheel = false;
         //_jmpressDefaults.viewPort.width = true;
-        //_jmpressDefaults.viewPort.height = true;
+        //_jmpressDefaults.viewPort.height = 1000;
         
         // presentation fallback template
        
@@ -134,11 +137,12 @@ var CKH = ( function ( _main ) {
         _elements.$presentationsHeader = $( '#presentationsHeader' );
         _elements.$presentationsNav = $( '#presentationsNav' );
         _elements.$presentationsRemove = $();
+        _elements.$presentationWrapper = $( '#presentationWrapper' );
         _elements.$presentation = $( '#presentation' );
         _elements.$presentationPlaceholder = $( '#presentationPlaceholder' );
         _elements.$presentationSetup = $( '#presentationSetup' );
+        _elements.$presentationSetupInner = $( '#presentationSetupInner' );
         _elements.$presentationFullscreenToggle = $( '#presentationFullscreenToggle' );
-        _elements.$presentationFullscreenTogglePlaceholder = _elements.$presentationFullscreenToggle.clone().attr( 'id', 'presentationFullscreenTogglePlaceholder' ).insertBefore( _elements.$presentationFullscreenToggle ).addClass( 'hidden' );
         _elements.$presentationName = $( '.presentation-name' );
         _elements.$presentationDescription = $( '.presentation-description' );
 		_elements.$icons = $( 'i' );
@@ -367,21 +371,14 @@ var CKH = ( function ( _main ) {
                 
 				if ( typeof url === 'string' && url.length > 0 ) {// && url !== _currentPresentationURL ) {
                     
-                    // toggle fullscreen off
-                    
-                    OnFullscreenToggle( true );
-                    
                     // empty placeholder
                     
                     _elements.$presentationPlaceholder.empty();
-                    
-                    // hide fullscreen
-                    
-                    _elements.$presentationFullscreenToggle.addClass( 'hidden' );
 					
 					// change setup to loading
 					
-                    _elements.$presentationSetup.removeClass( 'hidden' ).removeClass( 'alert-danger' ).addClass( 'alert-success' ).html( '<strong>One sec,</strong> looking up that presentation you selected.' );
+                    _elements.$presentationSetup.removeClass( 'hidden' ).removeClass( 'alert-danger' ).addClass( 'alert-success' );
+                    _elements.$presentationSetupInner.html( '<strong>One sec,</strong> looking up that presentation you selected.' );
 					
 					// store as current
 					
@@ -390,15 +387,14 @@ var CKH = ( function ( _main ) {
 					// load into prep
 					
 					_elements.$presentationPlaceholder.load( _pathToPresentations + url, function ( responseText, textStatus ) {
-                        
-                        var $presentationPrev;
 						
 						// if error on load
 						if ( textStatus === 'error' ) {
 							
 							// change setup to error
 							
-                            _elements.$presentationSetup.removeClass( 'alert-success' ).addClass( 'alert-danger' ).html( '<strong>Oops, this is embarrassing!</strong> Looks like that presentation got lost somewhere... try again or <a href="#overview">let me know</a>.' );
+                            _elements.$presentationSetup.removeClass( 'alert-success' ).addClass( 'alert-danger' );
+                            _elements.$presentationSetupInner.html( '<strong>Oops, this is embarrassing!</strong> Looks like that presentation got lost somewhere... try again or <a href="#overview">let me know</a>.' );
 
 						}
 						else {
@@ -431,7 +427,7 @@ var CKH = ( function ( _main ) {
         
         // init initial presentation
         
-        InitPresentation();
+        requestTimeout( InitPresentation, 1000 );
 		
 		// if has class button to trigger
 		
@@ -455,11 +451,16 @@ var CKH = ( function ( _main ) {
             windowHeightLessMainNav = windowHeight - _mainNavHeight,
             presentationHeight;
         
-        // set presentation container min height based on screen width
+        // set presentation container min height
         
         if ( $( window ).innerWidth() < 768 ) {
             
             presentationHeight = windowHeight - _presentationsPaddingVertical;
+            
+        }
+        else if ( _presentationFullscreenState === true ) {
+            
+            presentationHeight = windowHeightLessMainNav - _elements.$presentationsHeader.outerHeight( true );
             
         }
         else {
@@ -469,14 +470,6 @@ var CKH = ( function ( _main ) {
         }
         
         _elements.$presentation.css( 'min-height', presentationHeight );
-        
-        // if fullscreen
-        
-        if ( _presentationFullscreenState === true ) {
-            
-            _elements.$presentationPlaceholder.height( _elements.$presentation.outerHeight( true ) );
-            
-        }
         
 	}
     
@@ -520,16 +513,15 @@ var CKH = ( function ( _main ) {
         
         if ( off !== true || _presentationFullscreenState === true ) {
             
-            _elements.$presentation.toggleClass( 'fullscreen' );
-            _elements.$presentationFullscreenToggle.toggleClass( 'fullscreen btn' );
-            $( 'html' ).toggleClass( 'fullscreen' );
+            _elements.$presentationSetupInner.toggleClass( 'container' );
+            _elements.$presentations.toggleClass( 'fullscreen' );
             
         }
         
         // handle by fullscreen state
         
         _presentationFullscreenStatePrev = _presentationFullscreenState;
-        _presentationFullscreenState = _elements.$presentation.hasClass( 'fullscreen' );
+        _presentationFullscreenState = _elements.$presentations.hasClass( 'fullscreen' );
         
         if ( _presentationFullscreenState !== _presentationFullscreenStatePrev ) {
             
@@ -538,23 +530,6 @@ var CKH = ( function ( _main ) {
                 // listen for esc key
                 
                 $( window ).on( 'keyup', OnKeyReleased );
-                
-                // show presentation placeholder
-                
-                _elements.$presentationPlaceholder.removeClass( 'hidden' );
-                
-                // add to body
-                
-                _elements.$presentation.appendTo( 'body' );
-                _elements.$presentationFullscreenToggle.appendTo( 'body' );
-                
-            }
-            else {
-                
-                // add to original containers after placeholders
-                
-                _elements.$presentationPlaceholder.after( _elements.$presentation ).addClass( 'hidden' );
-                _elements.$presentationFullscreenTogglePlaceholder.after( _elements.$presentationFullscreenToggle );
                 
             }
             
@@ -639,10 +614,6 @@ var CKH = ( function ( _main ) {
                 
             }
             
-            // setup fullscreen
-            
-            _elements.$presentationFullscreenToggle.removeClass( 'hidden' );
-            
             // add steps and init presentation
             
             _elements.$presentation.append( $steps ).jmpress();
@@ -667,13 +638,47 @@ var CKH = ( function ( _main ) {
             
             _elements.$presentation.focus(); 
             
+            // when images loaded
+            
+            _elements.$presentation.imagesLoaded( function() {
+                
+                // for each step
+                
+                $steps.each( function ( i, element ) {
+                    
+                    var $element = $( element ),
+                        stepData = $element.data('stepData');
+                    
+                    // set viewport
+                    
+                    stepData.viewPortWidth = $element.outerWidth( true );
+                    stepData.viewPortHeight = $element.outerHeight( true );
+                    
+                } );
+                
+                // resize
+                
+                $( window ).resize();
+                
+                // move screen to presentation
+                
+                MoveToPresentation();
+                
+            });
+            
         }
         
     }
     
     function MoveToPresentation() {
         
-        $( window ).scrollTop( _elements.$presentations.offset().top );
+        // if has presentation
+        
+        if ( typeof _currentPresentationURL !== 'undefined' ) {
+            
+            $( window ).scrollTop( _elements.$presentations.offset().top );
+            
+        }
         
     }
     

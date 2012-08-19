@@ -733,7 +733,13 @@
     <!-- presentations -->
     <section id="presentations">
         
-        <div class="container">
+        <div id="presentationWrapper" class="container">
+            
+            <!-- presentation -->
+            <div id="presentation" class="static-presentation well" data-template="fallback">
+                
+            </div>
+        	<!-- END presentation -->
             
             <!-- presentation placeholder -->
             <div id="presentationPlaceholder" class="hidden">
@@ -758,19 +764,15 @@
                     
                 </div>
                 
-    		</div>
+        	</div>
     		<!-- END presentation placeholder -->
-            
-            <!-- presentation -->
-            <div id="presentation" class="static-presentation well" data-template="fallback">
-                
-            </div>
-    		<!-- END presentation -->
             
             <header id="presentationsHeader" class="subhead">
                 <!-- presentation setup -->
                 <div id="presentationSetup" class="alert">
-        			<strong>Pick a presentation</strong> so we can get started!
+                    <div id="presentationSetupInner">
+        			    <strong>Pick a presentation</strong> so we can get started!
+                    </div>
                 </div>
     			<!-- END presentation setup -->
                 
@@ -871,7 +873,7 @@
     						</ul>
     						<ul class="nav nav-pills pull-right">
                                 <li>
-                                    <a href="#presentations" id="presentationFullscreenToggle" class="hidden"><h6>Fullscreen <i class="icon-fullscreen"></i></h6></a>
+                                    <a href="#presentations" id="presentationFullscreenToggle"><h6>Fullscreen <i class="icon-fullscreen"></i></h6></a>
                                 </li>
     						</ul>
     					</div>
