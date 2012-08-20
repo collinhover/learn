@@ -76,10 +76,12 @@ var CKH = ( function ( _main ) {
         _jmpressDefaults.hash.use = false;
         _jmpressDefaults.fullscreen = false;
         _jmpressDefaults.notSupportedClass = 'static-presentation';
+        // no zoom
         _jmpressDefaults.viewPort.zoomBindMove = false;
         _jmpressDefaults.viewPort.zoomBindWheel = false;
-        //_jmpressDefaults.viewPort.width = true;
-        //_jmpressDefaults.viewPort.height = 1000;
+        // max scale of 1, we can scale down to fit steps but not up
+        // this ensures css typography size is not exceeded
+        _jmpressDefaults.viewPort.maxScale = 1;
         
         // presentation fallback template
        
@@ -378,7 +380,7 @@ var CKH = ( function ( _main ) {
 					// change setup to loading
 					
                     _elements.$presentationSetup.removeClass( 'hidden' ).removeClass( 'alert-danger' ).addClass( 'alert-success' );
-                    _elements.$presentationSetupInner.html( '<strong>One sec,</strong> looking up that presentation you selected.' );
+                    _elements.$presentationSetupInner.html( '<strong>One sec,</strong> preparing that presentation for you!' );
 					
 					// store as current
 					
@@ -402,6 +404,14 @@ var CKH = ( function ( _main ) {
                             // init presentation
                             
                             InitPresentation();
+                            
+                            // move screen to presentation
+                            
+                            MoveToPresentation();
+                            
+                            // focus presentation so we can start navigating right away
+                            
+                            _elements.$presentation.focus(); 
                             
 						}
                         
@@ -537,18 +547,19 @@ var CKH = ( function ( _main ) {
             
             $( window ).resize();
             
-            // move screen to presentation
-            
-            MoveToPresentation();
-            
-            // focus presentation
-            // delay fixes firefox not focusing
+            // delay focus/move
             
             _presentationFocusTimeoutID = window.requestTimeout( function () {
                 
+                // move screen to presentation
+            
+                MoveToPresentation();
+                
+                // focus presentation
+                
                 _elements.$presentation.focus();
                 
-            }, 100 );
+            }, 200 );
             
         }
         
@@ -585,10 +596,6 @@ var CKH = ( function ( _main ) {
         $steps = _elements.$presentationPlaceholder.find( '.step' );
         
         if ( $steps.length > 0 ) {
-            
-            // hide setup
-            
-    	    _elements.$presentationSetup.addClass( 'hidden' );
             
             // store current presentation
             
@@ -630,17 +637,13 @@ var CKH = ( function ( _main ) {
             
             $( window ).resize();
             
-            // move screen to presentation
-            
-            MoveToPresentation();
-            
-            // focus presentation so we can start navigating right away
-            
-            _elements.$presentation.focus(); 
-            
             // when images loaded
             
             _elements.$presentation.imagesLoaded( function() {
+                
+                // hide setup
+                
+                _elements.$presentationSetup.addClass( 'hidden' );
                 
                 // for each step
                 
@@ -660,10 +663,6 @@ var CKH = ( function ( _main ) {
                 
                 $( window ).resize();
                 
-                // move screen to presentation
-                
-                MoveToPresentation();
-                
             });
             
         }
@@ -672,13 +671,7 @@ var CKH = ( function ( _main ) {
     
     function MoveToPresentation() {
         
-        // if has presentation
-        
-        if ( typeof _currentPresentationURL !== 'undefined' ) {
-            
-            $( window ).scrollTop( _elements.$presentations.offset().top );
-            
-        }
+        _elements.$presentations[0].scrollIntoView( true );
         
     }
     
