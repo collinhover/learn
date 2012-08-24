@@ -1,24 +1,3 @@
-<header class="subhead">
-	<h1>Web Design: Basics</h1>
-	<h2><span class="logo-type-purple">HTML</span>, <span class="logo-type-blue">CSS</span>, and <span class="logo-type-green">Javascript</span> for designers.</h2>
-	<div id="classNav" class="subnavbar">
-		<div class="navbar-inner">
-			<div class="container">
-				<ul class="nav nav-pills pull-left">
-					<li><a href="#classIntroduction">Introduction</a></li>
-					<li><a href="#classLanguages">Languages</a></li>
-					<li><a href="#classTools">Tools</a></li>
-					<li><a href="#classProjects">Projects</a></li>
-					<li><a href="#classCalendar">Calendar</a></li>
-				</ul>
-				<ul class="nav nav-pills pull-right visible-desktop">
-					<li><a href="#classes"><h6>Web Design: Basics</h6></a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
-</header>
-
 <!-- introduction -->
 <section id="classIntroduction">
 	<div class="page-header">
@@ -153,18 +132,20 @@
 	<!-- software -->
 	<h3>Software</h3>
 	<div class="row container-center">
-		<div class="span3">
+		<div class="span4">
 			<div class="well">
 				<h6>Recommended</h6>
-				<a href="https://c9.io/" target="_blank">
-					<img src="img/ide_cloud9_128.png" class="iconk-doublegiant">
-					<p>Cloud 9</p>
-				</a>
-				<p><small>(Windows/Mac/Linux)</small></p>
+                <div class="inline">
+    				<a href="https://c9.io/" target="_blank">
+    					<img src="img/ide_cloud9_128.png" class="iconk-doublegiant">
+    					<p>Cloud 9</p>
+    				</a>
+    				<p><small>(Windows/Mac/Linux)</small></p>
+                </div>
 			</div>
 		</div>
 		
-		<div class="span6">
+		<div class="span5">
 			<div class="well">
 				<h6>Alternatives</h6>
 				<div class="inline">
@@ -184,14 +165,6 @@
 						<p>Notepad++</p>
 					</a>
 					<p><small>(Windows only)</small></p>
-				</div>
-				<div class="inline">
-					<a href="http://www.google.com/search?q=html+javascript+ide" target="_blank">
-						<div class="iconk-doublegiant">
-							<h1 class="hero-type dim">...</h1>
-						</div>
-					</a>
-					<p><small>(many more)</small></p>
 				</div>
 			</div>
 		</div>
@@ -415,145 +388,141 @@
         
         if ( CKH && CKH.classes ) {
             
-            // project 1
-            
-            CKH.classes.AddProject( {
-                name: 'The Satisfactory Single-page',
-                summary: 'Single-page information / marketing site for a band or musician of your choice.',
-                usables: 'HTML, CSS',
-                time: 2,
-                links: [
+            CKH.classes.AddClass( {
+                name: 'Web Design: Basics',
+                summary: '<span class="logo-type-purple">HTML</span>, <span class="logo-type-blue">CSS</span>, and <span class="logo-type-green">Javascript</span> for designers.',
+                navigation: {
+                    main: [
+                        '<a href="#classIntroduction">Introduction</a>',
+                        '<a href="#classLanguages">Languages</a>',
+                        '<a href="#classTools">Tools</a>'
+                    ]
+                },
+                calendar: {
+                    embed: 'https://www.google.com/calendar/embed?mode=AGENDA&showTitle=0&showPrint=0&showCalendars=0&height=600&wkst=1&bgcolor=%23FFFFFF&src=55mr2ne9dkhjmj5i41np1qacqs@group.calendar.google.com&color=%235229A3&ctz=America%2FChicago',
+                    link: 'https://www.google.com/calendar/htmlembed?mode=AGENDA&src=55mr2ne9dkhjmj5i41np1qacqs@group.calendar.google.com'
+                },
+                projects: [
                     {
-                        text: 'Your single-page should look like this!',
-                        url: 'files/templates/pages/single.html',
+                        name: 'The Satisfactory Single-page',
+                        summary: 'Single-page information / marketing site for a band or musician of your choice.',
+                        usables: 'HTML, CSS',
+                        time: 2,
+                        links: [
+                            {
+                                text: 'Your single-page should look like this!',
+                                url: 'files/templates/pages/single.html',
+                            }
+                        ],
+                        requirements: [
+                            { text: 'RFD' },
+                            { text: 'Pages container width 940px and centered horizontally' },
+                            { text: 'Full-width page introduction (the hero)' },
+                            { text: 'Hero biggest header' },
+                            { text: 'Hero biggest subheader' },
+                            { text: 'Row with 2 columns of information (the sidekicks)' },
+                            { text: 'Sidekick 1: Bio (medium header + body copy at least 50 words)' },
+                            { text: 'Sidekick 2: Members ( medium header + sub-row )' },
+                            { text: 'Members: 1 evenly-spaced column per member in sub-row' },
+                            { text: 'Members: each has smallest header + bio' },
+                            { text: 'Commented start and end of each hero, sidekick, and member' },
+                            { text: 'HTML organized with comments' },
+                            { text: 'CSS organized with comments' }
+                        ]
+                    },
+                    {
+                        name: 'The Masterful Multi-page',
+                        summary: 'Multi-page navigatable information / marketing site for a band or musician.',
+                        usables: 'HTML, CSS',
+                        time: 2,
+                        requirements: [
+                            { text: 'RFD' },
+                            { text: 'Pages container width 940px and centered horizontally' },
+                            { text: 'Overview / Home page' },
+                            { text: 'Overview contains hero introduction, bio, events, and members' },
+                            { text: 'Members: row with 1 evenly-spaced column per member' },
+                            { text: 'Members: each has header + bio + image' },
+                            { text: 'Events: table or list with small image, name, location, date of at least 6 events' },
+                            { text: 'Music page' },
+                            { text: 'Music page contains horizontal list of album buttons as in-page links to full album' },
+                            { text: 'Each album has description, genre, all songs with name and track length, and a link to return to list' },
+                            { text: 'Navigation bar with links to all pages' },
+                            { text: 'Navigation bar links are relative' },
+                            { text: 'Navigation bar is fixed in screen' },
+                            { text: 'Navigation bar contains logo' },
+                            { text: 'Images on at least 1 page' },
+                            { text: 'Uses rounded corners' },
+                            { text: 'Bars use light box shadows' },
+                            { text: 'Bars, buttons, and anchors use soft gradients' },
+                            { text: 'Footer with copyright on all pages' },
+                            { text: 'HTML organized with comments' },
+                            { text: 'CSS organized with comments' }
+                        ]
+                    },
+                    {
+                        name: 'The Fantastic Fluid-page',
+                        summary: 'Mobile-ready fluid information / marketing site for a band or musician.',
+                        usables: 'HTML, CSS',
+                        time: 1,
+                        requirements: [
+                            { text: 'RFD' },
+                            { text: 'Uses multi-page as base' },
+                            { text: 'At page min width 1200px: Rows + Columns, container width 1170px, column width 70px margin-left 30px' },
+                            { text: 'At standard size: Rows + Columns, container width 940px, column width 60px margin-left 20px' },
+                            { text: 'At page min width 768px and max width 979px: Rows + Columns, container width 724px, column width 42px margin-left 20px' },
+                            { text: 'At page max width 767px: single column / vertical stacked layout (i.e. no float) with fluid 100% width and minimum width 280px' },
+                            { text: 'Base font-size 16px' },
+                            { text: 'Uses at least 1 non-web-native font through @font-face' }
+                        ]
+                    },
+                    {
+                        name: 'The Delirious Dynamic-page',
+                        summary: 'Full window generative design interpretation of a song.',
+                        usables: 'JS',
+                        time: 4,
+                        requirements: [
+                            { text: 'RFD' },
+                            { text: 'Cookbook' },
+                            { text: 'Utilizes at least 1 Canvas element' },
+                            { text: 'Single page' },
+                            { text: 'Fills entire browser window (not full screen)' },
+                            { text: 'Uses at least 2 colors that are not white or black or grey' },
+                            { text: 'Uses pattern' },
+                            { text: 'Uses randomization' },
+                            { text: 'Changes over time' },
+                            { text: 'Javascript commented' }
+                        ]
+                    },
+                    {
+                        name: 'By Your Powers Combined...',
+                        summary: 'Dynamic, mobile-friendly, multi-page informational / marketing site for a band or musician.',
+                        usables: 'HTML, CSS, JS',
+                        time: 6,
+                        requirements: [
+                            { text: 'RFD' },
+                            { text: 'Cookbook' },
+                            { text: 'Overview / Home page' },
+                            { text: 'About page with description, genre, members, and bios' },
+                            { text: 'Discography page with at least 3 albums' },
+                            { text: 'Events page with at least 10 locations' },
+                            { text: 'Navbar with relative page links' },
+                            { text: 'Footer with copyright and page links' },
+                            { text: 'Logo in each page' },
+                            { text: 'Uses at least 2 fonts but no more than 4 font-families' },
+                            { text: 'Generative art / design using canvas in at least 1 page' },
+                            { text: 'Generative element is background / secondary to all else' },
+                            { text: 'Non-white color background in each page (can be generative element or image pattern)' },
+                            { text: 'Works with script disabled' },
+                            { text: 'Includes noscript warning where necessary' },
+                            { text: 'HTML organized with comments' },
+                            { text: 'External CSS organized with comments' },
+                            { text: 'Javascript commented' },
+                            { text: 'HTML passed W3C validation with less than 5 errors' }
+                        ]
                     }
-                ],
-                requirements: [
-                    { text: 'RFD' },
-                    { text: 'Pages container width 940px and centered horizontally' },
-                    { text: 'Full-width page introduction (the hero)' },
-                    { text: 'Hero biggest header' },
-                    { text: 'Hero biggest subheader' },
-                    { text: 'Row with 2 columns of information (the sidekicks)' },
-                    { text: 'Sidekick 1: Bio (medium header + body copy at least 50 words)' },
-                    { text: 'Sidekick 2: Members ( medium header + sub-row )' },
-                    { text: 'Members: 1 evenly-spaced column per member in sub-row' },
-                    { text: 'Members: each has smallest header + bio' },
-                    { text: 'Commented start and end of each hero, sidekick, and member' },
-                    { text: 'HTML organized with comments' },
-                    { text: 'CSS organized with comments' }
                 ]
-            } );
+            });
             
-            // project 2
-            
-            CKH.classes.AddProject( {
-                name: 'The Masterful Multi-page',
-                summary: 'Multi-page navigatable information / marketing site for a band or musician.',
-                usables: 'HTML, CSS',
-                time: 2,
-                requirements: [
-                    { text: 'RFD' },
-                    { text: 'Pages container width 940px and centered horizontally' },
-                    { text: 'Overview / Home page' },
-                    { text: 'Overview contains hero introduction, bio, events, and members' },
-                    { text: 'Members: row with 1 evenly-spaced column per member' },
-                    { text: 'Members: each has header + bio + image' },
-                    { text: 'Events: table or list with small image, name, location, date of at least 6 events' },
-                    { text: 'Music page' },
-                    { text: 'Music page contains horizontal list of album buttons as in-page links to full album' },
-                    { text: 'Each album has description, genre, all songs with name and track length, and a link to return to list' },
-                    { text: 'Navigation bar with links to all pages' },
-                    { text: 'Navigation bar links are relative' },
-                    { text: 'Navigation bar is fixed in screen' },
-                    { text: 'Navigation bar contains logo' },
-                    { text: 'Images on at least 1 page' },
-                    { text: 'Uses rounded corners' },
-                    { text: 'Bars use light box shadows' },
-                    { text: 'Bars, buttons, and anchors use soft gradients' },
-                    { text: 'Footer with copyright on all pages' },
-                    { text: 'HTML organized with comments' },
-                    { text: 'CSS organized with comments' }
-                ]
-            } );
-            
-            // project 3
-            
-            CKH.classes.AddProject( {
-                name: 'The Fantastic Fluid-page',
-                summary: 'Mobile-ready fluid information / marketing site for a band or musician.',
-                usables: 'HTML, CSS',
-                time: 1,
-                requirements: [
-                    { text: 'RFD' },
-                    { text: 'Uses multi-page as base' },
-                    { text: 'At page min width 1200px: Rows + Columns, container width 1170px, column width 70px margin-left 30px' },
-                    { text: 'At standard size: Rows + Columns, container width 940px, column width 60px margin-left 20px' },
-                    { text: 'At page min width 768px and max width 979px: Rows + Columns, container width 724px, column width 42px margin-left 20px' },
-                    { text: 'At page max width 767px: single column / vertical stacked layout (i.e. no float) with fluid 100% width and minimum width 280px' },
-                    { text: 'Base font-size 16px' },
-                    { text: 'Uses at least 1 non-web-native font through @font-face' }
-                ]
-            } );
-            
-            // project 4
-            
-            CKH.classes.AddProject( {
-                name: 'The Delirious Dynamic-page',
-                summary: 'Full window generative design interpretation of a song.',
-                usables: 'JS',
-                time: 4,
-                requirements: [
-                    { text: 'RFD' },
-                    { text: 'Cookbook' },
-                    { text: 'Utilizes at least 1 Canvas element' },
-                    { text: 'Single page' },
-                    { text: 'Fills entire browser window (not full screen)' },
-                    { text: 'Uses at least 2 colors that are not white or black or grey' },
-                    { text: 'Uses pattern' },
-                    { text: 'Uses randomization' },
-                    { text: 'Changes over time' },
-                    { text: 'Javascript commented' }
-                ]
-            } );
-            
-            // project 5
-            
-            CKH.classes.AddProject( {
-                name: 'By Your Powers Combined...',
-                summary: 'Dynamic, mobile-friendly, multi-page informational / marketing site for a band or musician.',
-                usables: 'HTML, CSS, JS',
-                time: 6,
-                requirements: [
-                    { text: 'RFD' },
-                    { text: 'Cookbook' },
-                    { text: 'Overview / Home page' },
-                    { text: 'About page with description, genre, members, and bios' },
-                    { text: 'Discography page with at least 3 albums' },
-                    { text: 'Events page with at least 10 locations' },
-                    { text: 'Navbar with relative page links' },
-                    { text: 'Footer with copyright and page links' },
-                    { text: 'Logo in each page' },
-                    { text: 'Uses at least 2 fonts but no more than 4 font-families' },
-                    { text: 'Generative art / design using canvas in at least 1 page' },
-                    { text: 'Generative element is background / secondary to all else' },
-                    { text: 'Non-white color background in each page (can be generative element or image pattern)' },
-                    { text: 'Works with script disabled' },
-                    { text: 'Includes noscript warning where necessary' },
-                    { text: 'HTML organized with comments' },
-                    { text: 'External CSS organized with comments' },
-                    { text: 'Javascript commented' },
-                    { text: 'HTML passed W3C validation with less than 5 errors' }
-                ]
-            } );
-    
-            // calendar
-            
-            CKH.classes.AddCalendar( {
-                embed: 'https://www.google.com/calendar/embed?mode=AGENDA&showTitle=0&showPrint=0&showCalendars=0&height=600&wkst=1&bgcolor=%23FFFFFF&src=55mr2ne9dkhjmj5i41np1qacqs@group.calendar.google.com&color=%235229A3&ctz=America%2FChicago',
-                link: 'https://www.google.com/calendar/htmlembed?mode=AGENDA&src=55mr2ne9dkhjmj5i41np1qacqs@group.calendar.google.com'
-            } );
-        
         }
     
     } );

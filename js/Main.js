@@ -1,11 +1,12 @@
 var CKH = ( function ( _main ) {
 	
 	var _jmpressDefaults,
+        _throttled = {},
         _elements = {},
         _cloneables = {},
         _pathToClasses = 'classes/',
         _pathToPresentations = 'presentations/',
-        _currentClassLocalStorageURL,
+        _currentTab,
 		_currentClassURL,
         _currentClassReady,
         _currentPresentationURL,
@@ -23,7 +24,8 @@ var CKH = ( function ( _main ) {
     =====================================================*/
     
     _main.classes = {};
-    _main.classes.AddProject = AddProject;
+    _main.classes.AddClass = AddClass;
+    _main.classes.AddProjects = AddProjects;
     _main.classes.AddCalendar = AddCalendar;
     
 	/*===================================================
@@ -67,8 +69,6 @@ var CKH = ( function ( _main ) {
 	}
 	
 	function OnReady () {
-		
-		var $classButtonToTrigger;
         
         // jmpress defaults
         
@@ -123,20 +123,36 @@ var CKH = ( function ( _main ) {
             
         } );
         
+        // throttle functions
+        
+        _throttled.OnResize = $.throttle( 500, OnResize );
+        
 		// get ui _elements
 		
+        _elements.$logo = $( ".logo" );
 		_elements.$mainNav = $( "#mainNav" );
+        _elements.$mainNavToggle = _elements.$mainNav.find( '[data-toggle="collapse"]' );
 		_elements.$overview = $( '#overview' );
 		_elements.$policies = $( '#policies' );
 		_elements.$classes = $( '#classes' );
 		_elements.$class = $( '#class' );
+        _elements.$classHeader = $( '#classHeader' );
+    	_elements.$classContent = $( '#classContent' );
+        _elements.$className = $( '.class-name' );
+        _elements.$classSummary = $( '.class-summary' );
+        _elements.$classNav = $( '#classNav' );
+        _elements.$classNavWrapper = $( '#classNavWrapper' );
+        _elements.$classNavListMain = $( '#classNavListMain' );
+        _elements.$classNavListAlt = $( '#classNavListAlt' );
 		_elements.$classSetup = $( '#classSetup' );
     	_elements.$classSetupHeader = $( '#classSetupHeader' );
     	_elements.$classSetupBody = $( '#classSetupBody' );
         _elements.$classProjects = $();
+        _elements.$classProjectsLink = $( '<a href="#classProjects">Projects</a>' );
         _elements.$classCalendar = $();
+        _elements.$classCalendarLink = $( '<a href="#classCalendar">Calendar</a>' );
         _elements.$presentations = $( '#presentations' );
-        _elements.$presentationsHeader = $( '#presentationsHeader' );
+        _elements.$presentationsControl = $( '#presentationsControl' );
         _elements.$presentationsNav = $( '#presentationsNav' );
         _elements.$presentationsRemove = $();
         _elements.$presentationWrapper = $( '#presentationWrapper' );
@@ -148,7 +164,9 @@ var CKH = ( function ( _main ) {
         _elements.$presentationName = $( '.presentation-name' );
         _elements.$presentationDescription = $( '.presentation-description' );
 		_elements.$icons = $( 'i' );
-        _elements.$buttonsDropdown = $( '.dropdown-toggle' );
+        _elements.$tabs = $( '.tab-pane' );
+        _elements.$tabToggles = $( '.tab-toggles' ).find( '[href^="#"]' );
+        _elements.$buttonsDropdown = $( '[data-toggle="dropdown"]' );
 		_elements.$buttonsClasses = $( '.button-class' );
     	_elements.$buttonsPresentations = $( '.button-presentation' );
         
@@ -163,35 +181,94 @@ var CKH = ( function ( _main ) {
         _cloneables.$calendarEmbed = $( '<iframe src="" class="calendar-embed" frameborder="0" scrolling="no" type="text/html"></iframe>' );
         _cloneables.$calendarLink = $( '<div class="hero-anchor"><p><small>Calendar not working right?</small></p><a href="" target="_blank" class="btn btn-large btn-primary calendar-link"><i class="icon-calendar icon-white"></i> Open Simple Calendar</a></div>' );
         
-        
         // get properties
         
         _mainNavHeight = _elements.$mainNav.outerHeight( true );
         _presentationsPaddingVertical = parseInt( _elements.$presentations.css( 'padding-top' ) ) + parseInt( _elements.$presentations.css( 'padding-bottom' ) );
-		
-		// if has current class url in local storage
-		
-		if ( window.localStorage && window.localStorage[ '_currentClassURL' ] ) {
-			
-			_currentClassLocalStorageURL = window.localStorage[ '_currentClassURL' ];
-			
-		}
-		/*
-		// add hover to all icons
-		
-		_elements.$icons.each( function () {
-			var icon = $( this );
-			
-			icon.parents( 'a:last' )
-				.on( Modernizr.touch ? 'touchstart' : 'mouseenter', function () {
-					icon.addClass( 'icon-white' );
-				} )
-				.on( Modernizr.touch ? 'touchend touchcancel' : 'mouseleave', function () {
-					icon.removeClass( 'icon-white' );
-				} );
-			
-		} );
-		*/
+        
+        // for each main nav link
+        
+        _elements.$mainNav.find( 'a[href^="#"]' ).not( _elements.$mainNavToggle ).each( function () {
+            
+            var $link = $( this );
+            
+            if ( $link.attr( 'href' ) !== "#" ) {
+                
+                $link.on( Modernizr.touch ? 'touchend' : 'click', function ( e ) {
+                    
+                    _elements.$mainNavToggle.click();
+                    
+                } );
+                
+            }
+            
+        } );
+        
+        // for each tab toggle
+        
+        _elements.$tabToggles.each( function () {
+            
+            var $toggle = $( this ),
+                $section = $( $toggle.data( 'section' ) );
+            
+            $toggle.on( Modernizr.touch ? 'touchend' : 'click', function ( e ) {
+                
+                if ( _currentTab !== $toggle.attr( 'href' ) ) {
+                    
+                    $toggle.tab('show');
+                    
+                }
+                
+                if ( $section.length > 0 ) {
+                    $section[0].scrollIntoView( true );
+                }
+                
+                e.preventDefault();
+                
+            } )
+            .on( 'show', function ( e ) {
+                
+                _currentTab = $( e.target ).attr( 'href' );
+                
+            } )
+            .on( 'shown', _throttled.OnResize );
+            
+        } );
+        
+        // for all dropdowns
+        
+        _elements.$buttonsDropdown.parent().each( function () {
+            
+            var $dropdown = $( this );
+            
+            $dropdown.find( '.dropdown-menu a' ).each( function () {
+                
+                var $button = $( this );
+                
+                $button.on( Modernizr.touch ? 'touchend' : 'click', function () {
+                        
+                        $button.parent().removeClass( 'active' );
+                        
+                        $dropdown.removeClass('open');
+                        
+                    } )
+                    .on( 'shown', function () {
+                        $button.parent().removeClass( 'active' );
+                    } );
+                
+            } );
+            
+        } );
+        
+        // class nav
+        
+        _elements.$classNav.affix( { 
+            offset: { 
+                top: function () {
+                    return _elements.$classNavWrapper.offset().top - _mainNavHeight;
+                } 
+            }
+        } );
         
 		// for each class button
 		
@@ -199,10 +276,6 @@ var CKH = ( function ( _main ) {
 			
 			var $button = $( this ),
 				url;
-            
-            // set relative target
-            
-            $button.attr( 'href', '#classes' );
 			
 			// get class url
 			
@@ -210,20 +283,18 @@ var CKH = ( function ( _main ) {
 			
 			// listen for activate
 			
-			$button.on( Modernizr.touch ? 'touchend' : 'mouseup', function () {
-				
+			$button.on( Modernizr.touch ? 'touchend' : 'click', function () {
+                
 				if ( typeof url === 'string' && url.length > 0 && url !== _currentClassURL ) {
-					
-                    // stop sticky class nav
-                    
-                    $( "#classNav" ).sticky( 'stop' );
                     
 					// empty current class
 					
                     _currentClassReady = false;
                     _elements.$classProjects = $();
-                    _elements.$classCalendar = $();
-					_elements.$class.empty();
+                    _elements.$classCalendar= $();
+					_elements.$classContent.empty()
+                        .addClass( 'hidden' );
+                    _elements.$classHeader.addClass( 'hidden' );
 					
 					// change setup to loading
 					
@@ -237,7 +308,7 @@ var CKH = ( function ( _main ) {
 					
 					// load
 					
-					_elements.$class.load( _pathToClasses + url, function ( responseText, textStatus ) {
+					_elements.$classContent.load( _pathToClasses + url, function ( responseText, textStatus ) {
 						
 						// if error on load
 						if ( textStatus === 'error' ) {
@@ -261,70 +332,20 @@ var CKH = ( function ( _main ) {
                             // hide setup
     					    
 						    _elements.$classSetup.addClass( 'hidden' );
-							
-							// sticky class nav
-							
-							$( "#classNav" ).sticky( { 
-                                topSpacing: _mainNavHeight,
-                                maxScroll: function () { return _elements.$class.outerHeight( true ) - _mainNavHeight; },
-                                maxScrollStart: function () { return _elements.$class.offset().top; }
-                            } );
                             
-                            // init projects container
+                            // class content
                             
-                            _elements.$classProjectsContainer = _cloneables.$projectsContainer.clone( true );
+                            _elements.$classHeader.removeClass( 'hidden' );
+                            _elements.$classContent.removeClass( 'hidden' );
                             
-                            // add projects container
+                            // misc
                             
-                            _elements.$class.append( _elements.$classProjectsContainer );
-                            
-                            // if has projects
-                            
-                            if ( _elements.$classProjects.length > 0 ) {
-                                
-                                // hide projects warning
-                                
-                                _elements.$classProjectsContainer.find( '#projectsEmptyWarning' ).addClass( 'hidden' );
-                                
-                                // init accordion
-                                
-                                _elements.$classProjectsAccordion = _cloneables.$projectsAccordion.clone( true );
-                                
-                                // add projects
-                                
-                                _elements.$classProjectsAccordion.append( _elements.$classProjects );
-                                
-                                // add accordion
-                                
-                                _elements.$classProjectsContainer.append( _elements.$classProjectsAccordion );
-                                
-                                // setup accordion behavior
-                                
-                                _elements.$classProjects.each( function ( i, element ) {
-                                    
-                                    var $project = $( this ),
-                                        $projectBody = $project.find( '.accordion-body' );
-                                    
-                                    $projectBody.collapse( {
-                                            parent: '#projectsAccordion',
-                                            toggle: false
-                                        } )
-                                        .collapse( 'hide' );
-                                    
-                                    $project.find( '.accordion-toggle' )
-                                        .on( Modernizr.touch ? 'touchend' : 'mouseup', $.proxy( OnProjectToggle, $projectBody ) );
-                                        
-                                } );
-                                
-                            }
-                            
-                            // add calendar
-                            
-                            _elements.$class.append( _elements.$classCalendar );
+                            ShowProjects();
+                            ShowCalendar();
                             
                             // resize
                             
-                            $( window ).resize();
+                            _throttled.OnResize();
                             
                             // ready
                             
@@ -338,19 +359,11 @@ var CKH = ( function ( _main ) {
 			
 			} );
 			
-			// if this class url is same as one in local storage
-			
-			if ( typeof _currentClassLocalStorageURL !== 'undefined' && url === _currentClassLocalStorageURL ) {
-				
-				$classButtonToTrigger = $button;
-				
-			}
-			
 		} );
         
         // add fullscreen presentation callback
         
-        _elements.$presentationFullscreenToggle.on( Modernizr.touch ? 'touchend' : 'mouseup', OnFullscreenToggle );
+        //_elements.$presentationFullscreenToggle.on( Modernizr.touch ? 'touchend' : 'click', OnFullscreenToggle );
         
         // for each presentation button
     	
@@ -369,7 +382,7 @@ var CKH = ( function ( _main ) {
 			
 			// listen for activate
 			
-			$button.on( Modernizr.touch ? 'touchend' : 'mouseup', function () {
+			$button.on( Modernizr.touch ? 'touchend' : 'click', function () {
                 
 				if ( typeof url === 'string' && url.length > 0 ) {// && url !== _currentPresentationURL ) {
                     
@@ -429,24 +442,20 @@ var CKH = ( function ( _main ) {
 		
 		// listen for resize
 		
-		$( window ).on( 'resize', $.throttle( 500, OnResize ) );
+		$( window ).on( 'resize', _throttled.OnResize );
 		
 		// resize once
 		
-	    $( window ).resize();
+	    _throttled.OnResize();
         
-        // init initial presentation
+        // show overview tab
         
-        requestTimeout( InitPresentation, 1000 );
-		
-		// if has class button to trigger
-		
-		if ( typeof $classButtonToTrigger !== 'undefined' && $classButtonToTrigger.length > 0 ) {
-			
-			$classButtonToTrigger.trigger( Modernizr.touch ? 'touchend' : 'mouseup' );
-			
-		}
-		
+        _elements.$tabToggles.filter( '[href="#overview"]' ).tab( 'show' );
+        
+        // wait to setup initial presentation
+        
+        _elements.$tabToggles.filter( '[href="#presentations"]' ).one( 'shown', InitPresentation );
+        
 	}
     
     /*===================================================
@@ -457,29 +466,44 @@ var CKH = ( function ( _main ) {
 	
 	function OnResize() {
 		
-        var windowHeight = $( window ).innerHeight(),
-            windowHeightLessMainNav = windowHeight - _mainNavHeight,
+        var windowHeight,
+            windowHeightLessMainNav,
             presentationHeight;
         
-        // set presentation container min height
+        if ( _currentTab === '#presentations' ) {
+            
+            windowHeight = $( window ).innerHeight();
+            windowHeightLessMainNav = windowHeight - _mainNavHeight;
+            
+            // set presentation container min height
+            
+            if ( $( window ).innerWidth() < 768 ) {
+                
+                presentationHeight = windowHeight - _presentationsPaddingVertical;
+                
+            }
+            else if ( _presentationFullscreenState === true ) {
+                
+                presentationHeight = windowHeightLessMainNav - _elements.$presentationsControl.outerHeight( true );
+                
+            }
+            else {
+                
+                presentationHeight = windowHeightLessMainNav - _elements.$presentationsControl.outerHeight( true ) - _presentationsPaddingVertical;
+                
+            }
+            
+            _elements.$presentation.css( 'min-height', presentationHeight );
+            
+        }
         
-        if ( $( window ).innerWidth() < 768 ) {
-            
-            presentationHeight = windowHeight - _presentationsPaddingVertical;
-            
-        }
-        else if ( _presentationFullscreenState === true ) {
-            
-            presentationHeight = windowHeightLessMainNav - _elements.$presentationsHeader.outerHeight( true );
-            
-        }
-        else {
-            
-            presentationHeight = windowHeightLessMainNav - _elements.$presentationsHeader.outerHeight( true ) - _presentationsPaddingVertical;
-            
-        }
+        // class nav
         
-        _elements.$presentation.css( 'min-height', presentationHeight );
+        if ( _currentTab === '#classes' ) {
+            
+            _elements.$classNavWrapper.css( 'height', _elements.$classNav.outerHeight( true ) );
+            
+        }
         
 	}
     
@@ -545,7 +569,7 @@ var CKH = ( function ( _main ) {
             
             // Resize
             
-            $( window ).resize();
+            _throttled.OnResize();
             
             // delay focus/move
             
@@ -582,96 +606,101 @@ var CKH = ( function ( _main ) {
     
     /*===================================================
     
-    presentations
+    classes
     
     =====================================================*/
     
-    function InitPresentation () {
+    function AddClass ( parameters ) {
         
-        var $presentationPrev,
-            $steps;
+        var name,
+            navigation;
         
-        // handle new steps
-        
-        $steps = _elements.$presentationPlaceholder.find( '.step' );
-        
-        if ( $steps.length > 0 ) {
+        if ( parameters && typeof parameters.name !== 'undefined' ) {
             
-            // store current presentation
+            // properties
             
-            $presentationPrev = _elements.$presentation;
+            name = $.trim( parameters.name );
             
-            // add new presentation container
+            // handle name and summary
             
-            _elements.$presentation = _cloneables.$presentation.clone( true ).insertAfter( _elements.$presentationPlaceholder );
+            _elements.$className.html( name );
             
-            // deinit current presentation and remove when done
-            
-            if ( $presentationPrev.jmpress( 'initialized' ) ) {
+            if ( typeof parameters.summary === 'string' ) {
                 
-                _elements.$presentationsRemove = _elements.$presentationsRemove.add( $presentationPrev );
-                
-                $presentationPrev.addClass( 'hidden' ).jmpress( 'deinit' );
+                _elements.$classSummary.removeClass( 'hidden' ).html( parameters.summary );
                 
             }
-            // remove instantly
             else {
                 
-                $presentationPrev.remove();
+                _elements.$classSummary.addClass( 'hidden' );
                 
             }
             
-            // add steps and init presentation
+            // links
             
-            _elements.$presentation.append( $steps ).jmpress();
+            _elements.$classNavListMain.empty();
+            _elements.$classNavListAlt.empty();
             
-            // ensure canvas has no width or height, else will start misaligned
+            navigation = parameters.navigation;
             
-            _elements.$presentation.jmpress( 'canvas' ).width( 0 ).height( 0 );
-            
-            // update pretty print
-            
-            prettyPrint();
-            
-            // resize
-            
-            $( window ).resize();
-            
-            // when images loaded
-            
-            _elements.$presentation.imagesLoaded( function() {
+            if ( navigation.main ) {
                 
-                // hide setup
-                
-                _elements.$presentationSetup.addClass( 'hidden' );
-                
-                // for each step
-                
-                $steps.each( function ( i, element ) {
+                $.each( navigation.main, function ( i, element ) {
                     
-                    var $element = $( element ),
-                        stepData = $element.data('stepData');
-                    
-                    // set viewport
-                    
-                    stepData.viewPortWidth = $element.outerWidth( true );
-                    stepData.viewPortHeight = $element.outerHeight( true );
+                    AddClassLink( element, _elements.$classNavListMain );
                     
                 } );
                 
-                // resize
+            }
+            
+            if ( navigation.alt ) {
                 
-                $( window ).resize();
+                $.each( navigation.alt, function ( i, element ) {
+                    
+                    AddClassLink( element, _elements.$classNavListAlt );
+                    
+                } );
                 
-            });
+            }
+            
+            AddClassLink( '<a href="#classes"><h6>' + name + '</h6></a>', _elements.$classNavListAlt );
+            
+            // misc
+            
+            AddProjects( parameters.projects );
+            AddCalendar( parameters.calendar );
+            
             
         }
         
     }
     
-    function MoveToPresentation() {
+    function AddClassLink( link, $list ) {
         
-        _elements.$presentations[0].scrollIntoView( true );
+        var $link = $( link ),
+            $target;
+        
+        if ( $list && $list.length > 0 && _elements.$classNav.find( $link ).length === 0 ) {
+            
+            // if is in page link
+            
+            if ( $link.attr( 'href' ).charAt( 0 ) === '#' ) {
+                
+                $target = $( $link.attr( 'href' ) );
+                
+                $link.on( Modernizr.touch ? 'touchend' : 'click', function ( e ) {
+                    
+                    $target[0].scrollIntoView( true );
+                    
+                    e.preventDefault();
+                    
+                } )
+                
+            }
+            
+            $link.appendTo( $list ).wrap( $( '<li></li>' ) );
+            
+        }
         
     }
     
@@ -681,7 +710,7 @@ var CKH = ( function ( _main ) {
     
     =====================================================*/
     
-    function AddProject ( parameters ) {
+    function AddProjects ( parameters ) {
         
         var i, il,
             $project,
@@ -696,13 +725,25 @@ var CKH = ( function ( _main ) {
             $link,
             requirements,
             $requirements,
-			requirementIds = [],
+    		requirementIds = [],
 			requirementIdCounts = {},
             requirementId,
             requirementText,
             $requirement;
         
-        if ( parameters && typeof parameters.name !== 'undefined' && typeof parameters.summary !== 'undefined' && typeof parameters.time !== 'undefined' ) {
+        // if parameters is list, do recursive add
+        
+        if ( Object.prototype.toString.call( parameters ) === '[object Array]' ) {
+            
+            for ( i = 0, il = parameters.length; i < il; i++ ) {
+                
+                AddProjects( parameters[ i ] );
+                
+            }
+            
+        }
+        // handle single project
+        else if ( parameters && typeof parameters.name !== 'undefined' && typeof parameters.summary !== 'undefined' && typeof parameters.time !== 'undefined' ) {
             
             // properties
             
@@ -711,7 +752,7 @@ var CKH = ( function ( _main ) {
             
             // init new project
             
-            $project = $( '<div class="accordion-group project"><div class="accordion-heading"><a class="accordion-toggle"><h3 class="project-name"></h3></a></div><div class="accordion-body"><div class="accordion-inner"><div class="row"><div class="span3"><div class="hero-anchor"><h6>Summary</h6><p class="project-summary"></p></div><div class="hero-anchor"><h6>What You Can Use</h6><p class="project-usables"></p></div><div class="hero-anchor"><h6>Timeline</h6><p class="project-time"></p><div class="progress progress-success progress-striped"><div id="puzzleActiveScoreBar" class="bar project-timebar" style="width: 0%;"></div></div></div><div class="hero-anchor project-files"><h6>Files</h6></div><div class="hero-anchor project-links"><h6>Links</h6></div></div><div class="span8 project-requirements"><h6>Requirements</h6></div></div></div></div></div>' );
+            $project = $( '<div class="accordion-group project"><div class="accordion-heading"><a class="accordion-toggle"><h4 class="project-name"></h4></a></div><div class="accordion-body"><div class="accordion-inner"><div class="row"><div class="span3"><div class="hero-anchor"><h6>Summary</h6><p class="project-summary"></p></div><div class="hero-anchor"><h6>What You Can Use</h6><p class="project-usables"></p></div><div class="hero-anchor"><h6>Timeline</h6><p class="project-time"></p><div class="progress progress-success progress-striped"><div id="puzzleActiveScoreBar" class="bar project-timebar" style="width: 0%;"></div></div></div><div class="hero-anchor project-files"><h6>Files</h6></div><div class="hero-anchor project-links"><h6>Links</h6></div></div><div class="span8 project-requirements"><h6>Requirements</h6></div></div></div></div></div>' );
             
             // properties
             
@@ -836,7 +877,7 @@ var CKH = ( function ( _main ) {
                     // set properties
                     
                     $requirement.attr( 'id', requirementId )
-                        .on( Modernizr.touch ? 'touchend' : 'mouseup', OnRequirementToggle )
+                        .on( Modernizr.touch ? 'touchend' : 'click', OnRequirementToggle )
                         .find( '.requirement-item-text' )
                         .html( requirementText );
                     
@@ -857,21 +898,63 @@ var CKH = ( function ( _main ) {
             
             _elements.$classProjects = _elements.$classProjects.add( $project );
             
-            // if class ready
+        }
+        
+    }
+    
+    function ShowProjects () {
+        
+        // init projects container
+        
+        _elements.$classProjectsContainer = _cloneables.$projectsContainer.clone( true );
+        
+        // add projects container
+        
+        _elements.$classContent.append( _elements.$classProjectsContainer );
+        
+        // init accordion
+        
+        _elements.$classProjectsAccordion = _cloneables.$projectsAccordion.clone( true );
+        
+        // add accordion
+        
+        _elements.$classProjectsContainer.append( _elements.$classProjectsAccordion );
+        
+        if ( _elements.$classProjects.length > 0 ) {
             
-            if ( _currentClassReady === true ) {
+            // hide projects warning
+            
+            _elements.$classProjectsContainer.find( '#projectsEmptyWarning' ).addClass( 'hidden' );
+            
+            // for each project
+            
+            _elements.$classProjects.each( function ( i, element ) {
                 
-                // hide projects warning
+                var $project = $( this ),
+                    $projectBody = $project.find( '.accordion-body' );
                 
-                _elements.$classProjectsContainer.find( '#projectsEmptyWarning' ).addClass( 'hidden' );
-                
-                // add project
+                // add to display
                 
                 _elements.$classProjectsAccordion.append( $project );
                 
-            }
+                // setup accordion behavior
+                
+                $projectBody.collapse( {
+                        parent: '#projectsAccordion',
+                        toggle: false
+                    } )
+                    .collapse( 'hide' );
+                
+                $project.find( '.accordion-toggle' )
+                    .on( Modernizr.touch ? 'touchend' : 'click', $.proxy( OnProjectToggle, $projectBody ) );
+                    
+            } );
             
         }
+        
+        // add link to navigation
+        
+        AddClassLink( _elements.$classProjectsLink, _elements.$classNavListMain );
         
     }
     
@@ -884,10 +967,6 @@ var CKH = ( function ( _main ) {
     function AddCalendar ( parameters ) {
         
         if ( parameters && parameters.embed || parameters.link ) {
-            
-            // remove current
-            
-            _elements.$classCalendar.remove();
             
             // init calendar
             
@@ -914,15 +993,118 @@ var CKH = ( function ( _main ) {
                     
             }
             
+        }
+        
+    }
+    
+    function ShowCalendar () {
+        
+        if ( _elements.$classCalendar.length > 0 ) {
+            
             // add calendar
             
-            if ( _currentClassReady === true ) {
+            _elements.$classContent.append( _elements.$classCalendar );
+            
+            // add link to navigation
+            
+            AddClassLink( _elements.$classCalendarLink, _elements.$classNavListMain );
+        
+        }
+        
+    }
+    
+    /*===================================================
+    
+    presentations
+    
+    =====================================================*/
+    
+    function InitPresentation () {
+        
+        var $presentationPrev,
+            $steps;
+        
+        // handle new steps
+        
+        $steps = _elements.$presentationPlaceholder.find( '.step' );
+        
+        if ( $steps.length > 0 ) {
+            
+            // store current presentation
+            
+            $presentationPrev = _elements.$presentation;
+            
+            // add new presentation container
+            
+            _elements.$presentation = _cloneables.$presentation.clone( true ).insertAfter( _elements.$presentationPlaceholder );
+            
+            // deinit current presentation and remove when done
+            
+            if ( $presentationPrev.jmpress( 'initialized' ) ) {
                 
-                _elements.$class.append( _elements.$classCalendar );
+                _elements.$presentationsRemove = _elements.$presentationsRemove.add( $presentationPrev );
+                
+                $presentationPrev.addClass( 'hidden' ).jmpress( 'deinit' );
+                
+            }
+            // remove instantly
+            else {
+                
+                $presentationPrev.remove();
                 
             }
             
+            // add steps and init presentation
+            
+            _elements.$presentation.append( $steps ).jmpress();
+            
+            // ensure canvas has no width or height, else will start misaligned
+            
+            _elements.$presentation.jmpress( 'canvas' ).width( 0 ).height( 0 );
+            
+            // update pretty print
+            
+            prettyPrint();
+            
+            // resize
+            
+            _throttled.OnResize();
+            
+            // when images loaded
+            
+            _elements.$presentation.imagesLoaded( function() {
+                
+                // hide setup
+                
+                _elements.$presentationSetup.addClass( 'hidden' );
+                
+                // for each step
+                
+                $steps.each( function ( i, element ) {
+                    
+                    var $element = $( element ),
+                        stepData = $element.data('stepData');
+                    
+                    // set viewport
+                    
+                    stepData.viewPortWidth = $element.outerWidth( true );
+                    stepData.viewPortHeight = $element.outerHeight( true );
+                    
+                } );
+                
+                // resize
+                
+                _throttled.OnResize();
+                
+            });
+            
         }
+        
+    }
+    
+    function MoveToPresentation() {
+        
+        _elements.$presentations[0].scrollIntoView( true );
         
     }
     
