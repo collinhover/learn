@@ -1,3 +1,8 @@
+/*!
+ *
+ * @author Collin Hover / http://collinhover.com
+ *
+ */
 var CKH = ( function ( _main ) {
 	
 	var _jmpressDefaults,
@@ -50,11 +55,7 @@ var CKH = ( function ( _main ) {
 			"js/jquery.easing-1.3.min.js",
             "js/jquery.imagesloaded.min.js"
 		] )
-        .wait()
-        .script( [
-    		"js/jquery.sticky.custom.js"
-        ] )
-		.wait( Init );
+        .wait( Init );
 	
 	/*===================================================
     
@@ -222,6 +223,14 @@ var CKH = ( function ( _main ) {
                     $toggle.tab('show');
                     
                 }
+                else if ( $section.length > 0 ) {
+                    
+                    window.location.hash = '#' + $section.attr( 'id' );
+                    $section[0].scrollIntoView( true );
+                    
+                    e.preventDefault();
+                    
+                }
                 
             } )
             .on( 'show', function () {
@@ -240,7 +249,7 @@ var CKH = ( function ( _main ) {
                 
                 if ( _currentTab === '#presentations' && _elements.$presentation.jmpress('initialized') === true ) {
                     
-                    _elements.$presentation.jmpress( 'select', _elements.$presentation.jmpress( 'active' ) );
+                    FitPresentation();
                     
                 }
                 
@@ -430,9 +439,6 @@ var CKH = ( function ( _main ) {
                             // init presentation
                             
                             InitPresentation();
-                            
-                            // move screen to presentation
-                            
                             MoveToPresentation();
                             
                             // focus presentation so we can start navigating right away
@@ -1106,7 +1112,7 @@ var CKH = ( function ( _main ) {
             
             // resize
             
-            _throttled.OnResize();
+            OnResize();
             
             // when images loaded
             
@@ -1132,7 +1138,9 @@ var CKH = ( function ( _main ) {
                 
                 // resize
                 
-                _throttled.OnResize();
+                OnResize();
+                
+                FitPresentation();
                 
             });
             
@@ -1140,9 +1148,15 @@ var CKH = ( function ( _main ) {
         
     }
     
-    function MoveToPresentation() {
+    function MoveToPresentation () {
         
         _elements.$presentations[0].scrollIntoView( true );
+        
+    }
+    
+    function FitPresentation () {
+        
+        _elements.$presentation.jmpress( 'select', _elements.$presentation.jmpress( 'active' ) );
         
     }
     
