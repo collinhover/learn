@@ -70,6 +70,9 @@ var CKH = ( function ( _main ) {
 	
 	function OnReady () {
         
+        var id,
+            $initialTabToggle;
+        
         // jmpress defaults
         
         _jmpressDefaults = $.jmpress('defaults');
@@ -185,6 +188,7 @@ var CKH = ( function ( _main ) {
         
         _mainNavHeight = _elements.$mainNav.outerHeight( true );
         _presentationsPaddingVertical = parseInt( _elements.$presentations.css( 'padding-top' ) ) + parseInt( _elements.$presentations.css( 'padding-bottom' ) );
+        _presentationFullscreenState = _elements.$presentations.hasClass( 'fullscreen' );
         
         // for each main nav link
         
@@ -219,19 +223,28 @@ var CKH = ( function ( _main ) {
                     
                 }
                 
+            } )
+            .on( 'show', function () {
+                
+                _currentTab = $toggle.attr( 'href' );
+                
+            } )
+            .on( 'shown', function () {
+                
+                OnResize();
+                
                 if ( $section.length > 0 ) {
+                    window.location.hash = '#' + $section.attr( 'id' );
                     $section[0].scrollIntoView( true );
                 }
                 
-                e.preventDefault();
+                if ( _currentTab === '#presentations' && _elements.$presentation.jmpress('initialized') === true ) {
+                    
+                    _elements.$presentation.jmpress( 'select', _elements.$presentation.jmpress( 'active' ) );
+                    
+                }
                 
-            } )
-            .on( 'show', function ( e ) {
-                
-                _currentTab = $( e.target ).attr( 'href' );
-                
-            } )
-            .on( 'shown', _throttled.OnResize );
+            } );
             
         } );
         
@@ -443,18 +456,59 @@ var CKH = ( function ( _main ) {
 		// listen for resize
 		
 		$( window ).on( 'resize', _throttled.OnResize );
-		
-		// resize once
-		
-	    _throttled.OnResize();
-        
-        // show overview tab
-        
-        _elements.$tabToggles.filter( '[href="#overview"]' ).tab( 'show' );
         
         // wait to setup initial presentation
         
         _elements.$tabToggles.filter( '[href="#presentations"]' ).one( 'shown', InitPresentation );
+        
+        // get url hash for initial tab
+        
+        if ( window.location.hash && window.location.hash.length > 0 ) {
+            
+            $initialTabToggle = _elements.$tabToggles.filter( '[href="' + window.location.hash + '"]' );
+            
+            // nothing found, search children of tab panes to find hash
+            
+            if ( $initialTabToggle.length === 0 ) {
+                
+                id = window.location.hash.replace( '#', '' );
+                
+                _elements.$tabs.each( function () {
+                    
+                    var $tab = $( this ),
+                        $child;
+                    
+                    $child = $tab.find( '[id="' + id + '"]' );
+                    
+                    if ( $child.length > 0 ) {
+                        
+                        $initialTabToggle = _elements.$tabToggles.filter( '[href="#' + $tab.attr( 'id' ) + '"]' );
+                        
+                        return false;
+                        
+                    }
+                    
+                } );
+                
+                if ( $initialTabToggle.length > 1 ) {
+                    
+                    $initialTabToggle = $initialTabToggle.filter( '[data-section="#' + id + '"]' );
+                    
+                }
+                
+            }
+            
+        }
+        
+        if ( typeof $initialTabToggle === 'undefined' || $initialTabToggle.length === 0 ) {
+            
+            $initialTabToggle = _elements.$tabToggles.filter( '[href="#overview"]' );
+            
+        }
+        
+        // show initial tab
+        
+        $initialTabToggle.tab( 'show' );
         
 	}
     
@@ -465,7 +519,7 @@ var CKH = ( function ( _main ) {
     =====================================================*/
 	
 	function OnResize() {
-		
+	    
         var windowHeight,
             windowHeightLessMainNav,
             presentationHeight;
@@ -479,7 +533,7 @@ var CKH = ( function ( _main ) {
             
             if ( $( window ).innerWidth() < 768 ) {
                 
-                presentationHeight = windowHeight - _presentationsPaddingVertical;
+                presentationHeight = windowHeight - _elements.$presentationsControl.outerHeight( true ) - _presentationsPaddingVertical;
                 
             }
             else if ( _presentationFullscreenState === true ) {
@@ -681,22 +735,6 @@ var CKH = ( function ( _main ) {
             $target;
         
         if ( $list && $list.length > 0 && _elements.$classNav.find( $link ).length === 0 ) {
-            
-            // if is in page link
-            
-            if ( $link.attr( 'href' ).charAt( 0 ) === '#' ) {
-                
-                $target = $( $link.attr( 'href' ) );
-                
-                $link.on( Modernizr.touch ? 'touchend' : 'click', function ( e ) {
-                    
-                    $target[0].scrollIntoView( true );
-                    
-                    e.preventDefault();
-                    
-                } )
-                
-            }
             
             $link.appendTo( $list ).wrap( $( '<li></li>' ) );
             
