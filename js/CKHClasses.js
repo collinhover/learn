@@ -431,7 +431,7 @@ var CKH = ( function ( _main ) {
 							// change setup to error
 							
                             _elements.$presentationSetup.removeClass( 'alert-success' ).addClass( 'alert-danger' );
-                            _elements.$presentationSetupInner.html( '<strong>Oops, this is embarrassing!</strong> Looks like that presentation got lost somewhere... try again or <a href="#overview">let me know</a>.' );
+                            _elements.$presentationSetupInner.html( '<strong>Oops, this is embarrassing!</strong> Looks like that presentation got lost somewhere... try again or let me know.' );
 
 						}
 						else {
