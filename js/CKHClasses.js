@@ -314,9 +314,8 @@ var CKH = ( function ( _main ) {
                     _currentClassReady = false;
                     _elements.$classProjects = $();
                     _elements.$classCalendar= $();
-					_elements.$classContent.empty()
-                        .addClass( 'hidden' );
-                    _elements.$classHeader.addClass( 'hidden' );
+					_elements.$classContent.empty().removeClass( 'hidden' );
+                    _elements.$classHeader.removeClass( 'hidden' );
 					
 					// change setup to loading
 					
@@ -354,11 +353,6 @@ var CKH = ( function ( _main ) {
                             // hide setup
     					    
 						    _elements.$classSetup.addClass( 'hidden' );
-                            
-                            // class content
-                            
-                            _elements.$classHeader.removeClass( 'hidden' );
-                            _elements.$classContent.removeClass( 'hidden' );
                             
                             // misc
                             
@@ -983,11 +977,7 @@ var CKH = ( function ( _main ) {
                 
                 // setup accordion behavior
                 
-                $projectBody.collapse( {
-                        parent: '#projectsAccordion',
-                        toggle: false
-                    } )
-                    .collapse( 'hide' );
+                $projectBody.addClass( 'collapse' );
                 
                 $project.find( '.accordion-toggle' )
                     .on( Modernizr.touch ? 'touchend' : 'click', $.proxy( OnProjectToggle, $projectBody ) );
