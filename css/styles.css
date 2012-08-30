@@ -8910,8 +8910,14 @@ h6 {
   color: #666;
   margin: 0;
 }
-small {
+h1 small,
+h2 small,
+h3 small,
+h4 small,
+h5 small,
+h6 small {
   color: #666;
+  font-size: 85%;
 }
 .highlight {
   font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
