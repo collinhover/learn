@@ -45,6 +45,28 @@ END imports */
 /* functions 
 -------------------------*/
 
+.logo-gradient {
+    background: #635cd0; /* Old browsers */
+    background-image: -moz-linear-gradient(top, #635cd0 0%, #39a4f4 51%, #53ccbe 100%); /* FF3.6+ */
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#635cd0), color-stop(51%,#39a4f4), color-stop(100%,#53ccbe)); /* Chrome,Safari4+ */
+    background-image: -webkit-linear-gradient(top, #635cd0 0%,#39a4f4 51%,#53ccbe 100%); /* Chrome10+,Safari5.1+ */
+    background-image: -o-linear-gradient(top, #635cd0 0%,#39a4f4 51%,#53ccbe 100%); /* Opera 11.10+ */
+    background-image: -ms-linear-gradient(top, #635cd0 0%,#39a4f4 51%,#53ccbe 100%); /* IE10+ */
+    background-image: linear-gradient(to bottom, #635cd0 0%,#39a4f4 51%,#53ccbe 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#635cd0', endColorstr='#53ccbe',GradientType=0 ); /* IE6-9 */
+}
+
+.logo-gradient-radial {
+    background: #53ccbe; /* Old browsers */
+    background: -moz-radial-gradient(center, ellipse cover, #53ccbe 0%, #39a4f4 50%, #635cd0 100%); /* FF3.6+ */
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#53ccbe), color-stop(50%,#39a4f4), color-stop(100%,#635cd0)); /* Chrome,Safari4+ */
+    background: -webkit-radial-gradient(center, ellipse cover, #53ccbe 0%,#39a4f4 50%,#635cd0 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-radial-gradient(center, ellipse cover, #53ccbe 0%,#39a4f4 50%,#635cd0 100%); /* Opera 12+ */
+    background: -ms-radial-gradient(center, ellipse cover, #53ccbe 0%,#39a4f4 50%,#635cd0 100%); /* IE10+ */
+    background: radial-gradient(ellipse at center, #53ccbe 0%,#39a4f4 50%,#635cd0 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#53ccbe', endColorstr='#635cd0',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
 .round (@radius) {
     width: @radius;
     height: @radius;
@@ -212,6 +234,13 @@ a.dim:hover, button.dim:hover, .btn.dim:hover {
 	font-weight: normal;
 }
 
+.inline-type {
+    .inline-block;
+	vertical-align: middle;
+    padding: 0 5px;
+	margin: 0;
+}
+
 h3 {
 	margin-bottom: 5px;
 }
@@ -231,9 +260,10 @@ h6 {
     margin: 0;
 }
 
-h1, h2, h3, h4, h5, h6 {
+p, h1, h2, h3, h4, h5, h6 {
     
     small {
+        color: #999;
         font-size: 85%;
     }
     
@@ -698,6 +728,32 @@ a, .navbar .nav > li > a {
 	}
 }
 
+.table-default {
+    border-collapse:separate;
+    border-spacing: 2px;
+    border: 1px solid black;
+    
+    thead, tbody, tr, td, th {
+        border-width: inherit;
+        border-style: inherit;
+        border-color: inherit;
+        border-radius: inherit;
+    }
+    
+    td, th {
+        padding: 5px;
+    }
+    
+    td {
+        text-align: left;
+    }
+    
+    th {
+        text-align: center;
+    }
+    
+}
+
 /* navbar 
 -------------------------*/
 
@@ -796,7 +852,7 @@ a, .navbar .nav > li > a {
 		margin: 0;
 		border-color: #D5D5D5;
 		border-width: 0 0 1px;
-		.box-shadow(~"inset 0 -1px 0 rgba(0, 0, 0, .1), 0 1px 10px rgba(0, 0, 0, .1)");//inset 0 1px 0 white, 0 1px 5px rgba(0, 0, 0, .1)");
+		.box-shadow(~"inset 0 -1px 0 rgba(0, 0, 0, .1), 0 1px 10px rgba(0, 0, 0, .1)");
 		filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
 	}
     
@@ -1411,6 +1467,7 @@ a, .navbar .nav > li > a {
     .step {
         .container;
         margin: 0;
+        padding: 20px;
         .box-sizing(border-box);
         font-size: 26px;
         line-height: 1.25;
@@ -1453,8 +1510,25 @@ a, .navbar .nav > li > a {
             margin-bottom: 15px;
         }
         
+        p, h1, h2, h3, h4, h5, h6 {
+            
+            small {
+                color: #666;
+            }
+            
+        }
+        
+        
+        li {
+            line-height: inherit;
+        }
+        
         img {
             padding: 10px;
+        }
+        
+        table, [class^="table"] {
+            display: inline-table;
         }
         
         .pixel {

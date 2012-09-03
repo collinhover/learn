@@ -1,0 +1,88 @@
+
+<div class="step container container-center">
+    
+    <img src="http://placehold.it/256x256" alt="" class="iconk">
+    <h1 class="superhero-type">Flexibility</h1>
+    <h2 class="sidekick-type">is the key to accessible information</h2>
+    
+</div>
+
+<!--
+
+Flexibility is the key to accessible information
+
+Think about the space available to a website
+
+Our devices have fixed size screens and here the space is limited
+
+User interface design gives us scroll bars and with these space is unlimited
+
+However, on the web we begin at a middle ground
+
+We stay within the horizontal space of the screen and expand vertically
+
+More uncommonly, we stay within the vertical space of the screen and expand horizontally
+
+And rarely, we expand in both directions
+
+Any of these experiences is quite unlike any printed material
+
+We still begin with a grid, but the difference is crucial: a web grid must be flexible where a print grid is predefined
+
+Grids are arguably the most important aspect of design, and no where is this more true than on the web
+
+A book cares nothing for different sizes and the reader must adapt to it
+
+But a website, it adapts to be accessible to the user, whether viewed on a desktop or phone
+
+However, checking for mobile, desktop, or browser is fools-gold
+
+Technology changes so quickly that any device or browser could suddenly change support for a feature
+
+Checking for feature support is much more stable
+
+To create stable grids for all devices, use CSS @media queries
+
+A @media query defines set of rules that will take effect during a page state
+
+A @media query takes the form of “@media state1 and state2 and...”
+
+Each @media query state is a phrase such as “screen” or “print”
+
+But how do we detect desktop vs mobile without detecting the device itself?
+
+Desktop devices have large screen sizes, between 768px and 1600px width
+
+Tablet devices have medium screen sizes, up to 768px width in portrait mode
+
+Phones have small screen sizes, up to 480px maximum width in landscape mode
+
+A @media query can detect screen sizes using the state phrases “min-” and “max-”
+
+The min- states takes the form of “min-dimension(size)”
+
+The max- states takes the form of “max-dimension(size)”
+
+For example, to detect a phone use: @media max-width(480px)
+
+For example, to detect a tablet use: @media max-width(767px)
+
+For example, to detect a small desktop use: @media min-width(768px) and max-width(979px)
+
+For example, to detect a large desktop use: @media min-width(1200px)
+
+With these @media queries, we can define new css rules for each screen size
+
+Remember, small screen sizes are much more friendly to larger sizes and vertical layouts!
+
+For phones and small tablets, consider changing the page into a simple vertical stack with 20 px font-size
+
+To change a row/column grid into a vertical stack:
+1. Set columns float properties to none
+2. Set columns display to block
+3. Set columns width to auto or 100%
+4. Set row & column margins to 0
+
+In the case that a page must retain the grid, use a fluid grid with % widths instead of px widths for universal support across screen sizes
+
+-->

@@ -8907,7 +8907,6 @@ h4 {
 }
 h6 {
   text-transform: uppercase;
-  color: #666;
   margin: 0;
 }
 h1 small,
@@ -8916,7 +8915,6 @@ h3 small,
 h4 small,
 h5 small,
 h6 small {
-  color: #666;
   font-size: 85%;
 }
 .highlight {

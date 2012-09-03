@@ -1,41 +1,1114 @@
 
 <div class="step container container-center">
     
-    <img src="http://placehold.it/256x256" alt="Highlevel">
+    <img src="img/high_level.png" alt="Highlevel">
     <h1 class="superhero-type">Lists <small>& </small>Tables</h1>
-    <h2 class="sidekick-type">are high-level organizational elements</h1>
+    <h2 class="sidekick-type">are high-level organizational elements</h2>
+    <p><small>(What's his power level? Its over 9000!)</small></p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p>A <span class="highlight">high-level</span> element</p>
+    <h2>combines several simpler elements</h2>
+    <h3 class="sidekick-type">to create a complex result</h3>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p><small>For example,</small></p>
+    <div class="row">
+        <div class="span4">
+            <img src="img/list_64.png" alt="List">
+            <h1>a list</h1>
+            <p>is a container with a collection of information points</p>
+        </div>
+        <div class="span4">
+            <img src="img/blocking_64.png" alt="Table">
+            <h1>a table</h1>
+            <p>is a container with lots of sub-containers</p>
+        </div>
+    </div>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p>You could create a <span class="highlight">list</span> or <span class="highlight">table</span></p>
+    <h3 class="sidekick-type">using lots of div and paragraph elements</h3>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p>Instead, HTML provides us with semantic elements for both</p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <img src="img/list_64.png" alt="List" class="separate">
+    <p>To create a list, we use either</p>
+    <h2 class="sidekick-type">an <span class="logo-type-purple">ordered</span> or <span class="logo-type-blue">unordered</span> <span class="logo-type-green">list</span></h2>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <div class="row">
+        <div class="span4">
+            <div class="container-left">
+                <pre class="prettyprint linenums">
+&lt;ol&gt;...&lt;/ol&gt;</pre>
+            </div>
+        </div>
+    </div>
+    <p>The <span class="highlight">ordered list</span> is denoted by ol, and is</p>
+    <h3 class="separate">used for sequential information</h3>
+    <div class="row">
+        <div class="span1">
+            <p><small>ex:</small></p>
+        </div>
+        <div class="span3 container-left">
+            <ol>
+                <li>List item</li>
+                <li>List item</li>
+                <li>List item</li>
+            </ol>
+        </div>
+    </div>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <div class="row">
+        <div class="span4">
+            <div class="container-left">
+                <pre class="prettyprint linenums">
+&lt;ul&gt;...&lt;/ul&gt;</pre>
+            </div>
+        </div>
+    </div>
+    <p>The <span class="highlight">unordered list</span> is denoted by ul, and is</p>
+    <h3 class="separate">used for general information</h3>
+    <div class="row">
+        <div class="span1">
+            <p><small>ex:</small></p>
+        </div>
+        <div class="span3 container-left">
+            <ul>
+                <li>List item</li>
+                <li>List item</li>
+                <li>List item</li>
+            </ul>
+        </div>
+    </div>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <img src="img/alertcircle_64.png" alt="Alert" class="separate">
+    <p>The <span class="highlight">unordered list</span> is used most commonly and</p>
+    <h2 class="sidekick-type">works <span class="underline">very well</span> for navigation</h2>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <div class="row">
+        <div class="span6">
+            <div class="container-left">
+                <pre class="prettyprint linenums">
+&lt;ul&gt;
+    &lt;li&gt;...&lt;/li&gt;
+&lt;/ul&gt;</pre>
+            </div>
+        </div>
+    </div>
+    <p><span class="highlight">List items</span> are denoted by li, and</p>
+    <h3>are a single point of information</h3>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <div class="row">
+        <div class="span6">
+            <div class="container-left">
+                <pre class="prettyprint linenums">
+ol, ul {
+    list-style-type: none;
+}</pre>
+            </div>
+        </div>
+    </div>
+    <p>The list’s <span class="highlight">list-style-type</span> property defines</p>
+    <h3>the appearance of a bullet point</h3>
+    <p><small>(common values are circle, square, and none)</small></p>
+    <div class="row">
+        <div class="span1">
+            <p><small>ex:</small></p>
+        </div>
+        <div class="span3 container-left">
+            <ul style="list-style-type: none;">
+                <li>List item</li>
+                <li>List item</li>
+                <li>List item</li>
+            </ul>
+        </div>
+    </div>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <div class="row">
+        <div class="span8">
+            <div class="container-left">
+                <pre class="prettyprint linenums">
+ol, ul {
+    list-style-position: outside;
+}</pre>
+            </div>
+        </div>
+    </div>
+    <p>The list’s <span class="highlight">list-style-position</span> property defines</p>
+    <h3>where the bullet point will appear</h3>
+    <p><small>(common values are outside and inside)</small></p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <img src="img/alertcircle_64.png" alt="Alert" class="separate">
+    <p>By default lists display vertically, but to create a <span class="highlight">horizontal list</span> set the</p>
+    <h2 class="sidekick-type">list item display property to inline</h2>
+    <p><small>(or inline-block)</small></p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    
+    <p><small>a horizontal list may look like this:</small></p>
+    <ul>
+        <li style="display: inline;">List item</li>
+        <li style="display: inline;">List item</li>
+        <li style="display: inline;">List item</li>
+        <li style="display: inline;">List item</li>
+        <li style="display: inline;">List item</li>
+    </ul>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <div class="row">
+        <div class="span5">
+            <div class="container-left">
+                <pre class="prettyprint linenums">
+li {
+    padding: 10px;
+}</pre>
+            </div>
+        </div>
+    </div>
+    <p>The list’s <span class="highlight">padding</span> or <span class="highlight">margin</span> properties define</p>
+    <h3>the spacing between list items</h3>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <img src="img/blocking_64.png" alt="Table" class="separate">
+    <p>We use <span class="highlight">tables</span> when</p>
+    <h2 class="sidekick-type"><span class="logo-type-purple">our</span> <span class="logo-type-blue">data is</span> <span class="logo-type-green">tabular</span></h2>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <img src="img/angry_cloud_128.png" alt="Angry Cloud" class="separate">
+    <p>For a long time, designers used tables to build entire websites because</p>
+    <h2 class="sidekick-type">tables provide easy organization</h2>
+    <p><small>(this is now considered bad practice)</small></p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p>In HTML, <span class="highlight">tables</span> are organized by</p>
+    <div class="row">
+        <div class="span4">
+            <img src="img/arrow_left_64.png" alt="Arrow">
+            <h1>row</h1>
+            <img src="img/arrow_right_64.png" alt="Arrow">
+        </div>
+        <div class="span3">
+            <h1>&nbsp;</h1>
+            <p><small>and then by</small></p>
+        </div>
+        <div class="span4">
+            <img src="img/arrow_up_64.png" alt="Arrow">
+            <h1>column</h1>
+            <img src="img/arrow_down_64.png" alt="Arrow">
+        </div>
+    </div>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <div class="row">
+        <div class="span6">
+            <div class="container-left">
+                <pre class="prettyprint linenums">
+&lt;table&gt;
+    
+    &lt;thead&gt;...&lt;/thead&gt;
+    
+&lt;/table&gt;</pre>
+            </div>
+        </div>
+    </div>
+    <p>A <span class="highlight">table header</span> is denoted by thead and</p>
+    <h3>contains column labels</h3>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <div class="row">
+        <div class="span6">
+            <div class="container-left">
+                <pre class="prettyprint linenums">
+&lt;table&gt;
+    &lt;thead&gt;...&lt;/thead&gt;
+    
+    &lt;tbody&gt;...&lt;/tbody&gt;
+    
+&lt;/table&gt;</pre>
+            </div>
+        </div>
+    </div>
+    <p>A <span class="highlight">table body</span> is denoted by tbody and</p>
+    <h3>contains all table content</h3>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <div class="row">
+        <div class="span6">
+            <div class="container-left">
+                <pre class="prettyprint linenums">
+&lt;table&gt;
+    &lt;thead&gt;...&lt;/thead&gt;
+    &lt;tbody&gt;
+        
+        &lt;tr&gt;...&lt;/tr&gt;
+        
+    &lt;/tbody&gt;
+&lt;/table&gt;</pre>
+            </div>
+        </div>
+    </div>
+    <p>A <span class="highlight">table row</span> is denoted by tr and</p>
+    <h3>contains all only table cells</h3>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <div class="row">
+        <div class="span6">
+            <div class="container-left">
+                <pre class="prettyprint linenums">
+&lt;table&gt;
+    &lt;thead&gt;...&lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            
+            &lt;td&gt;...&lt;/td&gt;
+            
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;</pre>
+            </div>
+        </div>
+    </div>
+    <p>A <span class="highlight">table cell</span> is denoted by td and</p>
+    <h3>contains information</h3>
+    <p><small>(by default cells are left aligned)</small></p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <img src="img/alertcircle_64.png" alt="Alert" class="separate">
+    <p>Table cells inside the table header</p>
+    <h2 class="sidekick-type">are denoted by th, <span class="strikethrough">not td</span></h2>
+    <p><small>(by default header cells are center aligned and bold)</small></p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p><small>And now for your viewing pleasure, a bare-bones table:</small></p>
+    <div class="row">
+        <div class="span6">
+            <div class="container-left">
+                <pre class="prettyprint linenums">
+&lt;table&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Name&lt;/th&gt;
+            &lt;th&gt;Location&lt;/th&gt;
+            &lt;th&gt;Date&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;name1&lt;/td&gt;
+            &lt;td&gt;location1&lt;/td&gt;
+            &lt;td&gt;date1&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;name2&lt;/td&gt;
+            &lt;td&gt;location2&lt;/td&gt;
+            &lt;td&gt;date2&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;</pre>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p><small>Which looks a little like this:</small></p>
+    <table class="table-default">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>name1</td>
+                <td>location1</td>
+                <td>date1</td>
+            </tr>
+            <tr>
+                <td>name2</td>
+                <td>location2</td>
+                <td>date2</td>
+            </tr>
+        </tbody>
+    </table>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <div class="row">
+        <div class="span8">
+            <div class="container-left">
+                <pre class="prettyprint linenums">
+&lt;tr&gt;
+    &lt;td&gt;name1&lt;/td&gt;
+    &lt;td rowspan="2"&gt;location1&lt;/td&gt;
+    &lt;td&gt;date1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+    &lt;td&gt;name2&lt;/td&gt;
+    &lt;td&gt;date2&lt;/td&gt;
+&lt;/tr&gt;</pre>
+            </div>
+        </div>
+    </div>
+    <p class="separate">Table cells can span multiple rows with the <span class="highlight">rowspan</span> attribute:</p>
+    <table class="table-default">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>name1</td>
+                <td rowspan="2">location1</td>
+                <td>date1</td>
+            </tr>
+            <tr>
+                <td>name2</td>
+                <td>date2</td>
+            </tr>
+        </tbody>
+    </table>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <div class="row">
+        <div class="span8">
+            <div class="container-left">
+                <pre class="prettyprint linenums">
+&lt;tr&gt;
+    &lt;td&gt;name1&lt;/td&gt;
+    &lt;td colspan="2"&gt;location1 & date1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+    &lt;td&gt;name2&lt;/td&gt;
+    &lt;td&gt;location1&lt;/td&gt;
+    &lt;td&gt;date2&lt;/td&gt;
+&lt;/tr&gt;</pre>
+            </div>
+        </div>
+    </div>
+    <p class="separate">Table cells can span multiple columns with the <span class="highlight">colspan</span> attribute:</p>
+    <table class="table-default">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>name1</td>
+                <td colspan="2">location1 & date1</td>
+            </tr>
+            <tr>
+                <td>name2</td>
+                <td>location2</td>
+                <td>date2</td>
+            </tr>
+        </tbody>
+    </table>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <table class="table-default separate">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>name1</td>
+                <td>location1</td>
+                <td>date1</td>
+            </tr>
+            <tr>
+                <td>name2</td>
+                <td>location2</td>
+                <td>date2</td>
+            </tr>
+        </tbody>
+    </table>
+    <p>By default, tables are surrounded and sliced by <span class="highlight">borders</span></p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p>Thee <span class="highlight">border-width</span> property defines</p>
+    <h3>the size of the border</h3>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p class="separate"><small>for example:</small></p>
+    <div class="separate">
+        <table class="table-default" style="border-width: 5px;">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>name1</td>
+                    <td>location1</td>
+                    <td>date1</td>
+                </tr>
+                <tr>
+                    <td>name2</td>
+                    <td>location2</td>
+                    <td>date2</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <div class="span6">
+            <div class="container-left">
+                <pre class="prettyprint linenums">
+table {
+    border-width: 5px;
+}</pre>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p>Thee <span class="highlight">border-style</span> property defines</p>
+    <h3>the appearance of the border</h3>
+    <p class="separate"><small>(common values are solid, dashed, & none)</small></p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p class="separate"><small>for example:</small></p>
+    <div class="separate">
+        <table class="table-default" style="border-width: 2px; border-style: dashed;">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>name1</td>
+                    <td>location1</td>
+                    <td>date1</td>
+                </tr>
+                <tr>
+                    <td>name2</td>
+                    <td>location2</td>
+                    <td>date2</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <div class="span6">
+            <div class="container-left">
+                <pre class="prettyprint linenums">
+table {
+    border-style: dashed;
+}</pre>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p>Thee <span class="highlight">border-color</span> property defines</p>
+    <h3>the color of the border</h3>
+    <p class="separate"><small>(set in hex, rgb, & rgba)</small></p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p class="separate"><small>for example:</small></p>
+    <div class="separate">
+        <table class="table-default" style="border-width: 2px; border-color: #FF0000;">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>name1</td>
+                    <td>location1</td>
+                    <td>date1</td>
+                </tr>
+                <tr>
+                    <td>name2</td>
+                    <td>location2</td>
+                    <td>date2</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <div class="span6">
+            <div class="container-left">
+                <pre class="prettyprint linenums">
+table {
+    border-color: #FF0000;
+}</pre>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <div class="row">
+        <div class="span6">
+            <div class="container-left">
+                <pre class="prettyprint linenums">
+table {
+    border: 1px solid black;
+}</pre>
+            </div>
+        </div>
+    </div>
+    <p>The <span class="highlight">border</span> property is a combination of</p>
+    <h3>width + style + color</h3>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <img src="img/alertcircle_64.png" alt="Alert" class="separate">
+    <p>By default border properties</p>
+    <h2 class="sidekick-type">affects all 4 sides</h2>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p>To set a border for a specific side</p>
+    <h2>add -top, -bottom, -left, or -right</h2>
+    <h3 class="sidekick-type">after the word border in the property name</h3>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p class="separate"><small>for example:</small></p>
+    <div class="separate">
+        <table class="table-default" style="border-bottom-width: 3px; border-bottom-color: #FF0000;">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>name1</td>
+                    <td>location1</td>
+                    <td>date1</td>
+                </tr>
+                <tr>
+                    <td>name2</td>
+                    <td>location2</td>
+                    <td>date2</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <div class="span8">
+            <div class="container-left">
+                <pre class="prettyprint linenums">
+table {
+    border-bottom-color: #FF0000;
+}</pre>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p>The table's <span class="highlight">border-collapse</span> property defines</p>
+    <h3>whether or not double borders can merge</h3>
+    <p><small>(common values are collapse and separate)</small></p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p class="separate"><small>for example:</small></p>
+    <div class="separate">
+        <table class="table-default" style="border-collapse: collapse;">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>name1</td>
+                    <td>location1</td>
+                    <td>date1</td>
+                </tr>
+                <tr>
+                    <td>name2</td>
+                    <td>location2</td>
+                    <td>date2</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <div class="span8">
+            <div class="container-left">
+                <pre class="prettyprint linenums">
+table {
+    border-collapse: collapse;
+}</pre>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p>The <span class="highlight">border-radius</span> property defines</p>
+    <h3>the roundness of corners</h3>
+    <p><small>(set as px, em, or %)</small></p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p class="separate"><small>for example:</small></p>
+    <div class="separate">
+        <table class="table-default" style="border-width: 3px; border-radius: 10px;">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>name1</td>
+                    <td>location1</td>
+                    <td>date1</td>
+                </tr>
+                <tr>
+                    <td>name2</td>
+                    <td>location2</td>
+                    <td>date2</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <div class="span8">
+            <div class="container-left">
+                <pre class="prettyprint linenums">
+table {
+    border-radius: 10px;
+}</pre>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <img src="img/alertcircle_64.png" alt="Alert" class="separate">
+    <p>Most table styling should be</p>
+    <h2 class="sidekick-type">added to the table cells</h2>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <p>To avoid confusion in large tables,</p>
+    <h2>use the nth-child pseudo-selector</h2>
+    <h3 class="sidekick-type">to add alternating background colors</h3>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <div class="row">
+        <div class="span6">
+            <div class="container-left">
+                <pre class="prettyprint linenums">
+div {
+    background-color: #ff0000;
+}</pre>
+            </div>
+        </div>
+    </div>
+    <p>The <span class="highlight">background-color</span> property defines</p>
+    <h3>the fill color of an element</h3>
+    <p><small>(common values are hex, rgb, rgba, and gradients)</small></p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <img src="img/research_64.png" alt="Magic" class="separate">
+    <p>To select every even item</p>
+    <h2 class="sidekick-type">use :nth-child(even)</h2>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <style>
+        #table1 {
+            border-collapse: collapse;
+        }
+        #table1 tbody tr:nth-child(even) td {
+            background-color: #dddddd;
+        }
+    </style>
+    <table id="table1" class="table-default separate">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>name1</td>
+                <td>location1</td>
+                <td>date1</td>
+            </tr>
+            <tr>
+                <td>name2</td>
+                <td>location2</td>
+                <td>date2</td>
+            </tr>
+            <tr>
+                <td>name3</td>
+                <td>location3</td>
+                <td>date3</td>
+            </tr>
+            <tr>
+                <td>name4</td>
+                <td>location4</td>
+                <td>date4</td>
+            </tr>
+        </tbody>
+    </table>
+    <p class="separate"><small>For our even rows, let's set the background-color to near white</small></p>
+    <div class="row">
+        <div class="span8">
+            <div class="container-left">
+                <pre class="prettyprint linenums">
+tbody tr:nth-child(even) td {
+    background-color: #dddddd;
+}</pre>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <img src="img/research_64.png" alt="Magic" class="separate">
+    <p>To select every odd item</p>
+    <h2 class="sidekick-type">use :nth-child(odd)</h2>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <style>
+        #table2 {
+            border-collapse: collapse;
+        }
+        #table2 tbody tr:nth-child(even) td {
+            background-color: #dddddd;
+        }
+        #table2 tbody tr:nth-child(odd) td {
+            background-color: #cccccc;
+        }
+    </style>
+    <table id="table2" class="table-default separate">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>name1</td>
+                <td>location1</td>
+                <td>date1</td>
+            </tr>
+            <tr>
+                <td>name2</td>
+                <td>location2</td>
+                <td>date2</td>
+            </tr>
+            <tr>
+                <td>name3</td>
+                <td>location3</td>
+                <td>date3</td>
+            </tr>
+            <tr>
+                <td>name4</td>
+                <td>location4</td>
+                <td>date4</td>
+            </tr>
+        </tbody>
+    </table>
+    <p class="separate"><small>For our odd rows, let's set the background-color to slightly darker</small></p>
+    <div class="row">
+        <div class="span8">
+            <div class="container-left">
+                <pre class="prettyprint linenums">
+tbody tr:nth-child(odd) td {
+    background-color: #cccccc;
+}</pre>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <img src="img/research_64.png" alt="Magic" class="separate">
+    <p>You can also use the :hover pseudo-selector to</p>
+    <h2 class="sidekick-type">give a user feedback within the table</h2>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <style>
+        #table3 {
+            border-collapse: collapse;
+        }
+        #table3 tbody tr:nth-child(even) td {
+            background-color: #dddddd;
+        }
+        #table3 tbody tr:nth-child(odd) td {
+            background-color: #cccccc;
+        }
+        #table3 tbody tr:hover td {
+            background-color: #eeeeee;
+        }
+    </style>
+    <table id="table3" class="table-default separate">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>name1</td>
+                <td>location1</td>
+                <td>date1</td>
+            </tr>
+            <tr>
+                <td>name2</td>
+                <td>location2</td>
+                <td>date2</td>
+            </tr>
+            <tr>
+                <td>name3</td>
+                <td>location3</td>
+                <td>date3</td>
+            </tr>
+            <tr>
+                <td>name4</td>
+                <td>location4</td>
+                <td>date4</td>
+            </tr>
+        </tbody>
+    </table>
+    <p class="separate"><small>When we hover, let's set the background-color to slightly brighter</small></p>
+    <div class="row">
+        <div class="span8">
+            <div class="container-left">
+                <pre class="prettyprint linenums">
+tbody tr:hover td {
+    background-color: #eeeeee;
+}</pre>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <style>
+        #tableComplete tbody tr:hover td {
+            background-color: #d4fff1;
+        }
+    </style>
+    <p class="separate">And with a few extra rules, a complete table!</p>
+    <table id="tableComplete" class="table table-bordered table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>John Doe</td>
+                <td>New York</td>
+                <td>2009</td>
+            </tr>
+            <tr>
+                <td>Jane Doe</td>
+                <td>Chicago</td>
+                <td>2010</td>
+            </tr>
+            <tr>
+                <td>John Smith</td>
+                <td>Paris</td>
+                <td>2011</td>
+            </tr>
+            <tr>
+                <td>Jane Smith</td>
+                <td>Tokyo</td>
+                <td>2012</td>
+            </tr>
+        </tbody>
+    </table>
     
 </div>
 
 <!--
-<div class="step container container-center">
-    
-    
-    
-</div>
-<h1></h1>
-<h2></h2>
-<h3></h3>
-<h4></h4>
-<p></p>
-<small></small>
-<p><small></small></p>
-<span class="highlight"></span>
-<span class="logo-type-purple"></span>
-<span class="logo-type-blue"></span>
-<span class="logo-type-green"></span>
-<div class="row">
-        <div class="span1">
-        </div>
-    </div>
-<div class="row">
-        <div class="span9">
-            <div class="container-left">
-                <pre class="prettyprint linenums">
-&lt;p&gt;...&lt;/p&gt;</pre>
-            </div>
-        </div>
-    </div>
 
 Lists & Tables are high-level organizational elements
 
@@ -109,10 +1182,6 @@ The <table>'s border-collapse property defines whether or not double borders in 
 
 Most table styling should be added to the table cells
 
-A special property of table cells is that they allow vertical alignment of content across a row
-
-Empty table cells can create gaps in tables, to fix this use the special word “&nbzp;”
-
 To avoid confusion in large tables, use the nth-child pseudo-selector to add alternating background colors
 
 The background-color property defines the fill color of an element, common values are hex, rgb, rgba, and gradients
@@ -129,5 +1198,6 @@ You can also use the :hover pseudo-selector to give a user feedback as they brow
 
 When we hover, let's set the background-color to #bbbbbb
 
+And for your viewing pleasure, a complete table
 
 -->
