@@ -8730,6 +8730,58 @@ END imports */
 -------------------------------------------------------------------------------*/
 /* functions 
 -------------------------*/
+.logo-gradient {
+  background: #635cd0;
+  /* Old browsers */
+
+  background-image: -moz-linear-gradient(top, #635cd0 0%, #39a4f4 51%, #53ccbe 100%);
+  /* FF3.6+ */
+
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #635cd0), color-stop(51%, #39a4f4), color-stop(100%, #53ccbe));
+  /* Chrome,Safari4+ */
+
+  background-image: -webkit-linear-gradient(top, #635cd0 0%, #39a4f4 51%, #53ccbe 100%);
+  /* Chrome10+,Safari5.1+ */
+
+  background-image: -o-linear-gradient(top, #635cd0 0%, #39a4f4 51%, #53ccbe 100%);
+  /* Opera 11.10+ */
+
+  background-image: -ms-linear-gradient(top, #635cd0 0%, #39a4f4 51%, #53ccbe 100%);
+  /* IE10+ */
+
+  background-image: linear-gradient(to bottom, #635cd0 0%, #39a4f4 51%, #53ccbe 100%);
+  /* W3C */
+
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#635cd0', endColorstr='#53ccbe', GradientType=0);
+  /* IE6-9 */
+
+}
+.logo-gradient-radial {
+  background: #53ccbe;
+  /* Old browsers */
+
+  background: -moz-radial-gradient(center, ellipse cover, #53ccbe 0%, #39a4f4 50%, #635cd0 100%);
+  /* FF3.6+ */
+
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #53ccbe), color-stop(50%, #39a4f4), color-stop(100%, #635cd0));
+  /* Chrome,Safari4+ */
+
+  background: -webkit-radial-gradient(center, ellipse cover, #53ccbe 0%, #39a4f4 50%, #635cd0 100%);
+  /* Chrome10+,Safari5.1+ */
+
+  background: -o-radial-gradient(center, ellipse cover, #53ccbe 0%, #39a4f4 50%, #635cd0 100%);
+  /* Opera 12+ */
+
+  background: -ms-radial-gradient(center, ellipse cover, #53ccbe 0%, #39a4f4 50%, #635cd0 100%);
+  /* IE10+ */
+
+  background: radial-gradient(ellipse at center, #53ccbe 0%, #39a4f4 50%, #635cd0 100%);
+  /* W3C */
+
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#53ccbe', endColorstr='#635cd0', GradientType=1);
+  /* IE6-9 fallback on horizontal gradient */
+
+}
 /* global utility 
 -------------------------*/
 * {
@@ -8889,6 +8941,14 @@ button.dim:hover,
   font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
   font-weight: normal;
 }
+.inline-type {
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+  vertical-align: middle;
+  padding: 0 5px;
+  margin: 0;
+}
 h3 {
   margin-bottom: 5px;
 }
@@ -8909,12 +8969,14 @@ h6 {
   text-transform: uppercase;
   margin: 0;
 }
+p small,
 h1 small,
 h2 small,
 h3 small,
 h4 small,
 h5 small,
 h6 small {
+  color: #999;
   font-size: 85%;
 }
 .highlight {
@@ -10078,6 +10140,31 @@ a:hover,
 .table p {
   margin: 0;
 }
+.table-default {
+  border-collapse: separate;
+  border-spacing: 2px;
+  border: 1px solid black;
+}
+.table-default thead,
+.table-default tbody,
+.table-default tr,
+.table-default td,
+.table-default th {
+  border-width: inherit;
+  border-style: inherit;
+  border-color: inherit;
+  border-radius: inherit;
+}
+.table-default td,
+.table-default th {
+  padding: 5px;
+}
+.table-default td {
+  text-align: left;
+}
+.table-default th {
+  text-align: center;
+}
 /* navbar 
 -------------------------*/
 @media (max-width: 979px) {
@@ -11042,6 +11129,34 @@ a:hover,
     padding-top: 0;
   }
 }
+/* major sections 
+-------------------------*/
+html,
+body,
+#wrapper {
+  width: 100%;
+  min-width: 100%;
+  height: 100%;
+  min-height: 100%;
+}
+#content {
+  min-width: 100%;
+  min-height: 100%;
+}
+#setup {
+  position: absolute;
+  width: 100%;
+  height: 304px;
+  top: 50%;
+  margin-top: -152px;
+}
+/* setup
+-------------------------*/
+#noscript,
+#preloader {
+  position: absolute;
+  width: 100%;
+}
 /* logo 
 -------------------------*/
 .logo {
@@ -11355,6 +11470,7 @@ a:hover,
   *zoom: 1;
   *zoom: 1;
   margin: 0;
+  padding: 20px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -11442,8 +11558,24 @@ a:hover,
   line-height: 1.25;
   margin-bottom: 15px;
 }
+#presentation .step p small,
+#presentation .step h1 small,
+#presentation .step h2 small,
+#presentation .step h3 small,
+#presentation .step h4 small,
+#presentation .step h5 small,
+#presentation .step h6 small {
+  color: #666;
+}
+#presentation .step li {
+  line-height: inherit;
+}
 #presentation .step img {
   padding: 10px;
+}
+#presentation .step table,
+#presentation .step [class^="table"] {
+  display: inline-table;
 }
 #presentation .step .pixel {
   display: inline-block;

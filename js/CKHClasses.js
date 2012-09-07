@@ -133,6 +133,9 @@ var CKH = ( function ( _main ) {
         
 		// get ui _elements
 		
+        _elements.$wrapper = $( "#wrapper" );
+        _elements.$content = $( "#content" );
+        _elements.$setup = $( "#setup" );
         _elements.$logo = $( ".logo" );
 		_elements.$mainNav = $( "#mainNav" );
         _elements.$mainNavToggle = _elements.$mainNav.find( '[data-toggle="collapse"]' );
@@ -505,6 +508,14 @@ var CKH = ( function ( _main ) {
             $initialTabToggle = _elements.$tabToggles.filter( '[href="#overview"]' );
             
         }
+        
+        // hide setup
+        
+        _elements.$setup.removeClass( 'in' );
+        
+        // show page
+        
+        _elements.$content.addClass( 'in' );
         
         // show initial tab
         

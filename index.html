@@ -66,853 +66,878 @@
 		
 	</header>
 	<!-- END header -->
-	
-	<!-- navigation -->
-	<div id="mainNav" class="navbar navbar-fixed-top">
-		<div class="navbar-inner">
-			<div class="container">
-				
-				<a class="btn btn-navbar" data-toggle="collapse" data-target="#mainNavCollapse">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</a>
-				
-				<a href="http://collinhover.com/" target="_blank" class="logo">
-					<img src="img/apple-touch-icon-114x114-precomposed.png" class="logo-icon iconk-medium" alt="Logo">
-				</a>
-				
-				<div id="mainNavCollapse" class="nav-collapse">
-					<ul class="nav">
-						<li class="tab-toggles">
-							<a href="#overview">Overview</a>
-						</li>
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-								Policies
-								<b class="caret"></b>
-							</a>
-							<ul class="dropdown-menu tab-toggles">
-								<li>
-									<a href="#policies" data-section="#attendance"><i class="icon-bell"></i> Attendance</a>
-								</li>
-								<li>
-									<a href="#policies" data-section="#rfds"><i class="icon-search"></i> Real Fresh Designs</a>
-								</li>
-								<li>
-									<a href="#policies" data-section="#cookbook"><i class="icon-book"></i> Cookbook</a>
-								</li>
-								<li>
-									<a href="#policies" data-section="#requirements"><i class="icon-list"></i> Requirements</a>
-								</li>
-    							<li>
-									<a href="#policies" data-section="#evaluation"><i class="icon-ok-sign"></i> Evaluation</a>
-								</li>
-								<li>
-									<a href="#policies" data-section="#honesty"><i class="icon-thumbs-up"></i> Academic Honesty</a>
-								</li>
-								<li>
-									<a href="#policies" data-section="#disabilities"><i class="icon-globe"></i> Disability Services</a>
-								</li>
-								<li>
-									<a href="#policies" data-section="#grievances"><i class="icon-exclamation-sign"></i> Student Grievance</a>
-								</li>
-							</ul>
-						</li>
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-								Classes
-								<b class="caret"></b>
-							</a>
-							<ul class="dropdown-menu tab-toggles">
-								<li>
-									<a href="#classes" class="button-class" data-url="digitalDesign.html"><i class="icon-th"></i> Digital Design</a>
-								</li>
-								<li>
-									<a href="#classes" class="button-class" data-url="typographyBasics.html"><i class="icon-font"></i> Typography: Basics</a>
-								</li>
-								<li>
-									<a href="#classes" class="button-class" data-url="webDesignBasics.html"><i class="icon-hand-up"></i> Web Design: Basics</a>
-								</li>
-							</ul>
-						</li>
-                        <li class="tab-toggles">
-    						<a href="#presentations">Presentations</a>
-						</li>
-					</ul>
-				</div>
-				
-			</div>
-		</div>
-	</div>
-	<!-- END navigation -->
     
-    <div id="wrapper" class="tab-content">
+    <!-- wrapper -->
+    <div id="wrapper">
+    
+        <!-- setup -->
+        <div id="setup" class="fade in">
+            
+            <div id="preloader" class="container-center">
+                <div class="hero-unit">
+                    <img src="img/apple-touch-icon-114x114-precomposed.png" alt="CKH Classes" class="iconk">
+        			<p>loading classes...</p>
+    			</div>
+            </div>
+            
+            <div id="noscript" class="container-center">
+            	<div class="hero-unit sidekick-unit error">
+    				<h1>Javascript disabled?</h1>
+    				<p>Sorry, but we can't seem to find Javascript... if you are sure you've turned it on, try upgrading to one of these friendly browsers:</p>
+    				<ul class="nav nav-inline browsers">
+    					<li>
+    						<a href="http://www.google.com/chrome/" target="_blank" class="chrome">Chrome</a>
+    					</li>
+    					<li>
+    						<a href="http://www.mozilla.org/firefox/" target="_blank" class="firefox">Firefox</a>
+    					</li>
+    					<li>
+    						<a href="http://www.apple.com/safari/" target="_blank" class="safari">Safari</a>
+    					</li>
+    				</ul>
+    			</div>
+            </div>
         
-    	<!-- overview -->
-        <div id="overview" class="tab-pane fade in active">
-            
-            <article>
-                
-                <section class="container">
-        			<div class="title container-center">
-        				<h1>Collin Hover's Classes</h1>
-        				<h2 class="sidekick-type">Built with <span class="logo-type-purple">&hearts;</span>, <a href="https://github.com/collinhover/classes" target="_blank"><span class="logo-type-blue">code</span></a>, and a little bit of <span class="logo-type-green">gaming</span></h2>
-        			</div>
-        			<div class="row">
-        				<div class="span3 offset1">
-        					<div class="hero-anchor">
-        						<h6 class="dim"><i class="icon-eye-open"></i> Portfolio</h6>
-        						<p><a href="http://collinhover.com/">collinhover.com</a></p>
-        					</div>
-        					<div class="hero-anchor">
-        						<h6 class="dim"><i class="icon-envelope"></i> Email</h6>
-        						<p><a href="mailto:collin.hover@usd.edu">collin.hover@usd.edu</a></p>
-        					</div>
-        				</div>
-        				<div class="span2">
-        					<div class="hero-anchor">
-        						<h6 class="dim"><i class="icon-comment"></i> Twitter</h6>
-        						<p><a href="http://twitter.com/collinhover">@collinhover</a></p>
-        					</div>
-        					<div class="hero-anchor">
-        						<h6 class="dim"><i class="icon-briefcase"></i> Linked-In</h6>
-        						<p><a href="http://www.linkedin.com/in/collinhover">in/collinhover</a></p>
-        					</div>
-        				</div>
-        				<div class="span3">
-        					<div class="hero-anchor">
-        						<h6 class="dim"><i class="icon-home"></i> Address</h6>
-        						<p>
-        							Warren M. Lee Center<br/>
-                                    RM. #175<br/>
-        							<small>
-        								U of South Dakota<br/>
-        								414 E. Clark Street<br/>
-        								Vermillion, SD 57069
-        							</small>
-        						</p>
-        					</div>
-        				</div>
-        				<div class="span2">
-        					<div class="hero-anchor">
-        						<h6 class="dim"><i class="icon-time"></i> Office Hours</h6>
-        						<table class="table table-condensed table-bordered">
-        							<tr>
-        								<td><p><small>T</small><p></td>
-        								<td>1-2 PM</td>
-        							</tr>
-        							<tr>
-        								<td><p><small>H</small><p></td>
-        								<td>1-2 PM</td>
-        							</tr>
-        						</table>
-        					</div>
-        				</div>
-        			</div>
-                </section>
-                
-                <section id="noscript" class="container-center">
-            		<div class="hero-unit sidekick-unit error">
-        				<h2 class="error-header logo-type">Javascript disabled?</h2>
-        				<p><small class="error-body">Sorry, but we can't seem to find Javascript... if you are sure you've turned it on, try upgrading to one of these friendly browsers:</small></p>
-        				<ul class="nav nav-inline browsers">
-        					<li>
-        						<a href="http://www.google.com/chrome/" target="_blank" class="chrome">Chrome</a>
-        					</li>
-        					<li>
-        						<a href="http://www.mozilla.org/firefox/" target="_blank" class="firefox">Firefox</a>
-        					</li>
-        					<li>
-        						<a href="http://www.apple.com/safari/" target="_blank" class="safari">Safari</a>
-        					</li>
-        				</ul>
-        			</div>
-                </section>
-                
-    	    </article>
-            
         </div>
-    	<!-- END overview -->
-    	
-    	<!-- policies -->
-    	<div id="policies" class="tab-pane fade in">
+        <!-- END setup -->
+        
+        <!-- content -->
+        <div id="content" class="fade">
+        	
+        	<!-- navigation -->
+        	<div id="mainNav" class="navbar navbar-fixed-top">
+        		<div class="navbar-inner">
+        			<div class="container">
+        				
+        				<a class="btn btn-navbar" data-toggle="collapse" data-target="#mainNavCollapse">
+        					<span class="icon-bar"></span>
+        					<span class="icon-bar"></span>
+        					<span class="icon-bar"></span>
+        				</a>
+        				
+        				<a href="http://collinhover.com/" target="_blank" class="logo">
+        					<img src="img/apple-touch-icon-114x114-precomposed.png" class="logo-icon iconk-medium" alt="Logo">
+        				</a>
+        				
+        				<div id="mainNavCollapse" class="nav-collapse">
+        					<ul class="nav">
+        						<li class="tab-toggles">
+        							<a href="#overview">Overview</a>
+        						</li>
+        						<li class="dropdown">
+        							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        								Policies
+        								<b class="caret"></b>
+        							</a>
+        							<ul class="dropdown-menu tab-toggles">
+        								<li>
+        									<a href="#policies" data-section="#attendance"><i class="icon-bell"></i> Attendance</a>
+        								</li>
+        								<li>
+        									<a href="#policies" data-section="#rfds"><i class="icon-search"></i> Real Fresh Designs</a>
+        								</li>
+        								<li>
+        									<a href="#policies" data-section="#cookbook"><i class="icon-book"></i> Cookbook</a>
+        								</li>
+        								<li>
+        									<a href="#policies" data-section="#requirements"><i class="icon-list"></i> Requirements</a>
+        								</li>
+            							<li>
+        									<a href="#policies" data-section="#evaluation"><i class="icon-ok-sign"></i> Evaluation</a>
+        								</li>
+        								<li>
+        									<a href="#policies" data-section="#honesty"><i class="icon-thumbs-up"></i> Academic Honesty</a>
+        								</li>
+        								<li>
+        									<a href="#policies" data-section="#disabilities"><i class="icon-globe"></i> Disability Services</a>
+        								</li>
+        								<li>
+        									<a href="#policies" data-section="#grievances"><i class="icon-exclamation-sign"></i> Student Grievance</a>
+        								</li>
+        							</ul>
+        						</li>
+        						<li class="dropdown">
+        							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        								Classes
+        								<b class="caret"></b>
+        							</a>
+        							<ul class="dropdown-menu tab-toggles">
+        								<li>
+        									<a href="#classes" class="button-class" data-url="digitalDesign.html"><i class="icon-th"></i> Digital Design</a>
+        								</li>
+        								<li>
+        									<a href="#classes" class="button-class" data-url="typographyBasics.html"><i class="icon-font"></i> Typography: Basics</a>
+        								</li>
+        								<li>
+        									<a href="#classes" class="button-class" data-url="webDesignBasics.html"><i class="icon-hand-up"></i> Web Design: Basics</a>
+        								</li>
+        							</ul>
+        						</li>
+                                <li class="tab-toggles">
+            						<a href="#presentations">Presentations</a>
+        						</li>
+        					</ul>
+        				</div>
+        				
+        			</div>
+        		</div>
+        	</div>
+        	<!-- END navigation -->
             
-            <article class="container">
+            <div class="tab-content">
                 
-        		<!-- attendance -->
-        		<section id="attendance">
+            	<!-- overview -->
+                <div id="overview" class="tab-pane fade in active">
                     
-    				<div class="page-header">
-    					<h1>Attendance <small>plan ahead, winter is coming</small></h1>
-    				</div>
-    				
-    				<div class="row">
-    					<div class="span4">
-    						<h3>Absences</h3>
-    						<div class="row">
-    							<div class="span3">
-    								<p>An absence is any class that you miss for a situation not officially excused or allowed by the university.</p>
-    								<p><small>Example: sick without a doctors note.</small></p>
-    							</div>
-    							<div class="span1 container-center">
-    								<h1>2</h1>
-    								<h6 class="dim">Freebies</h6>
-    							</div>
-    						</div>
-        					<h3>Tardies</h3>
+                    <article>
+                        
+                        <section class="container">
+                			<div class="title container-center">
+                				<h1>Collin Hover's Classes</h1>
+                				<h2 class="sidekick-type">Built with <span class="logo-type-purple">&hearts;</span>, <a href="https://github.com/collinhover/classes" target="_blank"><span class="logo-type-blue">code</span></a>, and a little bit of <span class="logo-type-green">gaming</span></h2>
+                			</div>
+                			<div class="row">
+                				<div class="span3 offset1">
+                					<div class="hero-anchor">
+                						<h6 class="dim"><i class="icon-eye-open"></i> Portfolio</h6>
+                						<p><a href="http://collinhover.com/">collinhover.com</a></p>
+                					</div>
+                					<div class="hero-anchor">
+                						<h6 class="dim"><i class="icon-envelope"></i> Email</h6>
+                						<p><a href="mailto:collin.hover@usd.edu">collin.hover@usd.edu</a></p>
+                					</div>
+                				</div>
+                				<div class="span2">
+                					<div class="hero-anchor">
+                						<h6 class="dim"><i class="icon-comment"></i> Twitter</h6>
+                						<p><a href="http://twitter.com/collinhover">@collinhover</a></p>
+                					</div>
+                					<div class="hero-anchor">
+                						<h6 class="dim"><i class="icon-briefcase"></i> Linked-In</h6>
+                						<p><a href="http://www.linkedin.com/in/collinhover">in/collinhover</a></p>
+                					</div>
+                				</div>
+                				<div class="span3">
+                					<div class="hero-anchor">
+                						<h6 class="dim"><i class="icon-home"></i> Address</h6>
+                						<p>
+                							Warren M. Lee Center<br/>
+                                            RM. #175<br/>
+                							<small>
+                								U of South Dakota<br/>
+                								414 E. Clark Street<br/>
+                								Vermillion, SD 57069
+                							</small>
+                						</p>
+                					</div>
+                				</div>
+                				<div class="span2">
+                					<div class="hero-anchor">
+                						<h6 class="dim"><i class="icon-time"></i> Office Hours</h6>
+                						<table class="table table-condensed table-bordered">
+                							<tr>
+                								<td><p><small>T</small><p></td>
+                								<td>1-2 PM</td>
+                							</tr>
+                							<tr>
+                								<td><p><small>H</small><p></td>
+                								<td>1-2 PM</td>
+                							</tr>
+                						</table>
+                					</div>
+                				</div>
+                			</div>
+                        </section>
+                        
+            	    </article>
+                    
+                </div>
+            	<!-- END overview -->
+            	
+            	<!-- policies -->
+            	<div id="policies" class="tab-pane fade in">
+                    
+                    <article class="container">
+                        
+                		<!-- attendance -->
+                		<section id="attendance">
+                            
+            				<div class="page-header">
+            					<h1>Attendance <small>plan ahead, winter is coming</small></h1>
+            				</div>
+            				
+            				<div class="row">
+            					<div class="span4">
+            						<h3>Absences</h3>
+            						<div class="row">
+            							<div class="span3">
+            								<p>An absence is any class that you miss for a situation not officially excused or allowed by the university.</p>
+            								<p><small>Example: sick without a doctors note.</small></p>
+            							</div>
+            							<div class="span1 container-center">
+            								<h1>2</h1>
+            								<h6 class="dim">Freebies</h6>
+            							</div>
+            						</div>
+                					<h3>Tardies</h3>
+                                    <div class="row">
+                						<div class="span3">
+            								<p>A tardy is when you are more than <em>20 minutes missing</em> from class. This will count as 1/2 absence and that day's credit will be forfeit.</p>
+            							</div>
+            							<div class="span1 container-center">
+            								<h1>0</h1>
+            								<h6 class="dim">Freebies</h6>
+            							</div>
+            						</div>
+            					</div>
+            					<div class="span8">
+            						<table class="table table-striped table-condensed table-bordered">
+            							<thead>
+            								<tr>
+            									<th>#</th>
+            									<th>Grade Effect</th>
+            									<th>Example</th>
+            								</tr>
+            							</thead>
+            							<tbody>
+            								<tr>
+            									<td>1</td>
+            									<td>none</td>
+            									<td><p><small>A -> A</small></p></td>
+            								</tr>
+            								<tr>
+            									<td>2</td>
+            									<td>none</td>
+            									<td><p><small>A -> A</small></p></td>
+            								</tr>
+            								<tr>
+            									<td>3</td>
+            									<td>-10%</td>
+            									<td><p><small>A -> B</small></p></td>
+            								</tr>
+            								<tr>
+            									<td>4</td>
+            									<td>-20%</td>
+            									<td><p><small>A -> C</small></p></td>
+            								</tr>
+            								<tr>
+            									<td>5</td>
+            									<td>-30%</td>
+            									<td><p><small>A -> D</small></p></td>
+            								</tr>
+            								<tr>
+            									<td>6</td>
+            									<td>fail</td>
+            									<td><p><small>A -> F</small></p></td>
+            								</tr>
+            							</tbody>
+            						</table>
+            					</div>
+            				</div>
+                			
+                		</section>
+                		<!-- END attendance -->
+                		
+                		<!-- rfds -->
+                		<section id="rfds">
+            				
+            				<div class="page-header">
+            					<h1>Real Fresh Designs <small>(RFDs)</small></h1>
+            				</div>
+            				
+            				<div class="row">
+            					<div class="span7">
+                                    <div class="separate">
+                						<h3>Be Informed</h3>
+                						<blockquote>
+                							<p>Those who don't know history are destined to repeat it.</p>
+                							<small>Edmund Burke (1729-1797)</small>
+                						</blockquote>
+                						<p>Your ideas don't just pop up like magical pixies, i.e. everything builds on what comes before it. To be able to do new and fresh work, you need to be aware of what others are doing, and that means visual research. Go, look, find, and save all inspirational and influential art, design, and other ideas.</p>
+                                    </div>
+                                    <div class="container-center">
+                                        <div class="row">
+                                            <div class="span2">
+                        						<div class="well well-tight">
+                        							<img src="img/win_64.png" alt="Win">
+                        						</div>
+                                				<p><small>real fresh designs</small></p>
+                        					</div>
+                        					<div class="span1">
+                        						<h1 class="hero-type sequence-arrow dim">=</h1>
+                        					</div>
+                        					<div class="span2">
+                        						<div class="well well-tight">
+                        							<img src="img/research_64.png" alt="Research">
+                        						</div>
+                        						<p><small>r & d</small></p>
+                        					</div>
+                                        </div>
+                                    </div>
+            					</div>
+            					<div class="span5">
+            						<h3>Requirements</h3>
+            						<ul>
+            							<li>Collection of visual inspiration</li>
+            							<li>New for each project</li>
+            							<li>Conceptually connected to project</li>
+                						<li>Save in easily viewed digital format such as JPG, PNG, or GIF</li>
+                    					<li>Rough volume: 10+ visuals per week of project</li>
+            						</ul>
+            						<div class="alert alert-warning">
+            							<strong>Before you go:</strong> RFDs must be digital, and be shared through <a href="https://www.dropbox.com/" target="_blank">Dropbox</a>.
+            						</div>
+            					</div>
+            				</div>
+            				
+                		</section>
+                		<!-- END rfds -->
+                		
+                		<!-- cookbook -->
+                		<section id="cookbook">
+            			    
+            				<div class="page-header">
+            					<h1>Cookbook <small>we're havin' a BAR-BEE-QUE</small></h1>
+            				</div>
+            				
+            				<div class="row">
+            					<div class="span7">
+                                    <div class="separate">
+                						<h3>Help Your Clients</h3>
+                						<blockquote>
+                							<p>I'm going to need you to make that logo bigger and use comic sans.</p>
+                							<small>Client</small>
+                						</blockquote>
+                						<p>Clients don't always understand your design choices, so we use a cookbook to translate. A cookbook is a collection of thoughts, notes, designs, sketches, plans, process shots, and options that relate to a project. It is a visual map of how you took the design from nothing to something, and at its core it should be informative.</p>
+                                    </div>
+                                    <div class="container-center">
+                                        <div class="row">
+                                            <div class="span2">
+                            					<p><small>we use recipes</small></p>
+                        						<div class="well well-tight">
+                        							<img src="img/list_64.png" alt="Recipe">
+                        						</div>
+                        						<p><small>to figure out how it's made</small></p>
+                        					</div>
+                        					<div class="span1">
+                        						<h1 class="hero-type sequence-arrow dim">...</h1>
+                        						<p><small>so</small></p>
+                        					</div>
+                        					<div class="span2">
+                        						<p><small>while you design</small></p>
+                        						<div class="well well-tight">
+                        							<img src="img/map_64.png" alt="Map">
+                        						</div>
+                        						<p><small>make a visual recipe</small></p>
+                        					</div>
+                                        </div>
+                                    </div>
+            					</div>
+            					<div class="span5">
+            						<h3>Requirements</h3>
+            						<ul>
+                						<li>New for each project</li>
+            							<li>Visuals + notes on process</li>
+            							<li>Sketches, tests, mock-ups, and screenshots</li>
+                    					<li>20+ sketches per week (all at start)</li>
+            							<li>5+ screenshots of process per week (on-going)</li>
+                    					<li>1 page worth of notes explaining ideas and changes (on-going)</li>
+            						</ul>
+            						<div class="alert alert-warning">
+            							<strong>Before you go:</strong> Cookbooks must be digital, and be shared through <a href="https://www.dropbox.com/" target="_blank">Dropbox</a>.
+            						</div>
+            					</div>
+            				</div>
+            				
+                		</section>
+                		<!-- END cookbook -->
+                		
+                		<!-- requirements -->
+                		<section id="requirements">
+            			    
+            				<div class="page-header">
+            					<h1>Requirements <small>all or nothing</small></h1>
+            				</div>
+            				
+            				<div class="row">
+            					<div class="span5">
+            						<h3>That New New</h3>
+            						<p>Our current grading system tells us that success in a class is at least 60% understanding. For many, a D is as bad as failure... so maybe we should say at least 70%.</p>
+                                    <p>However, for each project in my classes, there are two gateways that control success and failure. The first is a project's requirements, and doing them all is equivalent to 50%. The second is a slightly tweaked grading system to reflect the addition of the requirements all-or-nothing system.</p>
+            						<div class="container-center">
+                                        <img src="img/pacman_64.png" class="iconk-giant" alt="Pacman">
+                                        <h1 class="inline">...</h1>
+                                        <img src="img/pacman_ghost_64.png" class="iconk-giant" alt="Ghost">
+                                        <h1 class="inline">...</h1>
+                                        <img src="img/win_64.png" class="iconk-giant" alt="Win">
+            						</div>
+            					</div>
+            					<div class="span4">
+            						<h3>All or Nothing</h3>
+            						<ul>
+            							<li>Each project has requirements</li>
+            							<li>Projects only accepted when all requirements complete</li>
+                        				<li>Requirements can only be done if you have a basic understanding of that project's concepts</li>
+            							<li>Evaluations from 0 - 100%, and are not curved</li>
+            							<li>Grade map is curved so you'll have to work harder to be amazing or terrible</li>
+            						</ul>
+            					</div>
+            					<div class="span3">
+            						<h3>The New Map</h3>
+            						<table class="table table-striped table-condensed table-bordered">
+            							<thead>
+            								<tr>
+            									<th>Grade</th>
+            									<th>%</th>
+            								</tr>
+            							</thead>
+            							<tbody>
+            								<tr>
+            									<td>A</td>
+            									<td>90 - 100</td>
+            								</tr>
+            								<tr>
+            									<td>B</td>
+            									<td>75 - 89</td>
+            								</tr>
+            								<tr>
+            									<td>C</td>
+            									<td>40 - 74</td>
+            								</tr>
+            								<tr>
+            									<td>D</td>
+            									<td>20 - 39</td>
+            								</tr>
+            								<tr>
+            									<td>F</td>
+            									<td>0 - 19</td>
+            								</tr>
+            							</tbody>
+            						</table>
+            					</div>
+            				</div>
+            				
+                		</section>
+                		<!-- END requirements -->
+                        
+                        <!-- evaluation -->
+                    	<section id="evaluation">
+            			    
+            				<div class="page-header">
+            					<h1>Evaluation <small>project grading breakdown</small></h1>
+            				</div>
+                            
                             <div class="row">
-        						<div class="span3">
-    								<p>A tardy is when you are more than <em>20 minutes missing</em> from class. This will count as 1/2 absence and that day's credit will be forfeit.</p>
-    							</div>
-    							<div class="span1 container-center">
-    								<h1>0</h1>
-    								<h6 class="dim">Freebies</h6>
-    							</div>
-    						</div>
-    					</div>
-    					<div class="span8">
-    						<table class="table table-striped table-condensed table-bordered">
-    							<thead>
-    								<tr>
-    									<th>#</th>
-    									<th>Grade Effect</th>
-    									<th>Example</th>
-    								</tr>
-    							</thead>
-    							<tbody>
-    								<tr>
-    									<td>1</td>
-    									<td>none</td>
-    									<td><p><small>A -> A</small></p></td>
-    								</tr>
-    								<tr>
-    									<td>2</td>
-    									<td>none</td>
-    									<td><p><small>A -> A</small></p></td>
-    								</tr>
-    								<tr>
-    									<td>3</td>
-    									<td>-10%</td>
-    									<td><p><small>A -> B</small></p></td>
-    								</tr>
-    								<tr>
-    									<td>4</td>
-    									<td>-20%</td>
-    									<td><p><small>A -> C</small></p></td>
-    								</tr>
-    								<tr>
-    									<td>5</td>
-    									<td>-30%</td>
-    									<td><p><small>A -> D</small></p></td>
-    								</tr>
-    								<tr>
-    									<td>6</td>
-    									<td>fail</td>
-    									<td><p><small>A -> F</small></p></td>
-    								</tr>
-    							</tbody>
-    						</table>
-    					</div>
-    				</div>
-        			
-        		</section>
-        		<!-- END attendance -->
-        		
-        		<!-- rfds -->
-        		<section id="rfds">
-    				
-    				<div class="page-header">
-    					<h1>Real Fresh Designs <small>(RFDs)</small></h1>
-    				</div>
-    				
-    				<div class="row">
-    					<div class="span7">
-                            <div class="separate">
-        						<h3>Be Informed</h3>
-        						<blockquote>
-        							<p>Those who don't know history are destined to repeat it.</p>
-        							<small>Edmund Burke (1729-1797)</small>
-        						</blockquote>
-        						<p>Your ideas don't just pop up like magical pixies, i.e. everything builds on what comes before it. To be able to do new and fresh work, you need to be aware of what others are doing, and that means visual research. Go, look, find, and save all inspirational and influential art, design, and other ideas.</p>
-                            </div>
-                            <div class="container-center">
-                                <div class="row">
-                                    <div class="span2">
-                						<div class="well well-tight">
-                							<img src="img/win_64.png" alt="Win">
-                						</div>
-                        				<p><small>real fresh designs</small></p>
-                					</div>
-                					<div class="span1">
-                						<h1 class="hero-type sequence-arrow dim">=</h1>
-                					</div>
-                					<div class="span2">
-                						<div class="well well-tight">
-                							<img src="img/research_64.png" alt="Research">
-                						</div>
-                						<p><small>r & d</small></p>
-                					</div>
-                                </div>
-                            </div>
-    					</div>
-    					<div class="span5">
-    						<h3>Requirements</h3>
-    						<ul>
-    							<li>Collection of visual inspiration</li>
-    							<li>New for each project</li>
-    							<li>Conceptually connected to project</li>
-        						<li>Save in easily viewed digital format such as JPG, PNG, or GIF</li>
-            					<li>Rough volume: 10+ visuals per week of project</li>
-    						</ul>
-    						<div class="alert alert-warning">
-    							<strong>Before you go:</strong> RFDs must be digital, and be shared through <a href="https://www.dropbox.com/" target="_blank">Dropbox</a>.
-    						</div>
-    					</div>
-    				</div>
-    				
-        		</section>
-        		<!-- END rfds -->
-        		
-        		<!-- cookbook -->
-        		<section id="cookbook">
-    			    
-    				<div class="page-header">
-    					<h1>Cookbook <small>we're havin' a BAR-BEE-QUE</small></h1>
-    				</div>
-    				
-    				<div class="row">
-    					<div class="span7">
-                            <div class="separate">
-        						<h3>Help Your Clients</h3>
-        						<blockquote>
-        							<p>I'm going to need you to make that logo bigger and use comic sans.</p>
-        							<small>Client</small>
-        						</blockquote>
-        						<p>Clients don't always understand your design choices, so we use a cookbook to translate. A cookbook is a collection of thoughts, notes, designs, sketches, plans, process shots, and options that relate to a project. It is a visual map of how you took the design from nothing to something, and at its core it should be informative.</p>
-                            </div>
-                            <div class="container-center">
-                                <div class="row">
-                                    <div class="span2">
-                    					<p><small>we use recipes</small></p>
-                						<div class="well well-tight">
-                							<img src="img/list_64.png" alt="Recipe">
-                						</div>
-                						<p><small>to figure out how it's made</small></p>
-                					</div>
-                					<div class="span1">
-                						<h1 class="hero-type sequence-arrow dim">...</h1>
-                						<p><small>so</small></p>
-                					</div>
-                					<div class="span2">
-                						<p><small>while you design</small></p>
-                						<div class="well well-tight">
-                							<img src="img/map_64.png" alt="Map">
-                						</div>
-                						<p><small>make a visual recipe</small></p>
-                					</div>
-                                </div>
-                            </div>
-    					</div>
-    					<div class="span5">
-    						<h3>Requirements</h3>
-    						<ul>
-        						<li>New for each project</li>
-    							<li>Visuals + notes on process</li>
-    							<li>Sketches, tests, mock-ups, and screenshots</li>
-            					<li>20+ sketches per week (all at start)</li>
-    							<li>5+ screenshots of process per week (on-going)</li>
-            					<li>1 page worth of notes explaining ideas and changes (on-going)</li>
-    						</ul>
-    						<div class="alert alert-warning">
-    							<strong>Before you go:</strong> Cookbooks must be digital, and be shared through <a href="https://www.dropbox.com/" target="_blank">Dropbox</a>.
-    						</div>
-    					</div>
-    				</div>
-    				
-        		</section>
-        		<!-- END cookbook -->
-        		
-        		<!-- requirements -->
-        		<section id="requirements">
-    			    
-    				<div class="page-header">
-    					<h1>Requirements <small>all or nothing</small></h1>
-    				</div>
-    				
-    				<div class="row">
-    					<div class="span5">
-    						<h3>That New New</h3>
-    						<p>Our current grading system tells us that success in a class is at least 60% understanding. For many, a D is as bad as failure... so maybe we should say at least 70%.</p>
-                            <p>However, for each project in my classes, there are two gateways that control success and failure. The first is a project's requirements, and doing them all is equivalent to 50%. The second is a slightly tweaked grading system to reflect the addition of the requirements all-or-nothing system.</p>
-    						<div class="container-center">
-                                <img src="img/pacman_64.png" class="iconk-giant" alt="Pacman">
-                                <h1 class="inline">...</h1>
-                                <img src="img/pacman_ghost_64.png" class="iconk-giant" alt="Ghost">
-                                <h1 class="inline">...</h1>
-                                <img src="img/win_64.png" class="iconk-giant" alt="Win">
-    						</div>
-    					</div>
-    					<div class="span4">
-    						<h3>All or Nothing</h3>
-    						<ul>
-    							<li>Each project has requirements</li>
-    							<li>Projects only accepted when all requirements complete</li>
-                				<li>Requirements can only be done if you have a basic understanding of that project's concepts</li>
-    							<li>Evaluations from 0 - 100%, and are not curved</li>
-    							<li>Grade map is curved so you'll have to work harder to be amazing or terrible</li>
-    						</ul>
-    					</div>
-    					<div class="span3">
-    						<h3>The New Map</h3>
-    						<table class="table table-striped table-condensed table-bordered">
-    							<thead>
-    								<tr>
-    									<th>Grade</th>
-    									<th>%</th>
-    								</tr>
-    							</thead>
-    							<tbody>
-    								<tr>
-    									<td>A</td>
-    									<td>90 - 100</td>
-    								</tr>
-    								<tr>
-    									<td>B</td>
-    									<td>75 - 89</td>
-    								</tr>
-    								<tr>
-    									<td>C</td>
-    									<td>40 - 74</td>
-    								</tr>
-    								<tr>
-    									<td>D</td>
-    									<td>20 - 39</td>
-    								</tr>
-    								<tr>
-    									<td>F</td>
-    									<td>0 - 19</td>
-    								</tr>
-    							</tbody>
-    						</table>
-    					</div>
-    				</div>
-    				
-        		</section>
-        		<!-- END requirements -->
-                
-                <!-- evaluation -->
-            	<section id="evaluation">
-    			    
-    				<div class="page-header">
-    					<h1>Evaluation <small>project grading breakdown</small></h1>
-    				</div>
-                    
-                    <div class="row">
-        				<div class="span4">
-        					<h6>Step 1</h6>
-    						<h3>Requirements</h3>
-    						<p>Pass or fail and worth:</p>
-                            <div class="well container-center">
-    						    <h1 class="hero-type">50<small>%</small></h1>
-                            </div>
-            				<div class="alert alert-info">
-    							<strong>Check it out:</strong> Life happens, so you get 1 chance per class to resubmit a project.
-    						</div>
-    					</div>
-    					<div class="span4">
-            				<h6>Step 2</h6>
-    						<h3>Rubrick</h3>
-    						<p>Compare project to rubrick to generate score:</p>
-                            <table class="table table-striped table-condensed table-bordered">
-        						<thead>
-    								<tr>
-    									<th>Concept</th>
-    									<th>Score</th>
-        								<th>%</th>
-    								</tr>
-    							</thead>
-    							<tbody>
-    								<tr>
-    									<td>Clear & Legible</td>
-    									<td>20</td>
-        								<td>10</td>
-    								</tr>
-            						<tr>
-    									<td>Grid & Efficiency</td>
-    									<td>20</td>
-            							<td>10</td>
-    								</tr>
-                					<tr>
-    									<td>Color & Value</td>
-    									<td>20</td>
-            							<td>10</td>
-    								</tr>
-            						<tr>
-    									<td>Relevant & Fresh</td>
-    									<td>20</td>
-            							<td>10</td>
-    								</tr>
-                    				<tr>
-    									<td>Problem Addressed</td>
-    									<td>10</td>
-            							<td>5</td>
-    								</tr>
-                        			<tr>
-    									<td>Presentation</td>
-    									<td>10</td>
-            							<td>5</td>
-    								</tr>
-                        			<tr>
-    									<td>Total</td>
-    									<td>100</td>
-            							<td>50</td>
-    								</tr>
-    							</tbody>
-    						</table>
-    					</div>
-            			<div class="span4">
-        					<h6>Step 3</h6>
-    						<h3>Combine</h3>
-    						<p>Combine scores using a simple equation:</p>
-                            <div class="well container-center">
-        						<h3>requirements <small>(50%)</small></h3>
-                                <p>+</p>
-                                <h3>rubrick <small>(50%)</small></h3>
-                                <p>=</p>
-                                <h3>total <small>(100%)</small></h3>
-                            </div>
-    					</div>
-    				</div>
-                
-                </section>
-        		<!-- END evaluation -->
-                
-        		<!-- honesty -->
-        		<section id="honesty">
-    			    
-    				<div class="page-header">
-    					<h1>Academic Honesty <small>it's about to get real serious</small></h1>
-    				</div>
-    				
-    				<div class="alert alert-danger">
-    					<strong>Hold up!</strong> If you want to use anything that you did not create yourself, come talk to me first and always cite your sources!
-    				</div>
-    				
-    				<div class="row">
-    					<div class="span7">
-    						<h3>Honest and Open</h3>
-    						<p>Plagiarism, cheating, and other forms of academic dishonesty are counterproductive to the objectives of higher education. I support the imposition of penalties on students who engage in academic dishonesty, as defined in the University Student Handbook.</p>
-    						<p>Students are responsible for learning the content of any course of study in which they are enrolled. Under Board of Regents and University policy, student academic performance shall be evaluated solely on an academic basis and students should be free to take reasoned exception to the data or views offered in any course of study. Students who believe that an academic evaluation is unrelated to academic standards but is related instead to judgment of their personal opinion or conduct should contact the dean of the college which offers the class to initiate a review of the evaluation.</p>
-    					</div>
-    					<div class="span5">
-    						<h3>Consequences</h3>
-    						<p>At my discretion, a student caught engaging in any form of academic dishonesty may be:</p>
-    						<ul>
-    							<li>Given no credit for that assignment.</li>
-    							<li>Allowed to rewrite and resubmit the assignment for credit.</li>
-    							<li>Assigned a reduced grade for the course.</li>
-    							<li>Dropped from the course.</li>
-    							<li>Failed in the course.</li>
-    						</ul>
-    					</div>
-    				</div>
-        			
-        		</section>
-        		<!-- END honesty -->
-        		
-        		<!-- disabilities -->
-        		<section id="disabilities">
-    			    
-    				<div class="page-header">
-    					<h1>Disability Services <small>everyone gets a fair chance here</small></h1>
-    				</div>
-    				
-    				<div class="row">
-    					<div class="span4">
-    						<h3>Equal Opportunity</h3>
-    						<p>Disability Services provide support to ensure that students are able to access and participate in all of the activities, programs and services.</p>
-    					</div>
-    					<div class="span4">
-    						<h3>Extent</h3>
-    						<p>Disability Services will provide reasonable and appropriate accommodations to allow equal access. However, this does not include making substantial modifications to academic requirements or to make modifications that would fundamentally alter the nature of the service, program or activity.</p>
-    					</div>
-    					<div class="span4">
-    						<div class="hero-anchor">
-    							<h6 class="dim"><i class="icon-info-sign"></i> Info</h6>
-    							<p><a href="http://www.usd.edu/disabilityservices" target="_blank">usd.edu/disabilityservices</a></p>
-    						</div>
-    						<div class="hero-anchor">
-    							<h6 class="dim"><i class="icon-envelope"></i> Email</h6>
-    							<p><a href="mailto:disabilityservices@usd.edu">disabilityservices@usd.edu</a></p>
-    						</div>
-    					</div>
-    				</div>
-        			
-        		</section>
-        		<!-- END disabilities -->
-        		
-        		<!-- grievances -->
-        		<section id="grievances">
-    			    
-    				<div class="page-header">
-    					<h1>Student Grievance <small> don't worry, be happy</small></h1>
-    				</div>
-    				
-    				<div class="row">
-    					<div class="span2 container-center">
-    						<div class="well">
-    							<img src="img/angry_cloud_128.png" alt="Angry">
-    						</div>
-    						<p><small>Something wrong?</small></p>
-    					</div>
-    					<div class="span2 container-center">
-    						<div class="well">
-    							<img src="img/talk_128.png" alt="Talk">
-    						</div>
-    						<h3>1. Talk to me</h3>
-    						<p><small><a href="#overview">email, phone, or in person</a></small></p>
-    					</div>
-    					<div class="span2 container-center">
-    						<h1 class="hero-type sequence-arrow dim">?</h1>
-    						<p><small>didn't help?</small></p>
-    					</div>
-    					<div class="span2 container-center">
-    						<div class="well">
-    							<img src="img/group_128.png" alt="Meeting">
-    						</div>
-    						<h3>2. Dept. Chair</h3>
-    						<p><small>meeting with you, me, and the <a href="http://www.usd.edu/fine-arts/art/people.cfm" target="_blank">dept. chair</a></small></p>
-    					</div>
-    					<div class="span2 container-center">
-    						<h1 class="hero-type sequence-arrow dim">?</h1>
-    						<p><small>didn't help?</small></p>
-    					</div>
-    					<div class="span2 container-center">
-    						<div class="well">
-    							<img src="img/file_128.png" alt="Form">
-    						</div>
-    						<h3>3. Appeals Form</h3>
-    						<p><small>submit official academic <a href="http://www.usd.edu/policies/" target="_blank">appeals form</a></small></p>
-    					</div>
-    				</div>
-                    
-        		</section>
-        		<!-- END grievances -->
-                
-    	    </article>
-            
-        </div>
-    	<!-- END policies -->
-    	
-    	<!-- classes -->
-        <div id="classes" class="tab-pane fade in theme-royal">
-                
-            <div class="container">
-    			
-                <!-- class -->
-            	<article id="class">
-                    
-                    <!-- class setup -->
-            		<section id="classSetup">
-                        <h1 id="classSetupHeader" class="hero-type">Classes</h1>
-                        <div id="classSetupBody" class="alert">
-            				<strong>Pick a class</strong> so we can get started!
-                        </div>
-        			</section>
-        			<!-- END class setup -->
-        			
-                    <header id="classHeader" class="subhead hidden">
-                        <h1 class="class-name"></h1>
-                    	<h2 class="class-summary"></h2>
-                        <div id="classNavWrapper">
-                        	<div id="classNav" class="subnavbar">
-                        		<div class="navbar-inner">
-                        			<div class="container">
-                        				<ul id="classNavListMain" class="nav nav-pills pull-left">
-                        				</ul>
-                        				<ul id="classNavListAlt" class="nav nav-pills pull-right visible-desktop">
-                        				</ul>
-                        			</div>
-                        		</div>
-                        	</div>
-                        </div>
-                    </header>
-                    
-                    <div id="classContent" class="hidden">
-        			    
-                        <!-- class loaded and dropped here -->
+                				<div class="span4">
+                					<h6>Step 1</h6>
+            						<h3>Requirements</h3>
+            						<p>Pass or fail and worth:</p>
+                                    <div class="well container-center">
+            						    <h1 class="hero-type">50<small>%</small></h1>
+                                    </div>
+                    				<div class="alert alert-info">
+            							<strong>Check it out:</strong> Life happens, so you get 1 chance per class to resubmit a project.
+            						</div>
+            					</div>
+            					<div class="span4">
+                    				<h6>Step 2</h6>
+            						<h3>Rubrick</h3>
+            						<p>Compare project to rubrick to generate score:</p>
+                                    <table class="table table-striped table-condensed table-bordered">
+                						<thead>
+            								<tr>
+            									<th>Concept</th>
+            									<th>Score</th>
+                								<th>%</th>
+            								</tr>
+            							</thead>
+            							<tbody>
+            								<tr>
+            									<td>Clear & Legible</td>
+            									<td>20</td>
+                								<td>10</td>
+            								</tr>
+                    						<tr>
+            									<td>Grid & Efficiency</td>
+            									<td>20</td>
+                    							<td>10</td>
+            								</tr>
+                        					<tr>
+            									<td>Color & Value</td>
+            									<td>20</td>
+                    							<td>10</td>
+            								</tr>
+                    						<tr>
+            									<td>Relevant & Fresh</td>
+            									<td>20</td>
+                    							<td>10</td>
+            								</tr>
+                            				<tr>
+            									<td>Problem Addressed</td>
+            									<td>10</td>
+                    							<td>5</td>
+            								</tr>
+                                			<tr>
+            									<td>Presentation</td>
+            									<td>10</td>
+                    							<td>5</td>
+            								</tr>
+                                			<tr>
+            									<td>Total</td>
+            									<td>100</td>
+                    							<td>50</td>
+            								</tr>
+            							</tbody>
+            						</table>
+            					</div>
+                    			<div class="span4">
+                					<h6>Step 3</h6>
+            						<h3>Combine</h3>
+            						<p>Combine scores using a simple equation:</p>
+                                    <div class="well container-center">
+                						<h3>requirements <small>(50%)</small></h3>
+                                        <p>+</p>
+                                        <h3>rubrick <small>(50%)</small></h3>
+                                        <p>=</p>
+                                        <h3>total <small>(100%)</small></h3>
+                                    </div>
+            					</div>
+            				</div>
                         
-                    </div>
-                    
-        		</article>
-                <!-- END class -->
-                
-    		</div>
-            
-        </div>
-    	<!-- END classes -->
-        
-        <!-- presentations -->
-        <div id="presentations" class="tab-pane fade in fullscreen">
-            
-            <article id="presentationWrapper" class="container">
-                
-                <!-- presentation -->
-                <div id="presentation" class="static-presentation well" data-template="fallback">
+                        </section>
+                		<!-- END evaluation -->
+                        
+                		<!-- honesty -->
+                		<section id="honesty">
+            			    
+            				<div class="page-header">
+            					<h1>Academic Honesty <small>it's about to get real serious</small></h1>
+            				</div>
+            				
+            				<div class="alert alert-danger">
+            					<strong>Hold up!</strong> If you want to use anything that you did not create yourself, come talk to me first and always cite your sources!
+            				</div>
+            				
+            				<div class="row">
+            					<div class="span7">
+            						<h3>Honest and Open</h3>
+            						<p>Plagiarism, cheating, and other forms of academic dishonesty are counterproductive to the objectives of higher education. I support the imposition of penalties on students who engage in academic dishonesty, as defined in the University Student Handbook.</p>
+            						<p>Students are responsible for learning the content of any course of study in which they are enrolled. Under Board of Regents and University policy, student academic performance shall be evaluated solely on an academic basis and students should be free to take reasoned exception to the data or views offered in any course of study. Students who believe that an academic evaluation is unrelated to academic standards but is related instead to judgment of their personal opinion or conduct should contact the dean of the college which offers the class to initiate a review of the evaluation.</p>
+            					</div>
+            					<div class="span5">
+            						<h3>Consequences</h3>
+            						<p>At my discretion, a student caught engaging in any form of academic dishonesty may be:</p>
+            						<ul>
+            							<li>Given no credit for that assignment.</li>
+            							<li>Allowed to rewrite and resubmit the assignment for credit.</li>
+            							<li>Assigned a reduced grade for the course.</li>
+            							<li>Dropped from the course.</li>
+            							<li>Failed in the course.</li>
+            						</ul>
+            					</div>
+            				</div>
+                			
+                		</section>
+                		<!-- END honesty -->
+                		
+                		<!-- disabilities -->
+                		<section id="disabilities">
+            			    
+            				<div class="page-header">
+            					<h1>Disability Services <small>everyone gets a fair chance here</small></h1>
+            				</div>
+            				
+            				<div class="row">
+            					<div class="span4">
+            						<h3>Equal Opportunity</h3>
+            						<p>Disability Services provide support to ensure that students are able to access and participate in all of the activities, programs and services.</p>
+            					</div>
+            					<div class="span4">
+            						<h3>Extent</h3>
+            						<p>Disability Services will provide reasonable and appropriate accommodations to allow equal access. However, this does not include making substantial modifications to academic requirements or to make modifications that would fundamentally alter the nature of the service, program or activity.</p>
+            					</div>
+            					<div class="span4">
+            						<div class="hero-anchor">
+            							<h6 class="dim"><i class="icon-info-sign"></i> Info</h6>
+            							<p><a href="http://www.usd.edu/disabilityservices" target="_blank">usd.edu/disabilityservices</a></p>
+            						</div>
+            						<div class="hero-anchor">
+            							<h6 class="dim"><i class="icon-envelope"></i> Email</h6>
+            							<p><a href="mailto:disabilityservices@usd.edu">disabilityservices@usd.edu</a></p>
+            						</div>
+            					</div>
+            				</div>
+                			
+                		</section>
+                		<!-- END disabilities -->
+                		
+                		<!-- grievances -->
+                		<section id="grievances">
+            			    
+            				<div class="page-header">
+            					<h1>Student Grievance <small> don't worry, be happy</small></h1>
+            				</div>
+            				
+            				<div class="row">
+            					<div class="span2 container-center">
+            						<div class="well">
+            							<img src="img/angry_cloud_128.png" alt="Angry">
+            						</div>
+            						<p><small>Something wrong?</small></p>
+            					</div>
+            					<div class="span2 container-center">
+            						<div class="well">
+            							<img src="img/talk_128.png" alt="Talk">
+            						</div>
+            						<h3>1. Talk to me</h3>
+            						<p><small><a href="#overview">email, phone, or in person</a></small></p>
+            					</div>
+            					<div class="span2 container-center">
+            						<h1 class="hero-type sequence-arrow dim">?</h1>
+            						<p><small>didn't help?</small></p>
+            					</div>
+            					<div class="span2 container-center">
+            						<div class="well">
+            							<img src="img/group_128.png" alt="Meeting">
+            						</div>
+            						<h3>2. Dept. Chair</h3>
+            						<p><small>meeting with you, me, and the <a href="http://www.usd.edu/fine-arts/art/people.cfm" target="_blank">dept. chair</a></small></p>
+            					</div>
+            					<div class="span2 container-center">
+            						<h1 class="hero-type sequence-arrow dim">?</h1>
+            						<p><small>didn't help?</small></p>
+            					</div>
+            					<div class="span2 container-center">
+            						<div class="well">
+            							<img src="img/file_128.png" alt="Form">
+            						</div>
+            						<h3>3. Appeals Form</h3>
+            						<p><small>submit official academic <a href="http://www.usd.edu/policies/" target="_blank">appeals form</a></small></p>
+            					</div>
+            				</div>
+                            
+                		</section>
+                		<!-- END grievances -->
+                        
+            	    </article>
                     
                 </div>
-            	<!-- END presentation -->
-                
-                <!-- presentation placeholder -->
-                <div id="presentationPlaceholder" class="hidden">
-                    
-                    <div class="step container container-center">
+            	<!-- END policies -->
+            	
+            	<!-- classes -->
+                <div id="classes" class="tab-pane fade in theme-royal">
                         
-                        <h1 class="hero-type">Presentations</h1>
-                        <p><small>Select a presentation from one of the categories and give it a few seconds to load!</small></p>
-                        <div class="row">
-                            <div class="span5">
-                                <img src="img/keyboard_64.png" alt="Keyboard" class="iconk-doublegiant">
-                                <p class="inline"><small>use</small></p>
-                                <img src="img/keyboard_arrows_128.png" alt="Arrows" class="iconk-doublegiant">
+                    <div class="container">
+            			
+                        <!-- class -->
+                    	<article id="class">
+                            
+                            <!-- class setup -->
+                    		<section id="classSetup">
+                                <h1 id="classSetupHeader" class="hero-type">Classes</h1>
+                                <div id="classSetupBody" class="alert">
+                    				<strong>Pick a class</strong> so we can get started!
+                                </div>
+                			</section>
+                			<!-- END class setup -->
+                			
+                            <header id="classHeader" class="subhead hidden">
+                                <h1 class="class-name"></h1>
+                            	<h2 class="class-summary"></h2>
+                                <div id="classNavWrapper">
+                                	<div id="classNav" class="subnavbar">
+                                		<div class="navbar-inner">
+                                			<div class="container">
+                                				<ul id="classNavListMain" class="nav nav-pills pull-left">
+                                				</ul>
+                                				<ul id="classNavListAlt" class="nav nav-pills pull-right visible-desktop">
+                                				</ul>
+                                			</div>
+                                		</div>
+                                	</div>
+                                </div>
+                            </header>
+                            
+                            <div id="classContent" class="hidden">
+                			    
+                                <!-- class loaded and dropped here -->
+                                
                             </div>
-                            <div class="span5">
-                                <img src="img/keyboard_no_64.png" alt="Keyboard" class="iconk-doublegiant">
-                                <p class="inline"><small>use</small></p>
-                                <img src="img/swipe_omnidirectional_128.png" alt="Arrows" class="iconk-doublegiant">
+                            
+                		</article>
+                        <!-- END class -->
+                        
+            		</div>
+                    
+                </div>
+            	<!-- END classes -->
+                
+                <!-- presentations -->
+                <div id="presentations" class="tab-pane fade in fullscreen">
+                    
+                    <article id="presentationWrapper" class="container">
+                        
+                        <!-- presentation -->
+                        <div id="presentation" class="static-presentation well" data-template="fallback">
+                            
+                        </div>
+                    	<!-- END presentation -->
+                        
+                        <!-- presentation placeholder -->
+                        <div id="presentationPlaceholder" class="hidden">
+                            
+                            <div class="step container container-center">
+                                
+                                <h1 class="hero-type">Presentations</h1>
+                                <p><small>Select a presentation from one of the categories and give it a few seconds to load!</small></p>
+                                <div class="row">
+                                    <div class="span5">
+                                        <img src="img/keyboard_64.png" alt="Keyboard" class="iconk-doublegiant">
+                                        <p class="inline"><small>use</small></p>
+                                        <img src="img/keyboard_arrows_128.png" alt="Arrows" class="iconk-doublegiant">
+                                    </div>
+                                    <div class="span5">
+                                        <img src="img/keyboard_no_64.png" alt="Keyboard" class="iconk-doublegiant">
+                                        <p class="inline"><small>use</small></p>
+                                        <img src="img/swipe_omnidirectional_128.png" alt="Arrows" class="iconk-doublegiant">
+                                    </div>
+                                </div>
+                                
+                                
                             </div>
-                        </div>
+                            
+                    	</div>
+                		<!-- END presentation placeholder -->
                         
+                        <div id="presentationsControl">
                         
-                    </div>
-                    
-            	</div>
-        		<!-- END presentation placeholder -->
-                
-                <div id="presentationsControl">
-                
-                    <!-- presentation setup -->
-                    <div id="presentationSetup" class="alert">
-                        <div id="presentationSetupInner">
-            			    <strong>Pick a presentation</strong> so we can get started!
-                        </div>
-                    </div>
-        			<!-- END presentation setup -->
-                    
-                    <!-- presentations nav -->
-            		<div id="presentationsNav" class="subnavbar">
-        				<div class="navbar-inner">
-        					<div class="container">
-        						<ul class="nav nav-pills pull-left">
-        							<li class="dropup">
-                						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            								Digital
-            								<b class="caret"></b>
-            							</a>
-            							<ul class="dropdown-menu">
-            								<li>
-            									<a href="#" class="button-presentation" data-url="digital/raster.html"><i class="icon-th-large"></i> Raster Graphics</a>
-            								</li>
-                							<li>
-            									<a href="#" class="button-presentation" data-url="digital/pixel.html"><i class="icon-pencil"></i> Pixel Art</a>
-            								</li>
-                    						<li>
-            									<a href="#" class="button-presentation" data-url="digital/speedPainting.html"><i class="icon-tint"></i> Speed Painting</a>
-            								</li>
-            								<li>
-            									<a href="#" class="button-presentation" data-url="digital/vector.html"><i class="icon-adjust"></i> Vector Graphics</a>
-            								</li>
-            							</ul>
-            						</li>
-                                    <li class="dropup">
-                    					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            								Web
-            								<b class="caret"></b>
-            							</a>
-            							<ul class="dropdown-menu">
-            								<li>
-            									<a href="#" class="button-presentation" data-url="web/basics.html"><i class="icon-user"></i> Basics</a>
-            								</li>
-                							<li>
-            									<a href="#" class="button-presentation" data-url="web/html.html"><i class="icon-tag"></i> HTML</a>
-            								</li>
-                							<li>
-            									<a href="#" class="button-presentation" data-url="web/cssBeginner.html"><i class="icon-eye-open"></i> CSS Beginner</a>
-            								</li>
-                							<li>
-            									<a href="#" class="button-presentation" data-url="web/typography.html"><i class="icon-font"></i> Typography</a>
-            								</li>
-            								<li>
-            									<a href="#" class="button-presentation" data-url="web/grids.html"><i class="icon-th"></i> Grids</a>
-            								</li>
-                    						<li>
-            									<a href="#" class="button-presentation" data-url="web/semantics.html"><i class="icon-comment"></i> Semantics</a>
-            								</li>
+                            <!-- presentation setup -->
+                            <div id="presentationSetup" class="alert">
+                                <div id="presentationSetupInner">
+                    			    <strong>Pick a presentation</strong> so we can get started!
+                                </div>
+                            </div>
+                			<!-- END presentation setup -->
+                            
+                            <!-- presentations nav -->
+                    		<div id="presentationsNav" class="subnavbar">
+                				<div class="navbar-inner">
+                					<div class="container">
+                						<ul class="nav nav-pills pull-left">
+                							<li class="dropup">
+                        						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    								Digital
+                    								<b class="caret"></b>
+                    							</a>
+                    							<ul class="dropdown-menu">
+                    								<li>
+                    									<a href="#" class="button-presentation" data-url="digital/raster.html"><i class="icon-th-large"></i> Raster Graphics</a>
+                    								</li>
+                        							<li>
+                    									<a href="#" class="button-presentation" data-url="digital/pixel.html"><i class="icon-pencil"></i> Pixel Art</a>
+                    								</li>
+                            						<li>
+                    									<a href="#" class="button-presentation" data-url="digital/speedPainting.html"><i class="icon-tint"></i> Speed Painting</a>
+                    								</li>
+                    								<li>
+                    									<a href="#" class="button-presentation" data-url="digital/vector.html"><i class="icon-adjust"></i> Vector Graphics</a>
+                    								</li>
+                    							</ul>
+                    						</li>
+                                            <li class="dropup">
+                            					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    								Web
+                    								<b class="caret"></b>
+                    							</a>
+                    							<ul class="dropdown-menu">
+                    								<li>
+                    									<a href="#" class="button-presentation" data-url="web/basics.html"><i class="icon-user"></i> Basics</a>
+                    								</li>
+                        							<li>
+                    									<a href="#" class="button-presentation" data-url="web/html.html"><i class="icon-tag"></i> HTML</a>
+                    								</li>
+                        							<li>
+                    									<a href="#" class="button-presentation" data-url="web/cssBeginner.html"><i class="icon-eye-open"></i> CSS Beginner</a>
+                    								</li>
+                        							<li>
+                    									<a href="#" class="button-presentation" data-url="web/typography.html"><i class="icon-font"></i> Typography</a>
+                    								</li>
+                    								<li>
+                    									<a href="#" class="button-presentation" data-url="web/grids.html"><i class="icon-th"></i> Grids</a>
+                    								</li>
+                            						<li>
+                    									<a href="#" class="button-presentation" data-url="web/semantics.html"><i class="icon-comment"></i> Semantics</a>
+                    								</li>
+                                                    <li>
+                                						<a href="#" class="button-presentation" data-url="web/navigation.html"><i class="icon-move"></i> Navigation</a>
+                    								</li>
+                                					<li>
+                    									<a href="#" class="button-presentation" data-url="web/listsTables.html"><i class="icon-th-list"></i> Lists & Tables</a>
+                    								</li>
+                                        			<li>
+                    									<a href="#" class="button-presentation" data-url="web/imagesBackgrounds.html"><i class="icon-picture"></i> Images & Backgrounds</a>
+                    								</li>
+                                					<li>
+                    									<a href="#" class="button-presentation" data-url="web/mobile.html"><i class="icon-hand-down"></i> Mobile Friendly</a>
+                    								</li>
+                    							</ul>
+                    						</li>
+                                            <li class="dropup">
+                                				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    								Coding
+                    								<b class="caret"></b>
+                    							</a>
+                    							<ul class="dropdown-menu">
+                    								<li>
+                    									<a href="#" class="button-presentation" data-url="coding/variables.html"><i class="icon-gift"></i> Variables</a>
+                    								</li>
+                        							<li>
+                    									<a href="#" class="button-presentation" data-url="coding/primitives.html"><i class="icon-asterisk"></i> Primitives</a>
+                    								</li>
+                        							<li>
+                    									<a href="#" class="button-presentation" data-url="coding/functions.html"><i class="icon-cog"></i> Functions</a>
+                    								</li>
+                        							<li>
+                    									<a href="#" class="button-presentation" data-url="coding/commentsConsole.html"><i class="icon-wrench"></i> Comments & Console</a>
+                    								</li>
+                        							<li>
+                    									<a href="#" class="button-presentation" data-url="coding/scope.html"><i class="icon-globe"></i> Scope</a>
+                    								</li>
+                        							<li>
+                    									<a href="#" class="button-presentation" data-url="coding/logic.html"><i class="icon-question-sign"></i> Logic Flow</a>
+                    								</li>
+                        							<li>
+                    									<a href="#" class="button-presentation" data-url="coding/iteration.html"><i class="icon-repeat"></i> Iteration</a>
+                    								</li>
+                            						<li>
+                    									<a href="#" class="button-presentation" data-url="coding/recursion.html"><i class="icon-refresh"></i> Recursion</a>
+                    								</li>
+                    							</ul>
+                    						</li>
+                						</ul>
+                						<!--<ul class="nav nav-pills pull-right">
                                             <li>
-                        						<a href="#" class="button-presentation" data-url="web/navigation.html"><i class="icon-move"></i> Navigation</a>
-            								</li>
-                        					<li>
-            									<a href="#" class="button-presentation" data-url="web/listsTables.html"><i class="icon-th-list"></i> Lists & Tables</a>
-            								</li>
-                                			<li>
-            									<a href="#" class="button-presentation" data-url="web/imagesBackgrounds.html"><i class="icon-picture"></i> Images & Backgrounds</a>
-            								</li>
-                        					<li>
-            									<a href="#" class="button-presentation" data-url="web/mobile.html"><i class="icon-hand-down"></i> Mobile Friendly</a>
-            								</li>
-            							</ul>
-            						</li>
-                                    <li class="dropup">
-                        				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            								Coding
-            								<b class="caret"></b>
-            							</a>
-            							<ul class="dropdown-menu">
-            								<li>
-            									<a href="#" class="button-presentation" data-url="coding/variables.html"><i class="icon-gift"></i> Variables</a>
-            								</li>
-                							<li>
-            									<a href="#" class="button-presentation" data-url="coding/primitives.html"><i class="icon-asterisk"></i> Primitives</a>
-            								</li>
-                							<li>
-            									<a href="#" class="button-presentation" data-url="coding/functions.html"><i class="icon-cog"></i> Functions</a>
-            								</li>
-                							<li>
-            									<a href="#" class="button-presentation" data-url="coding/commentsConsole.html"><i class="icon-wrench"></i> Comments & Console</a>
-            								</li>
-                							<li>
-            									<a href="#" class="button-presentation" data-url="coding/scope.html"><i class="icon-globe"></i> Scope</a>
-            								</li>
-                							<li>
-            									<a href="#" class="button-presentation" data-url="coding/logic.html"><i class="icon-question-sign"></i> Logic Flow</a>
-            								</li>
-                							<li>
-            									<a href="#" class="button-presentation" data-url="coding/iteration.html"><i class="icon-repeat"></i> Iteration</a>
-            								</li>
-                    						<li>
-            									<a href="#" class="button-presentation" data-url="coding/recursion.html"><i class="icon-refresh"></i> Recursion</a>
-            								</li>
-            							</ul>
-            						</li>
-        						</ul>
-        						<!--<ul class="nav nav-pills pull-right">
-                                    <li>
-                                        <a href="#presentations" id="presentationFullscreenToggle"><h6>Fullscreen <i class="icon-fullscreen"></i></h6></a>
-                                    </li>
-        						</ul>-->
-        					</div>
-        				</div>
-        			</div>
-                    <!-- END presentations nav -->
+                                                <a href="#presentations" id="presentationFullscreenToggle"><h6>Fullscreen <i class="icon-fullscreen"></i></h6></a>
+                                            </li>
+                						</ul>-->
+                					</div>
+                				</div>
+                			</div>
+                            <!-- END presentations nav -->
+                        </div>
+            		</article>
+            		
                 </div>
-    		</article>
-    		
+                <!-- END presentations -->
+                
+            </div>
+            
         </div>
-        <!-- END presentations -->
+        <!-- END content -->
         
     </div>
-    	
+    <!-- END wrapper -->
+    
 	<!-- javascript -->
 	<script>
 		// simple hook to remove noscript if javascript present
@@ -924,7 +949,7 @@
 		} )();
 	</script>
 	<script src="js/LAB.min.js"></script>
-	<script src="js/CKHClasses.js"></script>
+	<script src="js/CKHClasses.min.js"></script>
 	<!-- END javascript -->
 	
 	<!-- google analytics -->
