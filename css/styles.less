@@ -1223,6 +1223,10 @@ html, body, #wrapper {
 		margin-top: 0;
 	}
 	
+	&.designer {
+		.alert-danger;
+	}
+	
 	.requirement-item-checkbox {
 		.inline-block;
 		width: 10px;
@@ -1285,11 +1289,15 @@ html, body, #wrapper {
 @themeRoyalInfoBorder: lighten( @themeRoyalInfoBackground, 10% );
 @themeRoyalInfoText: #70ADFF;
 
+@themeRoyalInfoLightBackground: #13648A;
+@themeRoyalInfoLightBorder: lighten( @themeRoyalInfoLightBackground, 10% );
+@themeRoyalInfoLightText: #70DDFF;
+
 @themeRoyalSuccessBackground: #20784E;
 @themeRoyalSuccessBorder: lighten( @themeRoyalSuccessBackground, 10% );
 @themeRoyalSuccessText: #62FFBC;
 
-@themeRoyalDangerBackground: #6B0E22;
+@themeRoyalDangerBackground: #5C1738;
 @themeRoyalDangerBorder: lighten( @themeRoyalDangerBackground, 10% );
 @themeRoyalDangerText: #FF6482;
 
@@ -1359,6 +1367,12 @@ html, body, #wrapper {
         border-color: @themeRoyalInfoBorder;
         color: @themeRoyalInfoText;
     }
+	
+	.alert-info-light {
+        background-color: @themeRoyalInfoLightBackground;
+        border-color: @themeRoyalInfoLightBorder;
+        color: @themeRoyalInfoLightText;
+    }
     
     .alert-success {
         background-color: @themeRoyalSuccessBackground;
@@ -1379,10 +1393,17 @@ html, body, #wrapper {
     .requirement-item {
         .theme-royal > .alert;
         .theme-royal > .alert-info;
-        
+		
         .requirement-item-checkbox {
     		border-color: @themeRoyalInfoText;
     	}
+        
+		&.designer {
+			.theme-royal > .alert-info-light;
+			.requirement-item-checkbox {
+				border-color: @themeRoyalInfoLightText;
+			}
+		}
     	
     	&.complete {
     		color: @themeRoyalSuccessText;

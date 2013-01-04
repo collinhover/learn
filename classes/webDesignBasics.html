@@ -9,7 +9,7 @@
             <div class="row">
 		        <div class="span3">
 					<h3>Intent</h3>
-					<p>This class will take a designer's approach to learning front-end web design and development, and seeks to guide each student to a place where they can comfortably combine design and code.</p>
+					<p>This class will take a designer's approach to learning front-end web design, and seeks to guide each student to a place where they can comfortably combine design and code.</p>
 				</div>
 				<div class="span5">
 					<h3>Prerequisites</h3>
@@ -38,9 +38,9 @@
 			<h3>Pace</h3>
 			<div class="container-center">
 				<div class="well">
-					<img src="img/pace_fast_rev_64.png" class="iconk-giant">
+					<img src="img/pace_medium_rev_64.png" class="iconk-giant">
 				</div>
-				<p><small>Fast</small></p>
+				<p><small>Medium-Fast</small></p>
 			</div>
 		</div>
 	</div>
@@ -68,7 +68,7 @@
 			</a>
 			<p><small>(styling, non-dynamic)</small></p>
 		</div>
-		<div class="span2 offset2 container-center">
+		<div class="span2 offset2 container-center disabled dim">
 			<a href="http://eloquentjavascript.net/" target="_blank">
 				<img src="img/js_128.png" class="iconk">
 				<p>Javascript</p>
@@ -190,6 +190,32 @@
 		<!-- books -->
 		<div class="span4">
 			<h3>Books</h3>
+			<div class="row">
+		        <div class="span2">
+					<div class="hero-anchor">
+						<h6>HTML Dog</h6>
+						<p><a href="http://htmldog.com/" target="_blank">Read It!</a></p>
+					</div>
+					<div class="hero-anchor">
+						<h6>W3Schools</h6>
+						<p><a href="http://www.w3schools.com/" target="_blank">Search It!</a></p>
+					</div>
+				</div>
+		        <div class="span2">
+					<div class="hero-anchor">
+						<h6>Web is 95% Type</h6>
+						<p><a href="http://informationarchitects.net/blog/the-web-is-all-about-typography-period/" target="_blank">Read It!</a></p>
+					</div>
+					<div class="hero-anchor">
+						<h6>Web Typography</h6>
+						<p><a href="http://webtypography.net/toc/" target="_blank">Search It!</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--
+		<div class="span4">
+			<h3>Books</h3>
             <div class="row">
 		        <div class="span2 container-center">
 					<a href="http://formandcode.com/" target="_blank">
@@ -212,6 +238,7 @@
 				</div>
             </div>
 		</div>
+		-->
 		<!-- END books -->
 		
 		<!-- resources -->
@@ -389,7 +416,7 @@
             
             CKH.classes.AddClass( {
                 name: 'Web Design: Basics',
-                summary: '<span class="logo-type-purple">HTML</span>, <span class="logo-type-blue">CSS</span>, and <span class="logo-type-green">Javascript</span> for designers.',
+                summary: '<span class="logo-type-purple">HTML</span> and <span class="logo-type-blue">CSS</span> for designers.',
                 navigation: {
                     main: [
                         '<a href="#classIntroduction">Introduction</a>',
@@ -404,52 +431,50 @@
                 projects: [
                     {
                         name: 'The Satisfactory Single-page',
-                        summary: 'Single-page information / marketing site for a band or musician of your choice.',
+                        summary: 'Single-page resume for you as a designer.',
                         usables: 'HTML, CSS',
                         time: 2,
                         links: [
                             {
-                                text: 'Your single-page should look like this!',
+                                text: 'Your single-page might look like this!',
                                 url: 'files/templates/pages/single.html',
                             }
                         ],
                         requirements: [
-                            { text: 'RFD' },
+                            { text: 'RFD', designer: true },
                             { text: 'Pages container width 940px and centered horizontally' },
-                            { text: 'Full-width page introduction (the hero)' },
-                            { text: 'Hero biggest header' },
-                            { text: 'Hero biggest subheader' },
+                            { text: 'Full-width page header (the hero)' },
                             { text: 'Row with 2 columns of information (the sidekicks)' },
-                            { text: 'Sidekick 1: Bio (medium header + body copy at least 50 words)' },
-                            { text: 'Sidekick 2: Members ( medium header + sub-row )' },
-                            { text: 'Members: 1 evenly-spaced column per member in sub-row' },
-                            { text: 'Members: each has smallest header + bio' },
-                            { text: 'Commented start and end of each hero, sidekick, and member' },
+                            { text: 'Sidekick 1: Contact ( medium header + address + email + phone )' },
+                            { text: 'Sidekick 2: Content (education, experience, skills, references' },
+                            { text: 'Education: degree type, school, year graduated, gpa' },
+                            { text: 'Experience: job title, location, dates works, responsibilities (ranked from newest to oldest)' },
+                            { text: 'Skills: subrow of 4 columns - concepts, languages, software, other' },
+                            { text: 'References: subrow with 1 column per reference - name, job, email and/or phone' },
                             { text: 'HTML organized with comments' },
                             { text: 'CSS organized with comments' }
                         ]
                     },
                     {
                         name: 'The Masterful Multi-page',
-                        summary: 'Multi-page navigatable information / marketing site for a band or musician.',
+                        summary: 'Multi-page navigatable information site for you as a designer.',
                         usables: 'HTML, CSS',
-                        time: 2,
+                        time: 3,
                         requirements: [
-                            { text: 'RFD' },
+                            { text: 'RFD', designer: true },
                             { text: 'Pages container width 940px and centered horizontally' },
-                            { text: 'Overview / Home page' },
-                            { text: 'Overview contains hero introduction, bio, events, and members' },
-                            { text: 'Members: row with 1 evenly-spaced column per member' },
-                            { text: 'Members: each has header + bio + image' },
-                            { text: 'Events: table or list with small image, name, location, date of at least 6 events' },
-                            { text: 'Music page' },
-                            { text: 'Music page contains horizontal list of album buttons as in-page links to full album' },
-                            { text: 'Each album has description, genre, all songs with name and track length, and a link to return to list' },
+                            { text: 'Overview, Resume, and Portfolio pages' },
+                            { text: 'Overview contains introduction / bio, and why you design' },
+                            { text: 'Overview: Introduction / Bio of at least 50 words' },
+                            { text: 'Overview: Why you Design of at least 100 words' },
+                            { text: 'Resume: use and improve single-page project' },
+                            { text: 'Portfolio: table or list with at least 5 of your works' },
+                            { text: 'Portfolio: each item has at least 1 large image + project name, date, and media' },
+                            { text: 'Portfolio: one featured project at top with extra 3 images + short description' },
                             { text: 'Navigation bar with links to all pages' },
                             { text: 'Navigation bar links are relative' },
                             { text: 'Navigation bar is fixed in screen' },
-                            { text: 'Navigation bar contains logo' },
-                            { text: 'Images on at least 1 page' },
+                            { text: 'Navigation bar contains personal logo' },
                             { text: 'Uses rounded corners' },
                             { text: 'Bars use light box shadows' },
                             { text: 'Bars, buttons, and anchors use soft gradients' },
@@ -460,12 +485,12 @@
                     },
                     {
                         name: 'The Fantastic Fluid-page',
-                        summary: 'Mobile-ready fluid information / marketing site for a band or musician.',
+                        summary: 'Mobile-ready fluid information site for you as a designer.',
                         usables: 'HTML, CSS',
-                        time: 1,
+                        time: 2,
                         requirements: [
-                            { text: 'RFD' },
-                            { text: 'Uses multi-page as base' },
+                            { text: 'RFD', designer: true },
+                            { text: 'Uses multi-page project as base' },
                             { text: 'At page min width 1200px: Rows + Columns, container width 1170px, column width 70px margin-left 30px' },
                             { text: 'At standard size: Rows + Columns, container width 940px, column width 60px margin-left 20px' },
                             { text: 'At page min width 768px and max width 979px: Rows + Columns, container width 724px, column width 42px margin-left 20px' },
@@ -474,14 +499,14 @@
                             { text: 'Uses at least 1 non-web-native font through @font-face' }
                         ]
                     },
-                    {
+                    /*{
                         name: 'The Delirious Dynamic-page',
                         summary: 'Full window generative design interpretation of a song.',
                         usables: 'JS',
                         time: 4,
                         requirements: [
-                            { text: 'RFD' },
-                            { text: 'Cookbook' },
+                            { text: 'RFD', designer: true },
+                            { text: 'Cookbook', designer: true },
                             { text: 'Utilizes at least 1 Canvas element' },
                             { text: 'Single page' },
                             { text: 'Fills entire browser window (not full screen)' },
@@ -491,26 +516,31 @@
                             { text: 'Changes over time' },
                             { text: 'Javascript commented' }
                         ]
-                    },
+                    },*/
                     {
-                        name: 'By Your Powers Combined...',
-                        summary: 'Dynamic, mobile-friendly, multi-page informational / marketing site for a band or musician.',
+                        name: 'Final Portfolio',
+                        summary: 'Beautiful, easy to use, mobile-friendly, multi-page portfolio.',
                         usables: 'HTML, CSS, JS',
-                        time: 6,
+                        time: 8,
                         requirements: [
-                            { text: 'RFD' },
-                            { text: 'Cookbook' },
-                            { text: 'Overview / Home page' },
-                            { text: 'About page with description, genre, members, and bios' },
-                            { text: 'Discography page with at least 3 albums' },
-                            { text: 'Events page with at least 10 locations' },
-                            { text: 'Navbar with relative page links' },
+                            { text: 'RFD', designer: true },
+                            { text: 'Cookbook', designer: true },
+                            { text: 'Portfolio and About pages' },
+                            { text: 'Home page is portfolio' },
+                            { text: 'Portfolio: has a sticky nav with all portfolio items' },
+                            { text: 'Portfolio: table or list with at least 5 of your works' },
+                            { text: 'Portfolio: each item has at least 1 large image + metadata' },
+                            { text: 'Design must be clearly different from previous projects' },
+                            { text: 'No more than 2 clicks to get anywhere on site (i.e. no excessive link hopping)' },
+                            { text: 'About: resume, contact info, and connected sites like LinkedIn, Twitter, etc' },
+                            { text: 'About: improve original resume project' },
+                            { text: 'Mini contact info on every page' },
+                            { text: 'Main Navbar with relative page links' },
+                            { text: 'Main Navbar does not need to be sticky, horizontal, or along top' },
                             { text: 'Footer with copyright and page links' },
                             { text: 'Logo in each page' },
                             { text: 'Uses at least 2 fonts but no more than 4 font-families' },
-                            { text: 'Generative art / design using canvas in at least 1 page' },
-                            { text: 'Generative element is background / secondary to all else' },
-                            { text: 'Non-white color background in each page (can be generative element or image pattern)' },
+                            { text: 'Non-white color background in each page (can be color or image pattern)' },
                             { text: 'Works with script disabled' },
                             { text: 'Includes noscript warning where necessary' },
                             { text: 'HTML organized with comments' },

@@ -888,6 +888,9 @@ var CKH = ( function ( _main ) {
                     // properties
                     
                     requirementText = $.trim( data.text );
+					if ( data.designer === true ) {
+						$requirement.addClass( 'designer' );
+					}
                     requirementId = id + '_Requirement_' + requirementText;
                     
                     // check if id already in list ( duplicate )
