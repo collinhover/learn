@@ -1,6 +1,6 @@
 Collin Hover's Classes
 ========
 
-[Web-site/app](https://c9.io/collinhover/classes/workspace/index.html)
+[Web-site/app](http://collinhover.com/classes)
 
 Syllabus, centralized resource page, and probably other things for the classes I teach!

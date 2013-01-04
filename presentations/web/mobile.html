@@ -345,14 +345,14 @@ body {
         <div class="span7">
             <div class="container-left">
                 <pre class="prettyprint linenums">
-@media min-width(1200px) {
+@media (min-width:1200px) {
     /* rules for large desktops */
 }</pre>
             </div>
         </div>
     </div>
     <p>The <span class="highlight">min- state</span>takes the form of</p>
-    <h3>min-dimension(size)</h3>
+    <h3>(min-dimension:size)</h3>
     <p><small>(where dimension can be either width or height)</small></p>
     
 </div>
@@ -363,14 +363,14 @@ body {
         <div class="span7">
             <div class="container-left">
                 <pre class="prettyprint linenums">
-@media max-width(480px) {
+@media (max-width:480px) {
     /* rules for phones */
 }</pre>
             </div>
         </div>
     </div>
     <p>The <span class="highlight">max- state</span>takes the form of</p>
-    <h3>max-dimension(size)</h3>
+    <h3>(max-dimension:size)</h3>
     <p><small>(where dimension can be either width or height)</small></p>
     
 </div>
@@ -382,7 +382,7 @@ body {
     <img src="img/tablet_64.png" alt="Tablet" class="separate dim">
     <img src="img/computer_64.png" alt="Desktop" class="separate dim">
     <img src="img/computer_64.png" alt="Desktop" class="separate dim">
-    <h3>@media max-width(480px)</h3>
+    <h3>@media (max-width:480px)</h3>
     <p>to detect a <span class="highlight">phone</span></p>
     
 </div>
@@ -394,7 +394,7 @@ body {
     <img src="img/tablet_64.png" alt="Tablet" class="separate">
     <img src="img/computer_64.png" alt="Desktop" class="separate dim">
     <img src="img/computer_64.png" alt="Desktop" class="separate dim">
-    <h3>@media max-width(767px)</h3>
+    <h3>@media (max-width:767px)</h3>
     <p>to detect a <span class="highlight">tablet</span></p>
     
 </div>
@@ -406,7 +406,7 @@ body {
     <img src="img/tablet_64.png" alt="Tablet" class="separate dim">
     <img src="img/computer_64.png" alt="Desktop" class="separate">
     <img src="img/computer_64.png" alt="Desktop" class="separate dim">
-    <h3>@media min-width(768px) and max-width(979px)</h3>
+    <h3>@media (min-width:768px) and (max-width:979px)</h3>
     <p>to detect a <span class="highlight">small desktop</span></p>
     
 </div>
@@ -418,7 +418,7 @@ body {
     <img src="img/tablet_64.png" alt="Tablet" class="separate dim">
     <img src="img/computer_64.png" alt="Desktop" class="separate dim">
     <img src="img/computer_64.png" alt="Desktop" class="separate">
-    <h3>@media min-width(1200px)</h3>
+    <h3>@media (min-width:1200px)</h3>
     <p>to detect a <span class="highlight">large desktop</span></p>
     
 </div>
@@ -547,13 +547,13 @@ The min- states takes the form of “min-dimension(size)”
 
 The max- states takes the form of “max-dimension(size)”
 
-For example, to detect a phone use: @media max-width(480px)
+For example, to detect a phone use: @media (max-width:480px)
 
-For example, to detect a tablet use: @media max-width(767px)
+For example, to detect a tablet use: @media (max-width:767px)
 
-For example, to detect a small desktop use: @media min-width(768px) and max-width(979px)
+For example, to detect a small desktop use: @media (min-width:768px) and (max-width:979px)
 
-For example, to detect a large desktop use: @media min-width(1200px)
+For example, to detect a large desktop use: @media (min-width:1200px)
 
 With these @media queries, we can define new css rules for each screen size
 
