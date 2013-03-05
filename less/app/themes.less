@@ -1,0 +1,172 @@
+/* theme: royal 
+-------------------------*/
+
+@themeRoyalDarkest: #150C4A;
+@themeRoyalDark: #1A115A;
+@themeRoyalDarkless: #201469;
+@themeRoyalDarkleast: #251778;
+@themeRoyalMiddark: #2F1EA3;
+@themeRoyalMid: #3924C7;
+@themeRoyalMidlight: #422AE8;
+@themeRoyalLight: #8F89FE;
+
+@themeRoyalAlertBackground: #EEDC94;
+@themeRoyalAlertBorder: lighten( @themeRoyalAlertBackground, 10% );
+@themeRoyalAlertText: #5A574C;
+
+@themeRoyalInfoBackground: #13228A;
+@themeRoyalInfoBorder: lighten( @themeRoyalInfoBackground, 10% );
+@themeRoyalInfoText: #70ADFF;
+
+@themeRoyalInfoLightBackground: #13648A;
+@themeRoyalInfoLightBorder: lighten( @themeRoyalInfoLightBackground, 10% );
+@themeRoyalInfoLightText: #70DDFF;
+
+@themeRoyalSuccessBackground: #20784E;
+@themeRoyalSuccessBorder: lighten( @themeRoyalSuccessBackground, 10% );
+@themeRoyalSuccessText: #62FFBC;
+
+@themeRoyalDangerBackground: #5C1738;
+@themeRoyalDangerBorder: lighten( @themeRoyalDangerBackground, 10% );
+@themeRoyalDangerText: #FF6482;
+
+.theme-royal {
+    color: #eeeeee;
+    background-color: @themeRoyalDarkest;
+    
+    a:not(.btn) {
+        color: @blue;
+        
+        &:hover {
+            color: @blueLight;
+        }
+    }
+    
+    .subnavbar {
+        
+        .navbar-inner {
+            #gradient > .vertical( @themeRoyalDarkleast, @themeRoyalDarkless );
+            border-color: @themeRoyalDark;
+        }
+        
+        .nav {
+            
+            li {
+                
+                a {
+                    border-left-color: @themeRoyalMiddark;
+                    border-right-color: @themeRoyalDarkless;
+                    
+                    &:hover {
+                         background-color: @themeRoyalDarkless;  
+                    }
+                }
+                
+                &:first-child {
+                    a {
+                        border-left-color: rgba( 0, 0, 0, 0 );
+                    }
+                }
+                
+                &:last-child {
+                    a {
+                        border-right-color: rgba( 0, 0, 0, 0 );
+                    }
+                }
+                
+            }
+            
+        }
+        
+    }
+    
+    .page-header {
+        border-color: @themeRoyalDarkless;
+    }
+    
+    .alert {
+        background-color: @themeRoyalAlertBackground;
+        border-color: @themeRoyalAlertBorder;
+        color: @themeRoyalAlertText;
+        text-shadow: 0;
+    }
+    
+    .alert-info {
+        background-color: @themeRoyalInfoBackground;
+        border-color: @themeRoyalInfoBorder;
+        color: @themeRoyalInfoText;
+    }
+	
+	.alert-info-light {
+        background-color: @themeRoyalInfoLightBackground;
+        border-color: @themeRoyalInfoLightBorder;
+        color: @themeRoyalInfoLightText;
+    }
+    
+    .alert-success {
+        background-color: @themeRoyalSuccessBackground;
+        border-color: @themeRoyalSuccessBorder;
+        color: @themeRoyalSuccessText;
+    }
+    
+    .alert-danger {
+        background-color: @themeRoyalDangerBackground;
+        border-color: @themeRoyalDangerBorder;
+        color: @themeRoyalDangerText;
+    }
+    
+    .alert-info, .alert-success, .alert-danger {
+        text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+    }
+    
+    .requirement-item {
+        .theme-royal > .alert;
+        .theme-royal > .alert-info;
+		
+        .requirement-item-checkbox {
+    		border-color: @themeRoyalInfoText;
+    	}
+        
+		&.designer {
+			.theme-royal > .alert-info-light;
+			.requirement-item-checkbox {
+				border-color: @themeRoyalInfoLightText;
+			}
+		}
+    	
+    	&.complete {
+    		color: @themeRoyalSuccessText;
+    		background-color: @themeRoyalSuccessBackground;
+    		border-color: @themeRoyalSuccessBorder;
+    		
+    		.requirement-item-checkbox {
+    			background-color: @themeRoyalSuccessText;
+    			border-color: @themeRoyalSuccessText;
+    		}
+            
+    	}
+        
+    }
+    
+    .well {
+        background-color: @themeRoyalDark;
+        border-color: lighten( @themeRoyalDark, 5% );
+    }
+    
+    .accordion {
+        
+        .accordion-group {
+            border-color: @themeRoyalMid;
+            
+            .accordion-body {
+                
+                .accordion-inner {
+                    border-color: @themeRoyalDarkless;
+                }
+                
+            }
+        }
+        
+    }
+	
+}

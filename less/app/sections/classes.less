@@ -1,0 +1,100 @@
+/* classes 
+-------------------------*/
+
+#classes {
+    
+}
+
+#class {
+	
+	#classCalendar {
+		
+		iframe {
+			width: 100%;
+			min-height: 600px;
+			border: 0;
+            .border-radius(4px);
+		}
+        
+	}
+	
+}
+
+@media (max-width: 979px) {   
+    #class {
+            
+        #classCalendar {
+    		    
+    		iframe {
+    			min-height: 480px;
+    		}
+            
+    	}   
+            
+    }
+}
+
+@media (max-width: 480px) {
+    
+    #class {
+            
+        #classCalendar {
+        	    
+    		iframe {
+    			min-height: 320px;
+    		}
+            
+    	}   
+            
+    }
+
+}
+
+/* requirements 
+-------------------------*/
+
+.requirement-item {
+	.alert;
+	.alert-info;
+	cursor: pointer;
+	margin: 5px 0;
+	
+	&:first-child {
+		margin-top: 0;
+	}
+	
+	&.designer {
+		.alert-danger;
+	}
+	
+	.requirement-item-checkbox {
+		.inline-block;
+		width: 10px;
+		height: 10px;
+		vertical-align: baseline;
+		border: 1px solid @infoText;
+		margin-right: 9px;
+	}
+	
+	&.complete {
+		//.dim;
+		color: @successText;
+		background-color: @successBorder;
+		border-color: @successBorder;
+		text-decoration: line-through;
+		
+		.requirement-item-checkbox {
+			background-color: @successText;
+			border-color: @successText;
+		}
+	}
+	
+	
+}
+
+/* misc 
+-------------------------*/
+
+.sequence-arrow {
+	margin-top: 32px;
+}

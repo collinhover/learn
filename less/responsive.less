@@ -1,0 +1,15 @@
+.visible-mobile { display: none !important; }
+
+// Devices below min dimensions ~ tablets
+@media (max-width: @pageWidthMin) {
+    .visible-mobile { display: inherit !important; }
+    
+    .highlightable {
+        .transition(e('none'));
+        opacity: 1 !important;
+    }
+    
+    .warning, .warning-type {
+        .animation(e('none'));
+    }
+}

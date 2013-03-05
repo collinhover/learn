@@ -1,0 +1,82 @@
+/* grid 
+-------------------------*/
+
+.grid-gutterless {
+	
+	li {
+		margin: 0;
+		
+		p {
+			margin-top: 10px;
+		}
+	}
+	
+	#grid > .core(78px, 0px);
+	
+	[class^="thumbnails"], [class*=" thumbnails"] {
+		float: none;
+		margin-left: 0;
+		
+		.thumbnail {
+			margin: 3px;
+			padding: 0;
+			border: none;
+			.border-radius(0);
+		}
+		
+		&.shadowless {
+			.thumbnail, &:hover {
+				.box-shadow(none);
+			}
+		}
+		
+	}
+	
+	.thumbnails0 {
+		.thumbnail {
+			margin: 0;
+		}
+	}
+	
+	.thumbnails1 {
+		.thumbnail {
+			margin: 1px;
+		}
+	}
+	
+	.thumbnails2 {
+		.thumbnail {
+			margin: 2px;
+		}
+	}
+	
+	.thumbnails4 {
+		.thumbnail {
+			margin: 4px;
+		}
+	}
+	
+	.well {
+		
+		[class^="thumbnails"], [class*=" thumbnails"] {
+			margin-bottom: 0px;
+		}
+		
+	}
+    
+    @media (min-width: 1200px) {
+        #grid > .core(97px, 0px);
+    }
+
+}
+
+@media (max-width: 767px) {    
+    [class*="span"], .row-fluid [class*="span"] {
+        padding-top: @baseLineHeight / 2;
+		padding-bottom: @baseLineHeight / 2;
+		
+		&:first-child {
+			padding-top: 0;
+		}
+	}
+}

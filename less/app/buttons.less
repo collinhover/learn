@@ -1,0 +1,162 @@
+/* clickables 
+-------------------------*/
+
+a, .btn {
+	z-index: 1;
+	display: inline-block;
+}
+
+/* anchors 
+-------------------------*/
+
+a, .navbar .nav > li > a {
+	cursor: pointer;
+	
+	&:hover {
+		cursor: pointer;
+	}
+	
+}
+
+.hero-anchor {
+	padding-top: 6px;
+	padding-bottom: 6px;
+	
+	&:first-child {
+		padding-top: 0;
+	}
+	
+	h6 {
+		margin-bottom: @baseLineHeight / 2;
+	}
+    
+    @media (max-width: 767px) {    
+        .container-center;
+    }
+	
+}
+
+/* buttons 
+-------------------------*/
+
+.btn-huge {
+	padding: 14px 20px;
+	font-size: 32px;
+	.border-radius( 10px );
+}
+
+.btn-outline {
+	background: none;
+	border-width: 1px;
+	border-color: @grayDark;
+	color: @grayDark;
+	text-shadow: none;
+	.box-shadow( none );
+	
+	&:hover {
+		color: @grayDarker;
+		border-color: @grayDark;
+		background: none;
+	}
+}
+
+.btn-outlineRev {
+	.btn-outline;
+	border-color: @whiteDarker;
+	color: @whiteDarker;
+	
+	&:hover {
+		color: @white;
+		border-color: @whiteDarker;
+		background: none;
+	}
+}
+
+.btn-radiusless {
+	.border-radius( 0 );
+}
+
+.btn-circle-small {
+    .round(80px);
+	padding: 6px;
+}
+
+.btn-circle-medium {
+    .round(96px);
+	padding: 10px;
+}
+
+.btn-circle-large {
+    .round(128px);
+	padding: 12px;
+}
+
+.btn-circle-huge {
+    .round(144px);
+	padding: 16px;
+}
+
+.btn-circle-giant {
+    .round(160px);
+	padding: 20px;
+}
+
+/* dropdown
+-------------------------*/
+
+.dropdown-menu, .nav-collapse .dropdown-menu {
+	
+	li {
+		
+		[class^="icon"], [class*=" icon"], [class^="icon-"], [class*=" icon-"] {
+			vertical-align: baseline;
+			margin-bottom: -1px;
+			padding-right: 4px;
+		}
+		
+		h6, p {
+			padding: 3px 15px;
+		}
+		
+		a {
+			padding-top: 10px;
+			padding-bottom: 10px;
+		}
+		
+	}
+	
+}
+
+/* toggles
+-------------------------------------------------------------------------------*/
+
+.toggle {
+	
+	.toggle-on, .toggle-off {
+		cursor: pointer;
+	}
+	
+	.state-off {
+		position: relative;
+		z-index: @zInteractive + 1;
+	}
+	
+	.state-on {
+		position: relative;
+		z-index: @zInteractive;
+		display: none;
+	}
+	
+	&.on {
+		
+		.state-off {
+			display: none;
+		}
+		
+		.state-on {
+			display: inline-block;
+		}
+		
+	}
+	
+}

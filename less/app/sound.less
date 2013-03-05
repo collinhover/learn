@@ -1,0 +1,84 @@
+/* sound
+-------------------------------------------------------------------------------*/
+
+.toggle-sound {
+	position: relative;
+	display: inline-block;
+	width: 100%;
+	
+	.state-on, .state-off {
+		position: absolute;
+		left: 0;
+		right: 0;
+	}
+	
+	.toggle-on, .toggle-off {
+		margin: 0 auto;
+	}
+	
+	.slider-volume {
+		position: relative;
+		padding: 0;
+		margin: 0;
+		opacity: 0;
+		-webkit-user-select: none;
+		-webkit-tap-highlight-color: rgba(0,0,0,0);
+		-webkit-text-size-adjust: none;
+		-webkit-touch-callout: none;
+		
+		.track {
+			cursor: pointer;
+			position: absolute;
+			top: 40%;
+			left: 0;
+			right: 0;
+			height: 10%;
+			min-height: 6px;
+			background-color: @grayLight;
+			background-color: rgba( 255, 255, 255, 0.5 );
+			z-index: -1;
+		}
+
+		.knob {
+			cursor: pointer;
+			position: absolute;
+			width: 15%;
+			min-width: 10px;
+			height: 30%;
+			min-height: 20px;
+			top: 25%;
+			background-color: #FFFFFF;
+			.border-radius( 25% );
+			.flush;
+		}
+		
+	}
+	
+	&.on {
+		.slider-volume {
+			opacity: 1;
+		}
+	}
+	
+}
+
+/* sound manager
+-------------------------------------------------------------------------------*/
+
+#sm2-container {
+	.fillTopLeft;
+	z-index: @zMax;
+	opacity: 0.05;
+	
+	&.swf_timedout, &.swf_error {
+		position: static;
+		opacity: 1;
+	}
+	
+	&.swf_loaded, &.swf_unblocked {
+		left:-100%;
+		top:-100%;
+		z-index: -1;
+		.ignore-pointer;
+	}
+}
