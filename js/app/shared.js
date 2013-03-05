@@ -4,9 +4,34 @@ define( [
 	"jquery.easing",
 	"mdetect"
 ],
-function ( $, Signal ) {
+function ( $, Signal ) { "use strict";
 	
 	var _s = {};
+	
+	/*===================================================
+	
+	events
+	
+	=====================================================*/
+	
+	_s.events = {};
+	
+	if ( Modernizr && Modernizr.touch ) {
+		
+		_s.events.mousedown = 'touchstart';
+		_s.events.mouseup = 'touchend touchcancel';
+		_s.events.mousemove = 'touchmove';
+		_s.events.click = 'touchend';
+		
+	}
+	else {
+		
+		_s.events.mousedown = 'mousedown';
+		_s.events.mouseup = 'mouseup';
+		_s.events.mousemove = 'mousemove';
+		_s.events.click = 'click';
+		
+	}
 	
 	/*===================================================
 	
@@ -32,11 +57,12 @@ function ( $, Signal ) {
 	_de.$document = $( document );
 	_de.$html = _de.$document.find( "html" );
 	_de.$body = _de.$document.find( "body" );
-	_de.$main = $( "#main" );
-	_de.$content = $( "#content" );
 	
+	_de.$setup = $( "#setup" );
 	_de.$preloader = $( "#preloader" );
 	_de.$nosupport = $( "#nosupport" );
+	
+	_de.$content = $( "#content" );
 	
 	_de.$logo = $( ".logo" );
 	_de.$icons = $( 'i' );
@@ -45,6 +71,7 @@ function ( $, Signal ) {
 	_de.$buttonsDropdown = $( '[data-toggle="dropdown"]' );
 	
 	_de.$containerFill = $( ".container-fill" );
+	_de.$containerAlignVerticalAuto = $( ".container-align-vertical-auto" );
 	
 	_de.$navigation = $( "#navigation" );
 	_de.$navigationToggle = _de.$navigation.find( '[data-toggle="collapse"]' );
@@ -63,9 +90,9 @@ function ( $, Signal ) {
 	_de.$classNavWrapper = $( '#classNavWrapper' );
 	_de.$classNavListMain = $( '#classNavListMain' );
 	_de.$classNavListAlt = $( '#classNavListAlt' );
-	_de.$classSetup = $( '#classSetup' );
-	_de.$classSetupHeader = $( '#classSetupHeader' );
-	_de.$classSetupBody = $( '#classSetupBody' );
+	_de.$classPreloader = $( '#classPreloader' );
+	_de.$classPreloaderHeader = $( '#classPreloaderHeader' );
+	_de.$classPreloaderBody = $( '#classPreloaderBody' );
 	_de.$classProjects = $();
 	_de.$classProjectsLink = $( '<a href="#classProjects">Projects</a>' );
 	_de.$classCalendar = $();
@@ -79,8 +106,8 @@ function ( $, Signal ) {
 	_de.$presentationWrapper = $( '#presentationWrapper' );
 	_de.$presentation = $( '#presentation' );
 	_de.$presentationPlaceholder = $( '#presentationPlaceholder' );
-	_de.$presentationSetup = $( '#presentationSetup' );
-	_de.$presentationSetupInner = $( '#presentationSetupInner' );
+	_de.$presentationPreloader = $( '#presentationPreloader' );
+	_de.$presentationPreloaderInner = $( '#presentationPreloaderInner' );
 	_de.$presentationFullscreenToggle = $( '#presentationFullscreenToggle' );
 	_de.$presentationName = $( '.presentation-name' );
 	_de.$presentationDescription = $( '.presentation-description' );
@@ -109,15 +136,32 @@ function ( $, Signal ) {
 	
 	=====================================================*/
 	
+	_s.timeDeltaExpected = 1000 / 60;
 	_s.throttleTimeShort = _s.timeDeltaExpected * 3;
-	_s.throttleTimeMedium = 100;
-	_s.throttleTimeLong = 250;
+	_s.throttleTimeMedium = _s.throttleTimeShort * 2;
+	_s.throttleTimeLong = _s.throttleTimeShort * 5;
 	
 	_s.scrollDuration = 2000;
 	_s.fadeDuration = 500;
 	_s.collapseDuration = 500;
 	_s.fadeEasing = 'easeInOutCubic';
 	_s.collapseEasing = 'easeInOutCubic';
+	
+	_s.smallScreen = false;
+	
+	_s.pathToClasses = 'classes/';
+	_s.pathToPresentations = 'presentations/';
+	
+	_s.tabActiveId = '';
+	
+	_s.classActiveURL = '';
+	_s.classActiveReady = false;
+	_s.classTimeMax = 15;
+	
+	_s.presentationActiveURL = '';
+	_s.presentationActiveReady = false;
+	_s.presentationFullscreenState = false;
+	_s.presentationFullscreenStateLast = false;
 	
 	_s.w = _de.$window.width();
     _s.h = _de.$window.height();

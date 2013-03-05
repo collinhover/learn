@@ -1,40 +1,19 @@
 /* sections 
 -------------------------*/
 
-html, body, #setup, #content {
-    .fill;
-	.unscrollable;
-}
-
-article {
-    padding-top: 40px; /* equal to main navigation height */
-}
-
-.separated-block( @space: 40px ) {
-    padding-top: @space;
-    padding-bottom: @space * 0.5;
-	border-top: @space solid transparent;
-	margin-top: -@space;
-	-webkit-background-clip: padding-box;
-	-moz-background-clip: padding-box;
-	background-clip: padding-box;
-}
-
-section {
-	.separated-block();
-}
-
-header {
-    .separated-block();
-    padding-bottom: 0;
+#setup, #content {
+	.fillTopLeft;
 }
 
 /* setup
 -------------------------*/
 
+#setup {
+	background: @grayLighter;
+}
+
 .setup-item {
-    width: 100%;
-	height: 300px;
+    margin-bottom: 20px;
 }
 
 /* content

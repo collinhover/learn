@@ -14,9 +14,13 @@
 		"jquery",
 		"app/shared",
 		"app/utilities",
-		"app/ui"
+		"app/ui",
+		"app/classes",
+		"app/presentations"
 	],
-	function ( _s, _ui ) {
+	function ( $, _s, _utils, _ui ) { "use strict";
+		
+		var _de = _s.domElements;
 		
 		// ready
 		
@@ -24,17 +28,35 @@
 		
 		// resize once on start
 		
-		_de.$window.on( 'resize', function () { _s.timeTestPerformancePause = 0; } );
+		_ui.OnWindowResized();
 		_de.$window.trigger( 'resize' );
 		
-		// fade preloader
+		// check support
 		
-		_utils.FadeDOM( {
-			element: _de.$preloader,
-			easing: 'easeInCubic',
-			duration: 1000
-		} );
-		
+		if ( _s.unsupported ) {
+			
+			_utils.FadeDOM( {
+				element: _de.$nosupport,
+				opacity: 1,
+				duration: 500
+			} );
+			
+		}
+		else {
+			
+			// disable setup
+			
+			_utils.FadeDOM( {
+				element: _de.$setup,
+				duration: 1000
+			} );
+			
+			// enable content
+			
+			_de.$content.addClass( 'scrollable' ).removeClass( 'unscrollable' );
+			
+		}
+			
 	} );
 
 }( requirejs ) );

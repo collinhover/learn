@@ -3,7 +3,7 @@ define( [
 	"app/shared",
 	"jquery.placeholdme"
 ],
-function ( $, _s ) {
+function ( $, _s ) { "use strict";
 	
 	var _utils = {};
 	

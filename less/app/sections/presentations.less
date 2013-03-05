@@ -1,7 +1,7 @@
 /* presentations 
 -------------------------*/
 
-#presentationSetup {
+#presentationPreloader {
     margin-top: @baseLineHeight / 2;
 }
 
@@ -10,8 +10,7 @@
 }
 
 #presentation {
-    padding: 0;
-    margin: 0;
+    .flush;
     
     .step {
         .container;
@@ -193,30 +192,30 @@
             width: 100%;
         }
         
-        #presentationSetup {
-            padding: 0;
-            margin: 0;
-            border: 0;
-            position: absolute;
-            top: -100%;
+        #presentationPreloader {
             width: 100%;
             height: 100%;
-            z-index: 3;
             text-align: center;
             
-            #presentationSetupInner {
+            #presentationPreloaderInner {
                 padding: 5px;
             }
         }
         
-        #presentation, #presentationsControl {
-            .flush;
+        #presentation, #presentationPreloader, #presentationsControl {
+            .flush-border;
         }
         
         #presentation {
             width: 100%;
         }
         
+		#presentationsControl {
+			width: 100%;
+			position: absolute;
+			bottom: 0;
+		}
+		
         #presentationsNav {
             .navbar-flush;
         }
@@ -231,6 +230,32 @@
         
     }
     
+}
+
+@media (max-width: 979px) {
+
+	#presentations {
+		
+		&.fullscreen {
+			
+			#presentationsControl {
+				width: 100%;
+				position: relative;
+				bottom: auto;
+			}
+			
+			#presentationsNav {
+				
+				.container {
+					.flush;
+				}
+				
+			}
+			
+		}
+		
+	}
+	
 }
 
 /* misc 

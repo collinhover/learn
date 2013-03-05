@@ -956,6 +956,11 @@
     margin: 0;
 }
 
+.flush-border {
+	.flush;
+	border: none;
+}
+
 /* inline block + support for IE */
 .inline-block {
     display:inline-block;
@@ -1113,6 +1118,19 @@ a.dim:hover, button.dim:hover, .btn.dim:hover {
 	position: absolute;
 	left: 0;
 	top: 0;
+}
+
+/* layout 
+-------------------------*/
+
+.separated-block( @space: 40px ) {
+    padding-top: @space;
+    padding-bottom: @space * 0.5;
+	border-top: @space solid transparent;
+	margin-top: -@space;
+	-webkit-background-clip: padding-box;
+	-moz-background-clip: padding-box;
+	background-clip: padding-box;
 }
 
 /* aspect 

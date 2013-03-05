@@ -59,34 +59,54 @@
 	<!-- /header -->
     
 	<!-- setup -->
-	<div id="setup" class="container-center fade in">
+	<div id="setup" class="container-center overlay blocking">
 		
-		<div id="preloader" class="setup-item container-align-vertical">
-			<img src="img/logo.png" alt="CKH Learn" class="iconk">
-			<p>loading ideas...</p>
-		</div>
+		<div class="container-align-vertical">
 		
-		<div id="noscript" class="setup-item error container-align-vertical">
-			<h1>Javascript disabled?</h1>
-			<p>Sorry, but we can't seem to find Javascript... if you are sure you've turned it on, try upgrading to one of these friendly browsers:</p>
-			<ul class="nav nav-inline browsers">
-				<li>
-					<a href="http://www.google.com/chrome/" target="_blank" class="chrome">Chrome</a>
-				</li>
-				<li>
-					<a href="http://www.mozilla.org/firefox/" target="_blank" class="firefox">Firefox</a>
-				</li>
-				<li>
-					<a href="http://www.apple.com/safari/" target="_blank" class="safari">Safari</a>
-				</li>
-			</ul>
+			<div id="preloader" class="setup-item">
+				<img src="img/logo.png" alt="CKH Learn" class="iconk">
+				<p>loading ideas...</p>
+			</div>
+			
+			<div id="nosupport" class="setup-item error hidden">
+				<h1>Oops, your browser needs an update!</h1>
+				<p>Sorry, but your browser needs an upgrade for this site to work correctly. Try one of these friendly browsers:</p>
+				<ul class="nav nav-inline browsers">
+					<li>
+						<a href="http://www.google.com/chrome/" target="_blank" class="chrome">Chrome</a>
+					</li>
+					<li>
+						<a href="http://www.mozilla.org/firefox/" target="_blank" class="firefox">Firefox</a>
+					</li>
+					<li>
+						<a href="http://www.apple.com/safari/" target="_blank" class="safari">Safari</a>
+					</li>
+				</ul>
+			</div>
+			
+			<div id="noscript" class="setup-item error">
+				<h1>Javascript disabled?</h1>
+				<p>Sorry, but we can't seem to find Javascript... if you are sure you've turned it on, try upgrading to one of these friendly browsers:</p>
+				<ul class="nav nav-inline browsers">
+					<li>
+						<a href="http://www.google.com/chrome/" target="_blank" class="chrome">Chrome</a>
+					</li>
+					<li>
+						<a href="http://www.mozilla.org/firefox/" target="_blank" class="firefox">Firefox</a>
+					</li>
+					<li>
+						<a href="http://www.apple.com/safari/" target="_blank" class="safari">Safari</a>
+					</li>
+				</ul>
+			</div>
+			
 		</div>
 	
 	</div>
 	<!-- /setup -->
         
 	<!-- content -->
-	<div id="content" class="unscrollable fade">
+	<div id="content" class="unscrollable">
 		
 		<!-- navigation -->
 		<nav id="navigation" class="navbar navbar-fixed-top">
@@ -716,7 +736,7 @@
 								<div class="well">
 									<img src="img/talk_128.png" alt="Talk">
 								</div>
-								<h3>1. Talk to me</h3>
+								<h4>1. Talk to me</h4>
 								<p><small><a href="#overview">email, phone, or in person</a></small></p>
 							</div>
 							<div class="span2 container-center">
@@ -727,7 +747,7 @@
 								<div class="well">
 									<img src="img/group_128.png" alt="Meeting">
 								</div>
-								<h3>2. Dept. Chair</h3>
+								<h4>2. Dept. Chair</h4>
 								<p><small>meeting with you, me, and the <a href="http://www.usd.edu/fine-arts/art/people.cfm" target="_blank">dept. chair</a></small></p>
 							</div>
 							<div class="span2 container-center">
@@ -738,7 +758,7 @@
 								<div class="well">
 									<img src="img/file_128.png" alt="Form">
 								</div>
-								<h3>3. Appeals Form</h3>
+								<h4>3. Appeals Form</h4>
 								<p><small>submit official academic <a href="http://www.usd.edu/policies/" target="_blank">appeals form</a></small></p>
 							</div>
 						</div>
@@ -802,7 +822,7 @@
 			<!-- presentations -->
 			<div id="presentations" class="tab-pane fade in fullscreen">
 				
-				<article id="presentationWrapper" class="container">
+				<!--<article id="presentationWrapper" class="container">-->
 					
 					<!-- presentation -->
 					<div id="presentation" class="static-presentation well" data-template="fallback">
@@ -952,7 +972,7 @@
 						</div>
 						<!-- /presentations nav -->
 					</div>
-				</article>
+				<!--</article>-->
 				
 			</div>
 			<!-- /presentations -->
