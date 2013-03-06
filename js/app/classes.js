@@ -93,7 +93,7 @@ function ( $, _s ) { "use strict";
 						
 						// resize
 						
-						_ui.OnWindowResized();
+						_ui.OnWindowResized( false, true );
 						
 						// ready
 						
@@ -109,7 +109,7 @@ function ( $, _s ) { "use strict";
 		
 	} );
 	
-	_s.signals.onResized.add( OnResize );
+	_s.signals.onResizeStarted.add( OnResize );
 	
 	/*===================================================
     

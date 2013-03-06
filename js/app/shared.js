@@ -42,7 +42,8 @@ function ( $, Signal ) { "use strict";
 	_s.signals = {
 		onReady: new Signal(),
 		onScrolled: new Signal(),
-		onResized: new Signal()
+		onResized: new Signal(),
+		onResizeStarted: new Signal()
 	};
 	
 	/*===================================================
@@ -57,6 +58,7 @@ function ( $, Signal ) { "use strict";
 	_de.$document = $( document );
 	_de.$html = _de.$document.find( "html" );
 	_de.$body = _de.$document.find( "body" );
+	_de.$page = $().add( _de.$body, _de.$html, _de.$document, _de.$window );
 	
 	_de.$setup = $( "#setup" );
 	_de.$preloader = $( "#preloader" );
@@ -70,8 +72,8 @@ function ( $, Signal ) { "use strict";
 	_de.$tabToggles = $( '.tab-toggles' ).find( '[href^="#"]' );
 	_de.$buttonsDropdown = $( '[data-toggle="dropdown"]' );
 	
-	_de.$containerFill = $( ".container-fill" );
-	_de.$containerAlignVerticalAuto = $( ".container-align-vertical-auto" );
+	_de.$alignDynamic = $( ".align-dynamic" );
+	_de.$fillDynamic = $( ".fill-dynamic" );
 	
 	_de.$navigation = $( "#navigation" );
 	_de.$navigationToggle = _de.$navigation.find( '[data-toggle="collapse"]' );
@@ -112,6 +114,13 @@ function ( $, Signal ) { "use strict";
 	_de.$presentationName = $( '.presentation-name' );
 	_de.$presentationDescription = $( '.presentation-description' );
 	_de.$buttonsPresentations = $( '.button-presentation' );
+	
+	_de.refreshDynamic = function () {
+		
+		_de.$alignDynamic = $( ".align-dynamic" );
+		_de.$fillDynamic = $( ".fill-dynamic" );
+		
+	}
 	
 	/*===================================================
 	

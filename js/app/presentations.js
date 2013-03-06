@@ -4,7 +4,7 @@ define( [
 	"app/ui",
 	"google-code-prettify",
 	"bootstrap",
-	"jmpress",
+	"jmpress.custom",
 	"jquery.imagesloaded"
 ],
 function ( $, _s, _ui, prettify ) { "use strict";
@@ -12,6 +12,7 @@ function ( $, _s, _ui, prettify ) { "use strict";
 	var _de = _s.domElements;
 	var _ce = _s.cloneableElements;
 	var _pres = {};
+	var _$presentationSteps;
 	var _presentationFocusTimeoutID;
 	
 	/*===================================================
@@ -36,21 +37,34 @@ function ( $, _s, _ui, prettify ) { "use strict";
 	
 	// presentation fallback template
    
-	$.jmpress("template", "fallback", {
-		children: function ( i, element, all_elements ) {
-			
-			var $element = $( element ),
-				x = i * $element.outerWidth( true );
-			
-			return {
-				//y: 400,
-				x: x,
-				//scale: 0.3,
-				template: "fallback"
+	( function () {
+		
+		var totalWidth;
+		
+		$.jmpress("template", "fallback", {
+			children: function ( i, element, all_elements ) {
+				
+				if ( i === 0 ) {
+					
+					totalWidth = 0;
+					
+				}
+				
+				var $element = $( element ),
+					x = totalWidth;
+				
+				totalWidth += $element.outerWidth( true );
+				
+				return {
+					//y: 400,
+					x: x,
+					//scale: 0.3,
+					template: "fallback"
+				}
+				
 			}
-			
-		}
-	});
+		});
+	} )();
 	
 	// presentation remove on deinit
 	
@@ -160,6 +174,7 @@ function ( $, _s, _ui, prettify ) { "use strict";
 	
 	_de.$tabToggles.filter( '[href="#presentations"]' ).one( 'shown', InitPresentation );
 	
+	_s.signals.onResizeStarted.add( OnResizeStart );
 	_s.signals.onResized.add( OnResize );
 	
     /*===================================================
@@ -252,14 +267,13 @@ function ( $, _s, _ui, prettify ) { "use strict";
     
     function InitPresentation () {
         
-        var $presentationPrev,
-            $steps;
+        var $presentationPrev;
         
         // handle new steps
         
-        $steps = _de.$presentationPlaceholder.find( '.step' );
+        _$presentationSteps = _de.$presentationPlaceholder.find( '.step' );
         
-        if ( $steps.length > 0 ) {
+        if ( _$presentationSteps.length > 0 ) {
             
             // store current presentation
             
@@ -287,7 +301,7 @@ function ( $, _s, _ui, prettify ) { "use strict";
             
             // add steps and init presentation
             
-            _de.$presentation.append( $steps ).jmpress();
+            _de.$presentation.append( _$presentationSteps ).jmpress();
             
             // ensure canvas has no width or height, else will start misaligned
             
@@ -299,7 +313,7 @@ function ( $, _s, _ui, prettify ) { "use strict";
             
             // resize
             
-            _ui.OnWindowResized();
+            _ui.OnWindowResized( true );
             
             // when images loaded
             
@@ -315,7 +329,7 @@ function ( $, _s, _ui, prettify ) { "use strict";
                 
                 // for each step
                 
-                $steps.each( function ( i, element ) {
+                _$presentationSteps.each( function ( i, element ) {
                     
                     var $element = $( element ),
                         stepData = $element.data('stepData');
@@ -329,7 +343,7 @@ function ( $, _s, _ui, prettify ) { "use strict";
                 
                 // resize
                 
-                _ui.OnWindowResized();
+                _ui.OnWindowResized( false, true );
                 
                 FitPresentation();
                 
@@ -357,7 +371,7 @@ function ( $, _s, _ui, prettify ) { "use strict";
     
     =====================================================*/
 	
-	function OnResize () {
+	function OnResizeStart () {
 		
         if ( _s.tabActiveId === '#presentations' ) {
 			
@@ -384,6 +398,19 @@ function ( $, _s, _ui, prettify ) { "use strict";
             
         }
 		
+	}
+	
+	function OnResize () {
+		
+        if ( _s.tabActiveId === '#presentations' ) {
+			
+			if ( _$presentationSteps ) {
+				
+				_de.$presentation.jmpress( 'refresh', _$presentationSteps );
+				
+			}
+			
+		}
 	}
 	
 	return _pres;

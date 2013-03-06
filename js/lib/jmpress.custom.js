@@ -278,8 +278,9 @@
 			eventData.parents = element ? getStepParents(element) : null;
 			eventData.current = current;
 			eventData.jmpress = this;
+			var list = settings[callbackName] || [ methods[callbackName] ];
 			var result = {};
-			$.each( settings[callbackName], function(idx, callback) {
+			$.each( list, function(idx, callback) {
 				result.value = callback.call( jmpress, element, eventData ) || result.value;
 			});
 			return result.value;
@@ -497,7 +498,7 @@
 		 * @return void
 		 */
 		function fire( callbackName, element, eventData ) {
-			if( !callbacks[callbackName] ) {
+			if( !callbacks[callbackName] && !methods[callbackName] ) {
 				$.error( "callback " + callbackName + " is not registered." );
 			} else {
 				return callCallback.call(this, callbackName, element, eventData);
@@ -617,7 +618,7 @@
 		css(canvas, props);
 
 		current = {};
-
+		
 		callCallback.call(this, 'beforeInit', null, {});
 
 		// INITIALIZE EACH STEP
@@ -627,7 +628,7 @@
 		current.nextIdNumber = steps.length;
 
 		callCallback.call(this, 'afterInit', null, {});
-
+		
 		// START
 		select.call(this,  callCallback.call(this, 'selectInitialStep', "init", {}) );
 
@@ -2045,7 +2046,8 @@
 	}
 
 	/* HOOKS */
-	$jmpress("beforeInitStep", function( step, eventData ) {
+	
+	function initStepTemplates ( step, eventData ) {
 		step = $(step);
 		var data = eventData.data,
 			templateFromAttr = data.template,
@@ -2070,8 +2072,11 @@
 				});
 			}
 		}
-	});
-	$jmpress("beforeInit", function( nil, eventData ) {
+	}
+	
+	$jmpress("beforeInitStep", initStepTemplates );
+	
+	function refreshTemplates ( nil, eventData ) {
 		var data = $jmpress("dataset", this),
 			dataTemplate = data.template,
 			stepSelector = eventData.settings.stepSelector;
@@ -2081,7 +2086,23 @@
 				return !$(this).parent().is(stepSelector);
 			}), template.children );
 		}
-	});
+	}
+	
+	$jmpress("beforeInit", refreshTemplates );
+	$jmpress("register", "refreshWithEventData", refreshTemplates );
+	$jmpress("register", "refresh", function ( $steps ) {
+		var that = $( this );
+		that.jmpress( 'fire', "refreshWithEventData", $steps.selector, {} );
+		
+		$steps.each( function () {
+			
+			var $element = $( this );
+			
+			that.jmpress( 'init', $element );
+			
+		} );
+		
+	} );
 
 	/* EXPORTED FUNCTIONS */
 	$jmpress("register", "template", function( name, tmpl ) {
