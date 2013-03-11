@@ -1,26 +1,20 @@
 /* presentations 
 -------------------------*/
 
-#presentationPreloader {
-    margin-top: @baseLineHeight / 2;
-}
-
-#presentationsNav {
-    margin-top: @baseLineHeight / 2;
-}
-
 #presentation {
     .flush;
     
     .step {
-        .container;
         margin: 0;
-        padding: 20px;
         .box-sizing(border-box);
         font-size: 26px;
         line-height: 1.25;
         opacity: 0.3;
         .transition( opacity 1s );
+		
+		img, .fill-dynamic {
+			z-index: -1;
+		}
         
         p, code, .highlight, .emphasize {
             font-size: inherit;
@@ -35,6 +29,10 @@
             font-size: 150px;
             line-height: 1.125;
         }
+		
+		.separate {
+			margin-bottom: 26px;
+		}
         
         h1 {
             font-size: 75px;
@@ -65,7 +63,6 @@
             }
             
         }
-        
         
         li {
             line-height: inherit;
@@ -173,6 +170,70 @@
 		}
         
     }
+	
+	&.theme-inverse {
+		background: @grayDark;
+		color: @white;
+		
+		p, h1, h2, h3, h4, h5, h6 {
+            
+            small {
+                color: @grayLight;
+            }
+            
+        }
+		
+		.pixel {
+            .iconk;
+            background-color: @white;
+            .border-radius(4px);
+        }
+		
+		.pixels {
+            margin-bottom: -20px;
+            
+            .thumbnail {
+                .pixel;
+                .aspect-shape;
+                border: 0;
+                .box-shadow( none );
+                
+                &.bg-logoPurple {
+                    background-color: @logoPurple;
+                }
+                &.bg-logoBlue {
+                    background-color: @logoBlue;
+                }
+                &.bg-logoGreen {
+                    background-color: @logoGreen;
+                }
+                
+            }
+            
+            &.blank {
+                
+                .thumbnail {
+                    background-color: transparent;
+                }
+                
+            }
+            
+            &.invert {
+                background-color: @gray;
+            }
+            
+            &.outline {
+                
+                .thumbnail {
+                    border: 2px solid @white;
+                    .border-radius( 0 );
+                }
+                
+            }
+			
+		}
+		
+	}
     
     &.static-presentation {
         
@@ -188,6 +249,46 @@
 }
 
 #presentations {
+	
+	#presentationsNav {
+		
+		a {
+			color: @navbarLinkColor;
+			.caret {
+				border-top-color: @navbarLinkColor;
+				border-bottom-color: @navbarLinkColor;
+			}
+			
+			&:hover {
+				color: @navbarLinkColorHover;
+				.caret {
+					border-top-color: @navbarLinkColorHover;
+					border-bottom-color: @navbarLinkColorHover;
+				}
+			}
+			
+			&:active {
+				color: @navbarLinkColorActive;
+				.caret {
+					border-top-color: @navbarLinkColorActive;
+					border-bottom-color: @navbarLinkColorActive;
+				}
+			}
+			
+		}
+		
+		.dropup, .dropdown {
+			&.open {
+				
+				a {
+					//background-color: @navbarLinkBackgroundActive;
+					//color: @navbarLinkColorActive;
+				}
+				
+			}
+		}
+		
+	}
     
     &.fullscreen {
         padding: 0;
@@ -219,10 +320,6 @@
 			position: absolute;
 			bottom: 0;
 		}
-		
-        #presentationsNav {
-            .navbar-flush;
-        }
         
         #presentationFullscreenToggle {
             

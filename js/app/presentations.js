@@ -267,8 +267,6 @@ function ( $, _s, _ui, prettify ) { "use strict";
     
     function InitPresentation () {
         
-        var $presentationPrev;
-        
         // handle new steps
         
         _$presentationSteps = _de.$presentationPlaceholder.find( '.step' );
@@ -277,11 +275,19 @@ function ( $, _s, _ui, prettify ) { "use strict";
             
             // store current presentation
             
-            $presentationPrev = _de.$presentation;
+            var $presentationPrev = _de.$presentation;
             
             // add new presentation container
             
             _de.$presentation = _ce.$presentation.clone( true ).insertAfter( _de.$presentationPlaceholder );
+			
+			// set presentation options
+			// TODO: check if data is being set correctly
+			
+			var $presentationOptions = _de.$presentationPlaceholder.find( '#presentationOptions' );
+			_de.$presentation
+				.addClass( $presentationOptions.attr( 'class' ) )
+				.data( $presentationOptions.data() );
             
             // deinit current presentation and remove when done
             
