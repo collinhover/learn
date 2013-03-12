@@ -1838,10 +1838,29 @@
 		var viewPortMaxScale = eventData.stepData.viewPortMaxScale || viewPort.maxScale;
 		var viewPortMinScale = eventData.stepData.viewPortMinScale || viewPort.minScale;
 		// Correct the scale based on the window's size
-		var windowScaleY = viewPortHeight && $(eventData.container).innerHeight()/viewPortHeight;
-		var windowScaleX = viewPortWidth && $(eventData.container).innerWidth()/viewPortWidth;
+		var windowScaleY, windowScaleX;
+		if( viewPortHeight ) {
+			var stepHeight = step.innerHeight();
+			var containerHeight = $(eventData.container).innerHeight();
+			if( stepHeight > containerHeight ) {
+				windowScaleY = viewPortHeight / stepHeight;
+			}
+			else {
+				windowScaleY = containerHeight / viewPortHeight;
+			}
+		}
+		if( viewPortWidth ) {
+			var stepWidth = step.innerWidth();
+			var containerWidth = $(eventData.container).innerWidth();
+			if( stepWidth > containerWidth ) {
+				windowScaleX = viewPortWidth / stepWidth;
+			}
+			else {
+				windowScaleX = containerWidth / viewPortWidth;
+			}
+		}
 		var windowScale = (windowScaleX || windowScaleY) && Math.min( windowScaleX || windowScaleY, windowScaleY || windowScaleX );
-
+		
 		if(windowScale) {
 			windowScale = windowScale || 1;
 			if(viewPortMaxScale) {
@@ -1851,13 +1870,14 @@
 				windowScale = Math.max(windowScale, viewPortMinScale);
 			}
 
-			var zoomableSteps = eventData.stepData.viewPortZoomable || eventData.settings.viewPort.zoomable;
+			var zoomableSteps = eventData.stepData.viewPortZoomable || viewPort.zoomable;
+			
 			if(zoomableSteps) {
 				var diff = (1/windowScale) - (1/viewPortMaxScale);
 				diff /= zoomableSteps;
 				windowScale = 1/((1/windowScale) - diff * eventData.current.userZoom);
 			}
-
+			
 			eventData.target.transform.reverse();
 			if(eventData.current.userTranslateX && eventData.current.userTranslateY) {
 				eventData.target.transform.push(["translate", eventData.current.userTranslateX, eventData.current.userTranslateY, 0]);

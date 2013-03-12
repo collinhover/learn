@@ -3,6 +3,10 @@
 
 #presentation {
     .flush;
+	
+	.fill-dynamic {
+		overflow: hidden;
+	}
     
     .step {
         margin: 0;
@@ -32,6 +36,12 @@
 		
 		.separate {
 			margin-bottom: 26px;
+		}
+		
+		.separate-line {
+			padding-bottom: 10px;
+			margin-bottom: 10px;
+			border-bottom: solid 1px @whiteDarker;
 		}
         
         h1 {
@@ -164,10 +174,6 @@
         &.active {
             opacity: 1;
         }
-		
-		&.fill-dynamic {
-			overflow: hidden;
-		}
         
     }
 	
@@ -191,6 +197,10 @@
 		
 		.pixels {
             margin-bottom: -20px;
+			
+			.separate-line {
+				border-bottom-color: @gray;
+			}
             
             .thumbnail {
                 .pixel;

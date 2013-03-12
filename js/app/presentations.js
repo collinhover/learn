@@ -53,12 +53,10 @@ function ( $, _s, _ui, prettify ) { "use strict";
 				var $element = $( element ),
 					x = totalWidth;
 				
-				totalWidth += $element.outerWidth( true );
+				totalWidth += Math.max( _de.$presentation.outerWidth( true ), $element.outerWidth( true ) );
 				
 				return {
-					//y: 400,
 					x: x,
-					//scale: 0.3,
 					template: "fallback"
 				}
 				
@@ -381,26 +379,31 @@ function ( $, _s, _ui, prettify ) { "use strict";
 		
         if ( _s.tabActiveId === '#presentations' ) {
 			
-			var presentationHeight;
-            
             // set presentation container min height
             
             if ( _s.smallScreen ) {
                 
-                presentationHeight = _s.h;
+                _s.hPresentation = _s.h;
                 
 				 _de.$presentation.css( 'margin-top', 0 );
 				 
             }
 			else {
 				
-				presentationHeight = ( _s.h - _s.hNav ) - _de.$presentationsControl.outerHeight( true );
+				_s.hPresentation = ( _s.h - _s.hNav ) - _de.$presentationsControl.outerHeight( true );
 				
 				 _de.$presentation.css( 'margin-top', _s.hNav );
 				
 			}
 			
-            _de.$presentation.css( 'min-height', presentationHeight );
+            _de.$presentation.css( 'min-height', _s.hPresentation );
+			
+			// set default viewport dimensions
+			
+			_s.wPresentation = _s.w;
+			
+            jmpressDefaults.viewPort.width = _s.wPresentation;
+			jmpressDefaults.viewPort.height = _s.hPresentation;
             
         }
 		
@@ -413,6 +416,8 @@ function ( $, _s, _ui, prettify ) { "use strict";
 			if ( _$presentationSteps ) {
 				
 				_de.$presentation.jmpress( 'refresh', _$presentationSteps );
+				
+				FitPresentation();
 				
 			}
 			
