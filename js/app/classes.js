@@ -1,11 +1,13 @@
 define( [ 
 	"jquery",
 	"app/shared",
+	"app/ui",
 	"bootstrap"
 ],
-function ( $, _s ) { "use strict";
+function ( $, _s, _ui ) { "use strict";
 	
 	var _de = _s.domElements;
+	var _ce = _s.cloneableElements;
 	var _cls = {};
 	
 	/*===================================================
@@ -14,15 +16,14 @@ function ( $, _s ) { "use strict";
 	
 	=====================================================*/
 	
-	// class nav
-	
-	_de.$classNav.affix( { 
-		offset: { 
+	_de.$classNav.affix( {
+		container: _de.$content,
+		offset: {
 			top: function () {
 				return _de.$classNavWrapper.offset().top - _s.hNav;
-			} 
+			}
 		}
-	} );
+	});
 	
 	// for each class button
 	
@@ -86,13 +87,19 @@ function ( $, _s ) { "use strict";
 						
 						_de.$classPreloader.addClass( 'hidden' );
 						
-						// misc
+						// add
+						// TODO: make not global
+						
+						AddClass( _ckhClassParameters );
+						
+						// show
 						
 						ShowProjects();
 						ShowCalendar();
 						
-						// resize
+						// ui
 						
+						_ui.SuppressInPageLinks();
 						_ui.OnWindowResized( false, true );
 						
 						// ready
@@ -204,7 +211,6 @@ function ( $, _s ) { "use strict";
             
             AddProjects( parameters.projects );
             AddCalendar( parameters.calendar );
-            
             
         }
         

@@ -16,22 +16,10 @@ function ( $, Signal ) { "use strict";
 	
 	_s.events = {};
 	
-	if ( Modernizr && Modernizr.touch ) {
-		
-		_s.events.mousedown = 'touchstart';
-		_s.events.mouseup = 'touchend touchcancel';
-		_s.events.mousemove = 'touchmove';
-		_s.events.click = 'touchend';
-		
-	}
-	else {
-		
-		_s.events.mousedown = 'mousedown';
-		_s.events.mouseup = 'mouseup';
-		_s.events.mousemove = 'mousemove';
-		_s.events.click = 'click';
-		
-	}
+	_s.events.mousedown = 'mousedown touchstart';
+	_s.events.mouseup = 'mouseup touchend touchcancel';
+	_s.events.mousemove = 'mousemove touchmove';
+	_s.events.click = 'click touchend';
 	
 	/*===================================================
 	
@@ -65,9 +53,7 @@ function ( $, Signal ) { "use strict";
 	_de.$nosupport = $( "#nosupport" );
 	
 	_de.$content = $( "#content" );
-	
-	_de.$logo = $( ".logo" );
-	_de.$icons = $( 'i' );
+	_de.$inPageLinks = $();
 	_de.$tabs = $( '.tab-pane' );
 	_de.$tabToggles = $( '.tab-toggles' ).find( '[href^="#"]' );
 	_de.$buttonsDropdown = $( '[data-toggle="dropdown"]' );
@@ -77,6 +63,9 @@ function ( $, Signal ) { "use strict";
 	
 	_de.$navigation = $( "#navigation" );
 	_de.$navigationToggle = _de.$navigation.find( '[data-toggle="collapse"]' );
+	
+	_de.$logo = $( ".logo" );
+	_de.$icons = $( 'i' );
 	
 	_de.$overview = $( '#overview' );
 	

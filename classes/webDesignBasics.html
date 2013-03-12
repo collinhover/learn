@@ -415,153 +415,145 @@
 -->
 
 <script>
-                    
-    $( document ).ready( function () {
-        
-        // if globals valid
-        
-        if ( CKH && CKH.classes ) {
-            
-            CKH.classes.AddClass( {
-                name: 'Web Design: Basics',
-                summary: '<span class="logo-type-purple">HTML</span> and <span class="logo-type-blue">CSS</span> for designers.',
-                navigation: {
-                    main: [
-                        '<a href="#classIntroduction">Introduction</a>',
-                        '<a href="#classLanguages">Languages</a>',
-                        '<a href="#classTools">Tools</a>'
-                    ]
-                },
-                calendar: {
-                    embed: 'https://www.google.com/calendar/embed?mode=AGENDA&showTitle=0&showPrint=0&showCalendars=0&height=600&wkst=1&bgcolor=%23FFFFFF&src=55mr2ne9dkhjmj5i41np1qacqs@group.calendar.google.com&color=%235229A3&ctz=America%2FChicago',
-                    link: 'https://www.google.com/calendar/htmlembed?mode=AGENDA&src=55mr2ne9dkhjmj5i41np1qacqs@group.calendar.google.com'
-                },
-                projects: [
-                    {
-                        name: 'The Satisfactory Single-page',
-                        summary: 'Single-page resume for you as a designer.',
-                        usables: 'HTML, CSS',
-                        time: 2,
-                        links: [
-                            {
-                                text: 'Your single-page might look like this!',
-                                url: 'files/templates/pages/single.html',
-                            }
-                        ],
-                        requirements: [
-                            { text: 'RFD', designer: true },
-                            { text: 'Pages container width 940px and centered horizontally' },
-                            { text: 'Full-width page header (the hero)' },
-                            { text: 'Row with 2 columns of information (the sidekicks)' },
-                            { text: 'Sidekick 1: Contact ( medium header + address + email + phone )' },
-                            { text: 'Sidekick 2: Content (education, experience, skills, references' },
-                            { text: 'Education: degree type, school, year graduated, gpa' },
-                            { text: 'Experience: job title, location, dates works, responsibilities (ranked from newest to oldest)' },
-                            { text: 'Skills: subrow of 4 columns - concepts, languages, software, other' },
-                            { text: 'References: subrow with 1 column per reference - name, job, email and/or phone' },
-                            { text: 'HTML organized with comments' },
-                            { text: 'CSS organized with comments' }
-                        ]
-                    },
-                    {
-                        name: 'The Masterful Multi-page',
-                        summary: 'Multi-page navigatable information site for you as a designer.',
-                        usables: 'HTML, CSS',
-                        time: 3,
-                        requirements: [
-                            { text: 'RFD', designer: true },
-                            { text: 'Pages container width 940px and centered horizontally' },
-                            { text: 'Overview, Resume, and Portfolio pages' },
-                            { text: 'Overview contains introduction / bio, and why you design' },
-                            { text: 'Overview: Introduction / Bio of at least 50 words' },
-                            { text: 'Overview: Why you Design of at least 100 words' },
-                            { text: 'Resume: use and improve single-page project' },
-                            { text: 'Portfolio: table or list with at least 5 of your works' },
-                            { text: 'Portfolio: each item has at least 1 large image + project name, date, and media' },
-                            { text: 'Portfolio: one featured project at top with extra 3 images + short description' },
-                            { text: 'Navigation bar with links to all pages' },
-                            { text: 'Navigation bar links are relative' },
-                            { text: 'Navigation bar is fixed in screen' },
-                            { text: 'Navigation bar contains personal logo' },
-                            { text: 'Uses rounded corners' },
-                            { text: 'Bars use light box shadows' },
-                            { text: 'Bars, buttons, and anchors use soft gradients' },
-                            { text: 'Footer with copyright on all pages' },
-                            { text: 'HTML organized with comments' },
-                            { text: 'CSS organized with comments' }
-                        ]
-                    },
-                    {
-                        name: 'The Fantastic Fluid-page',
-                        summary: 'Mobile-ready fluid information site for you as a designer.',
-                        usables: 'HTML, CSS',
-                        time: 2,
-                        requirements: [
-                            { text: 'RFD', designer: true },
-                            { text: 'Uses multi-page project as base' },
-                            { text: 'At page min width 1200px: Rows + Columns, container width 1170px, column width 70px margin-left 30px' },
-                            { text: 'At standard size: Rows + Columns, container width 940px, column width 60px margin-left 20px' },
-                            { text: 'At page min width 768px and max width 979px: Rows + Columns, container width 724px, column width 42px margin-left 20px' },
-                            { text: 'At page max width 767px: single column / vertical stacked layout (i.e. no float) with fluid 100% width and minimum width 280px' },
-                            { text: 'Base font-size 16px' },
-                            { text: 'Uses at least 1 non-web-native font through @font-face' }
-                        ]
-                    },
-                    /*{
-                        name: 'The Delirious Dynamic-page',
-                        summary: 'Full window generative design interpretation of a song.',
-                        usables: 'JS',
-                        time: 4,
-                        requirements: [
-                            { text: 'RFD', designer: true },
-                            { text: 'Cookbook', designer: true },
-                            { text: 'Utilizes at least 1 Canvas element' },
-                            { text: 'Single page' },
-                            { text: 'Fills entire browser window (not full screen)' },
-                            { text: 'Uses at least 2 colors that are not white or black or grey' },
-                            { text: 'Uses pattern' },
-                            { text: 'Uses randomization' },
-                            { text: 'Changes over time' },
-                            { text: 'Javascript commented' }
-                        ]
-                    },*/
-                    {
-                        name: 'Final Portfolio',
-                        summary: 'Beautiful, easy to use, mobile-friendly, multi-page portfolio.',
-                        usables: 'HTML, CSS, JS',
-                        time: 8,
-                        requirements: [
-                            { text: 'RFD', designer: true },
-                            { text: 'Cookbook', designer: true },
-                            { text: 'Portfolio and About pages' },
-                            { text: 'Home page is portfolio' },
-                            { text: 'Portfolio: has a sticky nav with all portfolio items' },
-                            { text: 'Portfolio: table or list with at least 5 of your works' },
-                            { text: 'Portfolio: each item has at least 1 large image + metadata' },
-                            { text: 'Design must be clearly different from previous projects' },
-                            { text: 'No more than 2 clicks to get anywhere on site (i.e. no excessive link hopping)' },
-                            { text: 'About: resume, contact info, and connected sites like LinkedIn, Twitter, etc' },
-                            { text: 'About: improve original resume project' },
-                            { text: 'Mini contact info on every page' },
-                            { text: 'Main Navbar with relative page links' },
-                            { text: 'Main Navbar does not need to be sticky, horizontal, or along top' },
-                            { text: 'Footer with copyright and page links' },
-                            { text: 'Logo in each page' },
-                            { text: 'Uses at least 2 fonts but no more than 4 font-families' },
-                            { text: 'Non-white color background in each page (can be color or image pattern)' },
-                            { text: 'Works with script disabled' },
-                            { text: 'Includes noscript warning where necessary' },
-                            { text: 'HTML organized with comments' },
-                            { text: 'External CSS organized with comments' },
-                            { text: 'Javascript commented' },
-                            { text: 'HTML passed W3C validation with less than 5 errors' }
-                        ]
-                    }
-                ]
-            });
-            
-        }
     
-    } );
+	// TODO: make this not global
+	
+    var _ckhClassParameters = {
+		name: 'Web Design: Basics',
+		summary: '<span class="logo-type-purple">HTML</span> and <span class="logo-type-blue">CSS</span> for designers.',
+		navigation: {
+			main: [
+				'<a href="#classIntroduction">Introduction</a>',
+				'<a href="#classLanguages">Languages</a>',
+				'<a href="#classTools">Tools</a>'
+			]
+		},
+		calendar: {
+			embed: 'https://www.google.com/calendar/embed?mode=AGENDA&showTitle=0&showPrint=0&showCalendars=0&height=600&wkst=1&bgcolor=%23FFFFFF&src=55mr2ne9dkhjmj5i41np1qacqs@group.calendar.google.com&color=%235229A3&ctz=America%2FChicago',
+			link: 'https://www.google.com/calendar/htmlembed?mode=AGENDA&src=55mr2ne9dkhjmj5i41np1qacqs@group.calendar.google.com'
+		},
+		projects: [
+			{
+				name: 'The Satisfactory Single-page',
+				summary: 'Single-page resume for you as a designer.',
+				usables: 'HTML, CSS',
+				time: 2,
+				links: [
+					{
+						text: 'Your single-page might look like this!',
+						url: 'files/templates/pages/single.html',
+					}
+				],
+				requirements: [
+					{ text: 'RFD', designer: true },
+					{ text: 'Pages container width 940px and centered horizontally' },
+					{ text: 'Full-width page header (the hero)' },
+					{ text: 'Row with 2 columns of information (the sidekicks)' },
+					{ text: 'Sidekick 1: Contact ( medium header + address + email + phone )' },
+					{ text: 'Sidekick 2: Content (education, experience, skills, references' },
+					{ text: 'Education: degree type, school, year graduated, gpa' },
+					{ text: 'Experience: job title, location, dates works, responsibilities (ranked from newest to oldest)' },
+					{ text: 'Skills: subrow of 4 columns - concepts, languages, software, other' },
+					{ text: 'References: subrow with 1 column per reference - name, job, email and/or phone' },
+					{ text: 'HTML organized with comments' },
+					{ text: 'CSS organized with comments' }
+				]
+			},
+			{
+				name: 'The Masterful Multi-page',
+				summary: 'Multi-page navigatable information site for you as a designer.',
+				usables: 'HTML, CSS',
+				time: 3,
+				requirements: [
+					{ text: 'RFD', designer: true },
+					{ text: 'Pages container width 940px and centered horizontally' },
+					{ text: 'Overview, Resume, and Portfolio pages' },
+					{ text: 'Overview contains introduction / bio, and why you design' },
+					{ text: 'Overview: Introduction / Bio of at least 50 words' },
+					{ text: 'Overview: Why you Design of at least 100 words' },
+					{ text: 'Resume: use and improve single-page project' },
+					{ text: 'Portfolio: table or list with at least 5 of your works' },
+					{ text: 'Portfolio: each item has at least 1 large image + project name, date, and media' },
+					{ text: 'Portfolio: one featured project at top with extra 3 images + short description' },
+					{ text: 'Navigation bar with links to all pages' },
+					{ text: 'Navigation bar links are relative' },
+					{ text: 'Navigation bar is fixed in screen' },
+					{ text: 'Navigation bar contains personal logo' },
+					{ text: 'Uses rounded corners' },
+					{ text: 'Bars use light box shadows' },
+					{ text: 'Bars, buttons, and anchors use soft gradients' },
+					{ text: 'Footer with copyright on all pages' },
+					{ text: 'HTML organized with comments' },
+					{ text: 'CSS organized with comments' }
+				]
+			},
+			{
+				name: 'The Fantastic Fluid-page',
+				summary: 'Mobile-ready fluid information site for you as a designer.',
+				usables: 'HTML, CSS',
+				time: 2,
+				requirements: [
+					{ text: 'RFD', designer: true },
+					{ text: 'Uses multi-page project as base' },
+					{ text: 'At page min width 1200px: Rows + Columns, container width 1170px, column width 70px margin-left 30px' },
+					{ text: 'At standard size: Rows + Columns, container width 940px, column width 60px margin-left 20px' },
+					{ text: 'At page min width 768px and max width 979px: Rows + Columns, container width 724px, column width 42px margin-left 20px' },
+					{ text: 'At page max width 767px: single column / vertical stacked layout (i.e. no float) with fluid 100% width and minimum width 280px' },
+					{ text: 'Base font-size 16px' },
+					{ text: 'Uses at least 1 non-web-native font through @font-face' }
+				]
+			},
+			/*{
+				name: 'The Delirious Dynamic-page',
+				summary: 'Full window generative design interpretation of a song.',
+				usables: 'JS',
+				time: 4,
+				requirements: [
+					{ text: 'RFD', designer: true },
+					{ text: 'Cookbook', designer: true },
+					{ text: 'Utilizes at least 1 Canvas element' },
+					{ text: 'Single page' },
+					{ text: 'Fills entire browser window (not full screen)' },
+					{ text: 'Uses at least 2 colors that are not white or black or grey' },
+					{ text: 'Uses pattern' },
+					{ text: 'Uses randomization' },
+					{ text: 'Changes over time' },
+					{ text: 'Javascript commented' }
+				]
+			},*/
+			{
+				name: 'Final Portfolio',
+				summary: 'Beautiful, easy to use, mobile-friendly, multi-page portfolio.',
+				usables: 'HTML, CSS, JS',
+				time: 8,
+				requirements: [
+					{ text: 'RFD', designer: true },
+					{ text: 'Cookbook', designer: true },
+					{ text: 'Portfolio and About pages' },
+					{ text: 'Home page is portfolio' },
+					{ text: 'Portfolio: has a sticky nav with all portfolio items' },
+					{ text: 'Portfolio: table or list with at least 5 of your works' },
+					{ text: 'Portfolio: each item has at least 1 large image + metadata' },
+					{ text: 'Design must be clearly different from previous projects' },
+					{ text: 'No more than 2 clicks to get anywhere on site (i.e. no excessive link hopping)' },
+					{ text: 'About: resume, contact info, and connected sites like LinkedIn, Twitter, etc' },
+					{ text: 'About: improve original resume project' },
+					{ text: 'Mini contact info on every page' },
+					{ text: 'Main Navbar with relative page links' },
+					{ text: 'Main Navbar does not need to be sticky, horizontal, or along top' },
+					{ text: 'Footer with copyright and page links' },
+					{ text: 'Logo in each page' },
+					{ text: 'Uses at least 2 fonts but no more than 4 font-families' },
+					{ text: 'Non-white color background in each page (can be color or image pattern)' },
+					{ text: 'Works with script disabled' },
+					{ text: 'Includes noscript warning where necessary' },
+					{ text: 'HTML organized with comments' },
+					{ text: 'External CSS organized with comments' },
+					{ text: 'Javascript commented' },
+					{ text: 'HTML passed W3C validation with less than 5 errors' }
+				]
+			}
+		]
+	};
     
 </script>

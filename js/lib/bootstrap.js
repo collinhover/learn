@@ -2188,7 +2188,7 @@
 
   var Affix = function (element, options) {
     this.options = $.extend({}, $.fn.affix.defaults, options)
-    this.$window = $(window)
+    this.$window = $(options.container || window)
       .on('scroll.affix.data-api', $.proxy(this.checkPosition, this))
       .on('click.affix.data-api',  $.proxy(function () { setTimeout($.proxy(this.checkPosition, this), 1) }, this))
     this.$element = $(element)
@@ -2196,6 +2196,7 @@
   }
 
   Affix.prototype.checkPosition = function () {
+	
     if (!this.$element.is(':visible')) return
 
     var scrollHeight = $(document).height()
@@ -2215,9 +2216,9 @@
       false    : offsetBottom != null && (position.top + this.$element.height() >= scrollHeight - offsetBottom) ?
       'bottom' : offsetTop != null && scrollTop <= offsetTop ?
       'top'    : false
-
+	
     if (this.affixed === affix) return
-
+	
     this.affixed = affix
     this.unpin = affix == 'bottom' ? position.top - scrollTop : null
 

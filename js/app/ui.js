@@ -54,12 +54,11 @@ function ( $, _s, prettify ) { "use strict";
 			}
 			else if ( $section.length > 0 ) {
 				
-				window.location.hash = '#' + $section.attr( 'id' );
 				$section[0].scrollIntoView( true );
 				
-				e.preventDefault();
-				
 			}
+			
+			return false;
 			
 		} )
 		.on( 'show', function () {
@@ -72,8 +71,9 @@ function ( $, _s, prettify ) { "use strict";
 			_ui.OnWindowResized();
 			
 			if ( $section.length > 0 ) {
-				window.location.hash = '#' + $section.attr( 'id' );
+				
 				$section[0].scrollIntoView( true );
+				
 			}
 			
 		} );
@@ -105,6 +105,8 @@ function ( $, _s, prettify ) { "use strict";
 		
 	} );
 	
+	SuppressInPageLinks();
+	
 	// update pretty print
 	
 	prettify.prettyPrint();
@@ -112,6 +114,43 @@ function ( $, _s, prettify ) { "use strict";
 	// resize
 	
 	_de.$window.on( 'resize', $.debounce( _s.throttleTimeMedium, OnWindowResized ) );
+	
+	/*===================================================
+	
+	utility
+	
+	=====================================================*/
+	
+	function SuppressInPageLinks () {
+		
+		// TODO: integrate history state management
+		
+		var $inPageLinks = $( 'a[href^="#"]' ).not( _de.$inPageLinks );
+		
+		// suppress hash in location of every link
+		
+		$inPageLinks.each( function () {
+			
+			var $link = $( this );
+			var $location = $link.attr( 'href' ) !== "#" ? $( $link.attr( 'href' ) ) : $();
+			
+			$link.on( _s.events.click, function ( e ) {
+				
+				if ( $location.length > 0 ) {
+					
+					$location[ 0 ].scrollIntoView( true );
+					
+				}
+				
+				e.preventDefault();
+				
+			} );
+			
+		} );
+		
+		_de.$inPageLinks = _de.$inPageLinks.add( $inPageLinks );
+		
+	}
 	
 	/*===================================================
 	
@@ -320,6 +359,7 @@ function ( $, _s, prettify ) { "use strict";
 	
 	=====================================================*/
 	
+	_ui.SuppressInPageLinks = SuppressInPageLinks;
 	_ui.OnWindowResized = OnWindowResized;
 	
 	return _ui;

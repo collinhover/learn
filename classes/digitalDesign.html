@@ -174,191 +174,183 @@
 <!-- END tools -->
 
 <script>
-                    
-    $( document ).ready( function () {
-        
-        // if globals valid
-        
-        if ( CKH && CKH.classes ) {
-            
-            CKH.classes.AddClass( {
-                name: 'Digital Design',
-                summary: 'An introduction to <span class="logo-type-purple">all</span> <span class="logo-type-blue">this</span> <span class="logo-type-green">digital business</span>.',
-                navigation: {
-                    main: [
-                        '<a href="#classIntroduction">Introduction</a>',
-                        '<a href="#classTools">Tools</a>'
-                    ]
-                },
-                calendar: {
-                    embed: 'https://www.google.com/calendar/embed?mode=AGENDA&showTitle=0&showPrint=0&showCalendars=0&height=600&wkst=1&bgcolor=%23FFFFFF&src=cjvrqn3025htj3drairbbi2he0%40group.calendar.google.com&color=%23B1440E&ctz=America%2FChicago',
-                    link: 'https://www.google.com/calendar/htmlembed?mode=AGENDA&src=cjvrqn3025htj3drairbbi2he0%40group.calendar.google.com&ctz=America%2FChicago'
-                },
-                projects: [
-                    {
-                        name: 'Pixelated!',
-                        summary: 'Create a series of full-body pixel versions of yourself from a non-isometric perspective and demonstrate 6 things about your personality.',
-                        usables: 'Pixel Art',
-                        time: 1.5,
-                        files: [
-                            { text: 'Pixel Brushes', url: 'files/brushes/brushes_pixel.abr' },
-                            { text: 'Pixel Font', url: 'files/fonts/font_pixelation.ttf' },
-                            { text: 'Pixelated Template', url: 'files/templates/template_pixelated.psd' }
-                        ],
-                        links: [
-                            { text: 'PIXELS by Patrick Jean', url: 'http://www.youtube.com/watch?v=ugV6cLgwomo' }
-                        ],
-                        requirements: [
-                            { text: 'RFD', designer: true },
-                            { text: 'Black and White Base Pose icon' },
-                            { text: 'Black, White, and Grey Base Pose icon' },
-                            { text: 'Color Base Pose icon' },
-                            { text: 'Color Action Pose icon' },
-                            { text: 'Color Action Pose icon' },
-                            { text: 'Color Action Pose icon' },
-                            { text: 'Color Action Pose icon' },
-                            { text: 'Color Action Pose icon' },
-                            { text: 'Color Action Pose icon' },
-                            { text: '9 icons, 64 x 64 size, in a 3x3 grid with 64px spacing' },
-                            { text: 'White background' },
-                            { text: 'Your name in all caps pixel letters, 64px under 3x3 grid' },
-                            { text: 'All original pixel art done by you' },
-                            { text: 'PSD or TIFF and PNG files of 3x3 grid ( 448 x 576, 72ppi )' }
-                        ]
-                    },
-                    {
-                        name: 'Pixelcounty',
-                        summary: 'Design and create at least one block for the city of Pixelcounty that clearly tells a short story.',
-                        usables: 'Pixel Art',
-                        time: 3,
-                        files: [
-                            { text: 'Pixel Brushes', url: 'files/brushes/brushes_pixel.abr' },
-                            { text: 'Pixel Font', url: 'files/fonts/font_pixelation.ttf' },
-                            { text: 'City Block Template', url: 'files/templates/template_pixel_city_block.psd' }
-                        ],
-                        links: [
-                            { text: 'Pixel County!', url: 'http://collinhover.com/pixelcounty/' },
-                            { text: "MrWong's Soup'Partments", url: 'http://www.mrwong.de/myhouse/' },
-                            { text: 'Goon Tower', url: 'http://www.goontower.com/' }
-                        ],
-                        requirements: [
-                            { text: 'RFD', designer: true },
-                            { text: 'Cookbook', designer: true },
-                            { text: 'Typed short story concept at least 100 words' },
-                            { text: 'Used provided template' },
-                            { text: 'Includes at least 1 of your Pixelated! selves' },
-                            { text: 'A static city scene, i.e. no animation' },
-                            { text: 'No more than 5 elements or 25% of composition using found pixel art' },
-                            { text: 'At least 50% of city block used' },
-                            { text: 'PSD or TIFF and PNG files with transparency ( size provided )' }
-                        ]
-                    },
-                    {
-                        name: 'Speed Painted Portraits',
-                        summary: 'Create a series of four raster speed portraits of a classmate.',
-                        usables: 'Raster Graphics',
-                        time: 1.5,
-                        requirements: [
-                            { text: 'RFD', designer: true },
-                            { text: 'Cookbook', designer: true },
-                            { text: 'Group size 2+' },
-                            { text: 'Reference photo taken from 3/4 view' },
-                            { text: "Simple background that tells 1 thing about subject's personality" },
-                            { text: 'Pencil sketch' },
-                            { text: 'Black and White digitized line drawing' },
-                            { text: 'Photo-realistic portrait' },
-                            { text: 'Comic, cell shaded, or expressionist style portrait' },
-                            { text: 'PSD or TIFF with all 4 in layers and JPG of each ( 2300 x 3000, 300 ppi )' }
-                        ]
-                    },
-                    {
-                        name: 'Twilight Zone',
-                        summary: 'Digital photo-montage depicting a situation in our society in which at least 3 major elements are significantly different and bizarre.',
-                        usables: 'Raster graphics',
-                        time: 2,
-                        requirements: [
-                            { text: 'RFD', designer: true },
-                            { text: 'Cookbook', designer: true },
-                            { text: 'May use 100% found photos and images' },
-                            { text: 'No noticeable pixelation' },
-                            { text: 'Wierd element 1' },
-                            { text: 'Wierd element 2' },
-                            { text: 'Wierd element 3' },
-                            { text: 'PSD or TIFF and JPG files of Photo-montage ( 2000 x 1000, 300 ppi )' }
-                        ]
-                    },
-                    {
-                        name: "Monster's Ball",
-                        summary: 'Create a monster that is either furious, depressed, chill, pumped, or civil.',
-                        usables: 'Vector graphics',
-                        time: 2,
-                        requirements: [
-                            { text: 'RFD', designer: true },
-                            { text: 'Cookbook', designer: true },
-                            { text: 'No live tracing' },
-                            { text: 'Monster expressing chosen attitude' },
-                            { text: 'AI and PNG files ( 2300 x 3000, 300 ppi )' }
-                        ]
-                    },
-                    {
-                        name: 'Movie Icon Set',
-                        summary: 'Create a set of icons that depict 5 major themes or ideas from a movie of your choice.',
-                        usables: 'Vector Graphics',
-                        time: 2,
-                        requirements: [
-                            { text: 'RFD', designer: true },
-                            { text: 'Cookbook', designer: true },
-                            { text: 'Consistent style' },
-                            { text: 'No live tracing' },
-                            { text: 'Icon 1' },
-                            { text: 'Icon 2' },
-                            { text: 'Icon 3' },
-                            { text: 'Icon 4' },
-                            { text: 'Icon 5' },
-                            { text: 'All icons 256 x 256 px size each' },
-                            { text: 'All icons in a single row with 64px spacing' },
-                            { text: 'Name of movie 64px under row of icons' },
-                            { text: 'AI and PNG files ( 1664 x 704, 300ppi )' }
-                        ]
-                    },
-                    {
-                        name: 'Self-Help Book',
-                        summary: 'Convert your movie icon set into a self-help book with 5 steps for how to live life.',
-                        usables: 'Raster and/or Vector art',
-                        time: 3,
-                        files: [
-                            { text: 'Tutorial: Movement', url: 'files/tutorials/tutorial_indesign_001_movement_navigation.idml' },
-                            { text: 'Tutorial: Objects', url: 'files/tutorials/tutorial_indesign_002_objects_groups.idml' },
-                            { text: 'Tutorial: Pen', url: 'files/tutorials/tutorial_indesign_003_paths_pen.idml' },
-                            { text: 'Tutorial: Text', url: 'files/tutorials/tutorial_indesign_004_text.idml' },
-                            { text: 'Tutorial: Images', url: 'files/tutorials/tutorial_indesign_005_images.idml' }
-                        ],
-                        requirements: [
-                            { text: 'RFD', designer: true },
-                            { text: 'Cookbook', designer: true },
-                            { text: 'Cover, inner-cover' },
-                            { text: 'Title page, followed by first step on back-side' },
-                            { text: 'Two page spread for step 1' },
-                            { text: 'Two page spread for step 2' },
-                            { text: 'Two page spread for step 3' },
-                            { text: 'Two page spread for step 4' },
-                            { text: 'Two page spread for step 5' },
-                            { text: 'Blank back side before inner-back-cover' },
-                            { text: 'Inner-back-cover, and back-cover' },
-                            { text: 'Icon, header, sub-header, and body copy for each step' },
-                            { text: 'At least 75 words of body copy per step' },
-                            { text: 'At least 60% of content must be text' },
-                            { text: 'May include images or illustrations' },
-                            { text: 'All original art done by you' },
-                            { text: 'Page size at least 7 x 9 inches' },
-                            { text: '16 page PDF exported as high quality with spreads' }
-                        ]
-                    }
-                ]
-            } );
-            
-        }
-        
-    } );
+	
+	// TODO: make this not global
+	
+    var _ckhClassParameters = {
+		name: 'Digital Design',
+		summary: 'An introduction to <span class="logo-type-purple">all</span> <span class="logo-type-blue">this</span> <span class="logo-type-green">digital business</span>.',
+		navigation: {
+			main: [
+				'<a href="#classIntroduction">Introduction</a>',
+				'<a href="#classTools">Tools</a>'
+			]
+		},
+		calendar: {
+			embed: 'https://www.google.com/calendar/embed?mode=AGENDA&showTitle=0&showPrint=0&showCalendars=0&height=600&wkst=1&bgcolor=%23FFFFFF&src=cjvrqn3025htj3drairbbi2he0%40group.calendar.google.com&color=%23B1440E&ctz=America%2FChicago',
+			link: 'https://www.google.com/calendar/htmlembed?mode=AGENDA&src=cjvrqn3025htj3drairbbi2he0%40group.calendar.google.com&ctz=America%2FChicago'
+		},
+		projects: [
+			{
+				name: 'Pixelated!',
+				summary: 'Create a series of full-body pixel versions of yourself from a non-isometric perspective and demonstrate 6 things about your personality.',
+				usables: 'Pixel Art',
+				time: 1.5,
+				files: [
+					{ text: 'Pixel Brushes', url: 'files/brushes/brushes_pixel.abr' },
+					{ text: 'Pixel Font', url: 'files/fonts/font_pixelation.ttf' },
+					{ text: 'Pixelated Template', url: 'files/templates/template_pixelated.psd' }
+				],
+				links: [
+					{ text: 'PIXELS by Patrick Jean', url: 'http://www.youtube.com/watch?v=ugV6cLgwomo' }
+				],
+				requirements: [
+					{ text: 'RFD', designer: true },
+					{ text: 'Black and White Base Pose icon' },
+					{ text: 'Black, White, and Grey Base Pose icon' },
+					{ text: 'Color Base Pose icon' },
+					{ text: 'Color Action Pose icon' },
+					{ text: 'Color Action Pose icon' },
+					{ text: 'Color Action Pose icon' },
+					{ text: 'Color Action Pose icon' },
+					{ text: 'Color Action Pose icon' },
+					{ text: 'Color Action Pose icon' },
+					{ text: '9 icons, 64 x 64 size, in a 3x3 grid with 64px spacing' },
+					{ text: 'White background' },
+					{ text: 'Your name in all caps pixel letters, 64px under 3x3 grid' },
+					{ text: 'All original pixel art done by you' },
+					{ text: 'PSD or TIFF and PNG files of 3x3 grid ( 448 x 576, 72ppi )' }
+				]
+			},
+			{
+				name: 'Pixelcounty',
+				summary: 'Design and create at least one block for the city of Pixelcounty that clearly tells a short story.',
+				usables: 'Pixel Art',
+				time: 3,
+				files: [
+					{ text: 'Pixel Brushes', url: 'files/brushes/brushes_pixel.abr' },
+					{ text: 'Pixel Font', url: 'files/fonts/font_pixelation.ttf' },
+					{ text: 'City Block Template', url: 'files/templates/template_pixel_city_block.psd' }
+				],
+				links: [
+					{ text: 'Pixel County!', url: 'http://collinhover.com/pixelcounty/' },
+					{ text: "MrWong's Soup'Partments", url: 'http://www.mrwong.de/myhouse/' },
+					{ text: 'Goon Tower', url: 'http://www.goontower.com/' }
+				],
+				requirements: [
+					{ text: 'RFD', designer: true },
+					{ text: 'Cookbook', designer: true },
+					{ text: 'Typed short story concept at least 100 words' },
+					{ text: 'Used provided template' },
+					{ text: 'Includes at least 1 of your Pixelated! selves' },
+					{ text: 'A static city scene, i.e. no animation' },
+					{ text: 'No more than 5 elements or 25% of composition using found pixel art' },
+					{ text: 'At least 50% of city block used' },
+					{ text: 'PSD or TIFF and PNG files with transparency ( size provided )' }
+				]
+			},
+			{
+				name: 'Speed Painted Portraits',
+				summary: 'Create a series of four raster speed portraits of a classmate.',
+				usables: 'Raster Graphics',
+				time: 1.5,
+				requirements: [
+					{ text: 'RFD', designer: true },
+					{ text: 'Cookbook', designer: true },
+					{ text: 'Group size 2+' },
+					{ text: 'Reference photo taken from 3/4 view' },
+					{ text: "Simple background that tells 1 thing about subject's personality" },
+					{ text: 'Pencil sketch' },
+					{ text: 'Black and White digitized line drawing' },
+					{ text: 'Photo-realistic portrait' },
+					{ text: 'Comic, cell shaded, or expressionist style portrait' },
+					{ text: 'PSD or TIFF with all 4 in layers and JPG of each ( 2300 x 3000, 300 ppi )' }
+				]
+			},
+			{
+				name: 'Twilight Zone',
+				summary: 'Digital photo-montage depicting a situation in our society in which at least 3 major elements are significantly different and bizarre.',
+				usables: 'Raster graphics',
+				time: 2,
+				requirements: [
+					{ text: 'RFD', designer: true },
+					{ text: 'Cookbook', designer: true },
+					{ text: 'May use 100% found photos and images' },
+					{ text: 'No noticeable pixelation' },
+					{ text: 'Wierd element 1' },
+					{ text: 'Wierd element 2' },
+					{ text: 'Wierd element 3' },
+					{ text: 'PSD or TIFF and JPG files of Photo-montage ( 2000 x 1000, 300 ppi )' }
+				]
+			},
+			{
+				name: "Monster's Ball",
+				summary: 'Create a monster that is either furious, depressed, chill, pumped, or civil.',
+				usables: 'Vector graphics',
+				time: 2,
+				requirements: [
+					{ text: 'RFD', designer: true },
+					{ text: 'Cookbook', designer: true },
+					{ text: 'No live tracing' },
+					{ text: 'Monster expressing chosen attitude' },
+					{ text: 'AI and PNG files ( 2300 x 3000, 300 ppi )' }
+				]
+			},
+			{
+				name: 'Movie Icon Set',
+				summary: 'Create a set of icons that depict 5 major themes or ideas from a movie of your choice.',
+				usables: 'Vector Graphics',
+				time: 2,
+				requirements: [
+					{ text: 'RFD', designer: true },
+					{ text: 'Cookbook', designer: true },
+					{ text: 'Consistent style' },
+					{ text: 'No live tracing' },
+					{ text: 'Icon 1' },
+					{ text: 'Icon 2' },
+					{ text: 'Icon 3' },
+					{ text: 'Icon 4' },
+					{ text: 'Icon 5' },
+					{ text: 'All icons 256 x 256 px size each' },
+					{ text: 'All icons in a single row with 64px spacing' },
+					{ text: 'Name of movie 64px under row of icons' },
+					{ text: 'AI and PNG files ( 1664 x 704, 300ppi )' }
+				]
+			},
+			{
+				name: 'Self-Help Book',
+				summary: 'Convert your movie icon set into a self-help book with 5 steps for how to live life.',
+				usables: 'Raster and/or Vector art',
+				time: 3,
+				files: [
+					{ text: 'Tutorial: Movement', url: 'files/tutorials/tutorial_indesign_001_movement_navigation.idml' },
+					{ text: 'Tutorial: Objects', url: 'files/tutorials/tutorial_indesign_002_objects_groups.idml' },
+					{ text: 'Tutorial: Pen', url: 'files/tutorials/tutorial_indesign_003_paths_pen.idml' },
+					{ text: 'Tutorial: Text', url: 'files/tutorials/tutorial_indesign_004_text.idml' },
+					{ text: 'Tutorial: Images', url: 'files/tutorials/tutorial_indesign_005_images.idml' }
+				],
+				requirements: [
+					{ text: 'RFD', designer: true },
+					{ text: 'Cookbook', designer: true },
+					{ text: 'Cover, inner-cover' },
+					{ text: 'Title page, followed by first step on back-side' },
+					{ text: 'Two page spread for step 1' },
+					{ text: 'Two page spread for step 2' },
+					{ text: 'Two page spread for step 3' },
+					{ text: 'Two page spread for step 4' },
+					{ text: 'Two page spread for step 5' },
+					{ text: 'Blank back side before inner-back-cover' },
+					{ text: 'Inner-back-cover, and back-cover' },
+					{ text: 'Icon, header, sub-header, and body copy for each step' },
+					{ text: 'At least 75 words of body copy per step' },
+					{ text: 'At least 60% of content must be text' },
+					{ text: 'May include images or illustrations' },
+					{ text: 'All original art done by you' },
+					{ text: 'Page size at least 7 x 9 inches' },
+					{ text: '16 page PDF exported as high quality with spreads' }
+				]
+			}
+		]
+	};
     
 </script>
