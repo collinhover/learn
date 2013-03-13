@@ -24,51 +24,42 @@
 <div class="step container container-center">
     
     <div class="align-dynamic fill-dynamic fill-dynamic-exact fill-dynamic-parent" data-fill-parent="#presentation">
-        <img src="img/raycasting_pseudophysics.jpg" alt="Raycasting" class="align-dynamic fill-dynamic">
+        <img src="img/halflife.jpg" alt="Raycasting" class="align-dynamic fill-dynamic">
     </div>
     
-    <h2 class="sidekick-type">pseudo-physics system</h2>
-    <p>similar to Star Wars the Old Republic by Bioware</p>
+    <h2 class="sidekick-type">projectiles and melee</h2>
+	<p><small>&copy; Valve / Half-Life</small></p>
     
 </div>
 
 <div class="step container container-center">
     
     <div class="align-dynamic fill-dynamic fill-dynamic-exact fill-dynamic-parent" data-fill-parent="#presentation">
-        <img src="img/raycasting_clicktargets.jpg" alt="Raycasting" class="align-dynamic fill-dynamic">
+        <img src="img/ogsus2013_001.jpg" alt="Raycasting" class="align-dynamic fill-dynamic">
     </div>
     
-    <h2 class="sidekick-type">click targets</h2>
+    <h2 class="sidekick-type">real-time hover / click targets</h2>
     
 </div>
 
 <div class="step container container-center">
     
     <div class="align-dynamic fill-dynamic fill-dynamic-exact fill-dynamic-parent" data-fill-parent="#presentation">
-        <img src="img/raycasting_hovertargets.jpg" alt="Raycasting" class="align-dynamic fill-dynamic">
-    </div>
-    
-    <h2 class="sidekick-type">real-time hover targets</h2>
-    
-</div>
-
-<div class="step container container-center">
-    
-    <div class="align-dynamic fill-dynamic fill-dynamic-exact fill-dynamic-parent" data-fill-parent="#presentation">
-        <img src="img/raycasting_projectiles.jpg" alt="Raycasting" class="align-dynamic fill-dynamic">
-    </div>
-    
-    <h2 class="sidekick-type">projectiles</h2>
-    
-</div>
-
-<div class="step container container-center">
-    
-    <div class="align-dynamic fill-dynamic fill-dynamic-exact fill-dynamic-parent" data-fill-parent="#presentation">
-        <img src="img/raycasting_cameracollisions.jpg" alt="Raycasting" class="align-dynamic fill-dynamic">
+        <img src="img/ogsus2013_002.jpg" alt="Raycasting" class="align-dynamic fill-dynamic">
     </div>
     
     <h2 class="sidekick-type">camera collisions</h2>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <div class="align-dynamic fill-dynamic fill-dynamic-exact fill-dynamic-parent" data-fill-parent="#presentation">
+        <img src="img/swtor.jpg" alt="Raycasting" class="align-dynamic fill-dynamic">
+    </div>
+    
+    <h2 class="sidekick-type">pseudo-physics system</h2>
+	<p><small>&copy; EA / Bioware / SWTOR</small></p>
     
 </div>
 
@@ -83,6 +74,10 @@
 
 <div class="step container container-center">
     
+    <div class="align-dynamic fill-dynamic fill-dynamic-exact fill-dynamic-parent" data-fill-parent="#presentation">
+        <img src="img/raycasting_ray.jpg" alt="Raycasting" class="align-dynamic fill-dynamic">
+    </div>
+	
     <h1>ray:</h1>
     <h2 class="sidekick-type">origin + direction</h2>
     <p>and optionally a distance</p>
@@ -91,6 +86,10 @@
 
 <div class="step container container-center">
     
+    <div class="align-dynamic fill-dynamic fill-dynamic-exact fill-dynamic-parent" data-fill-parent="#presentation">
+        <img src="img/raycasting_object.jpg" alt="Raycasting" class="align-dynamic fill-dynamic">
+    </div>
+	
     <h1>object:</h1>
     <h2 class="sidekick-type">vertices + faces + transform</h2>
     
@@ -98,6 +97,10 @@
 
 <div class="step container container-center">
     
+    <div class="align-dynamic fill-dynamic fill-dynamic-exact fill-dynamic-parent" data-fill-parent="#presentation">
+        <img src="img/raycasting_objectlevel.jpg" alt="Raycasting" class="align-dynamic fill-dynamic">
+    </div>
+	
     <h2 class="sidekick-type">ray close enough to object?</h2>
     <p>check object radius then localize ray to object</p>
     
@@ -105,13 +108,21 @@
 
 <div class="step container container-center">
     
-    <h2 class="sidekick-type">ray in plane of any faces?</h2>
+    <div class="align-dynamic fill-dynamic fill-dynamic-exact fill-dynamic-parent" data-fill-parent="#presentation">
+        <img src="img/raycasting_planelevel.jpg" alt="Raycasting" class="align-dynamic fill-dynamic">
+    </div>
+	
+    <h2 class="sidekick-type">ray point in plane of any faces?</h2>
     <p>face to triangles, check direction, normal, and distance from plane</p>
     
 </div>
 
 <div class="step container container-center">
     
+    <div class="align-dynamic fill-dynamic fill-dynamic-exact fill-dynamic-parent" data-fill-parent="#presentation">
+        <img src="img/raycasting_trianglelevel.jpg" alt="Raycasting" class="align-dynamic fill-dynamic">
+    </div>
+	
     <h2 class="sidekick-type">ray point not outside triangle?</h2>
     <p>for better stability, add a slop value of ~0.01 for character size of 100</p>
     
@@ -120,14 +131,13 @@
 <div class="step container container-center">
     
     <p>it works, but we can</p>
-    <img src="http://placehold.it/256x256" alt="" class="iconk">
-    <h1 class="hero-type separate-line">make it faster</h1>
-    <h3 class="sidekick-type">"at the speed of sound"</h3>
+    <h1 class="hero-type">make it faster</h1>
     
 </div>
 
 <div class="step container container-center">
     
+    <img src="img/snail.png" alt="Slow" class="iconk">
     <h2 class="sidekick-type">raycast ~10,000 faces</h2>
     <h1 class="dim">=</h1>
     <h2 class="sidekick-type">1 character at 30 fps</h2>
@@ -137,7 +147,8 @@
 
 <div class="step container container-center">
     
-    <h2 class="sidekick-type">a solution?
+    <img src="img/searchtree_graph.png" alt="Tree" class="iconk">
+    <h2 class="sidekick-type">a solution?</h2>
     <h1 class="hero-type">trees!</h1>
     <p>octree, k-dimensional, bsp, etc</p>
     
@@ -153,6 +164,88 @@
 </div>
 
 <div class="step container container-center">
+	
+    <img src="img/searchtree_nodes.png" alt="Search Tree" class="iconk">
+    <h2 class="sidekick-type">divide space into 8 nodes</h2>
+    
+</div>
+
+<div class="step container container-center">
+	
+	<h1>node:</h1>
+    <img src="img/searchtree_aabb.png" alt="Search Tree" class="iconk">
+    <h2 class="sidekick-type">axis-aligned bounding box (AABB)</h2>
+    
+</div>
+
+<div class="step container container-center">
+	
+    <img src="img/searchtree_sparse.png" alt="Search Tree" class="iconk">
+    <h2 class="sidekick-type">sparse tree</h2>
+    <p>because we don't want to intersect test check empty nodes</p>
+    
+</div>
+
+<div class="step container container-center">
+	
+    <img src="img/searchtree_overlapping.png" alt="Search Tree" class="iconk">
+    <h2 class="sidekick-type">overlapping nodes</h2>
+    <p>to handle objects that lie on node edges</p>
+    
+</div>
+
+<div class="step container container-center">
+	
+    <img src="img/searchtree_split.png" alt="Search Tree" class="iconk">
+    <h2 class="sidekick-type">split node when &gt; threshold</h2>
+    
+</div>
+
+<div class="step container container-center">
+	
+    <img src="img/searchtree_merge.png" alt="Search Tree" class="iconk">
+    <h2 class="sidekick-type">merge nodes when &lt; threshold</h2>
+    
+</div>
+
+<div class="step container container-center">
+	
+    <img src="img/searchtree_grow.png" alt="Search Tree" class="iconk">
+    <h2 class="sidekick-type">grow node</h2>
+	<p>when enough objects are outside</p>
+    
+</div>
+
+<div class="step container container-center">
+	
+    <img src="img/searchtree_shrink.png" alt="Search Tree" class="iconk">
+    <h2 class="sidekick-type">shrink nodes</h2>
+	<p>when too few objects are inside</p>
+    
+</div>
+
+<div class="step container container-center">
+	
+    <div class="align-dynamic fill-dynamic fill-dynamic-exact fill-dynamic-parent" data-fill-parent="#presentation">
+        <img src="img/searchtree_moving.jpg" alt="Search Tree" class="align-dynamic fill-dynamic">
+    </div>
+    <h2 class="sidekick-type">now we have a moving tree</h2>
+	<p><small>&copy; Valve / Dota 2</small></p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <img src="img/sonic.png" alt="Fast" class="iconk">
+	<p><small>&copy; Sega / Sonic</small></p>
+    <h2 class="sidekick-type">raycast ~10,000 faces w/ tree</h2>
+    <h1 class="dim">=</h1>
+    <h2 class="sidekick-type">40 - 60 characters at 60 fps</h2>
+    <p>on a low end machine</p>
+    
+</div>
+
+<div class="step container container-center">
     
     <img src="img/github.png" alt="Github" class="iconk-quadgiant">
     <h2 class="sidekick-type"><a href="https://github.com/collinhover/threeoctree" target="_blank">threeoctree on Github</a></h2>
@@ -161,7 +254,7 @@
 
 <div class="step container container-center">
     
-    <a href="http://collinhover.github.com/kaiopua" target="_blank"><img src="img/kaiopua.png" alt="Kai 'Opua" class="iconk-doublegiant-widthFollow"></a>
+    <a href="http://collinhover.github.com/kaiopua" target="_blank"><img src="img/kaiopua.png" alt="Kai 'Opua" class="iconk"></a>
     
 </div>
 
