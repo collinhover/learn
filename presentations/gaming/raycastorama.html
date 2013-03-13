@@ -4,6 +4,10 @@
 
 <div class="step container container-center">
     
+    <div class="align-dynamic fill-dynamic fill-dynamic-exact fill-dynamic-parent" data-fill-parent="#presentation">
+        <img src="img/raycasting.png" alt="Raycasting" class="align-dynamic fill-dynamic">
+    </div>
+    
     <h1 class="superhero-type">Raycast</h1>
     <h2 class="sidekick-type hero-type">-orama!</h2>
     
@@ -12,15 +16,66 @@
 <div class="step container container-center">
     
     <p>sometimes we don't want physics but we need</p>
-    <img src="http://placehold.it/256x256" alt="" class="iconk">
+    <img src="img/web_knockout.png" alt="Collisions" class="iconk">
     <h1 class="hero-type">collisions</h1>
     
 </div>
 
 <div class="step container container-center">
     
+    <div class="align-dynamic fill-dynamic fill-dynamic-exact fill-dynamic-parent" data-fill-parent="#presentation">
+        <img src="img/raycasting_pseudophysics.jpg" alt="Raycasting" class="align-dynamic fill-dynamic">
+    </div>
+    
+    <h2 class="sidekick-type">pseudo-physics system</h2>
+    <p>similar to Star Wars the Old Republic by Bioware</p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <div class="align-dynamic fill-dynamic fill-dynamic-exact fill-dynamic-parent" data-fill-parent="#presentation">
+        <img src="img/raycasting_clicktargets.jpg" alt="Raycasting" class="align-dynamic fill-dynamic">
+    </div>
+    
+    <h2 class="sidekick-type">click targets</h2>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <div class="align-dynamic fill-dynamic fill-dynamic-exact fill-dynamic-parent" data-fill-parent="#presentation">
+        <img src="img/raycasting_hovertargets.jpg" alt="Raycasting" class="align-dynamic fill-dynamic">
+    </div>
+    
+    <h2 class="sidekick-type">real-time hover targets</h2>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <div class="align-dynamic fill-dynamic fill-dynamic-exact fill-dynamic-parent" data-fill-parent="#presentation">
+        <img src="img/raycasting_projectiles.jpg" alt="Raycasting" class="align-dynamic fill-dynamic">
+    </div>
+    
+    <h2 class="sidekick-type">projectiles</h2>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <div class="align-dynamic fill-dynamic fill-dynamic-exact fill-dynamic-parent" data-fill-parent="#presentation">
+        <img src="img/raycasting_cameracollisions.jpg" alt="Raycasting" class="align-dynamic fill-dynamic">
+    </div>
+    
+    <h2 class="sidekick-type">camera collisions</h2>
+    
+</div>
+
+<div class="step container container-center">
+    
     <p>the basics of</p>
-    <img src="http://placehold.it/256x256" alt="" class="iconk">
+    <img src="img/raycasting_basics.png" alt="Raycasting" class="iconk">
     <h1 class="hero-type separate-line">raycasting</h1>
     <h3 class="sidekick-type">shoot lines, get money</h3>
     
@@ -28,32 +83,85 @@
 
 <div class="step container container-center">
     
+    <h1>ray:</h1>
+    <h2 class="sidekick-type">origin + direction</h2>
+    <p>and optionally a distance</p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <h1>object:</h1>
+    <h2 class="sidekick-type">vertices + faces + transform</h2>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <h2 class="sidekick-type">ray close enough to object?</h2>
+    <p>check object radius then localize ray to object</p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <h2 class="sidekick-type">ray in plane of any faces?</h2>
+    <p>face to triangles, check direction, normal, and distance from plane</p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <h2 class="sidekick-type">ray point not outside triangle?</h2>
+    <p>for better stability, add a slop value of ~0.01 for character size of 100</p>
+    
+</div>
+
+<div class="step container container-center">
+    
     <p>it works, but we can</p>
     <img src="http://placehold.it/256x256" alt="" class="iconk">
-    <h1 class="hero-type">make it faster</h1>
+    <h1 class="hero-type separate-line">make it faster</h1>
+    <h3 class="sidekick-type">"at the speed of sound"</h3>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <h2 class="sidekick-type">raycast ~10,000 faces</h2>
+    <h1 class="dim">=</h1>
+    <h2 class="sidekick-type">1 character at 30 fps</h2>
+    <p>on a low end machine</p>
+    
+</div>
+
+<div class="step container container-center">
+    
+    <h2 class="sidekick-type">a solution?
+    <h1 class="hero-type">trees!</h1>
+    <p>octree, k-dimensional, bsp, etc</p>
     
 </div>
 
 <div class="step container container-center">
     
     <p>the basics of an</p>
-    <img src="http://placehold.it/256x256" alt="" class="iconk">
-    <h1 class="hero-type">(Oc)Tree</h1>
-    <h3 class="sidekick-type">dynamic + sparse</h3>
+    <img src="img/searchtree_basics.png" alt="Search Tree" class="iconk">
+    <h1 class="hero-type separate-line">dynamic octree</h1>
+    <h3 class="sidekick-type">chosen for faster insertion / removal</h3>
     
 </div>
 
 <div class="step container container-center">
     
-    <img src="http://placehold.it/256x256" alt="" class="iconk">
+    <img src="img/github.png" alt="Github" class="iconk-quadgiant">
     <h2 class="sidekick-type"><a href="https://github.com/collinhover/threeoctree" target="_blank">threeoctree on Github</a></h2>
     
 </div>
 
 <div class="step container container-center">
     
-    <img src="http://placehold.it/256x256" alt="" class="iconk">
-    <h2 class="sidekick-type"><a href="https://github.com/collinhover/kaiopua" target="_blank">Kai 'Opua on Github</a></h2>
+    <a href="http://collinhover.github.com/kaiopua" target="_blank"><img src="img/kaiopua.png" alt="Kai 'Opua" class="iconk-doublegiant-widthFollow"></a>
     
 </div>
 
