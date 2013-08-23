@@ -47,32 +47,37 @@ function ( $, _s, prettify ) { "use strict";
 		
 		$toggle.on( _s.events.click, function ( e ) {
 			
+			// for some reason, it won't scroll to a section unless the tab is reset
+			
+			$toggle.tab('show');
+			/*
 			if ( _s.tabActiveId !== $toggle.attr( 'href' ) ) {
 				
 				$toggle.tab('show');
 				
 			}
 			else if ( $section.length > 0 ) {
-				
+			
+				$toggle.trigger('shown');
 				$section[0].scrollIntoView( true );
 				
 			}
-			
+			*/
 			return false;
 			
 		} )
 		.on( 'show', function () {
-			
+			console.log( 'show' );
 			_s.tabActiveId = $toggle.attr( 'href' );
 			
 		} )
 		.on( 'shown', function () {
-			
+			console.log( 'shown' );
 			_ui.OnWindowResized();
 			
 			if ( $section.length > 0 ) {
 				
-				$section[0].scrollIntoView( true );
+				$section[ 0 ].scrollIntoView( true );
 				
 			}
 			
@@ -149,6 +154,8 @@ function ( $, _s, prettify ) { "use strict";
 		} );
 		
 		_de.$inPageLinks = _de.$inPageLinks.add( $inPageLinks );
+		
+		return $inPageLinks;
 		
 	}
 	

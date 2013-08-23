@@ -97,14 +97,23 @@ function ( $, _s, _ui ) { "use strict";
 						ShowProjects();
 						ShowCalendar();
 						
-						// ui
-						
-						_ui.SuppressInPageLinks();
 						_ui.OnWindowResized( false, true );
 						
 						// ready
 						
 						_s.classActiveReady = true;
+						
+						// ui
+						
+						var classInPageLinks = _ui.SuppressInPageLinks();
+						
+						classInPageLinks.each( function () {
+							
+							$( this ).removeAttr( 'href' );
+							
+						} );
+						
+						_de.$content.scrollTop( 0 );
 						
 					}
 					
@@ -478,7 +487,7 @@ function ( $, _s, _ui ) { "use strict";
         
         // add link to navigation
         
-        AddClassLink( _de.$classProjectsLink, _de.$classNavListMain );
+        AddClassLink( _ce.$classProjectsLink.clone(), _de.$classNavListMain );
         
     }
     
@@ -531,7 +540,7 @@ function ( $, _s, _ui ) { "use strict";
             
             // add link to navigation
             
-            AddClassLink( _de.$classCalendarLink, _de.$classNavListMain );
+            AddClassLink( _ce.$classCalendarLink.clone(), _de.$classNavListMain );
         
         }
         

@@ -53,7 +53,7 @@
 			
 			// enable content
 			
-			_de.$content.addClass( 'scrollable' ).removeClass( 'unscrollable' );
+			_de.$content.removeClass( 'unscrollable' ).addClass( 'scrollable' );
 			
 		}
 			

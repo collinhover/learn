@@ -124,6 +124,8 @@ function ( $, Signal ) { "use strict";
 	_ce.$projectsAccordion = $( '<div id="projectsAccordion" class="accordion"></div>' );
 	_ce.$projectResource = $( '<p class="project-resource"><a target="_blank" class="project-resource-link"></a></p>' );
 	_ce.$projectRequirement = $( '<div class="requirement-item"><div class="requirement-item-checkbox"></div><span class="requirement-item-text"></span></div>' );
+	_ce.$classProjectsLink = _de.$classProjectsLink.clone();
+	_ce.$classCalendarLink = _de.$classCalendarLink.clone();
 	_ce.$calendar = $( '<section id="classCalendar"><div class="page-header"><h1>Calendar</h1></div></section>' );
 	_ce.$calendarEmbed = $( '<iframe src="" class="calendar-embed" frameborder="0" scrolling="no" type="text/html"></iframe>' );
 	_ce.$calendarLink = $( '<div class="hero-anchor"><p><small>Calendar not working right?</small></p><a href="" target="_blank" class="btn btn-large btn-primary calendar-link"><i class="icon-calendar icon-white"></i> Open Simple Calendar</a></div>' );
