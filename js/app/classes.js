@@ -38,7 +38,7 @@ function ( $, _s, _ui ) { "use strict";
 		
 		// listen for activate
 		
-		$button.on( _s.events.click, function () {
+		$button.on( 'click', function () {
 			
 			if ( typeof url === 'string' && url.length > 0 && url !== _s.classActiveURL ) {
 				
@@ -414,7 +414,7 @@ function ( $, _s, _ui ) { "use strict";
                     // set properties
                     
                     $requirement.attr( 'id', requirementId )
-                        .on( _s.events.click, OnRequirementToggle )
+                        .on( 'click', OnRequirementToggle )
                         .find( '.requirement-item-text' )
                         .html( requirementText );
                     
@@ -479,7 +479,7 @@ function ( $, _s, _ui ) { "use strict";
                 $projectBody.addClass( 'collapse' );
                 
                 $project.find( '.accordion-toggle' )
-                    .on( _s.events.click, $.proxy( OnProjectToggle, $projectBody ) );
+                    .on( 'click', $.proxy( OnProjectToggle, $projectBody ) );
                     
             } );
             

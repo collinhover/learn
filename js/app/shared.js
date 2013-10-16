@@ -19,8 +19,6 @@ function ( $, Signal ) { "use strict";
 	_s.events.mousedown = 'mousedown touchstart';
 	_s.events.mouseup = 'mouseup touchend touchcancel';
 	_s.events.mousemove = 'mousemove touchmove';
-	_s.events.click = 'click touchend';
-	_s.events.clickList = ['click', 'touchend'];
 	
 	/*===================================================
 	

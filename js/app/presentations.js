@@ -92,7 +92,7 @@ function ( $, _s, _ui, prettify ) { "use strict";
 	
 	// add fullscreen presentation callback
 	
-	//_de.$presentationFullscreenToggle.on( _s.events.click, OnFullscreenToggle );
+	//_de.$presentationFullscreenToggle.on( 'click', OnFullscreenToggle );
 	
 	// for each presentation button
 	
@@ -111,7 +111,7 @@ function ( $, _s, _ui, prettify ) { "use strict";
 		
 		// listen for activate
 		
-		$button.on( _s.events.click, function () {
+		$button.on( 'click', function () {
 			
 			if ( typeof url === 'string' && url.length > 0 ) {// && url !== _s.presentationActiveURL ) {
 				

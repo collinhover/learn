@@ -24,7 +24,7 @@ function ( $, _s, prettify ) { "use strict";
 		
 		if ( $link.attr( 'href' ) !== "#" ) {
 			
-			$link.on( _s.events.click, function ( e ) {
+			$link.on( 'click', function ( e ) {
 				
 				if ( _s.smallScreen ) {
 					
@@ -45,7 +45,7 @@ function ( $, _s, prettify ) { "use strict";
 		var $toggle = $( this ),
 			$section = $( $toggle.data( 'section' ) );
 		
-		$toggle.on( _s.events.click, function ( e ) {
+		$toggle.on( 'click', function ( e ) {
 			
 			// for some reason, it won't scroll to a section unless the tab is reset
 			
@@ -151,21 +151,15 @@ function ( $, _s, prettify ) { "use strict";
 					
 				}
 				else { 
+						
+					$toggle.on( 'click.dropdown', dropdownToggle )
+					_de.$body.on( 'click.dropdown', dropdownClose );
 					
-					for ( var i = 0, il = _s.events.clickList.length; i < il; i++ ) {
+					$links.each( function () {
 						
-						var event = _s.events.clickList[ i ];
+						$( this ).on( 'click.dropdown', dropdownClose );
 						
-						$toggle.on( event + '.dropdown', dropdownToggle )
-						_de.$body.on( event + '.dropdown', dropdownClose );
-						
-						$links.each( function () {
-							
-							$( this ).on( event + '.dropdown', dropdownClose );
-							
-						} );
-						
-					}
+					} );
 					
 					dropdownClose();
 					
@@ -208,7 +202,7 @@ function ( $, _s, prettify ) { "use strict";
 			var $link = $( this );
 			var $location = $link.attr( 'href' ) !== "#" ? $( $link.attr( 'href' ) ) : $();
 			
-			$link.on( _s.events.click, function ( e ) {
+			$link.on( 'click', function ( e ) {
 				
 				if ( $location.length > 0 ) {
 					
