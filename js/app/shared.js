@@ -20,6 +20,7 @@ function ( $, Signal ) { "use strict";
 	_s.events.mouseup = 'mouseup touchend touchcancel';
 	_s.events.mousemove = 'mousemove touchmove';
 	_s.events.click = 'click touchend';
+	_s.events.clickList = ['click', 'touchend'];
 	
 	/*===================================================
 	
@@ -56,7 +57,7 @@ function ( $, Signal ) { "use strict";
 	_de.$inPageLinks = $();
 	_de.$tabs = $( '.tab-pane' );
 	_de.$tabToggles = $( '.tab-toggles' ).find( '[href^="#"]' );
-	_de.$buttonsDropdown = $( '[data-toggle="dropdown"]' );
+	_de.$dropdowns = $( '.dropdown' );
 	
 	_de.$alignDynamic = $( ".align-dynamic" );
 	_de.$fillDynamic = $( ".fill-dynamic" );
@@ -146,8 +147,6 @@ function ( $, Signal ) { "use strict";
 	_s.collapseDuration = 500;
 	_s.fadeEasing = 'easeInOutCubic';
 	_s.collapseEasing = 'easeInOutCubic';
-	
-	_s.smallScreen = false;
 	
 	_s.pathToClasses = 'classes/';
 	_s.pathToPresentations = 'presentations/';

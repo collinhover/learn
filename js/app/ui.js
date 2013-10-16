@@ -28,7 +28,7 @@ function ( $, _s, prettify ) { "use strict";
 				
 				if ( _s.smallScreen ) {
 					
-					_de.$navigationToggle.click();
+					_de.$navigationToggle.trigger( "click" );
 					
 				}
 				
@@ -67,12 +67,12 @@ function ( $, _s, prettify ) { "use strict";
 			
 		} )
 		.on( 'show', function () {
-			console.log( 'show' );
+			
 			_s.tabActiveId = $toggle.attr( 'href' );
 			
 		} )
 		.on( 'shown', function () {
-			console.log( 'shown' );
+			
 			_ui.OnWindowResized();
 			
 			if ( $section.length > 0 ) {
@@ -87,24 +87,93 @@ function ( $, _s, prettify ) { "use strict";
 	
 	// for all dropdowns
 	
-	_de.$buttonsDropdown.parent().each( function () {
+	_de.$dropdowns.each( function () {
 		
 		var $dropdown = $( this );
+		var $siblings = $dropdown.parent().find( '.dropdown' ).not( $dropdown );
+		var $toggle = $dropdown.find( '.dropdown-toggle' );
+		var $links = $dropdown.find( '.dropdown-menu a' );
 		
-		$dropdown.find( '.dropdown-menu a' ).each( function () {
+		// dropdown once appears to be necessary to get toggle working
+		
+		//$toggle.dropdown();
+		
+		var dropdownToggle = function () {
 			
-			var $button = $( this );
+			if ( !$dropdown.hasClass( 'open' ) ) {
+				
+				dropdownOpen();
+				
+			}
+			else {
+				
+				dropdownClose();
+				
+			}
 			
-			$button.on( _s.events.click, function () {
+			return false;
+			
+		}
+		
+		var dropdownOpen = function () {
+			
+			$siblings.removeClass( 'active open' );
+			$dropdown.addClass( 'active open' );
+			
+		};
+		
+		var dropdownClose = function () {
+			
+			$dropdown.removeClass( 'active open' );
+			
+		};
+			
+		// listen for resize to change behavior
+		
+		_s.signals.onResized.add( function () {
+			
+			if ( _s.smallScreen !== _s.smallScreenLast ) {
+				
+				if ( _s.smallScreen ) {
 					
-					$button.parent().removeClass( 'active' );
+					$dropdown.addClass( 'active open' );
 					
-					$dropdown.removeClass('open');
+					$toggle.off( '.dropdown' );
+					_de.$body.off( '.dropdown' );
 					
-				} )
-				.on( 'shown', function () {
-					$button.parent().removeClass( 'active' );
-				} );
+					$links.each( function () {
+						
+						var $link = $( this );
+					
+						$link.removeClass( 'active' ).off( '.dropdown' );
+							
+					} );
+					
+				}
+				else { 
+					
+					for ( var i = 0, il = _s.events.clickList.length; i < il; i++ ) {
+						
+						var event = _s.events.clickList[ i ];
+						
+						$toggle.on( event + '.dropdown', dropdownToggle )
+						_de.$body.on( event + '.dropdown', dropdownClose );
+						
+						$links.each( function () {
+							
+							$( this ).on( event + '.dropdown', dropdownClose );
+							
+						} );
+						
+					}
+					
+					dropdownClose();
+					
+					$links.removeClass( 'active' );
+						
+				}
+				
+			}
 			
 		} );
 		
@@ -179,6 +248,7 @@ function ( $, _s, prettify ) { "use strict";
 		
 		_s.hNav = _de.$navigation.outerHeight( true );
 		
+		_s.smallScreenLast = _s.smallScreen;
 		_s.smallScreen = _de.$navigation.css( 'position' ) !== 'fixed';
 		
 		// resize start
