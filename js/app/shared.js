@@ -55,7 +55,7 @@ function ( $, Signal ) { "use strict";
 	_de.$inPageLinks = $();
 	_de.$tabs = $( '.tab-pane' );
 	_de.$tabToggles = $( '.tab-toggles' ).find( '[href^="#"]' );
-	_de.$dropdowns = $( '.dropdown' );
+	_de.$dropdowns = $( '.dropdown, .dropup' );
 	
 	_de.$alignDynamic = $( ".align-dynamic" );
 	_de.$fillDynamic = $( ".fill-dynamic" );

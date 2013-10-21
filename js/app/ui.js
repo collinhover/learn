@@ -50,6 +50,7 @@ function ( $, _s, prettify ) { "use strict";
 			// for some reason, it won't scroll to a section unless the tab is reset
 			
 			$toggle.tab('show');
+			_de.$dropdowns.removeClass( 'open' );
 			/*
 			if ( _s.tabActiveId !== $toggle.attr( 'href' ) ) {
 				
@@ -90,13 +91,8 @@ function ( $, _s, prettify ) { "use strict";
 	_de.$dropdowns.each( function () {
 		
 		var $dropdown = $( this );
-		var $siblings = $dropdown.parent().find( '.dropdown' ).not( $dropdown );
 		var $toggle = $dropdown.find( '.dropdown-toggle' );
 		var $links = $dropdown.find( '.dropdown-menu a' );
-		
-		// dropdown once appears to be necessary to get toggle working
-		
-		//$toggle.dropdown();
 		
 		var dropdownToggle = function () {
 			
@@ -117,14 +113,14 @@ function ( $, _s, prettify ) { "use strict";
 		
 		var dropdownOpen = function () {
 			
-			$siblings.removeClass( 'active open' );
-			$dropdown.addClass( 'active open' );
+			_de.$dropdowns.removeClass( 'open' );
+			$dropdown.addClass( 'open' );
 			
 		};
 		
 		var dropdownClose = function () {
 			
-			$dropdown.removeClass( 'active open' );
+			$dropdown.removeClass( 'open' );
 			
 		};
 			
@@ -136,7 +132,7 @@ function ( $, _s, prettify ) { "use strict";
 				
 				if ( _s.smallScreen ) {
 					
-					$dropdown.addClass( 'active open' );
+					$dropdown.addClass( 'open' );
 					
 					$toggle.off( '.dropdown' );
 					_de.$body.off( '.dropdown' );
